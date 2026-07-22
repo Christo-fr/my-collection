@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import ParticlesBackground from "@/components/layout/ParticlesBackground";
 import "./globals.css";
 
@@ -29,9 +31,11 @@ export default function RootLayout({
       className={`${jewelsFont.variable} ${notoFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ParticlesBackground/>
+        <Header />
+        <ParticlesBackground />
         {children}
-        </body>
+        <Footer />
+      </body>
     </html>
   );
 }

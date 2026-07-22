@@ -22,9 +22,8 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto), Arial, Helvetica, sans-serif;
 }
-
 
 /* Animation des particules (Lucioles qui montent) */
 /* Animation des particules (Poussière d'étoiles / Luciférine) */
