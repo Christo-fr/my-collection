@@ -24,3 +24,29 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* Animation des particules (Lucioles qui montent) */
+/* Animation des particules (Poussière d'étoiles / Luciférine) */
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: rise var(--duration) var(--delay) linear infinite;
+  opacity: var(--opacity);
+}
+
+@keyframes rise {
+  0% {
+    transform: translate(var(--x-start), 110vh) scale(var(--scale));
+  }
+  50% {
+    transform: translate(var(--x-mid), var(--y-mid)) scale(var(--scale));
+  }
+  100% {
+    transform: translate(var(--x-end), -10vh) scale(var(--scale));
+  }
+}
