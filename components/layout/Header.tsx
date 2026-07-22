@@ -36,7 +36,7 @@ export default function Header() {
       </div>
 
       {/* 3. Zone du Theme Switch (droite) */}
-      <div className="text-white text-sm  p-4 px-6 border-b">Theme</div>
+      <div className="text-white text-sm p-4 px-6 border-b">Theme</div>
     </header>
   );
 }
