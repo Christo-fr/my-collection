@@ -3,10 +3,10 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="relative md:absolute bottom-0 right-0 w-full z-10 flex justify-end items-center ">
-      {/* Menu footer */}
       <div className="flex items-center p-4 px-6 gap-4 border-t bg-gradient-to-r from-transparent to-black to-60%">
         <div className="flex items-center">
           <span className="text-gray-300 text-sm pr-2">2026</span>
+          {/* --- LIEN PORTFOLIO --- */}
           <a
             href="https://rudy-maire.fr/"
             target="_blank"
@@ -16,6 +16,7 @@ export default function Footer() {
             R.Maire
           </a>
         </div>
+        {/* --- LIEN GITHUB --- */}
         <a
           href="https://github.com/Christo-fr/my-collection"
           target="_blank"

@@ -1,0 +1,44 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+import { Sun, Moon } from "lucide-react";
+
+export default function ThemeSwitch() {
+  // Récupération du thème actuel et de la fonction pour le modifier via next-themes
+  const { theme, setTheme } = useTheme();
+  const isDark = theme === "dark";
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  // Rend invisible le switch jusqu'à ce que le composant soit monté pour éviter les problèmes de rendu côté serveur.
+  if (!mounted) return <div className="w-16 h-6" />;
+
+  return (
+    <div className="flex items-center gap-2">
+      {/* Soleil : Ambré en mode light, grisé en dark */}
+      <Sun
+        className={`w-4 h-4 ${isDark ? "text-gray-500" : "text-amber-500"}`}
+      />
+
+      <button
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+        aria-label="Changer de thème"
+        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 ${
+          isDark ? "bg-neutral-700 border border-white/10" : "bg-amber-500"
+        }`}
+      >
+        <span
+          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 ${
+            isDark ? "translate-x-6" : "translate-x-1"
+          }`}
+        />
+      </button>
+
+      {/* Lune : Bleutée en mode dark, meulée/grisée en light */}
+      <Moon
+        className={`w-4 h-4 ${isDark ? "text-blue-400" : "text-gray-400"}`}
+      />
+    </div>
+  );
+}

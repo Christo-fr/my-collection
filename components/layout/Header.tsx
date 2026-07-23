@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react"; // 1. Import de DialogBackdrop
 import { useState } from "react";
+import ThemeSwitch from "@/components/ui/ThemeSwitch";
 
 const NAV_LINKS = [
   { label: "Ma liste", href: "/liste" },
@@ -16,9 +17,9 @@ export default function Header() {
 
   return (
     <>
-      {/* --- HEADER DESKTOP & BARRE DE NAVIGATION --- */}
+      {/* --- HEADER --- */}
       <header className="relative md:absolute top-0 left-0 w-full z-10 flex justify-between items-center">
-        {/* Logo & Navigation Desktop */}
+        {/* --- LOGO & MENU --- */}
         <div className="flex items-center p-4 px-6 border-b gap-4">
           <Link
             href="/"
@@ -27,7 +28,7 @@ export default function Header() {
             My Collection
           </Link>
 
-          {/* Navigation Desktop (corrigé sans double nav) */}
+          {/* --- MENU : DESKTOP --- */}
           <nav className="hidden md:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <Link
@@ -41,7 +42,7 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* Zone du Theme Switch & Bouton Burger */}
+        {/* --- SWITCH, MENU ADMIN : DESKTOP & BTN BURGER MENU --- */}
         <div className="flex items-center text-white text-sm p-4 px-6 border-b">
           <button
             onClick={() => setIsModalOpen(true)}
@@ -50,11 +51,13 @@ export default function Header() {
           >
             <Menu className="w-6 h-6" />
           </button>
-          <div className="hidden md:flex">Theme</div>
+          <div className="hidden md:flex">
+            <ThemeSwitch />
+          </div>
         </div>
       </header>
 
-      {/* --- TIROIR MOBILE ANIMÉ (HEADLESS UI v2) --- */}
+      {/* --- MENU MOBILE  --- */}
       <Dialog
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -66,7 +69,7 @@ export default function Header() {
           className="fixed inset-0 bg-black/70 backdrop-blur-sm transition duration-300 ease-out data-[closed]:opacity-0"
         />
 
-        {/* 2. Conteneur du tiroir */}
+        {/* 2. Conteneur du menu mobile*/}
         <div className="fixed inset-y-0 right-0 w-full max-w-xs flex">
           {/* DialogPanel reçoit la prop transition et le slide */}
           <DialogPanel
@@ -100,10 +103,9 @@ export default function Header() {
               </nav>
             </div>
 
-            {/* Zone du Thème tout en bas */}
             <div className="pt-6 mt-8 border-t border-white/10 flex justify-between items-center text-white text-sm">
               <span>Thème</span>
-              <span className="text-xs text-gray-400">[ Switch ]</span>
+              <ThemeSwitch />
             </div>
           </DialogPanel>
         </div>
