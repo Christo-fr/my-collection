@@ -11,7 +11,7 @@ export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
-  // Rend invisible le switch jusqu'à ce que le composant soit monté pour éviter les problèmes de rendu côté serveur.
+  // Empêche les erreurs d'hydratation entre Next.js (serveur) et le navigateur.
   if (!mounted) return <div className="w-16 h-6" />;
 
   return (
@@ -24,12 +24,12 @@ export default function ThemeSwitch() {
       <button
         onClick={() => setTheme(isDark ? "light" : "dark")}
         aria-label="Changer de thème"
-        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 ${
+        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 cursor-pointer ${
           isDark ? "bg-neutral-700 border border-white/10" : "bg-amber-500"
         }`}
       >
         <span
-          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 ${
+          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 cursor-pointer ${
             isDark ? "translate-x-6" : "translate-x-1"
           }`}
         />

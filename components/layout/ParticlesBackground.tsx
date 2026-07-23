@@ -1,6 +1,6 @@
 export default function ParticlesBackground() {
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-60" >
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-60">
       {Array.from({ length: 200 }).map((_, index) => {
         const xStart = Math.random() * 100; // Position X de départ (0vw à 100vw)
         const offset = -10 + Math.random() * 20; // Amplitude du balancement (-10vw à +10vw)
@@ -18,17 +18,17 @@ export default function ParticlesBackground() {
         return (
           <div
             key={index}
-            className="particle"
+            className="absolute w-2 h-2 bg-white rounded-full shadow-[0_0_10px_rgba(255,255,255,0.8)] opacity-[var(--opacity)] animate-[rise_var(--duration)_var(--delay)_linear_infinite]"
             style={
               {
-                '--x-start': `${xStart}vw`,
-                '--x-mid': `${xMid}vw`,
-                '--x-end': `${xEnd}vw`,
-                '--y-mid': `${yMid}vh`,
-                '--scale': scale,
-                '--duration': `${duration}s`,
-                '--delay': `${delay}s`,
-                '--opacity': opacity,
+                "--x-start": `${xStart}vw`,
+                "--x-mid": `${xMid}vw`,
+                "--x-end": `${xEnd}vw`,
+                "--y-mid": `${yMid}vh`,
+                "--scale": scale,
+                "--duration": `${duration}s`,
+                "--delay": `${delay}s`,
+                "--opacity": opacity,
               } as React.CSSProperties
             }
           />

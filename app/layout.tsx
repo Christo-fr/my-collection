@@ -32,7 +32,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${jewelsFont.variable} ${notoFont.variable} h-full antialiased`}
     >
-      <body className="min-h-dvh md:h-full w-full bg-neutral-950 text-white md:overflow-hidden relative">
+      <body className=" min-h-dvh md:h-full w-full bg-neutral-950 md:overflow-hidden relative bg-[var(--bg-main)] text-[var(--text-main)]">
         {/* Gestion du Theme via le Provider*/}
         <ThemeProvider>
           {/* --- APPLICATION --- */}

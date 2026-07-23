@@ -19,24 +19,23 @@
   }
 }
 
+:root {
+  --bg-main: #ffffff;
+  --text-main: #171717;
+}
+
+.dark {
+  --bg-main: #0a0a0a;
+  --text-main: #ffffff;
+}
+/*
 body {
   background: black;
   color: var(--foreground);
   font-family: var(--font-noto), Arial, Helvetica, sans-serif;
-}
+}*/
 
-/* Animation des particules (Lucioles qui montent) */
-/* Animation des particules (Poussière d'étoiles / Luciférine) */
-.particle {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-  animation: rise var(--duration) var(--delay) linear infinite;
-  opacity: var(--opacity);
-}
+/* Animation des particules (via ParticlesBackground) */
 
 @keyframes rise {
   0% {
