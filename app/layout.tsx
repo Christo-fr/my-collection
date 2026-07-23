@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ParticlesBackground from "@/components/layout/ParticlesBackground";
+import AppBackground from "@/components/layout/AppBackground";
 import "./globals.css";
 
 const jewelsFont = localFont({
@@ -35,7 +36,8 @@ export default function RootLayout({
       <body className=" min-h-dvh md:h-full w-full bg-neutral-950 md:overflow-hidden relative bg-[var(--bg-main)] text-[var(--text-main)]">
         {/* Gestion du Theme via le Provider*/}
         <ThemeProvider>
-          {/* --- APPLICATION --- */}
+          {/* Couche UI n°3 : Le contenu interactif de l'app (z-10) */}
+
           <div className="relative z-10 flex flex-col min-h-dvh md:h-dvh w-full">
             <Header />
 
@@ -44,10 +46,15 @@ export default function RootLayout({
             </main>
 
             <Footer />
-
-            {/* Fond animé particules*/}
-            <ParticlesBackground />
           </div>
+
+          {/* Couche de fond n°1 : L'image (-z-20) */}
+
+          <AppBackground />
+
+          {/* Couche de fond n°2 : Les particules (-z-10) */}
+
+          <ParticlesBackground />
         </ThemeProvider>
       </body>
     </html>
