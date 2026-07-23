@@ -23,7 +23,7 @@ export default function Header() {
         <div className="flex items-center p-4 px-6 border-b gap-4">
           <Link
             href="/"
-            className="text-white text-3xl font-[family-name:var(--font-jewels)] pr-2"
+            className="text-primary text-3xl font-[family-name:var(--font-jewels)] pr-2"
           >
             My Collection
           </Link>
@@ -34,7 +34,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-300 uppercase hover:text-white text-sm font-medium transition"
+                className="text-main uppercase hover:text-hover text-sm font-medium transition"
               >
                 {link.label}
               </Link>
@@ -43,10 +43,10 @@ export default function Header() {
         </div>
 
         {/* --- SWITCH, MENU ADMIN : DESKTOP & BTN BURGER MENU --- */}
-        <div className="flex items-center text-white text-sm p-4 px-6 border-b">
+        <div className="flex items-center text-sm p-4 px-6 border-b">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="md:hidden text-white hover:opacity-80 transition-opacity p-2 focus:outline-none"
+            className="md:hidden text-main hover:text-hover transition-opacity p-2 focus:outline-none"
             aria-label="Ouvrir le menu"
           >
             <Menu className="w-6 h-6" />
@@ -74,14 +74,14 @@ export default function Header() {
           {/* DialogPanel reçoit la prop transition et le slide */}
           <DialogPanel
             transition
-            className="w-full bg-neutral-900 p-4 px-6 overflow-y-auto flex flex-col justify-between transition duration-300 ease-in-out data-[closed]:translate-x-full"
+            className="w-full bg-background p-4 px-6 overflow-y-auto flex flex-col justify-between transition duration-300 ease-in-out data-[closed]:translate-x-full"
           >
             <div>
               {/* Bouton de fermeture */}
               <div className="flex justify-end">
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="text-gray-400 hover:text-white p-2"
+                  className="text-main cursor-pointer hover:text-hover p-2"
                   aria-label="Fermer le menu"
                 >
                   <X className="w-6 h-6" />
@@ -95,7 +95,7 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsModalOpen(false)}
-                    className="text-gray-300 uppercase hover:text-white text-sm font-medium transition"
+                    className="text-main uppercase hover:text-hover text-sm font-medium transition"
                   >
                     {link.label}
                   </Link>
@@ -103,7 +103,7 @@ export default function Header() {
               </nav>
             </div>
 
-            <div className="pt-6 mt-8 border-t border-white/10 flex justify-between items-center text-white text-sm">
+            <div className="pt-6 mt-8 border-t border-white/10 flex justify-between items-center text-main text-sm">
               <span>Thème</span>
               <ThemeSwitch />
             </div>

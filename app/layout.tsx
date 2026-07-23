@@ -33,27 +33,20 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${jewelsFont.variable} ${notoFont.variable} h-full antialiased`}
     >
-      <body className=" min-h-dvh md:h-full w-full bg-neutral-950 md:overflow-hidden relative bg-[var(--bg-main)] text-[var(--text-main)]">
+      <body className="font-noto min-h-dvh transition-colors duration-500 md:h-full w-full md:overflow-hidden relative bg-background text-main">
         {/* Gestion du Theme via le Provider*/}
         <ThemeProvider>
-          {/* Couche UI n°3 : Le contenu interactif de l'app (z-10) */}
-
+          {/* Application */}
           <div className="relative z-10 flex flex-col min-h-dvh md:h-dvh w-full">
             <Header />
-
             <main className="flex-1 w-full pt-20 pb-16 px-6 md:px-12 md:overflow-hidden">
               {children}
             </main>
-
             <Footer />
           </div>
 
-          {/* Couche de fond n°1 : L'image (-z-20) */}
-
+          {/* Couches de Background  */}
           <AppBackground />
-
-          {/* Couche de fond n°2 : Les particules (-z-10) */}
-
           <ParticlesBackground />
         </ThemeProvider>
       </body>

@@ -7,12 +7,16 @@ export default function AppBackground() {
         src="/background/bg-modelight.webp"
         alt="Background"
         className="object-cover opacity-100 transition-opacity duration-500 dark:opacity-0"
+        priority
+        sizes="100vw"
         fill
       />
       <Image
         src="/background/bg-modedark.webp"
         alt="Background"
         className="object-cover opacity-0 transition-opacity duration-500 dark:opacity-100"
+        priority
+        sizes="100vw"
         fill
       />
     </div>

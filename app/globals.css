@@ -1,41 +1,38 @@
 @import "tailwindcss";
 /* On indique à Tailwind v4 d'activer le mode dark via la classe .dark */
 @variant dark (&:where(.dark, .dark *));
-/*
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}*/
 
 :root {
-  --bg-main: #ffffff;
-  --text-main: #171717;
+  --bg-main: white;
+  --primary: black; /* Ajout de -- */
+  --secondary: #bcf9b8; /* Ajout de -- */
+  --grad-start: #fa72cf;
+  --grad-end: #f6cdba;
+  --text-main: var(--color-gray-700);
+  --text-hover: black;
 }
 
 .dark {
-  --bg-main: #0a0a0a;
-  --text-main: #ffffff;
+  --bg-main: black;
+  --primary: white; /* Ajout de -- */
+  --secondary: #4d1703; /* Ajout de -- */
+  --grad-start: #ffea49;
+  --grad-end: white;
+  --text-main: var(--color-gray-300);
+  --text-hover: white;
 }
-/*
-body {
-  background: black;
-  color: var(--foreground);
-  font-family: var(--font-noto), Arial, Helvetica, sans-serif;
-}*/
+
+@theme inline {
+  --font-noto: var(--font-noto), Arial, Helvetica, sans-serif;
+  --color-background: var(--bg-main);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-tertiaire: var(--grad-start);
+  --color-grad-start: var(--grad-start);
+  --color-grad-end: var(--grad-end);
+  --color-main: var(--text-main);
+  --color-hover: var(--text-hover);
+}
 
 /* Animation des particules (via ParticlesBackground) */
 

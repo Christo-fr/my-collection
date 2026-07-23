@@ -17,28 +17,24 @@ export default function ThemeSwitch() {
   return (
     <div className="flex items-center gap-2">
       {/* Soleil : Ambré en mode light, grisé en dark */}
-      <Sun
-        className={`w-4 h-4 ${isDark ? "text-gray-500" : "text-amber-500"}`}
-      />
+      <Sun className={`w-4 h-4 ${isDark ? "text-main" : "text-tertiaire"}`} />
 
       <button
         onClick={() => setTheme(isDark ? "light" : "dark")}
         aria-label="Changer de thème"
-        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 cursor-pointer ${
-          isDark ? "bg-neutral-700 border border-white/10" : "bg-amber-500"
+        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-600 cursor-pointer ${
+          isDark ? "bg-neutral-700 border border-white/10" : "bg-tertiaire"
         }`}
       >
         <span
-          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 cursor-pointer ${
+          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-600 cursor-pointer ${
             isDark ? "translate-x-6" : "translate-x-1"
           }`}
         />
       </button>
 
       {/* Lune : Bleutée en mode dark, meulée/grisée en light */}
-      <Moon
-        className={`w-4 h-4 ${isDark ? "text-blue-400" : "text-gray-400"}`}
-      />
+      <Moon className={`w-4 h-4 ${isDark ? "text-tertiaire" : "text-main"}`} />
     </div>
   );
 }
