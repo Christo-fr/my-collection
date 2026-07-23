@@ -6,13 +6,13 @@ export default function AppBackground() {
       <Image
         src="/background/bg-modelight.webp"
         alt="Background"
-        className="object-cover dark:hidden"
+        className="object-cover opacity-100 transition-opacity duration-500 dark:opacity-0"
         fill
       />
       <Image
         src="/background/bg-modedark.webp"
         alt="Background"
-        className="object-cover hidden dark:block"
+        className="object-cover opacity-0 transition-opacity duration-500 dark:opacity-100"
         fill
       />
     </div>
