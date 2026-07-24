@@ -47,3 +47,18 @@
     transform: translate(var(--x-end), -10vh) scale(var(--scale));
   }
 }
+
+/* Animation du Parallax */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px); /* Amplitude du flottement */
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite; /* Flottement infini et doux */
+}
