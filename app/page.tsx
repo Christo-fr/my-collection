@@ -12,7 +12,7 @@ export default function Home() {
       </div>
 
       {/* Zone Personnage (Droite 50%) */}
-      <div className="hidden lg:block w-1/2 h-full relative">
+      <div className="hidden md:block w-1/2 h-full relative">
         <ParallaxCharacter
           image={{
             url: "/parallax/no-truncate.webp",

@@ -58,7 +58,3 @@
     transform: translateY(-12px); /* Amplitude du flottement */
   }
 }
-
-.animate-float {
-  animation: float 5s ease-in-out infinite; /* Flottement infini et doux */
-}
