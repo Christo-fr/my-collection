@@ -1,5 +1,6 @@
 import { Game } from "@/types/game";
 import Image from "next/image";
+import ConsoleIcon from "./ConsoleIcon";
 
 interface GameCardProps {
   game: Game;
@@ -19,7 +20,10 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
       />
 
       <div className="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-md rounded-md px-2.5 py-1 font-bold text-white uppercase text-xs">
-        {game.console}
+        <ConsoleIcon
+          console={game.console}
+          className="h-4 w-auto object-contain"
+        />
       </div>
 
       <div className="absolute inset-x-0 bottom-0 z-10 p-3 pt-12 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-black/95 dark:via-black/75 dark:to-transparent flex flex-col items-center text-center">
