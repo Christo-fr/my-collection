@@ -15,7 +15,7 @@
     "youtubeId": "jvYD6e4QL7s",
     "images": {
       "cover": "/games/covers/atelier-sophie.webp",
-      "logo": "/games/logos/GC_Logo.svg.webp",
+      "logo": "/games/logos/atelier-sophie.png",
       "parallax": {
         "url": "/games/parallaxs/atelier-sophie-character.png",
         "mode": "full"
@@ -7749,8 +7749,8 @@
     "description": "Le rideau se lève sur une belle journée ensoleillée, tandis que notre héros tombe du ciel... Heureusement, un dragon amical est là pour freiner sa chute. Bien qu'il n'ait pas été blessé, le héros pouvait uniquement se souvenir de son nom. Sous les auspices du dragon Ventuswill, le héros vint habiter dans le château local et, en tant que nouveau seigneur, commença sa nouvelle vie en faisant grandir la ville, en prenant des décisions difficiles et en cultivant les terres. Un jour, en explorant sa nouvelle résidence, le héros rencontra un papillon monstrueux. Cependant, après avoir vaincu cet ennemi géant, une jeune fille se trouva au sol à sa place. Pourquoi le monstre s'est-il transformé en humain ? Après ces mystérieux débuts, la recherche de vérité du héros le conduira à une grande aventure qui ébranlera les fondements même de son monde... et le rapprochera du secret enfoui dans ses propres souvenirs perdus.",
     "youtubeId": "PwI0mzf2flY",
     "images": {
-      "cover": "/images/covers/rune-factory-4.jpg",
-      "logo": "/images/logos/rune-factory-4.png",
+      "cover": "/games/covers/meruru.jpg",
+      "logo": "/games/logos/A13_INT_Logo.webp",
       "parallax": {
         "url": "/images/parallax/rune-factory-4-character.png",
         "mode": "full"

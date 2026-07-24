@@ -10,45 +10,56 @@ interface GameCardProps {
 export default function GameCard({ game, variant = "default" }: GameCardProps) {
   return (
     <div
-      className={`relative w-full aspect-[2/3] rounded-xl overflow-hidden cursor-pointer select-none border border-black/10 transition-all duration-300 hover:scale-105 dark:border-white/10`}
+      className={`relative w-full aspect-[2/3] rounded-xl overflow-hidden cursor-pointer select-none border border-main/10 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_2px_var(--color-secondary)]`}
     >
       <Image
         src={game.images.cover}
         alt={game.title}
         fill
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw"
+        loading="eager"
+        quality={100}
         className="object-cover"
       />
 
-      <div className="absolute top-2.5 left-2.5 bg-black/60 backdrop-blur-md rounded-md px-2.5 py-1 font-bold text-white uppercase text-xs">
+      {/* Pill Console */}
+      <div className="absolute top-2.5 left-2.5 bg-background/20 backdrop-blur-sm rounded-md px-2.5 py-1 font-bold text-main uppercase text-xs">
         <ConsoleIcon
           console={game.console}
-          className="h-4 w-auto object-contain"
+          className="h-3 w-auto object-contain"
         />
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-10 p-3 pt-12 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-black/95 dark:via-black/75 dark:to-transparent flex flex-col items-center text-center">
-        {/* 1. Le Logo du jeu (dans sa div conteneur à hauteur fixe) */}
+      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center text-center z-10 p-3 pt-12 bg-gradient-to-t from-background via-background/80 to-transparent  ">
+        {/* 1. Le Logo du jeu */}
         {game.images.logo ? (
           <div className="relative flex items-end flex-auto mb-2">
             <img
               src={game.images.logo}
               alt={game.title}
-              className={`object-contain w-full ${variant === "xl" ? "max-h-20" : "max-h-12"}`}
+              className={`object-contain w-full ${variant === "xl" ? "max-h-50" : "max-h-19"}`}
             />
           </div>
         ) : (
           <h3 className="font-bold text-sm line-clamp-2 mb-2">{game.title}</h3>
         )}
 
-        {/* 2. Ligne 1 : Durée & Genre */}
-        <div className="text-xs text-slate-700 dark:text-slate-300 font-medium">
-          {game.estimatedPlaytime}h - {game.genre}
+        {/* 2. Durée & Genre */}
+        <div className="text-sm text-main w-full truncate font-medium">
+          {game.estimatedPlaytime}h • {game.genre}
         </div>
 
-        {/* 3. Ligne 2 : Note /10 (si elle existe) */}
-        {game.review?.score !== undefined && (
-          <div className="text-sm font-bold text-slate-900 dark:text-white mt-0.5">
+        {/* 3. Note /10*/}
+        {game.review?.score ? (
+          <div className="text-sm text-main font-bold mt-0.5">
             {game.review.score}/10
+          </div>
+        ) : (
+          <div
+            className="text-sm font-bold mt-0.5 opacity-0 select-none"
+            aria-hidden="true"
+          >
+            /10
           </div>
         )}
       </div>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const CONSOLE_ICONS: Record<string, string> = {
-  GameCube: "/icons/console/gc.webp",
+  GC: "/icons/console/gc.webp",
   N64: "/icons/console/n64.webp",
   PS3: "/icons/console/ps3.webp",
   PS4: "/icons/console/ps4.webp",

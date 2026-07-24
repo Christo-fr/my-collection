@@ -84,7 +84,7 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
       onMouseMove={handleMouseMove}
       onClick={handleClick}
       /*- isTruncated : décale l'ancrage (-bottom-10) pour enfouir la tranche inférieure sous le bord de l'écran*/
-      className={`relative w-full h-full will-change-transform hidden md:block select-none ${
+      className={`relative w-full h-full will-change-transform hidden lg:block select-none ${
         isTruncated
           ? "absolute -bottom-10 right-0 flex items-end justify-end"
           : ""
@@ -96,6 +96,7 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
         fill
         sizes="50vw"
         priority
+        quality={100}
         className={`object-contain pointer-events-none animate-[float_8s_ease-in-out_infinite] ${
           isTruncated ? "object-bottom translate-y-8" : "object-center"
         }`}

@@ -8,6 +8,7 @@ export default function AppBackground() {
         alt="Background"
         className="object-cover opacity-100 transition-opacity duration-500 dark:opacity-0"
         priority
+        quality={100}
         sizes="100vw"
         fill
       />
@@ -16,6 +17,7 @@ export default function AppBackground() {
         alt="Background"
         className="object-cover opacity-0 transition-opacity duration-500 dark:opacity-100"
         priority
+        quality={100}
         sizes="100vw"
         fill
       />

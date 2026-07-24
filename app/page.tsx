@@ -7,6 +7,7 @@ import { Game } from "@/types/game";
 export default function Home() {
   // On récupère le tout premier jeu de ton fichier JSON
   const sampleGame = gamesData[0] as Game;
+  const anotherGame = gamesData[210] as Game;
 
   return (
     <main className="relative w-full h-[calc(100vh-80px)] flex items-center justify-between px-12">
@@ -16,14 +17,22 @@ export default function Home() {
         <p className="text-main/80 text-lg">
           Test d'intégration du composant ParallaxCharacter !
         </p>
-        {/* On teste la carte en taille normale */}
-        <div className="w-52">
-          <Link href={`/fiche/${sampleGame.id}`}>
-            <GameCard game={sampleGame} />
-          </Link>
+
+        <div className="flex items gap-2">
+          {/* On teste la carte en taille normale */}
+          <div className="w-52">
+            <Link href={`/fiche/${sampleGame.id}`}>
+              <GameCard game={sampleGame} variant="default" />
+            </Link>
+          </div>
+          {/* On teste la carte en taille normale */}
+          <div className="w-52">
+            <Link href={`/fiche/${anotherGame.id}`}>
+              <GameCard game={anotherGame} variant="default" />
+            </Link>
+          </div>
         </div>
       </div>
-
       {/* Zone Personnage (Droite 50%) */}
       <div className="hidden md:block w-1/2 h-full relative">
         <ParallaxCharacter
