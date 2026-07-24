@@ -23,7 +23,7 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
       />
 
       {/* Pill Console */}
-      <div className="absolute top-2.5 left-2.5 bg-background/20 backdrop-blur-sm rounded-md px-2.5 py-1 font-bold text-main uppercase text-xs">
+      <div className="absolute top-2.5 left-2.5 bg-background/20 backdrop-blur-sm rounded-md p-1 font-bold text-main uppercase text-xs">
         <ConsoleIcon
           console={game.console}
           className="h-3 w-auto object-contain"
