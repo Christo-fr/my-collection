@@ -1,6 +1,13 @@
+import Link from "next/link";
 import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
+import gamesData from "@/data/games.json";
+import GameCard from "@/components/game/GameCard";
+import { Game } from "@/types/game";
 
 export default function Home() {
+  // On récupère le tout premier jeu de ton fichier JSON
+  const sampleGame = gamesData[0] as Game;
+
   return (
     <main className="relative w-full h-[calc(100vh-80px)] flex items-center justify-between px-12">
       {/* Zone Texte (Gauche 50%) */}
@@ -9,6 +16,12 @@ export default function Home() {
         <p className="text-main/80 text-lg">
           Test d'intégration du composant ParallaxCharacter !
         </p>
+        {/* On teste la carte en taille normale */}
+        <div className="w-52">
+          <Link href={`/fiche/${sampleGame.id}`}>
+            <GameCard game={sampleGame} />
+          </Link>
+        </div>
       </div>
 
       {/* Zone Personnage (Droite 50%) */}

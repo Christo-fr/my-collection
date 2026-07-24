@@ -14,10 +14,10 @@
     "description": "17e épisode de la série Atelier. La jeune alchimiste Sophie de Kirchen Bell rencontre un mystérieux livre nommé Plachta et se lance dans une aventure merveilleuse dans l'espoir de concrétiser ses rêves.",
     "youtubeId": "jvYD6e4QL7s",
     "images": {
-      "cover": "/images/covers/atelier-sophie.jpg",
-      "logo": "/images/logos/atelier-sophie.png",
+      "cover": "/games/covers/atelier-sophie.webp",
+      "logo": "/games/logos/GC_Logo.svg.webp",
       "parallax": {
-        "url": "/images/parallax/atelier-sophie-character.png",
+        "url": "/games/parallaxs/atelier-sophie-character.png",
         "mode": "full"
       }
     },
@@ -105,11 +105,7 @@
       "playtime": 6,
       "completedDate": null,
       "score": 6,
-      "pros": [
-        "Bonne jouabilité",
-        "Différents stages",
-        "Equipements"
-      ],
+      "pros": ["Bonne jouabilité", "Différents stages", "Equipements"],
       "cons": [
         "Graphisme pas top (Personnages difficilement reconnaissables)",
         "Equipement non pris en compte lors des défis",
@@ -151,9 +147,7 @@
         "Scénario convainquant",
         "Univers déjanté"
       ],
-      "cons": [
-        "Gestion des fonctionnalités complexes"
-      ],
+      "cons": ["Gestion des fonctionnalités complexes"],
       "summary": "Disgaea 5 est le premier opus que j'ai pu faire. Le système de jeu est très plaisant, que ce soit le système de combat ou la personnalisation de l'équipe. Les annexes sont très nombreuses, à condition de ne pas s'ennuyer à cause de la durée du jeu."
     }
   },
@@ -189,10 +183,7 @@
         "Système de combat bien dynamique",
         "Quêtes annexes agréables à réaliser"
       ],
-      "cons": [
-        "Durée de vie plutôt courte",
-        "Le chapitre 3"
-      ],
+      "cons": ["Durée de vie plutôt courte", "Le chapitre 3"],
       "summary": "Dust est un bijou en terme de jeu indépendant. La direction artistique est fabuleuse, on sent un travail très soigné. Bien que le scénario semble classique, je regrette le long chapitre 3 qui n'a aucun réel intérêt en plus de lasser. "
     }
   },
@@ -335,9 +326,7 @@
         "Les nombreuses possibilités en termes de gameplay",
         "Le pixel art"
       ],
-      "cons": [
-        "Seulement 3 environnements"
-      ],
+      "cons": ["Seulement 3 environnements"],
       "summary": "Un Beat'em all simple et efficace."
     }
   },
@@ -374,9 +363,7 @@
         "Le principe des armes récupérés sur les boss",
         "Tous les bonus (artworks, musiques, guides, défis,...)"
       ],
-      "cons": [
-        "La compilation aurait pu contenir les 10 jeux"
-      ],
+      "cons": ["La compilation aurait pu contenir les 10 jeux"],
       "summary": "Megaman Legacy Collection est un portage un peu fainéant des 6 jeux nes. Capcom aurait pu compléter la collection avec les 4 derniers jeux de la saga."
     }
   },
@@ -439,9 +426,7 @@
         "Les nouveautés concernant les cartes",
         "Système de combat bien rapide"
       ],
-      "cons": [
-        "Manque d'environnement"
-      ],
+      "cons": ["Manque d'environnement"],
       "summary": "Odin Sphere Leifdrasir est la remasterisation de mon jeu préféré : Odin Sphere. Le soin apporté pour ce jeu est vraiment marquant. Une valeur sûre en terme de RPG Dynamique."
     }
   },
@@ -479,9 +464,7 @@
         "Gameplay maîtrisé",
         "Nombreux environnements"
       ],
-      "cons": [
-        "Graphisme qui aurait mérité d'être lissé"
-      ],
+      "cons": ["Graphisme qui aurait mérité d'être lissé"],
       "summary": "Cet opus de Shantae corrige principalement les défauts de l'opus précédent. Les environnements sont nombreux, les quêtes annexes sont intéressantes à suivre, et le chara design est vraiment agréable. J'aurai aimé que cette version soit moins axé pixel art pour réellement profiter de cet univers"
     }
   },
@@ -827,10 +810,7 @@
         "OST proposant des themes épiques",
         "Quête principale agréable à suivre"
       ],
-      "cons": [
-        "Protagoniste bien bécasse",
-        "Très souvent perdu"
-      ],
+      "cons": ["Protagoniste bien bécasse", "Très souvent perdu"],
       "summary": "Atelier Ayesha est le 1er épisode de la trilogie Dusk. Avec une tournure un peu plus mature par son scénario, l'ambiance post-apocalyptique séduit. Mais on se retrouve assez vite bloqué, en recherche de personnage à qui parler pour continuer à faire avancer le scénario."
     }
   },
@@ -906,10 +886,7 @@
         "Thèmes des combats grandioses",
         "Le plaisir de revoir tous les personnages de la trilogie Arland"
       ],
-      "cons": [
-        "Scénario un peu banal",
-        "Trop de conversations"
-      ],
+      "cons": ["Scénario un peu banal", "Trop de conversations"],
       "summary": "Le dernier épisode de la série Arland est sans conteste le meilleur de sa trilogie. Dans une ambiance plutôt bon enfant, l'apprentissage de l'alchimie dans le but d'agrandir la ville principale est une bonne idée. Mais il se peut qu'on puisse soupirer au nombre de conversations qui n'ont pas réellement d'intérêt la plupart du temps."
     }
   },
@@ -1090,10 +1067,7 @@
         "La variété des modes de jeu",
         "Les différents cheminements lors du mode scénario pour chacun des personnages"
       ],
-      "cons": [
-        "Maniabilité très mécanique",
-        "12 combattants seulement"
-      ],
+      "cons": ["Maniabilité très mécanique", "12 combattants seulement"],
       "summary": "Battle Fantasia est un petit jeu de combat qui change des productions actuelles en proposant son petit univers bien à lui. Bien que le jeu propose plusieurs modes de jeu, le système de combat est plutôt lent, ce qui est dommage."
     }
   },
@@ -1171,10 +1145,7 @@
         "Le soin des décors 2D",
         "Quelques mini-jeux"
       ],
-      "cons": [
-        "Les personnages en 3D",
-        "Des énigmes tirés par les cheveux"
-      ],
+      "cons": ["Les personnages en 3D", "Des énigmes tirés par les cheveux"],
       "summary": "Captain Morgane est mon premier point'n click. Pas réellement fan de ce genre de jeu, l'univers est quand même bien agréable sur fond tropical. J'ai pas été vraiment convaincu par les différentes énigmes."
     }
   },
@@ -1838,10 +1809,7 @@
         "Plutôt joli graphiquement",
         "Bonne maniabilité"
       ],
-      "cons": [
-        "Vraiment beaucoup trop court",
-        "L'intérêt ?"
-      ],
+      "cons": ["Vraiment beaucoup trop court", "L'intérêt ?"],
       "summary": "Bien que le principe soit particulier, je n'ai pas été séduit par flOw..."
     }
   },
@@ -1871,15 +1839,8 @@
       "playtime": 2,
       "completedDate": "2017-05",
       "score": 8,
-      "pros": [
-        "Très beau graphiquement",
-        "Relaxant",
-        "Poétique"
-      ],
-      "cons": [
-        "6 niveaux vraiment courts",
-        "Maniabilité imprécise par moment"
-      ],
+      "pros": ["Très beau graphiquement", "Relaxant", "Poétique"],
+      "cons": ["6 niveaux vraiment courts", "Maniabilité imprécise par moment"],
       "summary": "Flower est un titre bien surprenant, d'une part pour la qualité de ses graphismes pour un jeu datant de 2009, et de son principe très reposant. Dommage que le jeu soit si court."
     }
   },
@@ -1977,10 +1938,7 @@
         "La coopération, une brillante idée",
         "Le theme de la solitude"
       ],
-      "cons": [
-        "Le principe de saut",
-        "Bien trop court"
-      ],
+      "cons": ["Le principe de saut", "Bien trop court"],
       "summary": "Journey joue sur le fait d'être livré à soi-même. Et le fait de trouver un voyageur en ligne et une excellente idée, surtout pour le côté rencontre anonyme."
     }
   },
@@ -2134,9 +2092,7 @@
         "Les doublages français de qualité",
         "Les univers déjantés et différents"
       ],
-      "cons": [
-        "Quelques niveaux qui traînent sur la longueur"
-      ],
+      "cons": ["Quelques niveaux qui traînent sur la longueur"],
       "summary": "Puppeteer propose un univers rafraîchissant, avec un univers bien à lui. Un très bon jeu de plateforme."
     }
   },
@@ -2691,9 +2647,7 @@
         "Le mode Online très fluide",
         "La bande son"
       ],
-      "cons": [
-        "Le mode battle sans grand intérêt"
-      ],
+      "cons": ["Le mode battle sans grand intérêt"],
       "summary": "Mario Kart 8 est le meilleur opus de la série et le plus complet."
     }
   },
@@ -2849,9 +2803,7 @@
         "Les niveaux musicaux qui demandent un rythme particulier",
         "Très belle 2D"
       ],
-      "cons": [
-        "L'utilisation de la mablette pour les phases avec Murphy"
-      ],
+      "cons": ["L'utilisation de la mablette pour les phases avec Murphy"],
       "summary": "Rayman Legends est un jeu très soigné et totalement maîtrisé."
     }
   },
@@ -3090,9 +3042,7 @@
         "La diversité des clans",
         "Scénario proposant d'incarner 3 armées"
       ],
-      "cons": [
-        "Graphiquement un peu faible"
-      ],
+      "cons": ["Graphiquement un peu faible"],
       "summary": "L'épisode Radiant Dawn conclut avec brio l'histoire de Path of Radiance. Il améliore en tout point l'opus précédent."
     }
   },
@@ -3242,9 +3192,7 @@
         "Un mode online bien sympa",
         "Courses dans l'ensemble bien inspirées"
       ],
-      "cons": [
-        "Courses trop récompensées par la chance"
-      ],
+      "cons": ["Courses trop récompensées par la chance"],
       "summary": "Cet opus Wii est un très bon cru. Beaucoup de nouveautés et de parcours sont présents, et l'affrontement online relance l'intérêt du jeu."
     }
   },
@@ -3347,10 +3295,7 @@
         "Un gameplay réussi",
         "Une personnalisation poussée"
       ],
-      "cons": [
-        "Mode online non présent",
-        "La rigueur imposé sur le swing"
-      ],
+      "cons": ["Mode online non présent", "La rigueur imposé sur le swing"],
       "summary": "Pangya restera un de mes jeux préférés sur PC. La version Wii est vraiment très réussie grâce à sa jouabilité et ses modes de jeux."
     }
   },
@@ -3533,10 +3478,7 @@
         "Des niveaux variés",
         "Un mode solo plutôt bien fourni"
       ],
-      "cons": [
-        "Un gameplay trop orienté aérien",
-        "Un online instable"
-      ],
+      "cons": ["Un gameplay trop orienté aérien", "Un online instable"],
       "summary": "Cet épisode Brawl est encore plus complet que l'épisode précédent. Le gameplay est légèrement en déca mais plaisant à jouer"
     }
   },
@@ -3926,9 +3868,7 @@
         "20 courses plutôt inspirées",
         "Un très grand nombre de pilotes"
       ],
-      "cons": [
-        "Difficulté abusive"
-      ],
+      "cons": ["Difficulté abusive"],
       "summary": "F-Zero GX aurait pu être un très bon jeu de course s'il était un peu plus accessible (notamment lors du mode scénario)."
     }
   },
@@ -4003,9 +3943,7 @@
         "Bonne maniabilité",
         "Des thèmes plus épiques"
       ],
-      "cons": [
-        "Durée de vie beaucoup trop courte"
-      ],
+      "cons": ["Durée de vie beaucoup trop courte"],
       "summary": "Ce deuxième opus de la licence 007 est plutôt une bonne surprise. La jouabilité est toujours aussi bonne et le scénario est plus plaisant à suivre."
     }
   },
@@ -4167,9 +4105,7 @@
         "Des niveaux nombreux",
         "Gameplay facile à prendre en main"
       ],
-      "cons": [
-        "Un mode aventure plus long aurait été génial"
-      ],
+      "cons": ["Un mode aventure plus long aurait été génial"],
       "summary": "L'épisode Melee est l'opus où j'ai passé le plus de temps dessus. Une durée de vie excellente, une jouabilité prenante, des modes de jeu variés, cet opus est vraiment excellent."
     }
   },
@@ -4701,9 +4637,7 @@
         "Des graphismes réussies",
         "Les très nombreuses parodies"
       ],
-      "cons": [
-        "Quelques problèmes de caméra"
-      ],
+      "cons": ["Quelques problèmes de caméra"],
       "summary": "Ce Conker's Bad Fur Day est le dernier jeu sorti sur N64. Bien que le scénario soit totalement absurde, c'est un véritable plaisir d'évoluer dans un monde qui sort de l'ordinaire. "
     }
   },
@@ -4952,10 +4886,7 @@
         "Les combats Méca",
         "L'humour"
       ],
-      "cons": [
-        "Difficulté impartiale",
-        "Graphiquement moyen"
-      ],
+      "cons": ["Difficulté impartiale", "Graphiquement moyen"],
       "summary": "Cet opus est sans doute un des meilleurs jeu de plateforme 2D qui emprunte beaucoup d'éléments aux divers RPG. "
     }
   },
@@ -5116,9 +5047,7 @@
         "Le monde du passé et du présent",
         "Des personnages charismatiques"
       ],
-      "cons": [
-        "Le temple de la fôret"
-      ],
+      "cons": ["Le temple de la fôret"],
       "summary": "Le 4e opus de cette saga est un véritable bijou. Bien que la nostalgie joue beaucoup, c'est un des rares jeux qui ne laissait pas indifférent."
     }
   },
@@ -6567,10 +6496,7 @@
       "playtime": 10,
       "completedDate": "2006-03",
       "score": 7,
-      "pros": [
-        "Le principe bien barré",
-        "De nombreux terrains"
-      ],
+      "pros": ["Le principe bien barré", "De nombreux terrains"],
       "cons": [
         "Limité dans le choix des coéquipiers",
         "Le côté solo beaucoup trop expeditif"
@@ -6785,10 +6711,7 @@
       "playtime": 3,
       "completedDate": "2018-04",
       "score": 5,
-      "pros": [
-        "Originalité des jeux",
-        "Qualité de l'animation de  l'époque"
-      ],
+      "pros": ["Originalité des jeux", "Qualité de l'animation de  l'époque"],
       "cons": [
         "Try & Retry bêtement",
         "Sans indication, limite impossible de deviner la combinaison de touches à accomplir"
@@ -6829,10 +6752,7 @@
         "La bande son",
         "Un mode battle avec enfin des arènes convenus"
       ],
-      "cons": [
-        "Le manque de nouveauté",
-        "les doubles objets"
-      ],
+      "cons": ["Le manque de nouveauté", "les doubles objets"],
       "summary": "Mario Kart 8 Deluxe reste forcément un excellent jeu, mais il aurait été préférable de le ressortir avec plus de nouveautés comme de nouveaux grand-prix."
     }
   },
@@ -6912,9 +6832,7 @@
         "Personnalisation complète",
         "Un grand chelem"
       ],
-      "cons": [
-        "Le côté binôme sous exploité"
-      ],
+      "cons": ["Le côté binôme sous exploité"],
       "summary": "Ce 3e opus full-3D est une très bonne réussit, surtout en terme de gameplay. Dommage qu'il n'y ait pas eu d'autres idées à exploité pour le concept en binôme."
     }
   },
@@ -7063,10 +6981,7 @@
         "Direction artistique",
         "Renouvellement des objectifs de mission"
       ],
-      "cons": [
-        "Quelques missions poussives",
-        "Dialogues lassants"
-      ],
+      "cons": ["Quelques missions poussives", "Dialogues lassants"],
       "summary": "Ce quatrième reprend exactement la même formule du premier épisode. La diversité des missions et des rajouts (nouvelle classe, ordres de navires, etc...) en font un excellent jeu."
     }
   },
@@ -7096,12 +7011,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7212,12 +7123,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7291,12 +7198,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7457,12 +7360,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7492,12 +7391,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7568,12 +7463,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7603,12 +7494,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7677,12 +7564,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7712,12 +7595,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7788,12 +7667,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7823,12 +7698,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7858,12 +7729,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7893,12 +7760,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -7969,12 +7832,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8051,12 +7910,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8249,12 +8104,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8324,12 +8175,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8437,12 +8284,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8512,12 +8355,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8547,12 +8386,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8582,12 +8417,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8660,12 +8491,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8695,12 +8522,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8903,12 +8726,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8938,12 +8757,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -8973,12 +8788,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9047,12 +8858,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9089,9 +8896,7 @@
         "Un fabuleux travail sur les thèmes musicaux",
         "La transmission des emotions"
       ],
-      "cons": [
-        "Des contrôles plutôt houleux"
-      ],
+      "cons": ["Des contrôles plutôt houleux"],
       "summary": "To The Moon est un jeu indépendant qui marque tant l'histoire est pleine de sensibilité. Cela reste une belle expérience surprenante."
     }
   },
@@ -9121,12 +8926,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9303,12 +9104,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9338,12 +9135,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9449,12 +9242,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9572,12 +9361,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9607,12 +9392,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9642,12 +9423,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9719,12 +9496,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9754,12 +9527,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9789,12 +9558,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9866,12 +9631,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -9901,12 +9662,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10061,12 +9818,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10096,12 +9849,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10211,12 +9960,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10246,12 +9991,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10281,12 +10022,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10316,12 +10053,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10351,12 +10084,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10386,12 +10115,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10462,12 +10187,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10539,12 +10260,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10574,12 +10291,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10648,12 +10361,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10683,12 +10392,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10718,12 +10423,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10753,12 +10454,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10788,12 +10485,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10823,12 +10516,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -10937,12 +10626,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11010,12 +10695,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11045,12 +10726,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11080,12 +10757,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11115,12 +10788,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11150,12 +10819,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11185,12 +10850,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11220,12 +10881,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11332,12 +10989,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11367,12 +11020,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11440,12 +11089,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11475,12 +11120,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11510,12 +11151,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11545,12 +11182,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11621,12 +11254,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11661,10 +11290,7 @@
         "Les activités qui ponctuent chaque chapitre",
         "Belle naration"
       ],
-      "cons": [
-        "Expérience un peu courte",
-        "Un peu trop directif"
-      ],
+      "cons": ["Expérience un peu courte", "Un peu trop directif"],
       "summary": "Dordogne est plus un film interactif qu'un vrai jeu vidéo. Les chapitres se suivent sans prise de tête, avec un vrai partage des vacances de notre protagoniste."
     }
   },
@@ -11694,12 +11320,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11910,12 +11532,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11945,12 +11563,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -11980,12 +11594,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12015,12 +11625,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12050,12 +11656,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12085,12 +11687,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12120,12 +11718,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12155,12 +11749,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12190,12 +11780,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12225,12 +11811,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12260,12 +11842,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12295,12 +11873,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12330,12 +11904,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12365,12 +11935,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12400,12 +11966,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12435,12 +11997,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12470,12 +12028,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12505,12 +12059,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12540,12 +12090,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12575,12 +12121,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12610,12 +12152,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -12645,12 +12183,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   }
