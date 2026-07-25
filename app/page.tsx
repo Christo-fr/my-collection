@@ -10,15 +10,15 @@ export default function Home() {
   const anotherGame = gamesData[210] as Game;
 
   return (
-    <main className="relative w-full h-[calc(100vh-80px)] flex items-center justify-between px-12">
+    <div className="relative w-full h-full flex items-center justify-between px-12">
       {/* Zone Texte (Gauche 50%) */}
-      <div className="w-full lg:w-1/2 z-10 space-y-4">
+      <div className="part w-full h-full lg:w-1/2 z-10 space-y-4 md:h-full overflow-y-auto">
         <h1 className="text-5xl font-bold text-main">Bienvenue</h1>
         <p className="text-main/80 text-lg">
           Test d'intégration du composant ParallaxCharacter !
         </p>
 
-        <div className="flex items gap-2">
+        <div className="flex items gap-2 p-2">
           {/* On teste la carte en taille normale */}
           <div className="w-52">
             <Link href={`/fiche/${sampleGame.id}`}>
@@ -37,11 +37,11 @@ export default function Home() {
       <div className="hidden md:block w-1/2 h-full relative">
         <ParallaxCharacter
           image={{
-            url: "/parallax/no-truncate.webp",
-            mode: "full",
+            url: "/parallax/truncate.webp",
+            mode: "truncate",
           }}
         />
       </div>
-    </main>
+    </div>
   );
 }
