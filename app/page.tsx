@@ -12,12 +12,7 @@ export default function Home() {
   return (
     <div className="relative w-full h-full flex justify-between px-12">
       {/* Zone Texte (Gauche 50%) */}
-      <div
-        style={{
-          marginBottom: "50px",
-        }}
-        className="w-full overflow-y-auto lg:w-1/2 !mb-12 h-auto"
-      >
+      <div className="w-full mb-12 overflow-y-auto lg:w-1/2 !mb-12 h-auto">
         <div className="part w-full z-10 space-y-4 md:h-full overflow-y-auto">
           <h1 className="text-5xl font-bold text-main">Bienvenue</h1>
           <p className="text-main/80 text-lg">
