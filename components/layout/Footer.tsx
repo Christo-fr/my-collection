@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="relative md:absolute bottom-0 right-0 w-full z-10 flex justify-end items-center ">
+    <footer className="relative lg:absolute bottom-0 right-0 w-full z-10 flex justify-end items-center ">
       <div className="flex items-center p-4 px-6 gap-4 border-t bg-gradient-to-r from-transparent to-background to-60%">
         <div className="flex items-center">
           <span className="text-main text-sm font-medium pr-2">2026</span>

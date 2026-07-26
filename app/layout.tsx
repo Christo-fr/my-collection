@@ -33,13 +33,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${jewelsFont.variable} ${notoFont.variable} h-full antialiased`}
     >
-      <body className="font-noto min-h-dvh transition-colors duration-500 md:h-full w-full md:overflow-hidden relative bg-background text-main">
+      <body className="font-noto min-h-dvh transition-colors duration-500 lg:h-full w-full mlg:overflow-hidden relative bg-background text-main">
         {/* Gestion du Theme via le Provider*/}
         <ThemeProvider>
           {/* Application */}
           <div className="relative z-10 flex flex-col min-h-dvh md:h-dvh w-full">
             <Header />
-            <main className="flex-1 w-full pt-20 px-6 md:px-12 md:overflow-hidden">
+            <main className="flex-1 w-full pt-20 px-6 md:px-12 lg:overflow-hidden">
               {children}
             </main>
             <Footer />

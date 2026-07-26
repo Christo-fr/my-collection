@@ -13,7 +13,11 @@ export default function Home() {
     <div className="relative w-full h-full flex justify-between px-12">
       {/* Zone Texte (Gauche 50%) */}
       <div className="w-full mb-12 overflow-y-auto lg:w-1/2 !mb-12 h-auto">
-        <div className="part w-full z-10 space-y-4 md:h-full overflow-y-auto">
+        <div
+          className="part w-full z-10 space-y-4 lg:h-full overflow-y-auto [scrollbar-width:thin] 
+                   [scrollbar-color:transparent_transparent] 
+                   hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]"
+        >
           <h1 className="text-5xl font-bold text-main">Bienvenue</h1>
           <p className="text-main/80 text-lg">
             Test d'intégration du composant ParallaxCharacter !
@@ -36,7 +40,7 @@ export default function Home() {
         </div>
       </div>
       {/* Zone Personnage (Droite 50%) */}
-      <div className="hidden md:block w-1/2 h-full relative">
+      <div className="hidden lg:block w-1/2 h-full relative">
         <ParallaxCharacter
           image={{
             url: "/parallax/truncate.webp",
