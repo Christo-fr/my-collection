@@ -7,6 +7,8 @@ import { Game } from "@/types/game";
 import Button from "@/components/ui/Button";
 import { List, Sparkles } from "lucide-react";
 
+import ProgressBar from "@/components/ui/ProgressBar";
+
 export default function Home() {
   // On récupère le tout premier jeu de ton fichier JSON
   const sampleGame = gamesData[0] as Game;
@@ -25,7 +27,6 @@ export default function Home() {
           <p className="text-main/80 text-lg">
             Test d'intégration du composant ParallaxCharacter !
           </p>
-
           <div className="flex items-center gap-2 p-2">
             <Button
               variant="primary"
@@ -43,7 +44,12 @@ export default function Home() {
               Suggestion
             </Button>
           </div>
-
+          <ProgressBar
+            value={60}
+            labelLeft="Jeux terminés"
+            labelRight="Jeux non terminés "
+            showPercentage={true}
+          />
           <div className="flex items gap-2 p-2">
             {/* On teste la carte en taille normale */}
             <div className="w-52">
