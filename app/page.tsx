@@ -4,6 +4,9 @@ import gamesData from "@/data/games.json";
 import GameCard from "@/components/game/GameCard";
 import { Game } from "@/types/game";
 
+import Button from "@/components/ui/Button";
+import { List, Sparkles } from "lucide-react";
+
 export default function Home() {
   // On récupère le tout premier jeu de ton fichier JSON
   const sampleGame = gamesData[0] as Game;
@@ -22,6 +25,24 @@ export default function Home() {
           <p className="text-main/80 text-lg">
             Test d'intégration du composant ParallaxCharacter !
           </p>
+
+          <div className="flex items-center gap-2 p-2">
+            <Button
+              variant="primary"
+              href="/liste"
+              icon={<List className="w-5 h-5" />}
+            >
+              Ma Liste
+            </Button>
+
+            <Button
+              variant="secondary"
+              href="/suggestion"
+              icon={<Sparkles className="w-5 h-5" />}
+            >
+              Suggestion
+            </Button>
+          </div>
 
           <div className="flex items gap-2 p-2">
             {/* On teste la carte en taille normale */}
