@@ -8,6 +8,7 @@ import Button from "@/components/ui/Button";
 import { List, Sparkles } from "lucide-react";
 
 import ProgressBar from "@/components/ui/ProgressBar";
+import Input from "@/components/ui/Input";
 
 export default function Home() {
   // On récupère le tout premier jeu de ton fichier JSON
@@ -50,6 +51,40 @@ export default function Home() {
             labelRight="Jeux non terminés "
             showPercentage={true}
           />
+
+          <div className="min-h-screen bg-neutral-900 text-white p-8 flex flex-col items-center justify-center">
+            <div className="">
+              <h1 className="text-xl font-semibold mb-4 text-center">
+                🧪 Test du composant Input
+              </h1>
+
+              {/* 1. Input Classique avec Label et Placeholder */}
+              <Input label="Nom de jeu" placeholder="ex: Mario Kart 8 Deluxe" />
+
+              {/* 2. Input avec Description */}
+              <Input
+                label="Clé de licence"
+                placeholder="XXXX-XXXX-XXXX"
+                description="Trouvable au dos du boîtier du jeu."
+              />
+
+              {/* 3. Input avec Erreur */}
+              <Input
+                label="Adresse email"
+                type="email"
+                defaultValue="mario@kart"
+                error="Veuillez entrer une adresse email valide."
+              />
+
+              {/* 4. Input Désactivé */}
+              <Input
+                label="ID Serveur (lecture seule)"
+                defaultValue="EU-CENTRAL-01"
+                disabled
+              />
+            </div>
+          </div>
+
           <div className="flex items gap-2 p-2">
             {/* On teste la carte en taille normale */}
             <div className="w-52">
