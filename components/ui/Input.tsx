@@ -1,10 +1,6 @@
 import { forwardRef } from "react";
-import {
-  Input as HeadlessInput,
-  Label,
-  Description,
-  Field,
-} from "@headlessui/react";
+import { Input as HeadlessInput, Description, Field } from "@headlessui/react";
+import Label from "@/components/ui/Label";
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -19,11 +15,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, description, error, className = "", ...props }, ref) => {
     return (
       <Field className="flex flex-col gap-1.5 w-full">
-        {label && (
-          <Label className="text-xs font-medium text-main/80 px-0.5">
-            {label}
-          </Label>
-        )}
+        {label && <Label label={label} />}
         <HeadlessInput
           name={label}
           className={`w-full rounded-lg bg-main/10 px-3 py-2 text-sm text-main outline-none transition-all

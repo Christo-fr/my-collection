@@ -47,6 +47,7 @@ export default function Home() {
           </div>
           <ProgressBar
             value={60}
+            label="Ma Progress' Bar !"
             labelLeft="Jeux terminés"
             labelRight="Jeux non terminés "
             showPercentage={true}
