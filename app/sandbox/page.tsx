@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
 import gamesData from "@/data/games.json";
@@ -10,11 +11,14 @@ import { List, Sparkles } from "lucide-react";
 import ProgressBar from "@/components/ui/ProgressBar";
 import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
+import RangeInput from "@/components/ui/RangeInput";
+import { useState } from "react";
 
 export default function Home() {
   // On récupère le tout premier jeu de ton fichier JSON
   const sampleGame = gamesData[0] as Game;
   const anotherGame = gamesData[210] as Game;
+  const [duration, setDuration] = useState(25);
 
   return (
     <div className="relative w-full h-full flex justify-between px-12">
@@ -52,6 +56,27 @@ export default function Home() {
             labelRight="Jeux non terminés "
             showPercentage={true}
           />
+
+          <div className="p-8 max-w-md mx-auto space-y-6">
+            <h1 className="text-xl font-bold text-main">Test du RangeInput</h1>
+
+            <RangeInput
+              label="Durée de vie maximale"
+              description="Filtre les jeux qui se terminent en moins de temps"
+              value={duration}
+              onChange={(val) => setDuration(val)}
+              min={5}
+              max={100}
+              step={5}
+              unit="h"
+            />
+
+            {/* Un petit readout pour vérifier que la valeur remonte bien au parent */}
+            <div className="p-4 bg-main/5 rounded-lg text-xs font-mono">
+              Valeur dans le state parent :{" "}
+              <span className="text-accent font-bold">{duration}</span>
+            </div>
+          </div>
 
           <div className="min-h-screen bg-neutral-900 text-white p-8 flex flex-col items-center justify-center">
             <div className="">
