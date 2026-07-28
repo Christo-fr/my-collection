@@ -1,10 +1,7 @@
 import { forwardRef } from "react";
-import {
-  Textarea as HeadlessTextarea,
-  Label,
-  Description,
-  Field,
-} from "@headlessui/react";
+import { Textarea as HeadlessTextarea, Field } from "@headlessui/react";
+import Description from "@/components/ui/Description";
+import Label from "@/components/ui/Label";
 
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
@@ -19,11 +16,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, description, error, className = "", ...props }, ref) => {
     return (
       <Field className="flex flex-col gap-1.5 w-full">
-        {label && (
-          <Label className="text-xs font-medium text-main/80 px-0.5">
-            {label}
-          </Label>
-        )}
+        {label && <Label label={label} />}
         <HeadlessTextarea
           name={label}
           rows={4}
@@ -40,11 +33,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...props}
         />
         {error ? (
-          <Description className="text-xs text-red-500">{error}</Description>
+          <Description className="text-red-500" description={error} />
         ) : description ? (
-          <Description className="text-xs text-main/50">
-            {description}
-          </Description>
+          <Description className="text-main/50" description={description} />
         ) : null}
       </Field>
     );

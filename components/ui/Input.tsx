@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
-import { Input as HeadlessInput, Description, Field } from "@headlessui/react";
+import { Input as HeadlessInput, Field } from "@headlessui/react";
+import Description from "@/components/ui/Description";
 import Label from "@/components/ui/Label";
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -30,11 +31,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {error ? (
-          <Description className="text-xs text-red-500">{error}</Description>
+          <Description className="text-red-500" description={error} />
         ) : description ? (
-          <Description className="text-xs text-main/50">
-            {description}
-          </Description>
+          <Description className="text-main/50" description={description} />
         ) : null}
       </Field>
     );
