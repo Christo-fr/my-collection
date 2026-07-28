@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { Button as HeadlessButton } from "@headlessui/react";
-import { ReactNode } from "react";
 
 export interface ButtonProps {
-  children: ReactNode;
+  children: React.ReactNode;
   variant?: "primary" | "secondary";
   href?: string;
   onClick?: () => void;
-  icon?: ReactNode;
+  icon?: React.ReactNode;
   className?: string;
 }
 

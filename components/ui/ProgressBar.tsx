@@ -1,12 +1,10 @@
-import { ReactNode } from "react";
-
 export interface ProgressBarProps {
   value: number; // Valeur actuelle de la barre de progression (0 à 100)
   max?: number; // Valeur maximale de la barre de progression (par défaut 100)
   label?: string;
   className?: string; // Classes CSS supplémentaires pour le conteneur
-  labelLeft?: ReactNode;
-  labelRight?: ReactNode;
+  labelLeft?: React.ReactNode;
+  labelRight?: React.ReactNode;
   showPercentage?: boolean; // Afficher le pourcentage à l'intérieur de la barre
 }
 

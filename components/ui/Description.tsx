@@ -17,7 +17,7 @@ export default function Description({
       {/* 
         Valeur de secours (Fallback) : 
         Affiche 'children' en priorité s'il est fourni (enfants JSX), 
-        sinon retombe sur la prop 'description' (chaîne de caractères).
+        sinon retombe sur la prop 'label' (chaîne de caractères).
       */}
       {children || description}
     </HeadlessDescription>
