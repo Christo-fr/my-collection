@@ -11,6 +11,7 @@ import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import RangeInput from "@/components/ui/RangeInput";
 import Tabs from "@/components/ui/Tabs";
+import Select from "@/components/ui/Select";
 
 // 🎮 Imports Métier & Layout
 import GameCard from "@/components/game/GameCard";
@@ -56,6 +57,17 @@ export default function SandboxPage() {
     },
   ];
 
+  // 1. Le State local pour garder en mémoire la console sélectionnée (initialisé à vide "")
+  const [selectedConsole, setSelectedConsole] = useState<string>("");
+
+  // 2. La constante contenant la liste des options pour le menu déroulant
+  const consoleOptions = [
+    { label: "PlayStation 5", value: "ps5" },
+    { label: "Nintendo Switch", value: "switch" },
+    { label: "PC", value: "pc" },
+    { label: "Xbox Series X", value: "xbox" },
+  ];
+
   return (
     <div className="relative w-full h-full flex justify-between px-12 py-8 gap-8">
       {/* ========================================================================
@@ -75,7 +87,7 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 1 : BOUTONS (<Button />)
             ------------------------------------------------------------------- */}
-        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             1. Boutons (Primary & Secondary)
           </h2>
@@ -100,7 +112,7 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 2 : BARRE DE PROGRESSION (<ProgressBar />)
             ------------------------------------------------------------------- */}
-        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             2. Barre de progression (ProgressBar)
           </h2>
@@ -114,7 +126,7 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 3 : INPUTS TEXTE & TEXTAREAS (<Input />, <Textarea />)
             ------------------------------------------------------------------- */}
-        <section className="space-y-4 bg-main/5 p-4 rounded-xl border border-main/10">
+        <section className="space-y-4 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             3. Champs de saisie (Input & Textarea)
           </h2>
@@ -161,7 +173,7 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 4 : SLIDER DE DURÉE (<RangeInput />)
             ------------------------------------------------------------------- */}
-        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             4. Curseur de plage (RangeInput)
           </h2>
@@ -175,7 +187,7 @@ export default function SandboxPage() {
             step={5}
             unit="h"
           />
-          <div className="p-3 bg-main/5 rounded-lg text-xs font-mono text-main/70">
+          <div className="p-3 bg-background/5 rounded-lg text-xs font-mono text-main/70">
             State local parent :{" "}
             <span className="text-accent font-bold">{duration}h</span>
           </div>
@@ -183,7 +195,7 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 5 : ONGLETS HAUTE-ACCESSIBILITÉ (<Tabs />)
             ------------------------------------------------------------------- */}
-        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             5. Onglets (Tabs Headless UI)
           </h2>
@@ -192,7 +204,7 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 6 : CARTES DE JEU (<GameCard />)
             ------------------------------------------------------------------- */}
-        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             6. Cartes de jeux (GameCard)
           </h2>
@@ -207,6 +219,31 @@ export default function SandboxPage() {
                 <GameCard game={anotherGame} variant="default" />
               </Link>
             </div>
+          </div>
+        </section>
+        {/* -------------------------------------------------------------------
+    SECTION 7 : MENU DÉROULANT (<Select />)
+    ------------------------------------------------------------------- */}
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            7. Menu déroulant (Select Headless UI)
+          </h2>
+
+          <Select
+            label="Plateforme"
+            description="Filtre les jeux selon votre console"
+            options={consoleOptions}
+            selectedValue={selectedConsole}
+            onChange={(val) => setSelectedConsole(val)}
+            placeholder="Choisir une console..."
+          />
+
+          {/* Petit readout pour vérifier la valeur en temps réel */}
+          <div className="p-3 bg-background/5 rounded-lg text-xs font-mono text-main/70">
+            State local parent :{" "}
+            <span className="text-accent font-bold">
+              {selectedConsole || "Aucune sélection"}
+            </span>
           </div>
         </section>
       </div>
