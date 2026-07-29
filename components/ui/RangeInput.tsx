@@ -80,7 +80,7 @@ export const RangeInput = forwardRef<HTMLInputElement, RangeProps>(
             // CSS dynamique : Remplissage en dégradé jusqu'à `percentage`%, puis fond sombre pour le reste
             background: `linear-gradient(to right, var(--grad-start) 0%, var(--grad-end) ${percentage}%, rgba(255, 255, 255, 0.15) ${percentage}%)`,
           }}
-          className={`w-full accent-[var(--grad-end)] cursor-pointer h-2 rounded-lg appearance-none bg-grad-end ${className}`}
+          className={`w-full accent-[var(--grad-start)] dark:accent-[var(--grad-end)] cursor-pointer h-2 rounded-lg appearance-none bg-grad-end ${className}`}
           ref={ref}
           {...props}
         />

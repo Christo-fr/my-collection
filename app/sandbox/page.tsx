@@ -1,31 +1,39 @@
 "use client";
-import Link from "next/link";
-import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
-import gamesData from "@/data/games.json";
-import GameCard from "@/components/game/GameCard";
-import { Game } from "@/types/game";
 
-import Button from "@/components/ui/Button";
+import { useState } from "react";
+import Link from "next/link";
 import { List, Sparkles } from "lucide-react";
 
+// 📦 Imports des Composants UI Atomiques
+import Button from "@/components/ui/Button";
 import ProgressBar from "@/components/ui/ProgressBar";
 import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import RangeInput from "@/components/ui/RangeInput";
-import { useState } from "react";
 import Tabs from "@/components/ui/Tabs";
 
-export default function Home() {
-  // On récupère le tout premier jeu de ton fichier JSON
+// 🎮 Imports Métier & Layout
+import GameCard from "@/components/game/GameCard";
+import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
+import gamesData from "@/data/games.json";
+import { Game } from "@/types/game";
+
+export default function SandboxPage() {
+  // ---------------------------------------------------------------------------
+  // 1. ÉTATS LOCAUX & DONNÉES DE TEST (MOCKS)
+  // ---------------------------------------------------------------------------
   const sampleGame = gamesData[0] as Game;
   const anotherGame = gamesData[210] as Game;
+
+  // State local pour valider le RangeInput
   const [duration, setDuration] = useState(25);
 
+  // Données de test pour le composant Tabs
   const sampleTabs = [
     {
       label: "Informations",
       content: (
-        <p className="text-main/80">
+        <p className="text-main/80 text-sm">
           Voici les informations détaillées du jeu...
         </p>
       ),
@@ -33,31 +41,45 @@ export default function Home() {
     {
       label: "Avis",
       content: (
-        <p className="text-main/80">Voici mon avis personnel sur le jeu...</p>
+        <p className="text-main/80 text-sm">
+          Voici mon avis personnel sur le jeu...
+        </p>
       ),
     },
     {
       label: "Trailer",
       content: (
-        <p className="text-main/80">Intégration de la vidéo YouTube ici.</p>
+        <p className="text-main/80 text-sm">
+          Intégration de la vidéo YouTube ici.
+        </p>
       ),
     },
   ];
 
   return (
-    <div className="relative w-full h-full flex justify-between px-12">
-      {/* Zone Texte (Gauche 50%) */}
-      <div className="w-full mb-12 overflow-y-auto lg:w-1/2 !mb-12 h-auto">
-        <div
-          className="part w-full z-10 space-y-4 lg:h-full overflow-y-auto [scrollbar-width:thin] 
-                   [scrollbar-color:transparent_transparent] 
-                   hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]"
-        >
-          <h1 className="text-5xl font-bold text-main">Bienvenue</h1>
-          <p className="text-main/80 text-lg">
-            Test d'intégration du composant ParallaxCharacter !
+    <div className="relative w-full h-full flex justify-between px-12 py-8 gap-8">
+      {/* ========================================================================
+        ZONE GAUCHE (50%) : Catalogue de nos composants UI
+        ========================================================================
+      */}
+      {/* ZONE GAUCHE (50% desktop, 100% mobile avec scroll natif) */}
+      <div className="w-full lg:w-1/2 lg:overflow-y-auto lg:max-h-[calc(100vh-5rem)] pr-4 space-y-8 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
+        {/* EN-TÊTE DE LA SANDBOX */}
+        <header className="space-y-1 border-b border-main/10 pb-4">
+          <h1 className="text-3xl font-bold text-main">🧪 Sandbox UI</h1>
+          <p className="text-main/60 text-sm">
+            Atelier de validation visuelle et interactive des composants
+            atomiques.
           </p>
-          <div className="flex items-center gap-2 p-2">
+        </header>
+        {/* -------------------------------------------------------------------
+            SECTION 1 : BOUTONS (<Button />)
+            ------------------------------------------------------------------- */}
+        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            1. Boutons (Primary & Secondary)
+          </h2>
+          <div className="flex items-center gap-3 flex-wrap">
             <Button
               variant="primary"
               href="/liste"
@@ -74,123 +96,125 @@ export default function Home() {
               Suggestion
             </Button>
           </div>
+        </section>
+        {/* -------------------------------------------------------------------
+            SECTION 2 : BARRE DE PROGRESSION (<ProgressBar />)
+            ------------------------------------------------------------------- */}
+        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            2. Barre de progression (ProgressBar)
+          </h2>
           <ProgressBar
             value={60}
             labelLeft="Jeux terminés"
-            labelRight="Jeux non terminés "
+            labelRight="Jeux non terminés"
             showPercentage={true}
           />
+        </section>
+        {/* -------------------------------------------------------------------
+            SECTION 3 : INPUTS TEXTE & TEXTAREAS (<Input />, <Textarea />)
+            ------------------------------------------------------------------- */}
+        <section className="space-y-4 bg-main/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            3. Champs de saisie (Input & Textarea)
+          </h2>
 
-          <div className="min-h-screen bg-neutral-900 text-white p-8">
-            <div className="max-w-xl mx-auto space-y-6">
-              <h1 className="text-xl font-bold">🧪 Test du composant Tabs</h1>
-              <Tabs items={sampleTabs} />
-            </div>
-          </div>
-
-          <div className="p-8 max-w-md mx-auto space-y-6">
-            <h1 className="text-xl font-bold text-main">Test du RangeInput</h1>
-
-            <RangeInput
-              label="Durée de vie maximale"
-              description="Filtre les jeux qui se terminent en moins de temps"
-              value={duration}
-              onChange={(val) => setDuration(val)}
-              min={5}
-              max={100}
-              step={5}
-              unit="h"
+          <div className="space-y-3">
+            <Input
+              label="Input classique"
+              placeholder="ex: Mario Kart 8 Deluxe"
             />
 
-            {/* Un petit readout pour vérifier que la valeur remonte bien au parent */}
-            <div className="p-4 bg-main/5 rounded-lg text-xs font-mono">
-              Valeur dans le state parent :{" "}
-              <span className="text-accent font-bold">{duration}</span>
-            </div>
+            <Input
+              label="Input avec description"
+              placeholder="XXXX-XXXX-XXXX"
+              description="Trouvable au dos du boîtier du jeu."
+            />
+
+            <Input
+              label="Input avec erreur"
+              type="email"
+              defaultValue="mario@kart"
+              error="Veuillez entrer une adresse email valide."
+            />
+
+            <Input
+              label="Input désactivé"
+              defaultValue="EU-CENTRAL-01"
+              disabled
+            />
+
+            <Textarea
+              label="Textarea classique"
+              placeholder="Raconte brièvement le principe du jeu..."
+              rows={3}
+            />
+
+            <Textarea
+              label="Textarea avec erreur"
+              defaultValue="Trop court"
+              error="Votre avis doit contenir au moins 20 caractères."
+              rows={2}
+            />
           </div>
-
-          <div className="min-h-screen bg-neutral-900 text-white p-8 flex flex-col items-center justify-center">
-            <div className="">
-              <h1 className="text-xl font-semibold mb-4 text-center">
-                🧪 Test du composant Input
-              </h1>
-
-              {/* 1. Input Classique avec Label et Placeholder */}
-              <Input label="Nom de jeu" placeholder="ex: Mario Kart 8 Deluxe" />
-
-              {/* 2. Input avec Description */}
-              <Input
-                label="Clé de licence"
-                placeholder="XXXX-XXXX-XXXX"
-                description="Trouvable au dos du boîtier du jeu."
-              />
-
-              {/* 3. Input avec Erreur */}
-              <Input
-                label="Adresse email"
-                type="email"
-                defaultValue="mario@kart"
-                error="Veuillez entrer une adresse email valide."
-              />
-
-              {/* 4. Input Désactivé */}
-              <Input
-                label="ID Serveur (lecture seule)"
-                defaultValue="EU-CENTRAL-01"
-                disabled
-              />
-
-              {/* 1. Input classique */}
-              <Input label="Titre du jeu" placeholder="ex: Banjo-Kazooie" />
-
-              {/* 2. Textarea standard (4 lignes par défaut) */}
-              <Textarea
-                label="Description / Résumé"
-                placeholder="Raconte brièvement le principe du jeu ou tes impressions..."
-              />
-
-              {/* 3. Textarea avec description d'aide + hauteur personnalisée (3 lignes) */}
-              <Textarea
-                label="Notes de progression"
-                placeholder="Détails sur les succès restants..."
-                description="Ces notes restent privées."
-                rows={3}
-              />
-
-              {/* 4. Textarea avec message d'erreur */}
-              <Textarea
-                label="Avis critique"
-                defaultValue="Trop court"
-                error="Votre avis doit contenir au moins 20 caractères."
-              />
-
-              {/* 5. Textarea Désactivé */}
-              <Textarea
-                label="Journal du serveur (lecture seule)"
-                defaultValue="Connecté à EU-Central-01. Sync OK."
-                disabled
-                rows={2}
-              />
-            </div>
+        </section>
+        {/* -------------------------------------------------------------------
+            SECTION 4 : SLIDER DE DURÉE (<RangeInput />)
+            ------------------------------------------------------------------- */}
+        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            4. Curseur de plage (RangeInput)
+          </h2>
+          <RangeInput
+            label="Durée de vie maximale"
+            description="Filtre les jeux qui se terminent en moins de temps"
+            value={duration}
+            onChange={(val) => setDuration(val)}
+            min={5}
+            max={100}
+            step={5}
+            unit="h"
+          />
+          <div className="p-3 bg-main/5 rounded-lg text-xs font-mono text-main/70">
+            State local parent :{" "}
+            <span className="text-accent font-bold">{duration}h</span>
           </div>
-
-          <div className="flex items gap-2 p-2">
-            {/* On teste la carte en taille normale */}
-            <div className="w-52">
+        </section>
+        {/* -------------------------------------------------------------------
+            SECTION 5 : ONGLETS HAUTE-ACCESSIBILITÉ (<Tabs />)
+            ------------------------------------------------------------------- */}
+        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            5. Onglets (Tabs Headless UI)
+          </h2>
+          <Tabs items={sampleTabs} />
+        </section>
+        {/* -------------------------------------------------------------------
+            SECTION 6 : CARTES DE JEU (<GameCard />)
+            ------------------------------------------------------------------- */}
+        <section className="space-y-3 bg-main/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            6. Cartes de jeux (GameCard)
+          </h2>
+          <div className="flex items-center gap-4">
+            <div className="w-48">
               <Link href={`/fiche/${sampleGame.id}`}>
                 <GameCard game={sampleGame} variant="default" />
               </Link>
             </div>
-            {/* On teste la carte en taille normale */}
-            <div className="w-52">
+            <div className="w-48">
               <Link href={`/fiche/${anotherGame.id}`}>
                 <GameCard game={anotherGame} variant="default" />
               </Link>
             </div>
           </div>
-        </div>
+        </section>
       </div>
-      {/* Zone Personnage (Droite 50%) */}
+
+      {/* ========================================================================
+        ZONE DROITE (50%) : Personnage d'ambiance avec effet Parallaxe
+        ========================================================================
+      */}
       <div className="hidden lg:block w-1/2 h-full relative">
         <ParallaxCharacter
           image={{
