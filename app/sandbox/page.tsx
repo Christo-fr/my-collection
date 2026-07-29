@@ -13,12 +13,36 @@ import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import RangeInput from "@/components/ui/RangeInput";
 import { useState } from "react";
+import Tabs from "@/components/ui/Tabs";
 
 export default function Home() {
   // On récupère le tout premier jeu de ton fichier JSON
   const sampleGame = gamesData[0] as Game;
   const anotherGame = gamesData[210] as Game;
   const [duration, setDuration] = useState(25);
+
+  const sampleTabs = [
+    {
+      label: "Informations",
+      content: (
+        <p className="text-main/80">
+          Voici les informations détaillées du jeu...
+        </p>
+      ),
+    },
+    {
+      label: "Avis",
+      content: (
+        <p className="text-main/80">Voici mon avis personnel sur le jeu...</p>
+      ),
+    },
+    {
+      label: "Trailer",
+      content: (
+        <p className="text-main/80">Intégration de la vidéo YouTube ici.</p>
+      ),
+    },
+  ];
 
   return (
     <div className="relative w-full h-full flex justify-between px-12">
@@ -56,6 +80,13 @@ export default function Home() {
             labelRight="Jeux non terminés "
             showPercentage={true}
           />
+
+          <div className="min-h-screen bg-neutral-900 text-white p-8">
+            <div className="max-w-xl mx-auto space-y-6">
+              <h1 className="text-xl font-bold">🧪 Test du composant Tabs</h1>
+              <Tabs items={sampleTabs} />
+            </div>
+          </div>
 
           <div className="p-8 max-w-md mx-auto space-y-6">
             <h1 className="text-xl font-bold text-main">Test du RangeInput</h1>
