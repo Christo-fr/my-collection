@@ -24,7 +24,8 @@ export default function SandboxPage() {
   // 1. ÉTATS LOCAUX & DONNÉES DE TEST (MOCKS)
   // ---------------------------------------------------------------------------
   const sampleGame = gamesData[0] as Game;
-  const anotherGame = gamesData[210] as Game;
+  const anotherGame = gamesData[1] as Game;
+  const veryGame = gamesData[2] as Game;
 
   // State local pour valider le RangeInput
   const [duration, setDuration] = useState(25);
@@ -126,11 +127,10 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 3 : INPUTS TEXTE & TEXTAREAS (<Input />, <Textarea />)
             ------------------------------------------------------------------- */}
-        <section className="space-y-4 bg-background/5 p-4 rounded-xl border border-main/10">
+        <section className="relative overflow-hidden isolate space-y-3 bg-main/5 p-4 rounded-xl border border-main/10 before:content-[''] before:absolute before:-top-16 before:-left-16 before:w-40 before:h-40 before:bg-[var(--color-secondary)] before:rounded-full before:blur-2xl before:pointer-events-none">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             3. Champs de saisie (Input & Textarea)
           </h2>
-
           <div className="space-y-3">
             <Input
               label="Input classique"
@@ -173,7 +173,12 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 4 : SLIDER DE DURÉE (<RangeInput />)
             ------------------------------------------------------------------- */}
-        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
+        <section
+          className="relative overflow-hidden isolate rounded-xl p-4 space-y-3 bg-main/5 border border-main/10
+  before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:rounded-[inherit]
+  before:bg-[radial-gradient(circle_at_top_left,var(--color-secondary)_0%,transparent_70%)]
+  before:opacity-30"
+        >
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             4. Curseur de plage (RangeInput)
           </h2>
@@ -217,6 +222,13 @@ export default function SandboxPage() {
             <div className="w-48">
               <Link href={`/fiche/${anotherGame.id}`}>
                 <GameCard game={anotherGame} variant="default" />
+              </Link>
+            </div>
+          </div>{" "}
+          <div className="flex items-center gap-4">
+            <div className="w-full">
+              <Link href={`/fiche/${veryGame.id}`}>
+                <GameCard game={veryGame} variant="xl" />
               </Link>
             </div>
           </div>

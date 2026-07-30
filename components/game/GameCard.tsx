@@ -16,9 +16,12 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
         src={game.images.cover}
         alt={game.title}
         fill
-        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw"
-        loading="eager"
-        quality={100}
+        sizes={
+          variant === "xl"
+            ? "(max-width: 640px) 100vw, (max-width: 1024px) 66vw, 50vw"
+            : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+        }
+        quality={variant === "xl" ? 90 : 80}
         className="object-cover"
       />
 
@@ -33,11 +36,15 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
       <div className="absolute inset-x-0 bottom-0 flex flex-col items-center text-center z-10 p-3 pt-12 bg-gradient-to-t from-background via-background/80 to-transparent  ">
         {/* 1. Le Logo du jeu */}
         {game.images.logo ? (
-          <div className="relative flex items-end flex-auto mb-2">
-            <img
+          <div
+            className={`relative w-full mb-2 ${variant === "xl" ? "h-50" : "h-19"}`}
+          >
+            <Image
               src={game.images.logo}
               alt={game.title}
-              className={`object-contain w-full ${variant === "xl" ? "max-h-50" : "max-h-19"}`}
+              fill
+              sizes="(max-width: 640px) 50vw, 20vw"
+              className="object-contain"
             />
           </div>
         ) : (

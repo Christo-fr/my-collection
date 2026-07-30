@@ -13,7 +13,8 @@ import Input from "@/components/ui/Input";
 export default function Home() {
   // On récupère le tout premier jeu de ton fichier JSON
   const sampleGame = gamesData[0] as Game;
-  const anotherGame = gamesData[210] as Game;
+  const anotherGame = gamesData[1] as Game;
+  const veryGame = gamesData[2] as Game;
 
   return (
     <div className="relative w-full h-full flex justify-between px-12">
@@ -62,8 +63,8 @@ export default function Home() {
             </div>
             {/* On teste la carte en taille normale */}
             <div className="w-52">
-              <Link href={`/fiche/${anotherGame.id}`}>
-                <GameCard game={anotherGame} variant="default" />
+              <Link href={`/fiche/${veryGame.id}`}>
+                <GameCard game={veryGame} variant="default" />
               </Link>
             </div>
           </div>
