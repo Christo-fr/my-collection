@@ -33,7 +33,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${jewelsFont.variable} ${notoFont.variable} h-full antialiased`}
     >
-      <body className="font-noto min-h-dvh transition-colors duration-500 lg:h-full w-full mlg:overflow-hidden relative bg-background text-main">
+      <body
+        suppressHydrationWarning
+        className="font-noto min-h-dvh transition-colors duration-500 lg:h-full w-full mlg:overflow-hidden relative bg-background text-main"
+      >
         {/* Gestion du Theme via le Provider*/}
         <ThemeProvider>
           {/* Application */}
