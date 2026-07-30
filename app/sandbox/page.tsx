@@ -12,6 +12,7 @@ import Textarea from "@/components/ui/Textarea";
 import RangeInput from "@/components/ui/RangeInput";
 import Tabs from "@/components/ui/Tabs";
 import Select from "@/components/ui/Select";
+import Dialog from "@/components/ui/Dialog";
 
 // 🎮 Imports Métier & Layout
 import GameCard from "@/components/game/GameCard";
@@ -29,6 +30,9 @@ export default function SandboxPage() {
 
   // State local pour valider le RangeInput
   const [duration, setDuration] = useState(25);
+
+  // State local pour valider le Dialog
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // Données de test pour le composant Tabs
   const sampleTabs = [
@@ -234,7 +238,35 @@ export default function SandboxPage() {
           </div>
         </section>
         {/* -------------------------------------------------------------------
-    SECTION 7 : MENU DÉROULANT (<Select />)
+            SECTION 7 : DIALOGUE (<Dialog />)
+            ------------------------------------------------------------------- */}
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            7. Dialogue (Dialog)
+          </h2>
+          {/* Bouton pour déclencher la modale */}
+          <Button onClick={() => setIsDialogOpen(true)}>
+            Tester la modale
+          </Button>
+
+          {/* Ton composant Dialog */}
+          <Dialog
+            isOpen={isDialogOpen}
+            onClose={() => setIsDialogOpen(false)}
+            title="Titre de la modale"
+          >
+            <div className="w-full">
+              <Link href={`/fiche/${veryGame.id}`}>
+                <GameCard game={veryGame} variant="xl" />
+              </Link>
+            </div>
+            <Button onClick={() => setIsDialogOpen(false)}>
+              Fermer la modale
+            </Button>
+          </Dialog>
+        </section>
+        {/* -------------------------------------------------------------------
+    SECTION 8 : MENU DÉROULANT (<Select />)
     ------------------------------------------------------------------- */}
         <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
