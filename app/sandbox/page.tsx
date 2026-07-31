@@ -13,6 +13,7 @@ import RangeInput from "@/components/ui/RangeInput";
 import Tabs from "@/components/ui/Tabs";
 import Select from "@/components/ui/Select";
 import Dialog from "@/components/ui/Dialog";
+import Heading from "@/components/ui/Heading";
 
 // 🎮 Imports Métier & Layout
 import GameCard from "@/components/game/GameCard";
@@ -83,7 +84,10 @@ export default function SandboxPage() {
       <div className="w-full lg:w-1/2 lg:overflow-y-auto lg:max-h-[calc(100vh-5rem)] pr-4 space-y-8 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
         {/* EN-TÊTE DE LA SANDBOX */}
         <header className="space-y-1 border-b border-main/10 pb-4">
-          <h1 className="text-3xl font-bold text-main">🧪 Sandbox UI</h1>
+          <Heading as="h1" size="3xl">
+            🧪 Sandbox UI
+          </Heading>
+
           <p className="text-main/60 text-sm">
             Atelier de validation visuelle et interactive des composants
             atomiques.
