@@ -114,7 +114,7 @@ export default function MaListe() {
       </Heading>
 
       {/* Conteneur principal flex */}
-      <div className="w-full flex flex-col lg:flex-row gap-4 flex-1 min-h-0 bg-background/25 p-2 rounded-xl border border-main/10">
+      <div className="w-full flex flex-col lg:flex-row gap-4 flex-1 min-h-0 p-2 rounded-xl border border-main/10  bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70">
         {/* PANNEAU GAUCHE */}
         <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
           {/* En-tête fixe */}
