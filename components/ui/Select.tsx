@@ -60,13 +60,13 @@ export default function Select({
 
         <ListboxOptions
           anchor="bottom start"
-          className="w-[var(--button-width)] z-50 bg-neutral-900 border border-main/10 rounded-xl p-1 shadow-xl mt-1 focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0"
+          className="w-[var(--button-width)] z-50 bg-background/50 backdrop-blur-md border border-main/10 rounded-xl p-1 shadow-xl mt-1 focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0"
         >
           {options.map((option) => (
             <ListboxOption
               key={option.value}
               value={option.value}
-              className="flex items-center justify-between px-3 py-2 text-sm rounded-lg cursor-pointer transition-colors text-main/80 data-[focus]:bg-accent data-[focus]:text-white data-[selected]:font-semibold data-[selected]:text-accent"
+              className="flex items-center justify-between px-3 py-2 text-sm rounded-lg cursor-pointer transition-colors text-main/80 data-[focus]:bg-accent data-[focus]:text-hover data-[selected]:font-semibold data-[selected]:text-accent"
             >
               {option.label}
             </ListboxOption>
