@@ -1,35 +1,43 @@
-import Link from "next/link";
-import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
-import gamesData from "@/data/games.json";
-import GameCard from "@/components/game/GameCard";
-import { Game } from "@/types/game";
-
-import Button from "@/components/ui/Button";
+// 📦 Imports des Composants UI Atomiques
 import { List, Sparkles } from "lucide-react";
-
-import ProgressBar from "@/components/ui/ProgressBar";
-import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
+import Heading from "@/components/ui/Heading";
+import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
 
 export default function Home() {
-  // On récupère le tout premier jeu de ton fichier JSON
-  const sampleGame = gamesData[0] as Game;
-  const anotherGame = gamesData[1] as Game;
-  const veryGame = gamesData[2] as Game;
-
   return (
-    <div className="relative w-full h-full flex justify-between px-12">
-      {/* Zone Texte (Gauche 50%) */}
-      <div className="w-full mb-12 overflow-y-auto lg:w-1/2 !mb-12 h-auto">
-        <div
-          className="part w-full z-10 space-y-4 lg:h-full overflow-y-auto [scrollbar-width:thin] 
-                   [scrollbar-color:transparent_transparent] 
-                   hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]"
-        >
-          <h1 className="text-5xl font-bold text-main">Bienvenue</h1>
-          <p className="text-main/80 text-lg">
-            Test d'intégration du composant ParallaxCharacter !
-          </p>
-          <div className="flex items-center gap-2 p-2">
+    <div className="relative w-full h-full flex justify-between px-12 py-8 gap-8">
+      {/* ========================================================================
+        ZONE GAUCHE (50%) : Catalogue de nos composants UI
+        ========================================================================
+      */}
+      {/* ZONE GAUCHE (50% desktop, 100% mobile avec scroll natif) */}
+      <div className="w-full lg:w-1/2 lg:overflow-y-auto lg:max-h-[calc(100vh-5rem)] pr-4 space-y-8 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
+        <section className="space-y-8">
+          <Heading as="h1" size="2xl">
+            Bienvenue <br /> dans votre vidéoludothèque.
+          </Heading>
+
+          {/* Trait séparateur */}
+          <div className="w-16 h-0.25 bg-main" />
+
+          {/* Texte d'introduction */}
+          <div>
+            <p className="text-main/80 text-md mb-4">
+              Centralisez toute votre collection, explorez les fiches de vos
+              jeux et gardez une trace de vos sessions grâce à vos avis
+              personnels. Un catalogue épuré, pensé pour parcourir votre
+              bibliothèque et consulter vos statistiques en un clin d'œil.
+            </p>
+            <p className="text-main/80 text-md">
+              Trop de choix ? Affinez vos critères de sélection et la
+              fonctionnalité "Suggestion" sélectionne instantanément votre
+              prochaine aventure !
+            </p>
+          </div>
+
+          {/* Boutons d'action */}
+          <div className="flex items-center gap-3 flex-wrap">
             <Button
               variant="primary"
               href="/liste"
@@ -46,31 +54,12 @@ export default function Home() {
               Suggestion
             </Button>
           </div>
-          <ProgressBar
-            value={60}
-            label="Ma Progress' Bar !"
-            labelLeft="Jeux terminés"
-            labelRight="Jeux non terminés "
-            showPercentage={true}
-          />
-
-          <div className="flex items gap-2 p-2">
-            {/* On teste la carte en taille normale */}
-            <div className="w-52">
-              <Link href={`/fiche/${sampleGame.id}`}>
-                <GameCard game={sampleGame} variant="default" />
-              </Link>
-            </div>
-            {/* On teste la carte en taille normale */}
-            <div className="w-52">
-              <Link href={`/fiche/${veryGame.id}`}>
-                <GameCard game={veryGame} variant="default" />
-              </Link>
-            </div>
-          </div>
-        </div>
+        </section>
       </div>
-      {/* Zone Personnage (Droite 50%) */}
+      {/* ========================================================================
+        ZONE DROITE (50%) : Personnage d'ambiance avec effet Parallaxe
+        ========================================================================
+      */}
       <div className="hidden lg:block w-1/2 h-full relative">
         <ParallaxCharacter
           image={{
