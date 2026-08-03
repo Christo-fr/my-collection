@@ -47,21 +47,23 @@ export default function MaListe() {
     { label: "Toutes", value: "Toutes" },
     // 1. Premier .map() + Set : extraction et suppression des doublons
     // 2. Second .map() : mise au format { label, value } pour le composant <Select />
-    ...Array.from(new Set(games.map((jeu) => jeu.console))).map(
-      (nomConsole) => ({
+    ...Array.from(new Set(games.map((jeu) => jeu.console)))
+      .map((nomConsole) => ({
         label: nomConsole,
         value: nomConsole,
-      }),
-    ),
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
   ];
 
   const optionsStyle = [
     { label: "Tous", value: "Tous" },
-    ...Array.from(new Set(games.map((jeu) => jeu.genre))).map((nomGenre) => ({
-      label: nomGenre,
-      value: nomGenre,
-    })),
-  ].sort((a, b) => a.label.localeCompare(b.label)); // Tri alphabétique par label;
+    ...Array.from(new Set(games.map((jeu) => jeu.genre)))
+      .map((nomGenre) => ({
+        label: nomGenre,
+        value: nomGenre,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
+  ];
 
   const optionsStatut = [
     { label: "Tous", value: "all" },
