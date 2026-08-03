@@ -18,7 +18,7 @@
       "logo": "/games/logos/talesofarise.png",
       "parallax": {
         "url": "/games/parallaxs/talesofarise.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -60,7 +60,7 @@
       "logo": "/games/logos/cristales.png",
       "parallax": {
         "url": "/games/parallaxs/cristales.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -100,7 +100,7 @@
       "logo": "/games/logos/shinmegamitenseivengeance.png",
       "parallax": {
         "url": "/games/parallaxs/shinmegamitenseivengeance.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -131,7 +131,7 @@
       "logo": "/games/logos/kenabridgeofspirits.png",
       "parallax": {
         "url": "/games/parallaxs/kenabridgeofspirits.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -173,7 +173,7 @@
       "logo": "/games/logos/finalfantasyviiiremakeintergrade.png",
       "parallax": {
         "url": "/games/parallaxs/finalfantasyviiiremakeintergrade.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -204,7 +204,7 @@
       "logo": "/games/logos/edgeofeternity.png",
       "parallax": {
         "url": "/games/parallaxs/edgeofeternity.webp",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -235,7 +235,7 @@
       "logo": "/games/logos/dokidokiliteratureclubplus.webp",
       "parallax": {
         "url": "/games/parallaxs/dokidokiliteratureclubplus.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -274,7 +274,7 @@
       "logo": "/games/logos/horizoniiforbiddenwest.png",
       "parallax": {
         "url": "/games/parallaxs/horizoniiforbiddenwest.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -298,7 +298,7 @@
       "logo": "/games/logos/astrosplayroom.webp",
       "parallax": {
         "url": "/games/parallaxs/astrosplayroom.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -336,7 +336,7 @@
       "logo": "/games/logos/fuga2.png",
       "parallax": {
         "url": "/games/parallaxs/fuga2.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -375,7 +375,7 @@
       "logo": "/games/logos/disgaea6.png",
       "parallax": {
         "url": "/games/parallaxs/disgaea6.png",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -406,7 +406,7 @@
       "logo": "/games/logos/eiyudenchroniclerising.png",
       "parallax": {
         "url": "/games/parallaxs/eiyudenchroniclerising.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -437,7 +437,7 @@
       "logo": "/games/logos/grimgrimoireoncemore.png",
       "parallax": {
         "url": "/games/parallaxs/grimgrimoireoncemore.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -468,7 +468,7 @@
       "logo": "/games/logos/scarletnexus.webp",
       "parallax": {
         "url": "/games/parallaxs/scarletnexus.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -499,7 +499,7 @@
       "logo": "/games/logos/staroceanthedivineforce.webp",
       "parallax": {
         "url": "/games/parallaxs/staroceanthedivineforce.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -540,7 +540,7 @@
       "logo": "/games/logos/finalfantasyxvi.png",
       "parallax": {
         "url": "/games/parallaxs/finalfantasyxvi.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -571,7 +571,7 @@
       "logo": "/games/logos/atelierryza3.png",
       "parallax": {
         "url": "/games/parallaxs/atelierryza3.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -602,7 +602,7 @@
       "logo": "/games/logos/crisiscorefinalfantasyVIIreunion.png",
       "parallax": {
         "url": "/games/parallaxs/crisiscorefinalfantasyVIIreunion.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -633,7 +633,7 @@
       "logo": "/games/logos/likeadragoninfinitewealth.png",
       "parallax": {
         "url": "/games/parallaxs/likeadragoninfinitewealth.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -664,7 +664,7 @@
       "logo": "/games/logos/persona5tactica.png",
       "parallax": {
         "url": "/games/parallaxs/persona5tactica.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -695,7 +695,7 @@
       "logo": "/games/logos/tchiaoleti.png",
       "parallax": {
         "url": "/games/parallaxs/tchiaoleti.avif",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -726,7 +726,7 @@
       "logo": "/games/logos/trine5.png",
       "parallax": {
         "url": "/games/parallaxs/trine5.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -757,7 +757,7 @@
       "logo": "/games/logos/relayer.png",
       "parallax": {
         "url": "/games/parallaxs/relayer.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -788,7 +788,7 @@
       "logo": "/games/logos/unicornoverlord.png",
       "parallax": {
         "url": "/games/parallaxs/unicornoverlord.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -819,7 +819,7 @@
       "logo": "/games/logos/tombraiderremastered.png",
       "parallax": {
         "url": "/games/parallaxs/tombraiderremastered.png",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -850,7 +850,7 @@
       "logo": "/games/logos/dordogne.png",
       "parallax": {
         "url": "/games/parallaxs/dordogne.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -885,7 +885,7 @@
       "logo": "/games/logos/seaofstars.png",
       "parallax": {
         "url": "/games/parallaxs/seaofstars.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -916,7 +916,7 @@
       "logo": "/games/logos/oceanhorn2.png",
       "parallax": {
         "url": "/games/parallaxs/oceanhorn2.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -940,7 +940,7 @@
       "logo": "/games/logos/yohanetheparhelionnumazuinthemirage.webp",
       "parallax": {
         "url": "/games/parallaxs/yohanetheparhelionnumazuinthemirage.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -979,7 +979,7 @@
       "logo": "/games/logos/curseofthesearats.webp",
       "parallax": {
         "url": "/games/parallaxs/curseofthesearats.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1018,7 +1018,7 @@
       "logo": "/games/logos/persona3reload.png",
       "parallax": {
         "url": "/games/parallaxs/persona3reload.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1049,7 +1049,7 @@
       "logo": "/games/logos/granbluefrantasyrelink.png",
       "parallax": {
         "url": "/games/parallaxs/granbluefrantasyrelink.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1080,7 +1080,7 @@
       "logo": "/games/logos/disgaea7.png",
       "parallax": {
         "url": "/games/parallaxs/disgaea7.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1111,7 +1111,7 @@
       "logo": "/games/logos/eiyudenchroniclehundredheroes.png",
       "parallax": {
         "url": "/games/parallaxs/eiyudenchroniclehundredheroes.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1142,7 +1142,7 @@
       "logo": "/games/logos/talesofgracesremastered.webp",
       "parallax": {
         "url": "/games/parallaxs/talesofgracesremastered.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1173,7 +1173,7 @@
       "logo": "/games/logos/nikoderiko.png",
       "parallax": {
         "url": "/games/parallaxs/nikoderiko.png",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -1204,7 +1204,7 @@
       "logo": "/games/logos/splitfiction.png",
       "parallax": {
         "url": "/games/parallaxs/splitfiction.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1235,7 +1235,7 @@
       "logo": "/games/logos/clairobscurexpedition33.png",
       "parallax": {
         "url": "/games/parallaxs/clairobscurexpedition33.avif",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1266,7 +1266,7 @@
       "logo": "/games/logos/atelieryumia.webp",
       "parallax": {
         "url": "/games/parallaxs/atelieryumia.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1297,7 +1297,7 @@
       "logo": "/games/logos/mariokartworld.png",
       "parallax": {
         "url": "/games/parallaxs/mariokartworld.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1328,7 +1328,7 @@
       "logo": "/games/logos/atelierresleriana.webp",
       "parallax": {
         "url": "/games/parallaxs/atelierresleriana.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1359,7 +1359,7 @@
       "logo": "/games/logos/bravelydefault.png",
       "parallax": {
         "url": "/games/parallaxs/bravelydefault.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1390,7 +1390,7 @@
       "logo": "/games/logos/byesweetcarole.webp",
       "parallax": {
         "url": "/games/parallaxs/byesweetcarole.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1421,7 +1421,7 @@
       "logo": "/games/logos/A13_INT_Logo.webp",
       "parallax": {
         "url": "/games/parallaxs/astrosplayroom.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1452,7 +1452,7 @@
       "logo": "/games/logos/runefactoryguardiansofazuma.png",
       "parallax": {
         "url": "/games/parallaxs/runefactoryguardiansofazuma.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1483,7 +1483,7 @@
       "logo": "/games/logos/shantaeadvance.png",
       "parallax": {
         "url": "/games/parallaxs/shantaeadvance.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1514,7 +1514,7 @@
       "logo": "/games/logos/starfox.avif",
       "parallax": {
         "url": "/games/parallaxs/starfox.png",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -1545,7 +1545,7 @@
       "logo": "/games/logos/swordartonlinefractureddaydream.webp",
       "parallax": {
         "url": "/games/parallaxs/swordartonlinefractureddaydream.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1576,7 +1576,7 @@
       "logo": "/games/logos/talesofberseriaremastered.png",
       "parallax": {
         "url": "/games/parallaxs/talesofberseriaremastered.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1607,7 +1607,7 @@
       "logo": "/games/logos/visionsofmana.png",
       "parallax": {
         "url": "/games/parallaxs/visionsofmana.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1638,7 +1638,7 @@
       "logo": "/games/logos/fuga3.avif",
       "parallax": {
         "url": "/games/parallaxs/fuga3.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1670,7 +1670,7 @@
       "logo": "/games/logos/runefactory4special.png",
       "parallax": {
         "url": "/games/parallaxs/runefactory4special.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1701,7 +1701,7 @@
       "logo": "/games/logos/mariokart8deluxe.png",
       "parallax": {
         "url": "/games/parallaxs/mariokart8deluxe.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1738,7 +1738,7 @@
       "logo": "/games/logos/supersmashbrosultimate.webp",
       "parallax": {
         "url": "/games/parallaxs/supersmashbrosultimate.avif",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1781,7 +1781,7 @@
       "logo": "/games/logos/fireemblemwarriors.png",
       "parallax": {
         "url": "/games/parallaxs/fireemblemwarriors.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -1805,7 +1805,7 @@
       "logo": "/games/logos/fireemblemthreehouses.png",
       "parallax": {
         "url": "/games/parallaxs/fireemblemthreehouses.png",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -1846,7 +1846,7 @@
       "logo": "/games/logos/thelegendofzeldalinksawakening.png",
       "parallax": {
         "url": "/games/parallaxs/thelegendofzeldalinksawakening.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1885,7 +1885,7 @@
       "logo": "/games/logos/oriandtheblindforestdefinitiveedition.png",
       "parallax": {
         "url": "/games/parallaxs/oriandtheblindforestdefinitiveedition.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1916,7 +1916,7 @@
       "logo": "/games/logos/oriandthewillofthewisps.png",
       "parallax": {
         "url": "/games/parallaxs/oriandthewillofthewisps.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1947,7 +1947,7 @@
       "logo": "/games/logos/grandiahdremaster.png",
       "parallax": {
         "url": "/games/parallaxs/grandiahdremaster.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1990,7 +1990,7 @@
       "logo": "/games/logos/supermario3dworld%2Bbowsersfury.png",
       "parallax": {
         "url": "/games/parallaxs/supermario3dworld%2Bbowsersfury.png",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -2035,7 +2035,7 @@
       "logo": "/games/logos/xenobladechronicles2.png",
       "parallax": {
         "url": "/games/parallaxs/XenobladeChronicles2.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -2059,7 +2059,7 @@
       "logo": "/games/logos/tokyomiragesessionsfeencore.png",
       "parallax": {
         "url": "/games/parallaxs/tokyomiragesessionsfeencore.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2100,7 +2100,7 @@
       "logo": "/games/logos/xenobladechronicles2thornathegoldencountry.png",
       "parallax": {
         "url": "/games/parallaxs/xenobladechronicles2thornathegoldencountry.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -2124,7 +2124,7 @@
       "logo": "/games/logos/tothemoon.png",
       "parallax": {
         "url": "/games/parallaxs/tothemoon.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2161,7 +2161,7 @@
       "logo": "/games/logos/Shantae.png",
       "parallax": {
         "url": "/games/parallaxs/shantae.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2192,7 +2192,7 @@
       "logo": "/games/logos/dragonquestxislescombattantsdeladestinee.png",
       "parallax": {
         "url": "/games/parallaxs/dragonquestxislescombattantsdeladestinee.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2223,7 +2223,7 @@
       "logo": "/games/logos/mariopartysuperstars.png",
       "parallax": {
         "url": "/games/parallaxs/mariopartysuperstars.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2260,7 +2260,7 @@
       "logo": "/games/logos/runefactory5.png",
       "parallax": {
         "url": "/games/parallaxs/runefactory5.webp",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -2291,7 +2291,7 @@
       "logo": "/games/logos/nintendoswitchsports.png",
       "parallax": {
         "url": "/games/parallaxs/nintendoswitchsports.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2333,7 +2333,7 @@
       "logo": "/games/logos/bravelydefaultii.webp",
       "parallax": {
         "url": "/games/parallaxs/bravelydefaultii%20copie.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2364,7 +2364,7 @@
       "logo": "/games/logos/hyrulewarriorsdefinitiveedition.png",
       "parallax": {
         "url": "/games/parallaxs/hyrulewarriorsdefinitiveedition.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2395,7 +2395,7 @@
       "logo": "/games/logos/sevenpiratesh.png",
       "parallax": {
         "url": "/games/parallaxs/images.jpg",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2426,7 +2426,7 @@
       "logo": "/games/logos/hyrulewarriorsleredufleau.png",
       "parallax": {
         "url": "/games/parallaxs/hyrulewarriorsleredufleau.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2457,7 +2457,7 @@
       "logo": "/games/logos/supermarioodyssey.png",
       "parallax": {
         "url": "/games/parallaxs/supermarioodyssey.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2488,7 +2488,7 @@
       "logo": "/games/logos/firemeeblemengage.png",
       "parallax": {
         "url": "/games/parallaxs/firemeblemengage.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2529,7 +2529,7 @@
       "logo": "/games/logos/chronocrosstheradicaldreamers.png",
       "parallax": {
         "url": "/games/parallaxs/chronocrosstheradicaldreamers%20copie.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2560,7 +2560,7 @@
       "logo": "/games/logos/xenobladechronicles3.png",
       "parallax": {
         "url": "/games/parallaxs/xenobladechronicles3.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2591,7 +2591,7 @@
       "logo": "/games/logos/miitopia.png",
       "parallax": {
         "url": "/games/parallaxs/miitopia.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2630,7 +2630,7 @@
       "logo": "/games/logos/runefactory3special.png",
       "parallax": {
         "url": "/games/parallaxs/runefactory3special.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2661,7 +2661,7 @@
       "logo": "/games/logos/batenkaitosiiiremaster.png",
       "parallax": {
         "url": "/games/parallaxs/batenkaitosiiiremaster.webp",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -2692,7 +2692,7 @@
       "logo": "/games/logos/harvestella.png",
       "parallax": {
         "url": "/games/parallaxs/harvestella.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2723,7 +2723,7 @@
       "logo": "/games/logos/supermariorpg.png",
       "parallax": {
         "url": "/games/parallaxs/supermariorpg.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2761,7 +2761,7 @@
       "logo": "/games/logos/supermariobroswonder.png",
       "parallax": {
         "url": "/games/parallaxs/supermariobroswonder.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2802,7 +2802,7 @@
       "logo": "/games/logos/xenobladechroniclesdefinitiveedition.png",
       "parallax": {
         "url": "/games/parallaxs/xenobladechroniclesdefinitiveedition.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2833,7 +2833,7 @@
       "logo": "/games/logos/princesspeachshowtime.png",
       "parallax": {
         "url": "/games/parallaxs/princesspeachshowtime.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2871,7 +2871,7 @@
       "logo": "/games/logos/ringfitadventure.webp",
       "parallax": {
         "url": "/games/parallaxs/ringfitadventure.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2902,7 +2902,7 @@
       "logo": "/games/logos/rosecamelliacollection.png",
       "parallax": {
         "url": "/games/parallaxs/rosecamelliacollection.webp",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -2940,7 +2940,7 @@
       "logo": "/games/logos/supermariopartyjambonree.png",
       "parallax": {
         "url": "/games/parallaxs/supermariopartyjambonree.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2981,7 +2981,7 @@
       "logo": "/games/logos/thelegendofzeldaechoesofwisdom.png",
       "parallax": {
         "url": "/games/parallaxs/thelegendofzeldaechoesofwisdom.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3012,7 +3012,7 @@
       "logo": "/games/logos/snufkinmelodyofmoominvalley.webp",
       "parallax": {
         "url": "/games/parallaxs/snufkinmelodyofmoominvalley.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3043,7 +3043,7 @@
       "logo": "/games/logos/fireemblemwarriorsthreehopes.png",
       "parallax": {
         "url": "/games/parallaxs/fireemblemwarriorsthreehopes.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3074,7 +3074,7 @@
       "logo": "/games/logos/finalfantasyix.png",
       "parallax": {
         "url": "/games/parallaxs/finalfantasyix.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3105,7 +3105,7 @@
       "logo": "/games/logos/papermariolaportemillenaire.png",
       "parallax": {
         "url": "/games/parallaxs/papermariolaportemillenaire.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3136,7 +3136,7 @@
       "logo": "/games/logos/anothercodecollection.webp",
       "parallax": {
         "url": "/games/parallaxs/anothercodecollection.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3167,7 +3167,7 @@
       "logo": "/games/logos/malikipoisonofthepast.png",
       "parallax": {
         "url": "/games/parallaxs/malikipoisonofthepast.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3198,7 +3198,7 @@
       "logo": "/games/logos/arms.png",
       "parallax": {
         "url": "/games/parallaxs/arms.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3229,7 +3229,7 @@
       "logo": "/games/logos/pokemonepee.png",
       "parallax": {
         "url": "/games/parallaxs/pokemonepee.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3260,7 +3260,7 @@
       "logo": "/games/logos/pokemonperlescintillante.png",
       "parallax": {
         "url": "/games/parallaxs/pokemonperlescintillante.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3291,7 +3291,7 @@
       "logo": "/games/logos/banjokazooie.png",
       "parallax": {
         "url": "/games/parallaxs/banjokazooie.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3333,7 +3333,7 @@
       "logo": "/games/logos/banjotooie.webp",
       "parallax": {
         "url": "/games/parallaxs/banjotooie.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3375,7 +3375,7 @@
       "logo": "/games/logos/conkersbadfurday.webp",
       "parallax": {
         "url": "/games/parallaxs/conkersbadfurday.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3414,7 +3414,7 @@
       "logo": "/games/logos/diddykongracing.png",
       "parallax": {
         "url": "/games/parallaxs/diddykongracing.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3455,7 +3455,7 @@
       "logo": "/games/logos/lylatwars.png",
       "parallax": {
         "url": "/games/parallaxs/lylatwars.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3496,7 +3496,7 @@
       "logo": "/games/logos/missionimpossible.png",
       "parallax": {
         "url": "/games/parallaxs/missionimpossible.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3537,7 +3537,7 @@
       "logo": "/games/logos/mysticalninja2starringgoemon.png",
       "parallax": {
         "url": "/games/parallaxs/mysticalninja2starringgoemon.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3577,7 +3577,7 @@
       "logo": "/games/logos/rayman2thegreatescape.png",
       "parallax": {
         "url": "/games/parallaxs/rayman2thegreatescape.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3618,7 +3618,7 @@
       "logo": "/games/logos/supermario64.png",
       "parallax": {
         "url": "/games/parallaxs/supermario64.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3658,7 +3658,7 @@
       "logo": "/games/logos/thelegendofzeldaocarinaoftime.png",
       "parallax": {
         "url": "/games/parallaxs/thelegendofzeldaocarinaoftime.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3696,7 +3696,7 @@
       "logo": "/games/logos/mariokart64.png",
       "parallax": {
         "url": "/games/parallaxs/mariokart64.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3737,7 +3737,7 @@
       "logo": "/games/logos/papermario.webp",
       "parallax": {
         "url": "/games/parallaxs/papermario.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3778,7 +3778,7 @@
       "logo": "/games/logos/mysticalninjastarringgoemon.png",
       "parallax": {
         "url": "/games/parallaxs/mysticalninjastarringgoemon.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3818,7 +3818,7 @@
       "logo": "/games/logos/thelegendofzeldamajorasmask.png",
       "parallax": {
         "url": "/games/parallaxs/thelegendofzeldamajorasmask.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -3842,7 +3842,7 @@
       "logo": "/games/logos/goldeneye.png",
       "parallax": {
         "url": "/games/parallaxs/goldeneye.png",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -3880,7 +3880,7 @@
       "logo": "/games/logos/pilotwings64.png",
       "parallax": {
         "url": "/games/parallaxs/pilotwings64.webp",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -3919,7 +3919,7 @@
       "logo": "/games/logos/thelegendofzeldaskywardsword.png",
       "parallax": {
         "url": "/games/parallaxs/Zelda_%28Skyward_Sword%29.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -3943,7 +3943,7 @@
       "logo": "/games/logos/donkeykongcountryreturns.png",
       "parallax": {
         "url": "/games/parallaxs/donkeykongcountryreturns.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3982,7 +3982,7 @@
       "logo": "/games/logos/fireemblemradiantdawn.png",
       "parallax": {
         "url": "/games/parallaxs/fireemblemradiantdawn.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4019,7 +4019,7 @@
       "logo": "/games/logos/finalfantasycrystalchroniclesthecrystalbearers.png",
       "parallax": {
         "url": "/games/parallaxs/finalfantasycrystalchroniclesthecrystalbearers.webp",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": null
@@ -4043,7 +4043,7 @@
       "logo": "/games/logos/finalfantasycrystalchronicles.png",
       "parallax": {
         "url": "/games/parallaxs/finalfantasycrystal.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -4067,7 +4067,7 @@
       "logo": "/games/logos/finalfantasyfableschocobosdungeon.png",
       "parallax": {
         "url": "/games/parallaxs/finalfantasyfableschocobosdungeon.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -4091,7 +4091,7 @@
       "logo": "/games/logos/fragiledreamsfarewellruinsofthemoon.png",
       "parallax": {
         "url": "/games/parallaxs/fragiledreamsfarewellruinsofthemoon.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4133,7 +4133,7 @@
       "logo": "/games/logos/mariokartwii.png",
       "parallax": {
         "url": "/games/parallaxs/mariokartwii.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4169,7 +4169,7 @@
       "logo": "/games/logos/muramasathedemonblade.png",
       "parallax": {
         "url": "/games/parallaxs/muramasathedemonblade.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4210,7 +4210,7 @@
       "logo": "/games/logos/pandorastower.png",
       "parallax": {
         "url": "/games/parallaxs/pandorastower.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -4234,7 +4234,7 @@
       "logo": "/games/logos/pangyagolfwithstyle.png",
       "parallax": {
         "url": "/games/parallaxs/pangyagolfwithstyle.webp",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -4265,7 +4265,7 @@
       "logo": "/games/logos/funefactoryfrontier.png",
       "parallax": {
         "url": "/games/parallaxs/funefactoryfrontier.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4307,7 +4307,7 @@
       "logo": "/games/logos/soulcaliburlegends.png",
       "parallax": {
         "url": "/games/parallaxs/soulcaliburlegends.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4349,7 +4349,7 @@
       "logo": "/games/logos/spectrobesorigins.png",
       "parallax": {
         "url": "/games/parallaxs/spectrobesorigins.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -4373,7 +4373,7 @@
       "logo": "/games/logos/supermariogalaxy.png",
       "parallax": {
         "url": "/games/parallaxs/supermariogalaxy.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4412,7 +4412,7 @@
       "logo": "/games/logos/supersmashbrosbrawl.png",
       "parallax": {
         "url": "/games/parallaxs/supersmashbrosbrawl.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4448,7 +4448,7 @@
       "logo": "/games/logos/talesofsymphoniadawnofthenewworld.png",
       "parallax": {
         "url": "/games/parallaxs/talesofsymphoniadawnofthenewworld.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4488,7 +4488,7 @@
       "logo": "/games/logos/thelaststory.png",
       "parallax": {
         "url": "/games/parallaxs/thelaststory.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4531,7 +4531,7 @@
       "logo": "/games/logos/traumacenternewblood.png",
       "parallax": {
         "url": "/games/parallaxs/traumacenternewblood.webp",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -4571,7 +4571,7 @@
       "logo": "/games/logos/traumacentersecondopinion.png",
       "parallax": {
         "url": "/games/parallaxs/traumacentersecondopinion.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4612,7 +4612,7 @@
       "logo": "/games/logos/welovegolf.png",
       "parallax": {
         "url": "/games/parallaxs/welovegolf.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4653,7 +4653,7 @@
       "logo": "/games/logos/xenobladechronicles.png",
       "parallax": {
         "url": "/games/parallaxs/xenobladechronicles.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -4677,7 +4677,7 @@
       "logo": "/games/logos/batenkaitoslesaileseternellesetloceanperdu.webp",
       "parallax": {
         "url": "/games/parallaxs/batenkaitoslesaileseternellesetloceanperdu.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4717,7 +4717,7 @@
       "logo": "/games/logos/fireemblempathofradiance.png",
       "parallax": {
         "url": "/games/parallaxs/fireemblempathofradiance.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4757,7 +4757,7 @@
       "logo": "/games/logos/finalfantasycrystalchronicles.png",
       "parallax": {
         "url": "/games/parallaxs/finalfantasycrystal.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4802,7 +4802,7 @@
       "logo": "/games/logos/f-zerogx.webp",
       "parallax": {
         "url": "/games/parallaxs/f-zerogx.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4838,7 +4838,7 @@
       "logo": "/games/logos/espionpourcible.png",
       "parallax": {
         "url": "/games/parallaxs/espionpourcible.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4877,7 +4877,7 @@
       "logo": "/games/logos/nightfire.png",
       "parallax": {
         "url": "/games/parallaxs/nightfire.webp",
-        "mode": "truncate"
+        "truncated": true
       }
     },
     "review": {
@@ -4913,7 +4913,7 @@
       "logo": "/games/logos/fantasystaronlineepisodeiiicardrevolution.png",
       "parallax": {
         "url": "/games/parallaxs/fantasystaronlineepisodeiiicardrevolution.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4955,7 +4955,7 @@
       "logo": "/games/logos/soulcaliburii.png",
       "parallax": {
         "url": "/games/parallaxs/soulcaliburii.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4996,7 +4996,7 @@
       "logo": "/games/logos/starfoxadventures.png",
       "parallax": {
         "url": "/games/parallaxs/starfoxadventures.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5036,7 +5036,7 @@
       "logo": "/games/logos/supersmashbrosmelee.png",
       "parallax": {
         "url": "/games/parallaxs/supersmashbrosmelee.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5075,7 +5075,7 @@
       "logo": "/games/logos/talesofsymphonia.png",
       "parallax": {
         "url": "/games/parallaxs/talesofsymphonia.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5117,7 +5117,7 @@
       "logo": "/games/logos/thelegendofzeldafourswordsadventures.png",
       "parallax": {
         "url": "/games/parallaxs/thelegendofzeldafourswordsadventures.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5158,7 +5158,7 @@
       "logo": "/games/logos/thelegendofzeldathewindwaker.png",
       "parallax": {
         "url": "/games/parallaxs/thelegendofzeldathewindwaker.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5197,7 +5197,7 @@
       "logo": "/games/logos/supermariosunshine.png",
       "parallax": {
         "url": "/games/parallaxs/supermariosunshine.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5237,7 +5237,7 @@
       "logo": "/games/logos/batenkaitosorigins.webp",
       "parallax": {
         "url": "/games/parallaxs/batenkaitosorigins.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5279,7 +5279,7 @@
       "logo": "/games/logos/fantasystaronlineepisodei.png",
       "parallax": {
         "url": "/games/parallaxs/fantasystaronlineepisodei.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -5303,7 +5303,7 @@
       "logo": "/games/logos/mariostrikerschargedfootball.png",
       "parallax": {
         "url": "/games/parallaxs/mariostrikerschargedfootball.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5341,7 +5341,7 @@
       "logo": "/games/logos/sakurawarssolongmylove.png",
       "parallax": {
         "url": "/games/parallaxs/sakurawarssolongmylove.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5384,7 +5384,7 @@
       "logo": "/games/logos/skiesofarcadialegends.png",
       "parallax": {
         "url": "/games/parallaxs/skiesofarcadialegends.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5424,7 +5424,7 @@
       "logo": "/games/logos/papermariolaportemillenairegc.webp",
       "parallax": {
         "url": "/games/parallaxs/papermariolaportemillenairegc.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5465,7 +5465,7 @@
       "logo": "/games/logos/anothercoderlesportesdelamemoire.png",
       "parallax": {
         "url": "/games/parallaxs/anothercoderlesportesdelamemoire.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -5489,7 +5489,7 @@
       "logo": "/games/logos/wiisports.png",
       "parallax": {
         "url": "/games/parallaxs/wiisports.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5528,7 +5528,7 @@
       "logo": "/games/logos/mariosmashfootball.png",
       "parallax": {
         "url": "/games/parallaxs/mariosmashfootball.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5562,7 +5562,7 @@
       "logo": "/games/logos/starfoxassault.png",
       "parallax": {
         "url": "/games/parallaxs/starfoxassault.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -5586,7 +5586,7 @@
       "logo": "/games/logos/mariokartdoubledash.png",
       "parallax": {
         "url": "/games/parallaxs/mariokartdoubledash.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5623,7 +5623,7 @@
       "logo": "/games/logos/finalfantasycrystalchroniclesechoesoftime.png",
       "parallax": {
         "url": "/games/parallaxs/finalfantasycrystalchroniclesechoesoftime.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5654,7 +5654,7 @@
       "logo": "/games/logos/superswinggolf.png",
       "parallax": {
         "url": "/games/parallaxs/superswinggolf.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5692,7 +5692,7 @@
       "logo": "/games/logos/pokemonstadium.png",
       "parallax": {
         "url": "/games/parallaxs/pokemonstadium.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5723,7 +5723,7 @@
       "logo": "/games/logos/pokemonstadium2.png",
       "parallax": {
         "url": "/games/parallaxs/pokemonstadium2.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5754,7 +5754,7 @@
       "logo": "/games/logos/pokemonbattlerevolution.png",
       "parallax": {
         "url": "/games/parallaxs/pokemonbattlerevolution.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5785,7 +5785,7 @@
       "logo": "/games/logos/wiisportsresort.png",
       "parallax": {
         "url": "/games/parallaxs/wiisportsresort.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -5809,7 +5809,7 @@
       "logo": "/games/logos/thelegendofzeldacollectorsedition.png",
       "parallax": {
         "url": "/games/parallaxs/thelegendofzeldacollectorsedition.webp",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null

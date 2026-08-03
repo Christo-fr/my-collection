@@ -76,7 +76,7 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
     targetScale.current = 1.18; // Rebond à 118% de la taille d'origine
   };
 
-  const isTruncated = image.mode === "truncate";
+  const isTruncated = image.truncated === true;
 
   return (
     <div

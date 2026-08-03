@@ -9,7 +9,7 @@ export interface GameReview {
 
 export interface ParallaxImage {
   url: string;
-  mode: "truncate" | "full";
+  truncated?: boolean;
 }
 
 export interface GameImages {

@@ -75,7 +75,7 @@ export default function Home() {
         <ParallaxCharacter
           image={{
             url: "/parallax/truncate.webp",
-            mode: "truncate",
+            truncated: true,
           }}
         />
       </div>

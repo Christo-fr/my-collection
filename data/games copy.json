@@ -18,7 +18,7 @@
       "logo": "/games/logos/atelier-sophie.png",
       "parallax": {
         "url": "/games/parallaxs/atelier-sophie-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -59,7 +59,7 @@
       "logo": "/images/logos/child-light.png",
       "parallax": {
         "url": "/images/parallax/child-light-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -98,7 +98,7 @@
       "logo": "/images/logos/crazy-strike-bowling-ex.png",
       "parallax": {
         "url": "/images/parallax/crazy-strike-bowling-ex-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -133,7 +133,7 @@
       "logo": "/images/logos/disgaea-5.png",
       "parallax": {
         "url": "/images/parallax/disgaea-5-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -170,7 +170,7 @@
       "logo": "/images/logos/dust.png",
       "parallax": {
         "url": "/images/parallax/dust-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -206,7 +206,7 @@
       "logo": "/images/logos/final-fantasy-type-0.png",
       "parallax": {
         "url": "/images/parallax/final-fantasy-type-0-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -230,7 +230,7 @@
       "logo": "/images/logos/final-fantasy-xv.png",
       "parallax": {
         "url": "/images/parallax/final-fantasy-xv-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -273,7 +273,7 @@
       "logo": "/images/logos/gravity-rush.png",
       "parallax": {
         "url": "/images/parallax/gravity-rush-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -314,7 +314,7 @@
       "logo": "/images/logos/kings-tale.png",
       "parallax": {
         "url": "/images/parallax/kings-tale-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -349,7 +349,7 @@
       "logo": "/images/logos/megaman-legacy-collection.png",
       "parallax": {
         "url": "/images/parallax/megaman-legacy-collection-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -386,7 +386,7 @@
       "logo": "/images/logos/night-of-azure.png",
       "parallax": {
         "url": "/images/parallax/night-of-azure-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -410,7 +410,7 @@
       "logo": "/images/logos/odin-sphere-leifdrasir.png",
       "parallax": {
         "url": "/images/parallax/odin-sphere-leifdrasir-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -449,7 +449,7 @@
       "logo": "/images/logos/atelier-lydie.png",
       "parallax": {
         "url": "/images/parallax/atelier-lydie-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -489,7 +489,7 @@
       "logo": "/images/logos/shantae-pirate-curse.png",
       "parallax": {
         "url": "/images/parallax/shantae-pirate-curse-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -527,7 +527,7 @@
       "logo": "/images/logos/shantae-riskys-revange.png",
       "parallax": {
         "url": "/images/parallax/shantae-riskys-revange-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -568,7 +568,7 @@
       "logo": "/images/logos/star-ocean-5.png",
       "parallax": {
         "url": "/images/parallax/star-ocean-5-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -608,7 +608,7 @@
       "logo": "/images/logos/talesof-zestiria.png",
       "parallax": {
         "url": "/images/parallax/talesof-zestiria-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -650,7 +650,7 @@
       "logo": "/images/logos/zelda-skyward-sword.png",
       "parallax": {
         "url": "/images/parallax/zelda-skyward-sword-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -674,7 +674,7 @@
       "logo": "/images/logos/tomb-raider.png",
       "parallax": {
         "url": "/images/parallax/tomb-raider-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -714,7 +714,7 @@
       "logo": "/games/logos/A13_INT_Logo.webp",
       "parallax": {
         "url": "/images/parallax/rune-factory-4-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -745,7 +745,7 @@
       "logo": "/images/logos/trine.png",
       "parallax": {
         "url": "/images/parallax/trine-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -786,7 +786,7 @@
       "logo": "/images/logos/forgotton-anne.png",
       "parallax": {
         "url": "/images/parallax/forgotton-anne-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -817,7 +817,7 @@
       "logo": "/images/logos/uncharted-drake-collection.png",
       "parallax": {
         "url": "/images/parallax/uncharted-drake-collection-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -856,7 +856,7 @@
       "logo": "/images/logos/agarest.png",
       "parallax": {
         "url": "/images/parallax/agarest-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -898,7 +898,7 @@
       "logo": "/images/logos/agarest-zero.png",
       "parallax": {
         "url": "/images/parallax/agarest-zero-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -940,7 +940,7 @@
       "logo": "/images/logos/agarest-2.png",
       "parallax": {
         "url": "/images/parallax/agarest-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -964,7 +964,7 @@
       "logo": "/images/logos/atelier-ayesha.png",
       "parallax": {
         "url": "/images/parallax/atelier-ayesha-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1000,7 +1000,7 @@
       "logo": "/images/logos/atelier-escha-logy.png",
       "parallax": {
         "url": "/images/parallax/atelier-escha-logy-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1040,7 +1040,7 @@
       "logo": "/images/logos/atelier-meruru.png",
       "parallax": {
         "url": "/images/parallax/atelier-meruru-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1076,7 +1076,7 @@
       "logo": "/images/logos/atelier-rorona.png",
       "parallax": {
         "url": "/images/parallax/atelier-rorona-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1116,7 +1116,7 @@
       "logo": "/images/logos/atelier-rorona-plus.png",
       "parallax": {
         "url": "/images/parallax/atelier-rorona-plus-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -1140,7 +1140,7 @@
       "logo": "/images/logos/atelier-shallie.png",
       "parallax": {
         "url": "/images/parallax/atelier-shallie-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1182,7 +1182,7 @@
       "logo": "/images/logos/atelier-totori.png",
       "parallax": {
         "url": "/images/parallax/atelier-totori-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1222,7 +1222,7 @@
       "logo": "/images/logos/battle-fantasia.png",
       "parallax": {
         "url": "/images/parallax/battle-fantasia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1257,7 +1257,7 @@
       "logo": "/images/logos/battle-princess-arcadias.png",
       "parallax": {
         "url": "/images/parallax/battle-princess-arcadias-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1300,7 +1300,7 @@
       "logo": "/images/logos/captain-morgane.png",
       "parallax": {
         "url": "/images/parallax/captain-morgane-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1335,7 +1335,7 @@
       "logo": "/images/logos/catherine.png",
       "parallax": {
         "url": "/images/parallax/catherine-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1374,7 +1374,7 @@
       "logo": "/images/logos/coupe-du-monde-2010.png",
       "parallax": {
         "url": "/images/parallax/coupe-du-monde-2010-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1414,7 +1414,7 @@
       "logo": "/images/logos/coupe-du-monde-2014.png",
       "parallax": {
         "url": "/images/parallax/coupe-du-monde-2014-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1454,7 +1454,7 @@
       "logo": "/images/logos/dead-or-alive-5.png",
       "parallax": {
         "url": "/images/parallax/dead-or-alive-5-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1494,7 +1494,7 @@
       "logo": "/images/logos/disgaea-3.png",
       "parallax": {
         "url": "/images/parallax/disgaea-3-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -1518,7 +1518,7 @@
       "logo": "/images/logos/disgaea-4.png",
       "parallax": {
         "url": "/images/parallax/disgaea-4-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -1542,7 +1542,7 @@
       "logo": "/images/logos/dragon-crown.png",
       "parallax": {
         "url": "/images/parallax/dragon-crown-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1582,7 +1582,7 @@
       "logo": "/images/logos/duck-tales-remastered.png",
       "parallax": {
         "url": "/images/parallax/duck-tales-remastered-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1623,7 +1623,7 @@
       "logo": "/images/logos/el-shaddai.png",
       "parallax": {
         "url": "/images/parallax/el-shaddai-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1664,7 +1664,7 @@
       "logo": "/images/logos/eternal-sonata.png",
       "parallax": {
         "url": "/images/parallax/eternal-sonata-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1705,7 +1705,7 @@
       "logo": "/images/logos/everybody-golf-5.png",
       "parallax": {
         "url": "/images/parallax/everybody-golf-5-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1746,7 +1746,7 @@
       "logo": "/images/logos/everybody-golf-6.png",
       "parallax": {
         "url": "/images/parallax/everybody-golf-6-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1789,7 +1789,7 @@
       "logo": "/images/logos/ffx.png",
       "parallax": {
         "url": "/images/parallax/ffx-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1829,7 +1829,7 @@
       "logo": "/images/logos/ffxiii.png",
       "parallax": {
         "url": "/images/parallax/ffxiii-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1870,7 +1870,7 @@
       "logo": "/images/logos/ffxiii-2.png",
       "parallax": {
         "url": "/images/parallax/ffxiii-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1909,7 +1909,7 @@
       "logo": "/images/logos/ffxiii-3.png",
       "parallax": {
         "url": "/images/parallax/ffxiii-3-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1950,7 +1950,7 @@
       "logo": "/images/logos/fifa-12.png",
       "parallax": {
         "url": "/images/parallax/fifa-12-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -1988,7 +1988,7 @@
       "logo": "/images/logos/flow.png",
       "parallax": {
         "url": "/images/parallax/flow-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2023,7 +2023,7 @@
       "logo": "/images/logos/flower.png",
       "parallax": {
         "url": "/images/parallax/flower-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2054,7 +2054,7 @@
       "logo": "/images/logos/folklore.png",
       "parallax": {
         "url": "/images/parallax/folklore-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -2078,7 +2078,7 @@
       "logo": "/images/logos/heavenly-sword.png",
       "parallax": {
         "url": "/images/parallax/heavenly-sword-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2116,7 +2116,7 @@
       "logo": "/images/logos/journey.png",
       "parallax": {
         "url": "/images/parallax/journey-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2152,7 +2152,7 @@
       "logo": "/images/logos/little-witch-academia.png",
       "parallax": {
         "url": "/images/parallax/little-witch-academia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2183,7 +2183,7 @@
       "logo": "/images/logos/shining-resonance.png",
       "parallax": {
         "url": "/images/parallax/shining-resonance-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2227,7 +2227,7 @@
       "logo": "/images/logos/ni-no-kuni.png",
       "parallax": {
         "url": "/images/parallax/ni-no-kuni-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2266,7 +2266,7 @@
       "logo": "/images/logos/project-diva-f.png",
       "parallax": {
         "url": "/images/parallax/project-diva-f-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2305,7 +2305,7 @@
       "logo": "/images/logos/project-diva-f-2-nd.png",
       "parallax": {
         "url": "/images/parallax/project-diva-f-2-nd-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2345,7 +2345,7 @@
       "logo": "/images/logos/pupeteer.png",
       "parallax": {
         "url": "/images/parallax/pupeteer-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2381,7 +2381,7 @@
       "logo": "/images/logos/rune-factory-oceans.png",
       "parallax": {
         "url": "/images/parallax/rune-factory-oceans-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2422,7 +2422,7 @@
       "logo": "/images/logos/soul-calibur-v.png",
       "parallax": {
         "url": "/images/parallax/soul-calibur-v-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2463,7 +2463,7 @@
       "logo": "/images/logos/star-ocean-4.png",
       "parallax": {
         "url": "/images/parallax/star-ocean-4-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2503,7 +2503,7 @@
       "logo": "/images/logos/tales-graces-f.png",
       "parallax": {
         "url": "/images/parallax/tales-graces-f-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2541,7 +2541,7 @@
       "logo": "/images/logos/tales-symphonia-chronicles.png",
       "parallax": {
         "url": "/images/parallax/tales-symphonia-chronicles-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2584,7 +2584,7 @@
       "logo": "/images/logos/zelda-twilight-princess.png",
       "parallax": {
         "url": "/images/parallax/zelda-twilight-princess-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -2608,7 +2608,7 @@
       "logo": "/images/logos/tales-xillia.png",
       "parallax": {
         "url": "/images/parallax/tales-xillia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2649,7 +2649,7 @@
       "logo": "/images/logos/tales-xillia-2.png",
       "parallax": {
         "url": "/images/parallax/tales-xillia-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2689,7 +2689,7 @@
       "logo": "/images/logos/time-and-eternity.png",
       "parallax": {
         "url": "/images/parallax/time-and-eternity-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2730,7 +2730,7 @@
       "logo": "/images/logos/trinity-universe.png",
       "parallax": {
         "url": "/images/parallax/trinity-universe-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -2754,7 +2754,7 @@
       "logo": "/images/logos/valkyria-chronicles.png",
       "parallax": {
         "url": "/images/parallax/valkyria-chronicles-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2795,7 +2795,7 @@
       "logo": "/images/logos/bayonetta.png",
       "parallax": {
         "url": "/images/parallax/bayonetta-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -2819,7 +2819,7 @@
       "logo": "/images/logos/bayonetta-2.png",
       "parallax": {
         "url": "/images/parallax/bayonetta-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -2843,7 +2843,7 @@
       "logo": "/images/logos/donkey-kong-country-tropical-freeze.png",
       "parallax": {
         "url": "/images/parallax/donkey-kong-country-tropical-freeze-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2883,7 +2883,7 @@
       "logo": "/images/logos/hyrule-warriors.png",
       "parallax": {
         "url": "/images/parallax/hyrule-warriors-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2923,7 +2923,7 @@
       "logo": "/images/logos/mario-kart-8.png",
       "parallax": {
         "url": "/images/parallax/mario-kart-8-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -2960,7 +2960,7 @@
       "logo": "/images/logos/mario-sonic-jo-sotchi.png",
       "parallax": {
         "url": "/images/parallax/mario-sonic-jo-sotchi-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3000,7 +3000,7 @@
       "logo": "/images/logos/new-super-mario-bros-u.png",
       "parallax": {
         "url": "/images/parallax/new-super-mario-bros-u-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3038,7 +3038,7 @@
       "logo": "/images/logos/nintendo-land.png",
       "parallax": {
         "url": "/images/parallax/nintendo-land-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3077,7 +3077,7 @@
       "logo": "/images/logos/rayman-legends.png",
       "parallax": {
         "url": "/images/parallax/rayman-legends-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3116,7 +3116,7 @@
       "logo": "/images/logos/super-mario-3-d-world.png",
       "parallax": {
         "url": "/images/parallax/super-mario-3-d-world-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3158,7 +3158,7 @@
       "logo": "/images/logos/super-mario-maker.png",
       "parallax": {
         "url": "/images/parallax/super-mario-maker-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3198,7 +3198,7 @@
       "logo": "/images/logos/super-smash-bros-wii-u.png",
       "parallax": {
         "url": "/images/parallax/super-smash-bros-wii-u-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3240,7 +3240,7 @@
       "logo": "/images/logos/zelda-wind-waker-hd.png",
       "parallax": {
         "url": "/images/parallax/zelda-wind-waker-hd-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3279,7 +3279,7 @@
       "logo": "/images/logos/donkey-kong-country-returns.png",
       "parallax": {
         "url": "/images/parallax/donkey-kong-country-returns-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3318,7 +3318,7 @@
       "logo": "/images/logos/fe-radiant-dawn.png",
       "parallax": {
         "url": "/images/parallax/fe-radiant-dawn-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3355,7 +3355,7 @@
       "logo": "/images/logos/ffcc-crystal-bearers.png",
       "parallax": {
         "url": "/images/parallax/ffcc-crystal-bearers-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -3379,7 +3379,7 @@
       "logo": "/images/logos/ffcc-my-life-as-king.png",
       "parallax": {
         "url": "/images/parallax/ffcc-my-life-as-king-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -3403,7 +3403,7 @@
       "logo": "/images/logos/fff-chocobos-dungeon.png",
       "parallax": {
         "url": "/images/parallax/fff-chocobos-dungeon-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -3427,7 +3427,7 @@
       "logo": "/images/logos/fragile-dreams.png",
       "parallax": {
         "url": "/images/parallax/fragile-dreams-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3469,7 +3469,7 @@
       "logo": "/images/logos/mario-kart-wii.png",
       "parallax": {
         "url": "/images/parallax/mario-kart-wii-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3505,7 +3505,7 @@
       "logo": "/images/logos/megaman-11.png",
       "parallax": {
         "url": "/images/parallax/megaman-11-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3545,7 +3545,7 @@
       "logo": "/images/logos/hack-gu.png",
       "parallax": {
         "url": "/images/parallax/hack-gu-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3586,7 +3586,7 @@
       "logo": "/images/logos/muramasa.png",
       "parallax": {
         "url": "/images/parallax/muramasa-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3627,7 +3627,7 @@
       "logo": "/images/logos/rise-tomb-raider.png",
       "parallax": {
         "url": "/images/parallax/rise-tomb-raider-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -3651,7 +3651,7 @@
       "logo": "/images/logos/pandoras-tower.png",
       "parallax": {
         "url": "/images/parallax/pandoras-tower-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -3675,7 +3675,7 @@
       "logo": "/images/logos/pangya.png",
       "parallax": {
         "url": "/images/parallax/pangya-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3713,7 +3713,7 @@
       "logo": "/images/logos/rune-factory-frontier.png",
       "parallax": {
         "url": "/images/parallax/rune-factory-frontier-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3755,7 +3755,7 @@
       "logo": "/images/logos/soul-calibur-legends.png",
       "parallax": {
         "url": "/images/parallax/soul-calibur-legends-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3797,7 +3797,7 @@
       "logo": "/images/logos/spectrobes.png",
       "parallax": {
         "url": "/images/parallax/spectrobes-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -3821,7 +3821,7 @@
       "logo": "/images/logos/super-mario-galaxy.png",
       "parallax": {
         "url": "/images/parallax/super-mario-galaxy-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3860,7 +3860,7 @@
       "logo": "/images/logos/super-smash-bros-brawl.png",
       "parallax": {
         "url": "/images/parallax/super-smash-bros-brawl-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3896,7 +3896,7 @@
       "logo": "/images/logos/tales-symphonia-dawn-new-world.png",
       "parallax": {
         "url": "/images/parallax/tales-symphonia-dawn-new-world-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3936,7 +3936,7 @@
       "logo": "/images/logos/the-last-story.png",
       "parallax": {
         "url": "/images/parallax/the-last-story-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -3979,7 +3979,7 @@
       "logo": "/images/logos/trauma-center-new-blood.png",
       "parallax": {
         "url": "/images/parallax/trauma-center-new-blood-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4019,7 +4019,7 @@
       "logo": "/images/logos/trauma-center-second-opinion.png",
       "parallax": {
         "url": "/images/parallax/trauma-center-second-opinion-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4060,7 +4060,7 @@
       "logo": "/images/logos/we-love-golf.png",
       "parallax": {
         "url": "/images/parallax/we-love-golf-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4101,7 +4101,7 @@
       "logo": "/images/logos/xenoblade-chronicles.png",
       "parallax": {
         "url": "/images/parallax/xenoblade-chronicles-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -4125,7 +4125,7 @@
       "logo": "/images/logos/baten-kaitos.png",
       "parallax": {
         "url": "/images/parallax/baten-kaitos-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4165,7 +4165,7 @@
       "logo": "/images/logos/everybody-golf-7.png",
       "parallax": {
         "url": "/images/parallax/everybody-golf-7-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4206,7 +4206,7 @@
       "logo": "/images/logos/fe-path-radiance.png",
       "parallax": {
         "url": "/images/parallax/fe-path-radiance-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4246,7 +4246,7 @@
       "logo": "/images/logos/ffcc.png",
       "parallax": {
         "url": "/images/parallax/ffcc-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4291,7 +4291,7 @@
       "logo": "/images/logos/f-zero-gx.png",
       "parallax": {
         "url": "/images/parallax/f-zero-gx-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4327,7 +4327,7 @@
       "logo": "/images/logos/jb-espion-pour-cible.png",
       "parallax": {
         "url": "/images/parallax/jb-espion-pour-cible-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4366,7 +4366,7 @@
       "logo": "/images/logos/jb-nightfire.png",
       "parallax": {
         "url": "/images/parallax/jb-nightfire-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4402,7 +4402,7 @@
       "logo": "/images/logos/pso-3.png",
       "parallax": {
         "url": "/images/parallax/pso-3-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4444,7 +4444,7 @@
       "logo": "/images/logos/soul-calibur-2.png",
       "parallax": {
         "url": "/images/parallax/soul-calibur-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4485,7 +4485,7 @@
       "logo": "/images/logos/starfox-adventures.png",
       "parallax": {
         "url": "/images/parallax/starfox-adventures-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4525,7 +4525,7 @@
       "logo": "/images/logos/super-smash-bros-melee.png",
       "parallax": {
         "url": "/images/parallax/super-smash-bros-melee-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4564,7 +4564,7 @@
       "logo": "/images/logos/tales-symphonia.png",
       "parallax": {
         "url": "/images/parallax/tales-symphonia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4606,7 +4606,7 @@
       "logo": "/images/logos/zelda-four-sword-adventures.png",
       "parallax": {
         "url": "/images/parallax/zelda-four-sword-adventures-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4647,7 +4647,7 @@
       "logo": "/images/logos/zelda-wind-waker.png",
       "parallax": {
         "url": "/images/parallax/zelda-wind-waker-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4686,7 +4686,7 @@
       "logo": "/images/logos/talesof-berseria.png",
       "parallax": {
         "url": "/images/parallax/talesof-berseria-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4731,7 +4731,7 @@
       "logo": "/images/logos/iamsetsuna.png",
       "parallax": {
         "url": "/images/parallax/iamsetsuna-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4771,7 +4771,7 @@
       "logo": "/images/logos/mightyno-9.png",
       "parallax": {
         "url": "/images/parallax/mightyno-9-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4812,7 +4812,7 @@
       "logo": "/images/logos/zelda-breath.png",
       "parallax": {
         "url": "/images/parallax/zelda-breath-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4854,7 +4854,7 @@
       "logo": "/images/logos/super-mario-sunshine.png",
       "parallax": {
         "url": "/images/parallax/super-mario-sunshine-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4894,7 +4894,7 @@
       "logo": "/images/logos/banjo-kazooie.png",
       "parallax": {
         "url": "/images/parallax/banjo-kazooie-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4936,7 +4936,7 @@
       "logo": "/images/logos/banjo-tooie.png",
       "parallax": {
         "url": "/images/parallax/banjo-tooie-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -4978,7 +4978,7 @@
       "logo": "/images/logos/shantae-genie-hero.png",
       "parallax": {
         "url": "/images/parallax/shantae-genie-hero-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5017,7 +5017,7 @@
       "logo": "/images/logos/project-diva-x.png",
       "parallax": {
         "url": "/images/parallax/project-diva-x-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5057,7 +5057,7 @@
       "logo": "/images/logos/conker.png",
       "parallax": {
         "url": "/images/parallax/conker-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5096,7 +5096,7 @@
       "logo": "/images/logos/persona-5.png",
       "parallax": {
         "url": "/images/parallax/persona-5-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5139,7 +5139,7 @@
       "logo": "/images/logos/grand-kingdom.png",
       "parallax": {
         "url": "/images/parallax/grand-kingdom-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5182,7 +5182,7 @@
       "logo": "/images/logos/diddy-kong-racing.png",
       "parallax": {
         "url": "/images/parallax/diddy-kong-racing-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5223,7 +5223,7 @@
       "logo": "/images/logos/lylatwars.png",
       "parallax": {
         "url": "/images/parallax/lylatwars-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5264,7 +5264,7 @@
       "logo": "/images/logos/mission-impossible.png",
       "parallax": {
         "url": "/images/parallax/mission-impossible-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5305,7 +5305,7 @@
       "logo": "/images/logos/mystical-ninja-2.png",
       "parallax": {
         "url": "/images/parallax/mystical-ninja-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5345,7 +5345,7 @@
       "logo": "/images/logos/senran-kagura-estival-versus.png",
       "parallax": {
         "url": "/images/parallax/senran-kagura-estival-versus-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5387,7 +5387,7 @@
       "logo": "/images/logos/rayman-2.png",
       "parallax": {
         "url": "/images/parallax/rayman-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5428,7 +5428,7 @@
       "logo": "/images/logos/super-mario-64.png",
       "parallax": {
         "url": "/images/parallax/super-mario-64-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5468,7 +5468,7 @@
       "logo": "/images/logos/zelda-ocarina-time.png",
       "parallax": {
         "url": "/images/parallax/zelda-ocarina-time-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5506,7 +5506,7 @@
       "logo": "/images/logos/baten-kaitos-origins.png",
       "parallax": {
         "url": "/images/parallax/baten-kaitos-origins-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5548,7 +5548,7 @@
       "logo": "/images/logos/gravity-rush-2.png",
       "parallax": {
         "url": "/images/parallax/gravity-rush-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5588,7 +5588,7 @@
       "logo": "/images/logos/pso.png",
       "parallax": {
         "url": "/images/parallax/pso-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -5612,7 +5612,7 @@
       "logo": "/images/logos/banner-saga.png",
       "parallax": {
         "url": "/images/parallax/banner-saga-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5643,7 +5643,7 @@
       "logo": "/images/logos/valkyria-revolution.png",
       "parallax": {
         "url": "/images/parallax/valkyria-revolution-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -5667,7 +5667,7 @@
       "logo": "/images/logos/oceanhorn.png",
       "parallax": {
         "url": "/images/parallax/oceanhorn-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -5691,7 +5691,7 @@
       "logo": "/images/logos/wonder-boy.png",
       "parallax": {
         "url": "/images/parallax/wonder-boy-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5730,7 +5730,7 @@
       "logo": "/images/logos/mario-strikers-charged-football.png",
       "parallax": {
         "url": "/images/parallax/mario-strikers-charged-football-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5768,7 +5768,7 @@
       "logo": "/images/logos/ys-origin.png",
       "parallax": {
         "url": "/images/parallax/ys-origin-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5809,7 +5809,7 @@
       "logo": "/images/logos/wii-sports-club.png",
       "parallax": {
         "url": "/images/parallax/wii-sports-club-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5848,7 +5848,7 @@
       "logo": "/images/logos/sakura-wars.png",
       "parallax": {
         "url": "/images/parallax/sakura-wars-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5891,7 +5891,7 @@
       "logo": "/images/logos/xenoblade-chronicles-x.png",
       "parallax": {
         "url": "/images/parallax/xenoblade-chronicles-x-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -5915,7 +5915,7 @@
       "logo": "/images/logos/uncharted-4.png",
       "parallax": {
         "url": "/images/parallax/uncharted-4-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5957,7 +5957,7 @@
       "logo": "/images/logos/uncharted-lost-legacy.png",
       "parallax": {
         "url": "/images/parallax/uncharted-lost-legacy-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -5998,7 +5998,7 @@
       "logo": "/images/logos/skies-arcadia.png",
       "parallax": {
         "url": "/images/parallax/skies-arcadia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6038,7 +6038,7 @@
       "logo": "/images/logos/megaman-legacy-collection-2.png",
       "parallax": {
         "url": "/images/parallax/megaman-legacy-collection-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6077,7 +6077,7 @@
       "logo": "/images/logos/horizon-new-dawn.png",
       "parallax": {
         "url": "/images/parallax/horizon-new-dawn-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6118,7 +6118,7 @@
       "logo": "/images/logos/ffxii.png",
       "parallax": {
         "url": "/images/parallax/ffxii-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6158,7 +6158,7 @@
       "logo": "/images/logos/secret-mana.png",
       "parallax": {
         "url": "/images/parallax/secret-mana-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6199,7 +6199,7 @@
       "logo": "/images/logos/yooka-laylee.png",
       "parallax": {
         "url": "/images/parallax/yooka-laylee-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6239,7 +6239,7 @@
       "logo": "/images/logos/atelier-firis.png",
       "parallax": {
         "url": "/images/parallax/atelier-firis-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6279,7 +6279,7 @@
       "logo": "/images/logos/fallen-legion.png",
       "parallax": {
         "url": "/images/parallax/fallen-legion-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6317,7 +6317,7 @@
       "logo": "/images/logos/ni-no-kuni-2.png",
       "parallax": {
         "url": "/images/parallax/ni-no-kuni-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6359,7 +6359,7 @@
       "logo": "/images/logos/okami.png",
       "parallax": {
         "url": "/images/parallax/okami-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -6383,7 +6383,7 @@
       "logo": "/images/logos/mario-kart-64.png",
       "parallax": {
         "url": "/images/parallax/mario-kart-64-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6424,7 +6424,7 @@
       "logo": "/images/logos/paper-mario.png",
       "parallax": {
         "url": "/images/parallax/paper-mario-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6465,7 +6465,7 @@
       "logo": "/images/logos/paper-mario-2.png",
       "parallax": {
         "url": "/images/parallax/paper-mario-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6506,7 +6506,7 @@
       "logo": "/images/logos/mystical-ninja.png",
       "parallax": {
         "url": "/images/parallax/mystical-ninja-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6546,7 +6546,7 @@
       "logo": "/images/logos/paper-mario-color.png",
       "parallax": {
         "url": "/images/parallax/paper-mario-color-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -6570,7 +6570,7 @@
       "logo": "/images/logos/majoras-mask.png",
       "parallax": {
         "url": "/images/parallax/majoras-mask-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -6594,7 +6594,7 @@
       "logo": "/images/logos/blue-reflection.png",
       "parallax": {
         "url": "/images/parallax/blue-reflection-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6637,7 +6637,7 @@
       "logo": "/images/logos/night-of-azure-2.png",
       "parallax": {
         "url": "/images/parallax/night-of-azure-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -6661,7 +6661,7 @@
       "logo": "/images/logos/dragon-crown-pro.png",
       "parallax": {
         "url": "/images/parallax/dragon-crown-pro-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -6685,7 +6685,7 @@
       "logo": "/images/logos/another-code-r.png",
       "parallax": {
         "url": "/images/parallax/another-code-r-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -6709,7 +6709,7 @@
       "logo": "/images/logos/starfox-zero.png",
       "parallax": {
         "url": "/images/parallax/starfox-zero-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6747,7 +6747,7 @@
       "logo": "/images/logos/lost-sphear.png",
       "parallax": {
         "url": "/images/parallax/lost-sphear-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -6771,7 +6771,7 @@
       "logo": "/images/logos/wii-sports.png",
       "parallax": {
         "url": "/images/parallax/wii-sports-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6810,7 +6810,7 @@
       "logo": "/images/logos/mario-smash-football.png",
       "parallax": {
         "url": "/images/parallax/mario-smash-football-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6844,7 +6844,7 @@
       "logo": "/images/logos/starfox-assault.png",
       "parallax": {
         "url": "/images/parallax/starfox-assault-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -6868,7 +6868,7 @@
       "logo": "/images/logos/bastion.png",
       "parallax": {
         "url": "/images/parallax/bastion-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -6892,7 +6892,7 @@
       "logo": "/images/logos/tales-vesperia.png",
       "parallax": {
         "url": "/images/parallax/tales-vesperia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6934,7 +6934,7 @@
       "logo": "/images/logos/soul-calibur-6.png",
       "parallax": {
         "url": "/images/parallax/soul-calibur-6-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -6977,7 +6977,7 @@
       "logo": "/images/logos/dragons-lair.png",
       "parallax": {
         "url": "/images/parallax/dragons-lair-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7014,7 +7014,7 @@
       "logo": "/images/logos/mario-kart-8-deluxe.png",
       "parallax": {
         "url": "/images/parallax/mario-kart-8-deluxe-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7051,7 +7051,7 @@
       "logo": "/images/logos/super-smash-bros-ultimate.png",
       "parallax": {
         "url": "/images/parallax/super-smash-bros-ultimate-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7094,7 +7094,7 @@
       "logo": "/images/logos/mario-kart-dd.png",
       "parallax": {
         "url": "/images/parallax/mario-kart-dd-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7131,7 +7131,7 @@
       "logo": "/images/logos/ys-7.png",
       "parallax": {
         "url": "/images/parallax/ys-7-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -7155,7 +7155,7 @@
       "logo": "/images/logos/fe-warriors.png",
       "parallax": {
         "url": "/images/parallax/fe-warriors-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -7179,7 +7179,7 @@
       "logo": "/images/logos/world-ff.png",
       "parallax": {
         "url": "/images/parallax/world-ff-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -7203,7 +7203,7 @@
       "logo": "/images/logos/valkyria-chronicles-4.png",
       "parallax": {
         "url": "/images/parallax/valkyria-chronicles-4-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7240,7 +7240,7 @@
       "logo": "/images/logos/disgaea-1.png",
       "parallax": {
         "url": "/images/parallax/disgaea-1-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7271,7 +7271,7 @@
       "logo": "/images/logos/kingdom-hearts-3.png",
       "parallax": {
         "url": "/images/parallax/kingdom-hearts-3-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7312,7 +7312,7 @@
       "logo": "/images/logos/scarlet-curiosity.png",
       "parallax": {
         "url": "/images/parallax/scarlet-curiosity-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7352,7 +7352,7 @@
       "logo": "/images/logos/kingdom-hearts.png",
       "parallax": {
         "url": "/images/parallax/kingdom-hearts-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7404,7 +7404,7 @@
       "logo": "/images/logos/fe-three.png",
       "parallax": {
         "url": "/images/parallax/fe-three-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7445,7 +7445,7 @@
       "logo": "/images/logos/first-tree.png",
       "parallax": {
         "url": "/images/parallax/first-tree-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7483,7 +7483,7 @@
       "logo": "/images/logos/wrecker.png",
       "parallax": {
         "url": "/images/parallax/wrecker-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7514,7 +7514,7 @@
       "logo": "/images/logos/oninaki.png",
       "parallax": {
         "url": "/images/parallax/oninaki-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7545,7 +7545,7 @@
       "logo": "/images/logos/ace-attorney-trilogy.png",
       "parallax": {
         "url": "/images/parallax/ace-attorney-trilogy-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7586,7 +7586,7 @@
       "logo": "/images/logos/xcom.png",
       "parallax": {
         "url": "/images/parallax/xcom-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7617,7 +7617,7 @@
       "logo": "/images/logos/xcom-2.png",
       "parallax": {
         "url": "/images/parallax/xcom-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7648,7 +7648,7 @@
       "logo": "/images/logos/zelda-awakening.png",
       "parallax": {
         "url": "/images/parallax/zelda-awakening-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7687,7 +7687,7 @@
       "logo": "/images/logos/nelke.png",
       "parallax": {
         "url": "/images/parallax/nelke-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7718,7 +7718,7 @@
       "logo": "/images/logos/indivisible.png",
       "parallax": {
         "url": "/images/parallax/indivisible-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7749,7 +7749,7 @@
       "logo": "/images/logos/yooka-laylee-2.png",
       "parallax": {
         "url": "/images/parallax/yooka-laylee-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7790,7 +7790,7 @@
       "logo": "/images/logos/hellblade.png",
       "parallax": {
         "url": "/images/parallax/hellblade-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7821,7 +7821,7 @@
       "logo": "/images/logos/shadow-tomb-raider.png",
       "parallax": {
         "url": "/images/parallax/shadow-tomb-raider-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7852,7 +7852,7 @@
       "logo": "/images/logos/atelier-lulua.png",
       "parallax": {
         "url": "/images/parallax/atelier-lulua-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7883,7 +7883,7 @@
       "logo": "/images/logos/persona-5-r.png",
       "parallax": {
         "url": "/images/parallax/persona-5-r-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7930,7 +7930,7 @@
       "logo": "/images/logos/song-of-memories.png",
       "parallax": {
         "url": "/images/parallax/song-of-memories-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7961,7 +7961,7 @@
       "logo": "/images/logos/streets-of-rage-4.png",
       "parallax": {
         "url": "/images/parallax/streets-of-rage-4-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -7999,7 +7999,7 @@
       "logo": "/images/logos/ffccrm.png",
       "parallax": {
         "url": "/images/parallax/ffccrm-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8044,7 +8044,7 @@
       "logo": "/images/logos/captain-tsubasa.png",
       "parallax": {
         "url": "/images/parallax/captain-tsubasa-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8086,7 +8086,7 @@
       "logo": "/images/logos/giraffe-and-hannika.png",
       "parallax": {
         "url": "/images/parallax/giraffe-and-hannika-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8124,7 +8124,7 @@
       "logo": "/images/logos/monster-boy.png",
       "parallax": {
         "url": "/images/parallax/monster-boy-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8155,7 +8155,7 @@
       "logo": "/images/logos/trials-mana.png",
       "parallax": {
         "url": "/images/parallax/trials-mana-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8195,7 +8195,7 @@
       "logo": "/images/logos/catherine-fb.png",
       "parallax": {
         "url": "/images/parallax/catherine-fb-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8226,7 +8226,7 @@
       "logo": "/images/logos/goldeneye.png",
       "parallax": {
         "url": "/images/parallax/goldeneye-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8264,7 +8264,7 @@
       "logo": "/images/logos/shantae-seven.png",
       "parallax": {
         "url": "/images/parallax/shantae-seven-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8304,7 +8304,7 @@
       "logo": "/images/logos/blacksad.png",
       "parallax": {
         "url": "/images/parallax/blacksad-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8335,7 +8335,7 @@
       "logo": "/images/logos/pilotwings.png",
       "parallax": {
         "url": "/images/parallax/pilotwings-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8374,7 +8374,7 @@
       "logo": "/images/logos/granblue-vs.png",
       "parallax": {
         "url": "/images/parallax/granblue-vs-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8414,7 +8414,7 @@
       "logo": "/images/logos/yakuza.png",
       "parallax": {
         "url": "/images/parallax/yakuza-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8445,7 +8445,7 @@
       "logo": "/images/logos/ori-blind.png",
       "parallax": {
         "url": "/images/parallax/ori-blind-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8476,7 +8476,7 @@
       "logo": "/images/logos/ori-will.png",
       "parallax": {
         "url": "/images/parallax/ori-will-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8507,7 +8507,7 @@
       "logo": "/images/logos/grandia.png",
       "parallax": {
         "url": "/images/parallax/grandia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8550,7 +8550,7 @@
       "logo": "/images/logos/atelier-ryza.png",
       "parallax": {
         "url": "/images/parallax/atelier-ryza-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8581,7 +8581,7 @@
       "logo": "/images/logos/13-sentinels.png",
       "parallax": {
         "url": "/images/parallax/13-sentinels-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8612,7 +8612,7 @@
       "logo": "/images/logos/new-sakura-wars.png",
       "parallax": {
         "url": "/images/parallax/new-sakura-wars-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8651,7 +8651,7 @@
       "logo": "/images/logos/super-mario-3-d-world-bf.png",
       "parallax": {
         "url": "/images/parallax/super-mario-3-d-world-bf-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8696,7 +8696,7 @@
       "logo": "/images/logos/xenoblade-chronicles-2.png",
       "parallax": {
         "url": "/images/parallax/xenoblade-chronicles-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -8720,7 +8720,7 @@
       "logo": "/images/logos/tokyo-mirage-sessions.png",
       "parallax": {
         "url": "/images/parallax/tokyo-mirage-sessions-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8761,7 +8761,7 @@
       "logo": "/images/logos/xenoblade-chronicles-2-torna.png",
       "parallax": {
         "url": "/images/parallax/xenoblade-chronicles-2-torna-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -8785,7 +8785,7 @@
       "logo": "/images/logos/ffccet.png",
       "parallax": {
         "url": "/images/parallax/ffccet-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8816,7 +8816,7 @@
       "logo": "/images/logos/atelier-ryza-2.png",
       "parallax": {
         "url": "/images/parallax/atelier-ryza-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8847,7 +8847,7 @@
       "logo": "/images/logos/persona-5-s.png",
       "parallax": {
         "url": "/images/parallax/persona-5-s-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8878,7 +8878,7 @@
       "logo": "/images/logos/scott-pilgrim.png",
       "parallax": {
         "url": "/images/parallax/scott-pilgrim-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8917,7 +8917,7 @@
       "logo": "/images/logos/dark-crystal.png",
       "parallax": {
         "url": "/images/parallax/dark-crystal-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8948,7 +8948,7 @@
       "logo": "/images/logos/to-the-moon.png",
       "parallax": {
         "url": "/images/parallax/to-the-moon-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -8985,7 +8985,7 @@
       "logo": "/images/logos/shantae.png",
       "parallax": {
         "url": "/images/parallax/shantae-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9016,7 +9016,7 @@
       "logo": "/images/logos/talesof-arise.png",
       "parallax": {
         "url": "/images/parallax/talesof-arise-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9058,7 +9058,7 @@
       "logo": "/images/logos/fuga.png",
       "parallax": {
         "url": "/images/parallax/fuga-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9099,7 +9099,7 @@
       "logo": "/images/logos/cris-tales.png",
       "parallax": {
         "url": "/images/parallax/cris-tales-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9139,7 +9139,7 @@
       "logo": "/images/logos/fallen-legion-revenants.png",
       "parallax": {
         "url": "/images/parallax/fallen-legion-revenants-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -9163,7 +9163,7 @@
       "logo": "/images/logos/soul-calibur-iv.png",
       "parallax": {
         "url": "/images/parallax/soul-calibur-iv-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9194,7 +9194,7 @@
       "logo": "/images/logos/dragon-quest-xi.png",
       "parallax": {
         "url": "/images/parallax/dragon-quest-xi-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9225,7 +9225,7 @@
       "logo": "/images/logos/mario-party.png",
       "parallax": {
         "url": "/images/parallax/mario-party-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9262,7 +9262,7 @@
       "logo": "/images/logos/atelier-sophie-2.png",
       "parallax": {
         "url": "/images/parallax/atelier-sophie-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9293,7 +9293,7 @@
       "logo": "/images/logos/blue-reflection-2.png",
       "parallax": {
         "url": "/images/parallax/blue-reflection-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9333,7 +9333,7 @@
       "logo": "/images/logos/valkyria-chronicles-remastered.png",
       "parallax": {
         "url": "/images/parallax/valkyria-chronicles-remastered-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -9357,7 +9357,7 @@
       "logo": "/images/logos/smt-3.png",
       "parallax": {
         "url": "/images/parallax/smt-3-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9388,7 +9388,7 @@
       "logo": "/images/logos/smt-5.png",
       "parallax": {
         "url": "/images/parallax/smt-5-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9419,7 +9419,7 @@
       "logo": "/images/logos/rune-factory-5.png",
       "parallax": {
         "url": "/images/parallax/rune-factory-5-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9450,7 +9450,7 @@
       "logo": "/images/logos/switch-sports.png",
       "parallax": {
         "url": "/images/parallax/switch-sports-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9492,7 +9492,7 @@
       "logo": "/images/logos/bravely-default-2.png",
       "parallax": {
         "url": "/images/parallax/bravely-default-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9523,7 +9523,7 @@
       "logo": "/images/logos/hyrule-warriors-definitive.png",
       "parallax": {
         "url": "/images/parallax/hyrule-warriors-definitive-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9554,7 +9554,7 @@
       "logo": "/images/logos/monster-hunter-stories-2.png",
       "parallax": {
         "url": "/images/parallax/monster-hunter-stories-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9585,7 +9585,7 @@
       "logo": "/images/logos/kena.png",
       "parallax": {
         "url": "/images/parallax/kena-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9627,7 +9627,7 @@
       "logo": "/images/logos/ffvii.png",
       "parallax": {
         "url": "/images/parallax/ffvii-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9658,7 +9658,7 @@
       "logo": "/images/logos/edge-of-eternity.png",
       "parallax": {
         "url": "/images/parallax/edge-of-eternity-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9689,7 +9689,7 @@
       "logo": "/images/logos/doki-doki.png",
       "parallax": {
         "url": "/images/parallax/doki-doki-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9728,7 +9728,7 @@
       "logo": "/images/logos/horizon-2.png",
       "parallax": {
         "url": "/images/parallax/horizon-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -9752,7 +9752,7 @@
       "logo": "/images/logos/astro.png",
       "parallax": {
         "url": "/images/parallax/astro-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9790,7 +9790,7 @@
       "logo": "/images/logos/shiness.png",
       "parallax": {
         "url": "/images/parallax/shiness-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -9814,7 +9814,7 @@
       "logo": "/images/logos/hyrule-warriors-2.png",
       "parallax": {
         "url": "/images/parallax/hyrule-warriors-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9845,7 +9845,7 @@
       "logo": "/images/logos/super-mario-odyssey.png",
       "parallax": {
         "url": "/images/parallax/super-mario-odyssey-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9876,7 +9876,7 @@
       "logo": "/images/logos/fuga-2.png",
       "parallax": {
         "url": "/images/parallax/fuga-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9915,7 +9915,7 @@
       "logo": "/images/logos/fire-emblem-engage.png",
       "parallax": {
         "url": "/images/parallax/fire-emblem-engage-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9956,7 +9956,7 @@
       "logo": "/images/logos/chrono-cross.png",
       "parallax": {
         "url": "/images/parallax/chrono-cross-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -9987,7 +9987,7 @@
       "logo": "/images/logos/xenoblade-chronicles-3.png",
       "parallax": {
         "url": "/images/parallax/xenoblade-chronicles-3-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10018,7 +10018,7 @@
       "logo": "/images/logos/disgaea-6.png",
       "parallax": {
         "url": "/images/parallax/disgaea-6-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10049,7 +10049,7 @@
       "logo": "/images/logos/eiyuden-rising.png",
       "parallax": {
         "url": "/images/parallax/eiyuden-rising-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10080,7 +10080,7 @@
       "logo": "/images/logos/grim-grimoire.png",
       "parallax": {
         "url": "/images/parallax/grim-grimoire-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10111,7 +10111,7 @@
       "logo": "/images/logos/scarlet-nexus.png",
       "parallax": {
         "url": "/images/parallax/scarlet-nexus-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10142,7 +10142,7 @@
       "logo": "/images/logos/star-ocean-6.png",
       "parallax": {
         "url": "/images/parallax/star-ocean-6-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10183,7 +10183,7 @@
       "logo": "/images/logos/persona-4.png",
       "parallax": {
         "url": "/images/parallax/persona-4-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10214,7 +10214,7 @@
       "logo": "/images/logos/tosr.png",
       "parallax": {
         "url": "/images/parallax/tosr-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10256,7 +10256,7 @@
       "logo": "/images/logos/great-hero.png",
       "parallax": {
         "url": "/images/parallax/great-hero-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10287,7 +10287,7 @@
       "logo": "/images/logos/final-fantasy-xvi.png",
       "parallax": {
         "url": "/images/parallax/final-fantasy-xvi-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10318,7 +10318,7 @@
       "logo": "/images/logos/miitopia.png",
       "parallax": {
         "url": "/images/parallax/miitopia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10357,7 +10357,7 @@
       "logo": "/images/logos/rune-factory-3.png",
       "parallax": {
         "url": "/images/parallax/rune-factory-3-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10388,7 +10388,7 @@
       "logo": "/images/logos/trouble-witches.png",
       "parallax": {
         "url": "/images/parallax/trouble-witches-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10419,7 +10419,7 @@
       "logo": "/images/logos/loop-8.png",
       "parallax": {
         "url": "/images/parallax/loop-8-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10450,7 +10450,7 @@
       "logo": "/images/logos/atelier-marie.png",
       "parallax": {
         "url": "/images/parallax/atelier-marie-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10481,7 +10481,7 @@
       "logo": "/images/logos/baten-kaitos-remaster.png",
       "parallax": {
         "url": "/images/parallax/baten-kaitos-remaster-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10512,7 +10512,7 @@
       "logo": "/images/logos/harvestella.png",
       "parallax": {
         "url": "/images/parallax/harvestella-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10543,7 +10543,7 @@
       "logo": "/images/logos/super-mario-rpg.png",
       "parallax": {
         "url": "/images/parallax/super-mario-rpg-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10581,7 +10581,7 @@
       "logo": "/images/logos/new-super-mario-bros-wonder.png",
       "parallax": {
         "url": "/images/parallax/new-super-mario-bros-wonder-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10622,7 +10622,7 @@
       "logo": "/images/logos/xenoblade-chronicles-definitive.png",
       "parallax": {
         "url": "/images/parallax/xenoblade-chronicles-definitive-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10653,7 +10653,7 @@
       "logo": "/images/logos/princess-peach-showtime.png",
       "parallax": {
         "url": "/images/parallax/princess-peach-showtime-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10691,7 +10691,7 @@
       "logo": "/images/logos/ring-fit-adventure.png",
       "parallax": {
         "url": "/images/parallax/ring-fit-adventure-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10722,7 +10722,7 @@
       "logo": "/images/logos/atelier-ryza-3.png",
       "parallax": {
         "url": "/images/parallax/atelier-ryza-3-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10753,7 +10753,7 @@
       "logo": "/images/logos/ffvii-crisis.png",
       "parallax": {
         "url": "/images/parallax/ffvii-crisis-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10784,7 +10784,7 @@
       "logo": "/images/logos/yakuza-8.png",
       "parallax": {
         "url": "/images/parallax/yakuza-8-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10815,7 +10815,7 @@
       "logo": "/images/logos/persona-5-t.png",
       "parallax": {
         "url": "/images/parallax/persona-5-t-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10846,7 +10846,7 @@
       "logo": "/images/logos/tchia.png",
       "parallax": {
         "url": "/images/parallax/tchia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10877,7 +10877,7 @@
       "logo": "/images/logos/trine-5.png",
       "parallax": {
         "url": "/images/parallax/trine-5-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10908,7 +10908,7 @@
       "logo": "/images/logos/light-fairytale.png",
       "parallax": {
         "url": "/images/parallax/light-fairytale-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10946,7 +10946,7 @@
       "logo": "/images/logos/apollo-ace-attorney-trilogy.png",
       "parallax": {
         "url": "/images/parallax/apollo-ace-attorney-trilogy-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -10985,7 +10985,7 @@
       "logo": "/images/logos/relayer.png",
       "parallax": {
         "url": "/images/parallax/relayer-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11016,7 +11016,7 @@
       "logo": "/images/logos/unicorn-overlord.png",
       "parallax": {
         "url": "/images/parallax/unicorn-overlord-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11047,7 +11047,7 @@
       "logo": "/images/logos/light-fairytale-2.png",
       "parallax": {
         "url": "/images/parallax/light-fairytale-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11085,7 +11085,7 @@
       "logo": "/images/logos/sakuna.png",
       "parallax": {
         "url": "/images/parallax/sakuna-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11116,7 +11116,7 @@
       "logo": "/images/logos/final-fantasy-viii.png",
       "parallax": {
         "url": "/images/parallax/final-fantasy-viii-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11147,7 +11147,7 @@
       "logo": "/images/logos/ace-attorney-investigations.png",
       "parallax": {
         "url": "/images/parallax/ace-attorney-investigations-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11178,7 +11178,7 @@
       "logo": "/images/logos/might-magic.png",
       "parallax": {
         "url": "/images/parallax/might-magic-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11209,7 +11209,7 @@
       "logo": "/images/logos/ff-collection.png",
       "parallax": {
         "url": "/images/parallax/ff-collection-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11250,7 +11250,7 @@
       "logo": "/images/logos/tomb-raider-remastered.png",
       "parallax": {
         "url": "/images/parallax/tomb-raider-remastered-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11281,7 +11281,7 @@
       "logo": "/images/logos/dordogne.png",
       "parallax": {
         "url": "/images/parallax/dordogne-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11316,7 +11316,7 @@
       "logo": "/images/logos/sea-of-stars.png",
       "parallax": {
         "url": "/images/parallax/sea-of-stars-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11347,7 +11347,7 @@
       "logo": "/images/logos/oceanhorn-2.png",
       "parallax": {
         "url": "/images/parallax/oceanhorn-2-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": null
@@ -11371,7 +11371,7 @@
       "logo": "/images/logos/yohane.png",
       "parallax": {
         "url": "/images/parallax/yohane-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11410,7 +11410,7 @@
       "logo": "/images/logos/curse-sea-rats.png",
       "parallax": {
         "url": "/images/parallax/curse-sea-rats-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11449,7 +11449,7 @@
       "logo": "/images/logos/rose-camellia.png",
       "parallax": {
         "url": "/images/parallax/rose-camellia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11487,7 +11487,7 @@
       "logo": "/images/logos/mario-party-jamboree.png",
       "parallax": {
         "url": "/images/parallax/mario-party-jamboree-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11528,7 +11528,7 @@
       "logo": "/images/logos/zelda-echoes.png",
       "parallax": {
         "url": "/images/parallax/zelda-echoes-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11559,7 +11559,7 @@
       "logo": "/images/logos/snufkin.png",
       "parallax": {
         "url": "/images/parallax/snufkin-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11590,7 +11590,7 @@
       "logo": "/images/logos/fe-three-hopes.png",
       "parallax": {
         "url": "/images/parallax/fe-three-hopes-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11621,7 +11621,7 @@
       "logo": "/images/logos/final-fantasy-ix.png",
       "parallax": {
         "url": "/images/parallax/final-fantasy-ix-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11652,7 +11652,7 @@
       "logo": "/images/logos/paper-mario-porte.png",
       "parallax": {
         "url": "/images/parallax/paper-mario-porte-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11683,7 +11683,7 @@
       "logo": "/images/logos/persona-3-r.png",
       "parallax": {
         "url": "/images/parallax/persona-3-r-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11714,7 +11714,7 @@
       "logo": "/images/logos/granblue-relink.png",
       "parallax": {
         "url": "/images/parallax/granblue-relink-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11745,7 +11745,7 @@
       "logo": "/images/logos/disgaea-7.png",
       "parallax": {
         "url": "/images/parallax/disgaea-7-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11776,7 +11776,7 @@
       "logo": "/images/logos/final-bar-line.png",
       "parallax": {
         "url": "/images/parallax/final-bar-line-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11807,7 +11807,7 @@
       "logo": "/images/logos/megaman-legacy-x-collection.png",
       "parallax": {
         "url": "/images/parallax/megaman-legacy-x-collection-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11838,7 +11838,7 @@
       "logo": "/images/logos/eiyuden-chronicle-hundred.png",
       "parallax": {
         "url": "/images/parallax/eiyuden-chronicle-hundred-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11869,7 +11869,7 @@
       "logo": "/images/logos/another-code-recollection.png",
       "parallax": {
         "url": "/images/parallax/another-code-recollection-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11900,7 +11900,7 @@
       "logo": "/images/logos/tales-graces-f-remastered.png",
       "parallax": {
         "url": "/images/parallax/tales-graces-f-remastered-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11931,7 +11931,7 @@
       "logo": "/images/logos/asha.png",
       "parallax": {
         "url": "/images/parallax/asha-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11962,7 +11962,7 @@
       "logo": "/images/logos/lunar.png",
       "parallax": {
         "url": "/images/parallax/lunar-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -11993,7 +11993,7 @@
       "logo": "/images/logos/nikoderiko.png",
       "parallax": {
         "url": "/images/parallax/nikoderiko-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -12024,7 +12024,7 @@
       "logo": "/images/logos/splitfiction.png",
       "parallax": {
         "url": "/images/parallax/splitfiction-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -12055,7 +12055,7 @@
       "logo": "/images/logos/clair-obscur.png",
       "parallax": {
         "url": "/images/parallax/clair-obscur-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -12086,7 +12086,7 @@
       "logo": "/images/logos/atelier-yumia.png",
       "parallax": {
         "url": "/images/parallax/atelier-yumia-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -12117,7 +12117,7 @@
       "logo": "/images/logos/mario-kart-world.png",
       "parallax": {
         "url": "/images/parallax/mario-kart-world-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -12148,7 +12148,7 @@
       "logo": "/images/logos/maliki.png",
       "parallax": {
         "url": "/images/parallax/maliki-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
@@ -12179,7 +12179,7 @@
       "logo": "/images/logos/nexomon.png",
       "parallax": {
         "url": "/images/parallax/nexomon-character.png",
-        "mode": "full"
+        "truncated": false
       }
     },
     "review": {
