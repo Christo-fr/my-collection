@@ -11,6 +11,7 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
   return (
     <div
       className={`relative w-full aspect-[2/3] rounded-xl overflow-hidden cursor-pointer select-none border border-main/10 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_2px_var(--color-secondary)]`}
+      title={game.title}
     >
       <Image
         src={game.images.cover}
@@ -33,7 +34,7 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
         />
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center text-center z-10 p-3 pt-12 bg-gradient-to-t from-background via-background/80 to-transparent  ">
+      <div className="absolute inset-x-0 bottom-0 flex flex-col items-center text-center z-10 p-3 pt-12 bg-gradient-to-t from-background via-background/60 to-transparent  ">
         {/* 1. Le Logo du jeu */}
         {game.images.logo ? (
           <div

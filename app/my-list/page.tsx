@@ -5,6 +5,7 @@ import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import RangeInput from "@/components/ui/RangeInput";
 import Select from "@/components/ui/Select";
+import Label from "@/components/ui/Label";
 import GameCard from "@/components/game/GameCard";
 import { Game } from "@/types/game";
 
@@ -60,7 +61,7 @@ export default function MaListe() {
       label: nomGenre,
       value: nomGenre,
     })),
-  ];
+  ].sort((a, b) => a.label.localeCompare(b.label)); // Tri alphabétique par label;
 
   const optionsStatut = [
     { label: "Tous", value: "all" },
@@ -106,28 +107,25 @@ export default function MaListe() {
   );
 
   return (
-    <div className="relative w-full h-full flex flex-col px-12 py-8 gap-6">
+    <div className="relative w-full h-full flex flex-col px-12 pt-4 pb-18 gap-4">
       {/* Titre principal */}
       <Heading as="h1" size="xl">
         Ma liste
       </Heading>
 
       {/* Conteneur principal flex */}
-      <div className="w-full flex flex-col lg:flex-row gap-8 flex-1 min-h-0">
-        {/* PANNEAU GAUCHE (Filtres - 25% desktop, 100% mobile) */}
-        <section className="w-full lg:w-1/4 lg:overflow-y-auto lg:max-h-[calc(100vh-10rem)] pr-2 space-y-6 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
-          {/* En-tête Filtres + Compteur */}
-          <div className="flex items-center justify-between border-b border-main/10 pb-2">
+      <div className="w-full flex flex-col lg:flex-row gap-4 flex-1 min-h-0 bg-background/25 p-2 rounded-xl border border-main/10">
+        {/* PANNEAU GAUCHE */}
+        <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
+          {/* En-tête fixe */}
+          <div className="flex items-center justify-between border-b border-main/10 px-2 h-12 flex-shrink-0">
             <h2 className="text-lg font-semibold tracking-wide uppercase">
               Filtres
             </h2>
-            <span className="text-sm text-main/60">
-              ({filteredGames.length} résultats)
-            </span>
           </div>
 
-          {/* Formulaire des filtres */}
-          <div className="space-y-4">
+          {/* Formulaire : scroll uniquement sur Desktop */}
+          <div className="space-y-4 px-2 py-4 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
             <Input
               placeholder="Rechercher un jeu..."
               value={searchQuery}
@@ -167,20 +165,45 @@ export default function MaListe() {
           </div>
         </section>
 
-        {/* PANNEAU DROIT (Grille de jeux - 75% desktop, 100% mobile) */}
-        <div className="w-full lg:w-3/4 lg:overflow-y-auto lg:max-h-[calc(100vh-10rem)] p-4 space-y-6 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
-          {loading ? (
-            <p className="p-8 text-gray-400">Chargement des jeux...</p>
-          ) : filteredGames.length === 0 ? (
-            <p className="text-main/60 text-sm">Aucun jeu trouvé</p>
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {filteredGames.map((game) => (
-                <GameCard key={game.id} game={game} />
-              ))}
+        {/* PANNEAU DROIT */}
+        <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0">
+          {/* En-tête fixe */}
+          <div className="flex items-center justify-between border-b border-main/10 px-2 h-12 flex-shrink-0">
+            <div className="flex items-baseline gap-2">
+              <h2 className="text-lg font-semibold tracking-wide uppercase">
+                Liste de jeux
+              </h2>
+              <span className="text-sm text-main/60">
+                ({filteredGames.length} résultats)
+              </span>
             </div>
-          )}
-        </div>
+            <div className="flex items-center gap-2">
+              <label htmlFor="tri" className="text-xs font-medium text-main/80">
+                Tri:
+              </label>
+              <Select
+                options={optionsStatut}
+                selectedValue={selectedStatus}
+                onChange={(val) => setSelectedStatus(val)}
+              />
+            </div>
+          </div>
+
+          {/* Grille : scroll uniquement sur Desktop */}
+          <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
+            {loading ? (
+              <p className="p-8 text-gray-400">Chargement des jeux...</p>
+            ) : filteredGames.length === 0 ? (
+              <p className="text-main/60 text-sm">Aucun jeu trouvé</p>
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                {filteredGames.map((game) => (
+                  <GameCard key={game.id} game={game} />
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
       </div>
     </div>
   );
