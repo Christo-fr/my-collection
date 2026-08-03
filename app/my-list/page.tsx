@@ -5,7 +5,6 @@ import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import RangeInput from "@/components/ui/RangeInput";
 import Select from "@/components/ui/Select";
-import Label from "@/components/ui/Label";
 import GameCard from "@/components/game/GameCard";
 import { Game } from "@/types/game";
 
