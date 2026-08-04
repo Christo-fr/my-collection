@@ -243,7 +243,7 @@ export default function MaListe() {
         {/* PANNEAU GAUCHE */}
         <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
           {/* En-tête fixe */}
-          <div className="flex items-center justify-between border-b border-main/10 px-2 h-12 flex-shrink-0">
+          <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
             <h2 className="text-lg font-semibold tracking-wide uppercase">
               Filtres
             </h2>
@@ -293,7 +293,7 @@ export default function MaListe() {
         {/* PANNEAU DROIT */}
         <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0">
           {/* En-tête fixe */}
-          <div className="flex items-center justify-between border-b border-main/10 px-2 h-12 flex-shrink-0">
+          <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-main/10 px-2 md:h-12 lg:flex-shrink-0">
             <div className="flex items-baseline gap-2">
               <h2 className="text-lg font-semibold tracking-wide uppercase">
                 Liste de jeux
@@ -302,9 +302,9 @@ export default function MaListe() {
                 ({filteredGames.length} résultats)
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col md:flex-row md:items-center gap-2">
               <label className="text-xs font-medium text-main/80">Tri </label>
-              <div className="w-60">
+              <div className="w-full md:w-60">
                 <Select
                   options={optionsSort}
                   selectedValue={sortBy}
