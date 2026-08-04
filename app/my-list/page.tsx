@@ -38,6 +38,21 @@ export default function MaListe() {
   const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // 4. Options pour le tri des jeux
+  const optionsSort = [
+    { label: "Alphabétique", value: "alphabetical" },
+    { label: "Anti-Alphabétique", value: "anti_alphabetical" },
+    { label: "Date de sortie - croissante", value: "releaseDate_ascending" },
+    { label: "Date de sortie - décroissante", value: "releaseDate_descending" },
+    { label: "Durée de vie - croissant", value: "estimatedPlaytime_ascending" },
+    {
+      label: "Durée de vie - décroissant",
+      value: "estimatedPlaytime_descending",
+    },
+    { label: "Note - croissante", value: "score_ascending" },
+    { label: "Note - décroissante", value: "score_descending" },
+  ];
+
   // Chargement des jeux depuis l'API
   useEffect(() => {
     async function fetchGames() {
@@ -45,15 +60,43 @@ export default function MaListe() {
         const reponse = await fetch("/api/games"); // Appel l'adresse web
         const data: Game[] = await reponse.json(); // Receptionne la réponse et la transforme en tableau d'objets
         setGames(data); // Elle dépose les valeurs grâce à  setGames
-        const urlDuration = searchParams.get("duration");
         if (data.length > 0) {
-          // Sécurité si les données ne sont pas encore chargés, si c'est le cas, trouve le nombre de durée de vie max
+          // 1. Validation de la durée
+          const urlDuration = searchParams.get("duration");
           const maxTime = Math.max(
             ...data.map((game) => game.estimatedPlaytime),
           );
           urlDuration
             ? setMaxDuration(Math.min(Number(urlDuration), maxTime))
             : setMaxDuration(maxTime);
+
+          // 2. Validation du style
+          const validStyles = data.map((game) => game.genre);
+          const urlStyle = searchParams.get("style");
+          if (
+            urlStyle &&
+            urlStyle !== "Tous" &&
+            !validStyles.includes(urlStyle)
+          ) {
+            setSelectedStyle("Tous");
+          }
+
+          // 3. Validation de la console
+          const validConsoles = data.map((game) => game.console);
+          const urlConsole = searchParams.get("console");
+          if (
+            urlConsole &&
+            urlConsole !== "Toutes" &&
+            !validConsoles.includes(urlConsole)
+          ) {
+            setSelectedConsole("Toutes");
+          }
+          // 4. Validation du tri
+          const validSorts = optionsSort.map((option) => option.value);
+          const urlSort = searchParams.get("sort");
+          if (urlSort && !validSorts.includes(urlSort)) {
+            setSortBy("alphabetical");
+          }
         }
       } catch (error) {
         console.error("Erreur lors du chargement des jeux :", error);
@@ -61,7 +104,7 @@ export default function MaListe() {
         setLoading(false);
       }
     }
-    fetchGames(); // 👈 Indispensable pour lancer l'appel au chargement de la page !
+    fetchGames();
   }, []);
 
   //Calcul de la durée de vie maximale parmi tous les jeux pour définir la valeur maximale du RangeInput
@@ -147,21 +190,6 @@ export default function MaListe() {
     { label: "Tous", value: "all" },
     { label: "Terminé", value: "completed" },
     { label: "Non terminé", value: "not_completed" },
-  ];
-
-  // 4. Options pour le tri des jeux
-  const optionsSort = [
-    { label: "Alphabétique", value: "alphabetical" },
-    { label: "Anti-Alphabétique", value: "anti_alphabetical" },
-    { label: "Date de sortie - croissante", value: "releaseDate_ascending" },
-    { label: "Date de sortie - décroissante", value: "releaseDate_descending" },
-    { label: "Durée de vie - croissant", value: "estimatedPlaytime_ascending" },
-    {
-      label: "Durée de vie - décroissant",
-      value: "estimatedPlaytime_descending",
-    },
-    { label: "Note - croissante", value: "score_ascending" },
-    { label: "Note - décroissante", value: "score_descending" },
   ];
 
   // Filtrage et tri des jeux en fonction des critères sélectionnés
