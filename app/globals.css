@@ -6,7 +6,7 @@
 :root {
   --bg-main: white;
   --primary: black; /* Ajout de -- */
-  --secondary: #bcf9b8; /* Ajout de -- */
+  --secondary: #d6fad3; /* Ajout de -- */
   --grad-start: #fa72cf;
   --grad-end: #f6cdba;
   --text-main: var(--color-gray-700);

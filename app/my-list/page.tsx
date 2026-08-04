@@ -14,6 +14,8 @@ export default function MaListe() {
   const [selectedStyle, setSelectedStyle] = useState<string>("Tous");
   const [selectedStatus, setSelectedStatus] = useState<string>("all");
   const [maxDuration, setMaxDuration] = useState<number>(200);
+  const [maxNotation, setNotation] = useState<number>(0);
+  const [sortBy, setSortBy] = useState<string>("alphabetical");
   const [games, setGames] = useState<Game[]>([]);
 
   const [loading, setLoading] = useState(true);
@@ -76,6 +78,20 @@ export default function MaListe() {
       ? Math.max(...games.map((game) => game.estimatedPlaytime))
       : 200;
 
+  const optionsSort = [
+    { label: "Alphabétique", value: "alphabetical" },
+    { label: "Anti-Alphabétique", value: "anti_alphabetical" },
+    { label: "Date de sortie - croissante", value: "releaseDate_ascending" },
+    { label: "Date de sortie - décroissante", value: "releaseDate_descending" },
+    { label: "Durée de vie - croissant", value: "estimatedPlaytime_ascending" },
+    {
+      label: "Durée de vie - décroissant",
+      value: "estimatedPlaytime_descending",
+    },
+    { label: "Note - croissante", value: "score_ascending" },
+    { label: "Note - décroissante", value: "score_descending" },
+  ];
+
   const filteredGames = useMemo(
     () =>
       games
@@ -96,7 +112,41 @@ export default function MaListe() {
             // 5. Filtre sur la recherche textuelle
             game.title.toLowerCase().includes(searchQuery.toLowerCase()),
         )
-        .sort((a, b) => a.title.localeCompare(b.title)), // Tri alphabétique par titre
+        .sort((a, b) => {
+          let diff = 0;
+          switch (sortBy) {
+            case "alphabetical":
+              return a.title.localeCompare(b.title);
+            case "anti_alphabetical":
+              return b.title.localeCompare(a.title);
+            case "releaseDate_ascending":
+              diff =
+                new Date(a.releaseDate).getTime() -
+                new Date(b.releaseDate).getTime();
+              break;
+            case "releaseDate_descending":
+              diff =
+                new Date(b.releaseDate).getTime() -
+                new Date(a.releaseDate).getTime();
+              break;
+            case "estimatedPlaytime_ascending":
+              diff = a.estimatedPlaytime - b.estimatedPlaytime;
+              break;
+            case "estimatedPlaytime_descending":
+              diff = b.estimatedPlaytime - a.estimatedPlaytime;
+              break;
+            case "score_ascending":
+              diff = (a.review?.score ?? 0) - (b.review?.score ?? 0);
+              break;
+
+            case "score_descending":
+              diff = (b.review?.score ?? 0) - (a.review?.score ?? 0);
+              break;
+            default:
+              break;
+          }
+          return diff !== 0 ? diff : a.title.localeCompare(b.title);
+        }),
     [
       games,
       searchQuery,
@@ -104,6 +154,7 @@ export default function MaListe() {
       selectedStyle,
       selectedStatus,
       maxDuration,
+      sortBy,
     ],
   );
 
@@ -179,14 +230,14 @@ export default function MaListe() {
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <label htmlFor="tri" className="text-xs font-medium text-main/80">
-                Tri:
-              </label>
-              <Select
-                options={optionsStatut}
-                selectedValue={selectedStatus}
-                onChange={(val) => setSelectedStatus(val)}
-              />
+              <label className="text-xs font-medium text-main/80">Tri </label>
+              <div className="w-60">
+                <Select
+                  options={optionsSort}
+                  selectedValue={sortBy}
+                  onChange={(val) => setSortBy(val)}
+                />
+              </div>
             </div>
           </div>
 
