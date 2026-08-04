@@ -1,166 +1,65 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useMemo, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import RangeInput from "@/components/ui/RangeInput";
 import Select from "@/components/ui/Select";
 import GameCard from "@/components/game/GameCard";
-import { Game } from "@/types/game";
+import FilterPanel from "@/components/game/FilterPanel";
+import ListHeader from "@/components/game/ListHeader";
+
+// Import unique depuis le module feature "game"
+import {
+  useGames,
+  filterAndSortGames,
+  getConsoleOptions,
+  getStyleOptions,
+  OPTIONS_STATUS,
+} from "@/features/game";
 
 export default function MaListe() {
-  //permet de lire les paramètres actuels de l'URL
-  const searchParams = useSearchParams();
-  // permet de mettre à jour l'URL sans recharger la page
   const router = useRouter();
-  //donne le chemin actuel
   const pathname = usePathname();
 
-  const [searchQuery, setSearchQuery] = useState<string>(
-    searchParams.get("q") ?? "",
-  );
-  const [selectedConsole, setSelectedConsole] = useState<string>(
-    searchParams.get("console") ?? "Toutes",
-  );
-  const [selectedStyle, setSelectedStyle] = useState<string>(
-    searchParams.get("style") ?? "Tous",
-  );
-  const [selectedStatus, setSelectedStatus] = useState<string>(
-    searchParams.get("status") ?? "all",
-  );
-  const [maxDuration, setMaxDuration] = useState<number>(
-    Number(searchParams.get("duration")) ?? 200,
-  );
-  const [sortBy, setSortBy] = useState<string>(
-    searchParams.get("sort") ?? "alphabetical",
-  );
-  const [games, setGames] = useState<Game[]>([]);
-  const [loading, setLoading] = useState(true);
+  const {
+    games,
+    loading,
+    searchQuery,
+    setSearchQuery,
+    selectedConsole,
+    setSelectedConsole,
+    selectedStyle,
+    setSelectedStyle,
+    selectedStatus,
+    setSelectedStatus,
+    maxDuration,
+    setMaxDuration,
+    sortBy,
+    setSortBy,
+  } = useGames();
 
-  // 4. Options pour le tri des jeux
-  const optionsSort = [
-    { label: "Alphabétique", value: "alphabetical" },
-    { label: "Anti-Alphabétique", value: "anti_alphabetical" },
-    { label: "Date de sortie - croissante", value: "releaseDate_ascending" },
-    { label: "Date de sortie - décroissante", value: "releaseDate_descending" },
-    { label: "Durée de vie - croissant", value: "estimatedPlaytime_ascending" },
-    {
-      label: "Durée de vie - décroissant",
-      value: "estimatedPlaytime_descending",
-    },
-    { label: "Note - croissante", value: "score_ascending" },
-    { label: "Note - décroissante", value: "score_descending" },
-  ];
-
-  // Chargement des jeux depuis l'API
-  useEffect(() => {
-    async function fetchGames() {
-      try {
-        const reponse = await fetch("/api/games"); // Appel l'adresse web
-        const data: Game[] = await reponse.json(); // Receptionne la réponse et la transforme en tableau d'objets
-        setGames(data); // Elle dépose les valeurs grâce à  setGames
-        if (data.length > 0) {
-          // 1. Validation de la durée
-          const urlDuration = searchParams.get("duration");
-          const playtimes = data.map((game) => game.estimatedPlaytime);
-          const minTime = Math.min(...playtimes);
-          const maxTime = Math.max(...playtimes);
-          if (urlDuration) {
-            const parsedDuration = Number(urlDuration);
-            if (!isNaN(parsedDuration) && parsedDuration >= minTime) {
-              setMaxDuration(Math.min(parsedDuration, maxTime));
-            } else {
-              setMaxDuration(maxTime);
-            }
-          } else {
-            setMaxDuration(maxTime);
-          }
-          // 2. Validation du style
-          const validStyles = data.map((game) => game.genre);
-          const urlStyle = searchParams.get("style");
-          if (
-            urlStyle &&
-            urlStyle !== "Tous" &&
-            !validStyles.includes(urlStyle)
-          ) {
-            setSelectedStyle("Tous");
-          }
-
-          // 3. Validation de la console
-          const validConsoles = data.map((game) => game.console);
-          const urlConsole = searchParams.get("console");
-          if (
-            urlConsole &&
-            urlConsole !== "Toutes" &&
-            !validConsoles.includes(urlConsole)
-          ) {
-            setSelectedConsole("Toutes");
-          }
-          // 4. Validation du tri
-          const validSorts = optionsSort.map((option) => option.value);
-          const urlSort = searchParams.get("sort");
-          if (urlSort && !validSorts.includes(urlSort)) {
-            setSortBy("alphabetical");
-          }
-        }
-      } catch (error) {
-        console.error("Erreur lors du chargement des jeux :", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchGames();
-  }, []);
-
-  //Calcul de la durée de vie maximale parmi tous les jeux pour définir la valeur maximale du RangeInput
+  // Bornes de durée calculées sur les données chargées
   const maxEstimatedPlaytime =
-    // Sécurité si les données ne sont pas encore chargés
-    games.length > 0
-      ? Math.max(...games.map((game) => game.estimatedPlaytime))
-      : 200;
-
-  //Calcul de la durée de vie minimale parmi tous les jeux pour définir la valeur minimale du RangeInput
+    games.length > 0 ? Math.max(...games.map((g) => g.estimatedPlaytime)) : 200;
   const minEstimatedPlaytime =
-    // Sécurité si les données ne sont pas encore chargés
-    games.length > 0
-      ? Math.min(...games.map((game) => game.estimatedPlaytime))
-      : 0;
+    games.length > 0 ? Math.min(...games.map((g) => g.estimatedPlaytime)) : 0;
 
-  // Mise à jour de l'URL en fonction des filtres sélectionnés
+  // Synchronisation des filtres avec l'URL
   useEffect(() => {
     const params = new URLSearchParams();
-
-    // 1. Recherche textuelle
-    if (searchQuery) {
-      params.set("q", searchQuery);
-    }
-
-    if (selectedConsole !== "Toutes") {
-      params.set("console", selectedConsole);
-    }
-
-    if (selectedStyle !== "Tous") {
-      params.set("style", selectedStyle);
-    }
-
-    if (selectedStatus !== "all") {
-      params.set("status", selectedStatus);
-    }
-
-    if (sortBy !== "alphabetical") {
-      params.set("sort", sortBy);
-    }
-
-    // 6. Durée max (si maxDuration est défini)
+    if (searchQuery) params.set("q", searchQuery);
+    if (selectedConsole !== "Toutes") params.set("console", selectedConsole);
+    if (selectedStyle !== "Tous") params.set("style", selectedStyle);
+    if (selectedStatus !== "all") params.set("status", selectedStatus);
+    if (sortBy !== "alphabetical") params.set("sort", sortBy);
     if (maxDuration < maxEstimatedPlaytime) {
       params.set("duration", maxDuration.toString());
     }
 
-    // Mise à jour de l'URL
     const search = params.toString();
     const query = search ? `?${search}` : "";
-    // replace permet de mettre à jour l'URL à la volée, et evite aussi le scroll to top
     router.replace(`${pathname}${query}`, { scroll: false });
   }, [
     searchQuery,
@@ -174,190 +73,81 @@ export default function MaListe() {
     router,
   ]);
 
-  // 1. Options pour les Consoles
-  const optionsConsole = [
-    // Option par défaut pour désactiver le filtre
-    { label: "Toutes", value: "Toutes" },
-    // 1. Premier .map() + Set : extraction et suppression des doublons
-    // 2. Second .map() : mise au format { label, value } pour le composant <Select />
-    ...Array.from(new Set(games.map((jeu) => jeu.console)))
-      .map((nomConsole) => ({
-        label: nomConsole,
-        value: nomConsole,
-      }))
-      .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
-  ];
+  // Options calculées
+  const optionsConsole = useMemo(() => getConsoleOptions(games), [games]);
+  const optionsStyle = useMemo(() => getStyleOptions(games), [games]);
 
-  // 2. Options pour les genres de jeux
-  const optionsStyle = [
-    { label: "Tous", value: "Tous" },
-    ...Array.from(new Set(games.map((jeu) => jeu.genre)))
-      .map((nomGenre) => ({
-        label: nomGenre,
-        value: nomGenre,
-      }))
-      .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
-  ];
-
-  // 3. Options pour le statut des jeux
-  const optionsStatut = [
-    { label: "Tous", value: "all" },
-    { label: "Terminé", value: "completed" },
-    { label: "Non terminé", value: "not_completed" },
-  ];
-
-  // Filtrage et tri des jeux en fonction des critères sélectionnés
-  // useMemo : React garde le tableau filtré en mémoire et ne ré-exécute le filtrage/tri QUE si l'une des dépendances change
+  // Filtrage et tri délégués
   const filteredGames = useMemo(
     () =>
-      games
-        .filter(
-          (game) =>
-            // 1. Filtre sur la durée
-            game.estimatedPlaytime <= maxDuration &&
-            // 2. Filtre sur la console
-            (selectedConsole === "Toutes" ||
-              game.console === selectedConsole) &&
-            // 3. Filtre sur le style/genre
-            (selectedStyle === "Tous" || game.genre === selectedStyle) &&
-            // 4. Filtre sur le statut (terminé / non terminé)
-            (selectedStatus === "all" ||
-              (selectedStatus === "completed" && game.review?.score != null) ||
-              (selectedStatus === "not_completed" &&
-                game.review?.score == null)) &&
-            // 5. Filtre sur la recherche textuelle
-            game.title.toLowerCase().includes(searchQuery.toLowerCase()),
-        )
-        .sort((a, b) => {
-          let diff = 0;
-          switch (sortBy) {
-            case "alphabetical":
-              return a.title.localeCompare(b.title);
-            case "anti_alphabetical":
-              return b.title.localeCompare(a.title);
-            case "releaseDate_ascending":
-              diff =
-                new Date(a.releaseDate).getTime() -
-                new Date(b.releaseDate).getTime();
-              break;
-            case "releaseDate_descending":
-              diff =
-                new Date(b.releaseDate).getTime() -
-                new Date(a.releaseDate).getTime();
-              break;
-            case "estimatedPlaytime_ascending":
-              diff = a.estimatedPlaytime - b.estimatedPlaytime;
-              break;
-            case "estimatedPlaytime_descending":
-              diff = b.estimatedPlaytime - a.estimatedPlaytime;
-              break;
-            case "score_ascending":
-              diff = (a.review?.score ?? 0) - (b.review?.score ?? 0);
-              break;
-
-            case "score_descending":
-              diff = (b.review?.score ?? 0) - (a.review?.score ?? 0);
-              break;
-            default:
-              break;
-          }
-          return diff !== 0 ? diff : a.title.localeCompare(b.title);
-        }),
+      filterAndSortGames(games, {
+        maxDuration,
+        selectedConsole,
+        selectedStyle,
+        selectedStatus,
+        searchQuery,
+        sortBy,
+      }),
     [
       games,
-      searchQuery,
+      maxDuration,
       selectedConsole,
       selectedStyle,
       selectedStatus,
-      maxDuration,
+      searchQuery,
       sortBy,
     ],
   );
 
   return (
     <div className="relative w-full h-full flex flex-col px-12 pt-4 pb-18 gap-4">
-      {/* Titre principal */}
       <Heading as="h1" size="xl">
         Ma liste
       </Heading>
 
-      {/* Conteneur principal flex */}
-      <div className="w-full flex flex-col lg:flex-row gap-4 flex-1 min-h-0 p-2 rounded-xl border border-main/10  bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70">
-        {/* PANNEAU GAUCHE */}
-        <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
-          {/* En-tête fixe */}
-          <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
-            <h2 className="text-lg font-semibold tracking-wide uppercase">
-              Filtres
-            </h2>
-          </div>
+      <div className="w-full flex flex-col lg:flex-row gap-4 flex-1 min-h-0 p-2 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70">
+        <FilterPanel>
+          <Input
+            placeholder="Rechercher un jeu..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <Select
+            label="Console"
+            options={optionsConsole}
+            selectedValue={selectedConsole}
+            onChange={(val) => setSelectedConsole(val)}
+          />
+          <Select
+            label="Style"
+            options={optionsStyle}
+            selectedValue={selectedStyle}
+            onChange={(val) => setSelectedStyle(val)}
+          />
+          <Select
+            label="Statut"
+            options={OPTIONS_STATUS}
+            selectedValue={selectedStatus}
+            onChange={(val) => setSelectedStatus(val)}
+          />
+          <RangeInput
+            label="Durée de vie maximale"
+            value={maxDuration}
+            onChange={(val) => setMaxDuration(val)}
+            min={minEstimatedPlaytime}
+            max={maxEstimatedPlaytime}
+            step={1}
+            unit="h"
+          />
+        </FilterPanel>
 
-          {/* Formulaire : scroll uniquement sur Desktop */}
-          <div className="space-y-4 px-2 py-4 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
-            <Input
-              placeholder="Rechercher un jeu..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-
-            <Select
-              label="Console"
-              options={optionsConsole}
-              selectedValue={selectedConsole}
-              onChange={(val) => setSelectedConsole(val)}
-            />
-
-            <Select
-              label="Style"
-              options={optionsStyle}
-              selectedValue={selectedStyle}
-              onChange={(val) => setSelectedStyle(val)}
-            />
-
-            <Select
-              label="Statut"
-              options={optionsStatut}
-              selectedValue={selectedStatus}
-              onChange={(val) => setSelectedStatus(val)}
-            />
-
-            <RangeInput
-              label="Durée de vie maximale"
-              value={maxDuration}
-              onChange={(val) => setMaxDuration(val)}
-              min={minEstimatedPlaytime}
-              max={maxEstimatedPlaytime}
-              step={1}
-              unit="h"
-            />
-          </div>
-        </section>
-
-        {/* PANNEAU DROIT */}
         <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0">
-          {/* En-tête fixe */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-main/10 px-2 md:h-12 lg:flex-shrink-0">
-            <div className="flex items-baseline gap-2">
-              <h2 className="text-lg font-semibold tracking-wide uppercase">
-                Liste de jeux
-              </h2>
-              <span className="text-sm text-main/60">
-                ({filteredGames.length} résultats)
-              </span>
-            </div>
-            <div className="flex flex-col md:flex-row md:items-center gap-2">
-              <label className="text-xs font-medium text-main/80">Tri </label>
-              <div className="w-full md:w-60">
-                <Select
-                  options={optionsSort}
-                  selectedValue={sortBy}
-                  onChange={(val) => setSortBy(val)}
-                />
-              </div>
-            </div>
-          </div>
+          <ListHeader
+            totalResults={filteredGames.length}
+            sortBy={sortBy}
+            onSortChange={(val) => setSortBy(val)}
+          />
 
-          {/* Grille : scroll uniquement sur Desktop */}
           <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
             {loading ? (
               <p className="p-8 text-gray-400">Chargement des jeux...</p>
