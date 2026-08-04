@@ -63,13 +63,19 @@ export default function MaListe() {
         if (data.length > 0) {
           // 1. Validation de la durée
           const urlDuration = searchParams.get("duration");
-          const maxTime = Math.max(
-            ...data.map((game) => game.estimatedPlaytime),
-          );
-          urlDuration
-            ? setMaxDuration(Math.min(Number(urlDuration), maxTime))
-            : setMaxDuration(maxTime);
-
+          const playtimes = data.map((game) => game.estimatedPlaytime);
+          const minTime = Math.min(...playtimes);
+          const maxTime = Math.max(...playtimes);
+          if (urlDuration) {
+            const parsedDuration = Number(urlDuration);
+            if (!isNaN(parsedDuration) && parsedDuration >= minTime) {
+              setMaxDuration(Math.min(parsedDuration, maxTime));
+            } else {
+              setMaxDuration(maxTime);
+            }
+          } else {
+            setMaxDuration(maxTime);
+          }
           // 2. Validation du style
           const validStyles = data.map((game) => game.genre);
           const urlStyle = searchParams.get("style");
@@ -114,6 +120,13 @@ export default function MaListe() {
       ? Math.max(...games.map((game) => game.estimatedPlaytime))
       : 200;
 
+  //Calcul de la durée de vie minimale parmi tous les jeux pour définir la valeur minimale du RangeInput
+  const minEstimatedPlaytime =
+    // Sécurité si les données ne sont pas encore chargés
+    games.length > 0
+      ? Math.min(...games.map((game) => game.estimatedPlaytime))
+      : 0;
+
   // Mise à jour de l'URL en fonction des filtres sélectionnés
   useEffect(() => {
     const params = new URLSearchParams();
@@ -147,6 +160,7 @@ export default function MaListe() {
     // Mise à jour de l'URL
     const search = params.toString();
     const query = search ? `?${search}` : "";
+    // replace permet de mettre à jour l'URL à la volée, et evite aussi le scroll to top
     router.replace(`${pathname}${query}`, { scroll: false });
   }, [
     searchQuery,
@@ -193,6 +207,7 @@ export default function MaListe() {
   ];
 
   // Filtrage et tri des jeux en fonction des critères sélectionnés
+  // useMemo : React garde le tableau filtré en mémoire et ne ré-exécute le filtrage/tri QUE si l'une des dépendances change
   const filteredGames = useMemo(
     () =>
       games
@@ -310,9 +325,9 @@ export default function MaListe() {
               label="Durée de vie maximale"
               value={maxDuration}
               onChange={(val) => setMaxDuration(val)}
-              min={5}
+              min={minEstimatedPlaytime}
               max={maxEstimatedPlaytime}
-              step={5}
+              step={1}
               unit="h"
             />
           </div>
