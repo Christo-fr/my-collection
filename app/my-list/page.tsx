@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import RangeInput from "@/components/ui/RangeInput";
@@ -9,29 +10,50 @@ import GameCard from "@/components/game/GameCard";
 import { Game } from "@/types/game";
 
 export default function MaListe() {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedConsole, setSelectedConsole] = useState<string>("Toutes");
-  const [selectedStyle, setSelectedStyle] = useState<string>("Tous");
-  const [selectedStatus, setSelectedStatus] = useState<string>("all");
-  const [maxDuration, setMaxDuration] = useState<number>(200);
-  const [maxNotation, setNotation] = useState<number>(0);
-  const [sortBy, setSortBy] = useState<string>("alphabetical");
-  const [games, setGames] = useState<Game[]>([]);
+  //permet de lire les paramètres actuels de l'URL
+  const searchParams = useSearchParams();
+  // permet de mettre à jour l'URL sans recharger la page
+  const router = useRouter();
+  //donne le chemin actuel
+  const pathname = usePathname();
 
+  const [searchQuery, setSearchQuery] = useState<string>(
+    searchParams.get("q") ?? "",
+  );
+  const [selectedConsole, setSelectedConsole] = useState<string>(
+    searchParams.get("console") ?? "Toutes",
+  );
+  const [selectedStyle, setSelectedStyle] = useState<string>(
+    searchParams.get("style") ?? "Tous",
+  );
+  const [selectedStatus, setSelectedStatus] = useState<string>(
+    searchParams.get("status") ?? "all",
+  );
+  const [maxDuration, setMaxDuration] = useState<number>(
+    Number(searchParams.get("duration")) ?? 200,
+  );
+  const [sortBy, setSortBy] = useState<string>(
+    searchParams.get("sort") ?? "alphabetical",
+  );
+  const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Chargement des jeux depuis l'API
   useEffect(() => {
     async function fetchGames() {
       try {
         const reponse = await fetch("/api/games"); // Appel l'adresse web
         const data: Game[] = await reponse.json(); // Receptionne la réponse et la transforme en tableau d'objets
         setGames(data); // Elle dépose les valeurs grâce à  setGames
+        const urlDuration = searchParams.get("duration");
         if (data.length > 0) {
           // Sécurité si les données ne sont pas encore chargés, si c'est le cas, trouve le nombre de durée de vie max
           const maxTime = Math.max(
             ...data.map((game) => game.estimatedPlaytime),
           );
-          setMaxDuration(maxTime);
+          urlDuration
+            ? setMaxDuration(Math.min(Number(urlDuration), maxTime))
+            : setMaxDuration(maxTime);
         }
       } catch (error) {
         console.error("Erreur lors du chargement des jeux :", error);
@@ -41,6 +63,59 @@ export default function MaListe() {
     }
     fetchGames(); // 👈 Indispensable pour lancer l'appel au chargement de la page !
   }, []);
+
+  //Calcul de la durée de vie maximale parmi tous les jeux pour définir la valeur maximale du RangeInput
+  const maxEstimatedPlaytime =
+    // Sécurité si les données ne sont pas encore chargés
+    games.length > 0
+      ? Math.max(...games.map((game) => game.estimatedPlaytime))
+      : 200;
+
+  // Mise à jour de l'URL en fonction des filtres sélectionnés
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    // 1. Recherche textuelle
+    if (searchQuery) {
+      params.set("q", searchQuery);
+    }
+
+    if (selectedConsole !== "Toutes") {
+      params.set("console", selectedConsole);
+    }
+
+    if (selectedStyle !== "Tous") {
+      params.set("style", selectedStyle);
+    }
+
+    if (selectedStatus !== "all") {
+      params.set("status", selectedStatus);
+    }
+
+    if (sortBy !== "alphabetical") {
+      params.set("sort", sortBy);
+    }
+
+    // 6. Durée max (si maxDuration est défini)
+    if (maxDuration < maxEstimatedPlaytime) {
+      params.set("duration", maxDuration.toString());
+    }
+
+    // Mise à jour de l'URL
+    const search = params.toString();
+    const query = search ? `?${search}` : "";
+    router.replace(`${pathname}${query}`, { scroll: false });
+  }, [
+    searchQuery,
+    selectedConsole,
+    selectedStyle,
+    selectedStatus,
+    maxDuration,
+    sortBy,
+    maxEstimatedPlaytime,
+    pathname,
+    router,
+  ]);
 
   // 1. Options pour les Consoles
   const optionsConsole = [
@@ -56,6 +131,7 @@ export default function MaListe() {
       .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
   ];
 
+  // 2. Options pour les genres de jeux
   const optionsStyle = [
     { label: "Tous", value: "Tous" },
     ...Array.from(new Set(games.map((jeu) => jeu.genre)))
@@ -66,18 +142,14 @@ export default function MaListe() {
       .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
   ];
 
+  // 3. Options pour le statut des jeux
   const optionsStatut = [
     { label: "Tous", value: "all" },
     { label: "Terminé", value: "completed" },
     { label: "Non terminé", value: "not_completed" },
   ];
 
-  const maxEstimatedPlaytime =
-    // Sécurité si les données ne sont pas encore chargés
-    games.length > 0
-      ? Math.max(...games.map((game) => game.estimatedPlaytime))
-      : 200;
-
+  // 4. Options pour le tri des jeux
   const optionsSort = [
     { label: "Alphabétique", value: "alphabetical" },
     { label: "Anti-Alphabétique", value: "anti_alphabetical" },
@@ -92,6 +164,7 @@ export default function MaListe() {
     { label: "Note - décroissante", value: "score_descending" },
   ];
 
+  // Filtrage et tri des jeux en fonction des critères sélectionnés
   const filteredGames = useMemo(
     () =>
       games
