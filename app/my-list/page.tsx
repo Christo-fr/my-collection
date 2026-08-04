@@ -46,6 +46,10 @@ export default function MaListe() {
   const minEstimatedPlaytime =
     games.length > 0 ? Math.min(...games.map((g) => g.estimatedPlaytime)) : 0;
 
+  // Options calculées
+  const optionsConsole = useMemo(() => getConsoleOptions(games), [games]);
+  const optionsStyle = useMemo(() => getStyleOptions(games), [games]);
+
   // Synchronisation des filtres avec l'URL
   useEffect(() => {
     const params = new URLSearchParams();
@@ -72,10 +76,6 @@ export default function MaListe() {
     pathname,
     router,
   ]);
-
-  // Options calculées
-  const optionsConsole = useMemo(() => getConsoleOptions(games), [games]);
-  const optionsStyle = useMemo(() => getStyleOptions(games), [games]);
 
   // Filtrage et tri délégués
   const filteredGames = useMemo(
@@ -106,40 +106,42 @@ export default function MaListe() {
       </Heading>
 
       <div className="w-full flex flex-col lg:flex-row gap-4 flex-1 min-h-0 p-2 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70">
-        <FilterPanel>
-          <Input
-            placeholder="Rechercher un jeu..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <Select
-            label="Console"
-            options={optionsConsole}
-            selectedValue={selectedConsole}
-            onChange={(val) => setSelectedConsole(val)}
-          />
-          <Select
-            label="Style"
-            options={optionsStyle}
-            selectedValue={selectedStyle}
-            onChange={(val) => setSelectedStyle(val)}
-          />
-          <Select
-            label="Statut"
-            options={OPTIONS_STATUS}
-            selectedValue={selectedStatus}
-            onChange={(val) => setSelectedStatus(val)}
-          />
-          <RangeInput
-            label="Durée de vie maximale"
-            value={maxDuration}
-            onChange={(val) => setMaxDuration(val)}
-            min={minEstimatedPlaytime}
-            max={maxEstimatedPlaytime}
-            step={1}
-            unit="h"
-          />
-        </FilterPanel>
+        <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
+          <FilterPanel>
+            <Input
+              placeholder="Rechercher un jeu..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <Select
+              label="Console"
+              options={optionsConsole}
+              selectedValue={selectedConsole}
+              onChange={(val) => setSelectedConsole(val)}
+            />
+            <Select
+              label="Style"
+              options={optionsStyle}
+              selectedValue={selectedStyle}
+              onChange={(val) => setSelectedStyle(val)}
+            />
+            <Select
+              label="Statut"
+              options={OPTIONS_STATUS}
+              selectedValue={selectedStatus}
+              onChange={(val) => setSelectedStatus(val)}
+            />
+            <RangeInput
+              label="Durée de vie maximale"
+              value={maxDuration}
+              onChange={(val) => setMaxDuration(val)}
+              min={minEstimatedPlaytime}
+              max={maxEstimatedPlaytime}
+              step={1}
+              unit="h"
+            />
+          </FilterPanel>
+        </section>
 
         <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0">
           <ListHeader
