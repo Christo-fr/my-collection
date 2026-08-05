@@ -1,83 +1,118 @@
 import { Game } from "@/types/game";
 
-/**
- * Options statiques pour le filtre de statut.
- */
+// =============================================================
+// OPTIONS STATIQUES (Listes fixes)
+// =============================================================
+
+// Select pour le filtrage par statut (terminé / non terminé)
 export const OPTIONS_STATUS = [
   { label: "Tous", value: "all" },
   { label: "Terminé", value: "completed" },
   { label: "Non terminé", value: "not_completed" },
 ];
 
-/**
- * Extrait la liste des consoles uniques à partir des jeux et les trie par ordre alphabétique.
- */
-export function getConsoleOptions(games: Game[]) {
-  return [
-    { label: "Toutes", value: "Toutes" },
-    ...Array.from(new Set(games.map((jeu) => jeu.console)))
-      .map((nomConsole) => ({ label: nomConsole, value: nomConsole }))
-      .sort((a, b) => a.label.localeCompare(b.label)),
-  ];
+// Select pour le tri des jeux
+export const OPTIONS_SORT = [
+  { label: "Alphabétique", value: "alphabetical" },
+  { label: "Anti-Alphabétique", value: "anti_alphabetical" },
+  { label: "Date de sortie - croissante", value: "releaseDate_ascending" },
+  { label: "Date de sortie - décroissante", value: "releaseDate_descending" },
+  { label: "Durée de vie - croissant", value: "estimatedPlaytime_ascending" },
+  {
+    label: "Durée de vie - décroissant",
+    value: "estimatedPlaytime_descending",
+  },
+  { label: "Note - croissante", value: "score_ascending" },
+  { label: "Note - décroissante", value: "score_descending" },
+];
+
+// =============================================================
+//  OPTIONS DYNAMIQUES (SELECT / RANGEINPUT)
+// =============================================================
+
+export function getPlaytimeBounds(games: Game[]) {
+  // Calcul de la durée de vie maximale parmi tous les jeux pour définir la valeur maximale du RangeInput
+  const maxEstimatedPlaytime = // Sécurité si les données ne sont pas encore chargés
+    games.length > 0
+      ? Math.max(...games.map((game) => game.estimatedPlaytime))
+      : 200; // Calcul de la durée de vie minimale parmi tous les jeux pour définir la valeur minimale du RangeInput
+
+  const minEstimatedPlaytime = // Sécurité si les données ne sont pas encore chargés
+    games.length > 0
+      ? Math.min(...games.map((game) => game.estimatedPlaytime))
+      : 0;
+
+  return { min: minEstimatedPlaytime, max: maxEstimatedPlaytime };
 }
 
-/**
- * Extrait la liste des genres/styles uniques à partir des jeux et les trie par ordre alphabétique.
- */
+export function getConsoleOptions(games: Game[]) {
+  // 1. Options pour les Consoles
+  const optionsConsole = [
+    // Option par défaut pour désactiver le filtre
+    { label: "Toutes", value: "Toutes" },
+    // 1. Premier .map() + Set : extraction et suppression des doublons
+    // 2. Second .map() : mise au format { label, value } pour le composant <Select />
+    ...Array.from(new Set(games.map((jeu) => jeu.console)))
+      .map((nomConsole) => ({
+        label: nomConsole,
+        value: nomConsole,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
+  ];
+  return optionsConsole;
+}
+
 export function getStyleOptions(games: Game[]) {
-  return [
+  // 2. Options pour les genres de jeux
+  const optionsStyle = [
     { label: "Tous", value: "Tous" },
     ...Array.from(new Set(games.map((jeu) => jeu.genre)))
-      .map((nomGenre) => ({ label: nomGenre, value: nomGenre }))
-      .sort((a, b) => a.label.localeCompare(b.label)),
+      .map((nomGenre) => ({
+        label: nomGenre,
+        value: nomGenre,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
   ];
+  return optionsStyle;
 }
 
-interface FilterParams {
-  maxDuration: number;
+// =============================================================
+//  FILTRAGE ET TRI DES JEUX
+// =============================================================
+
+export interface GameFilters {
+  searchQuery: string;
   selectedConsole: string;
   selectedStyle: string;
   selectedStatus: string;
-  searchQuery: string;
+  maxDuration: number;
   sortBy: string;
 }
 
-/**
- * Fonction pure : applique l'ensemble des filtres (durée, console, style, statut, recherche)
- * ainsi que le tri demandé sur la liste des jeux.
- */
-export function filterAndSortGames(
-  games: Game[],
-  filters: FilterParams,
-): Game[] {
-  const {
-    maxDuration,
-    selectedConsole,
-    selectedStyle,
-    selectedStatus,
-    searchQuery,
-    sortBy,
-  } = filters;
-
+export function filterGames(games: Game[], filters: GameFilters): Game[] {
   return games
     .filter(
       (game) =>
-        // 1. Filtre durée
-        game.estimatedPlaytime <= maxDuration &&
-        // 2. Filtre console
-        (selectedConsole === "Toutes" || game.console === selectedConsole) &&
-        // 3. Filtre genre
-        (selectedStyle === "Tous" || game.genre === selectedStyle) &&
-        // 4. Filtre statut
-        (selectedStatus === "all" ||
-          (selectedStatus === "completed" && game.review?.score != null) ||
-          (selectedStatus === "not_completed" && game.review?.score == null)) &&
-        // 5. Filtre recherche textuelle
-        game.title.toLowerCase().includes(searchQuery.toLowerCase()),
+        // 1. Filtre sur la durée
+        game.estimatedPlaytime <= filters.maxDuration &&
+        // 2. Filtre sur la console
+        (filters.selectedConsole === "Toutes" ||
+          game.console === filters.selectedConsole) &&
+        // 3. Filtre sur le style/genre
+        (filters.selectedStyle === "Tous" ||
+          game.genre === filters.selectedStyle) &&
+        // 4. Filtre sur le statut (terminé / non terminé)
+        (filters.selectedStatus === "all" ||
+          (filters.selectedStatus === "completed" &&
+            game.review?.score != null) ||
+          (filters.selectedStatus === "not_completed" &&
+            game.review?.score == null)) &&
+        // 5. Filtre sur la recherche textuelle
+        game.title.toLowerCase().includes(filters.searchQuery.toLowerCase()),
     )
     .sort((a, b) => {
       let diff = 0;
-      switch (sortBy) {
+      switch (filters.sortBy) {
         case "alphabetical":
           return a.title.localeCompare(b.title);
         case "anti_alphabetical":
