@@ -1,18 +1,18 @@
 "use client";
-
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useGames } from "@/features/game/useGames";
 import ListHeader from "@/components/game/ListHeader";
 import { OPTIONS_SORT, OPTIONS_STATUS } from "@/features/game/gameUtils";
 
 import LayoutFull from "@/components/layout/LayoutFull";
 import FilterPanel from "@/components/game/FilterPanel";
-
 import Input from "@/components/ui/Input";
 import RangeInput from "@/components/ui/RangeInput";
 import Select from "@/components/ui/Select";
 import GameCard from "@/components/game/GameCard";
 
 export default function MaListe() {
+  const [animation] = useAutoAnimate();
   const {
     games,
     loading,
@@ -81,7 +81,10 @@ export default function MaListe() {
           ) : games.length === 0 ? (
             <p className="text-main/60 text-sm">Aucun jeu trouvé</p>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            <div
+              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 "
+              ref={animation}
+            >
               {games.map((game) => (
                 <GameCard key={game.id} game={game} />
               ))}
