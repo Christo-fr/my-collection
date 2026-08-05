@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import LayoutFull from "@/components/layout/LayoutFull";
+import FilterPanel from "@/components/game/FilterPanel";
 import Heading from "@/components/ui/Heading";
 import Input from "@/components/ui/Input";
 import RangeInput from "@/components/ui/RangeInput";
@@ -302,42 +303,30 @@ export default function MaListe() {
   return (
     <LayoutFull title="Ma liste">
       <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
-        {/* En-tête fixe */}
-        <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
-          <h2 className="text-lg font-semibold tracking-wide uppercase">
-            Filtres
-          </h2>
-        </div>
-
-        {/* Formulaire : scroll uniquement sur Desktop */}
-        <div className="space-y-4 px-2 py-4 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
+        <FilterPanel>
           <Input
             placeholder="Rechercher un jeu..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-
           <Select
             label="Console"
             options={optionsConsole}
             selectedValue={selectedConsole}
             onChange={(val) => setSelectedConsole(val)}
           />
-
           <Select
             label="Style"
             options={optionsStyle}
             selectedValue={selectedStyle}
             onChange={(val) => setSelectedStyle(val)}
           />
-
           <Select
             label="Statut"
             options={optionsStatut}
             selectedValue={selectedStatus}
             onChange={(val) => setSelectedStatus(val)}
           />
-
           <RangeInput
             label="Durée de vie maximale"
             value={maxDuration}
@@ -347,7 +336,7 @@ export default function MaListe() {
             step={1}
             unit="h"
           />
-        </div>
+        </FilterPanel>
       </section>
       {/* PANNEAU DROIT */}
       <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0">

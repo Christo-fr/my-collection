@@ -12,7 +12,9 @@ export default function LayoutFull({
   className = "",
 }: SplitLayoutProps) {
   return (
-    <div className="relative w-full h-full flex flex-col px-12 pt-4 pb-18 gap-4">
+    <div
+      className={`relative w-full h-full flex flex-col px-12 pt-4 pb-18 gap-4 ${className}`}
+    >
       {/* Titre principal */}
       <Heading as="h1" size="xl">
         {title}
