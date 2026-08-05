@@ -1,8 +1,6 @@
-import { ReactNode } from "react";
-
 interface FilterPanelProps {
   title?: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export default function FilterPanel({

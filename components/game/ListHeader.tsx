@@ -3,9 +3,11 @@ import Select from "@/components/ui/Select";
 import { OPTIONS_SORT } from "@/features/game";
 
 interface ListHeaderProps {
+  title: string;
   totalResults: number;
   sortBy: string;
-  onSortChange: (val: string) => void;
+  onSortChange: (value: string) => void;
+  sortOptions: { label: string; value: string }[];
 }
 
 /**
@@ -14,9 +16,11 @@ interface ListHeaderProps {
  * et le menu déroulant de tri.
  */
 export default function ListHeader({
+  title,
   totalResults,
   sortBy,
   onSortChange,
+  sortOptions,
 }: ListHeaderProps) {
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-main/10 px-2 md:h-12 lg:flex-shrink-0">
@@ -24,15 +28,17 @@ export default function ListHeader({
         <h2 className="text-lg font-semibold tracking-wide uppercase">
           Liste de jeux
         </h2>
-        <span className="text-sm text-main/60">({totalResults} résultats)</span>
+        <span className="text-sm text-main/60">
+          ({filteredGames.length} résultats)
+        </span>
       </div>
       <div className="flex flex-col md:flex-row md:items-center gap-2">
         <label className="text-xs font-medium text-main/80">Tri </label>
         <div className="w-full md:w-60">
           <Select
-            options={OPTIONS_SORT}
+            options={optionsSort}
             selectedValue={sortBy}
-            onChange={onSortChange}
+            onChange={(val) => setSortBy(val)}
           />
         </div>
       </div>
