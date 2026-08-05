@@ -34,7 +34,7 @@ export default function Home() {
         <div className="flex items-center gap-3 flex-wrap">
           <Button
             variant="primary"
-            href="/liste"
+            href="/list"
             icon={<List className="w-5 h-5" />}
           >
             Ma Liste
