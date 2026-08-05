@@ -5782,5 +5782,680 @@
       }
     },
     "review": null
+  },
+  {
+    "id": 69,
+    "title": "The Legend of Zelda - Twilight Princess HD",
+    "franchise": "The Legend of Zelda",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "RPG - Dynamique",
+    "pegi": 12,
+    "language": "Française",
+    "releaseDate": "2016-03",
+    "estimatedPlaytime": 30,
+    "description": "Rejoignez Link dans sa quête pour repousser les forces des ténèbres qui menacent le Royaume d'Hyrule. Avec l'aide de l'esprit Midona, Link doit naviguer entre le monde de la lumière et le royaume des ténèbres afin de retrouver les pouvoirs nécessaires à la sauvegarde du monde. Dans cette aventure épique, armez-vous de la capacité unique de passer de la forme humaine à la forme de loup pour explorer de vastes donjons, résoudre des énigmes passionnantes et combattre des ennemis terrifiants. Entre lumière et ténèbres, pourrez-vous sauver Hyrule ?",
+    "youtubeId": "6w6GEJT5isI",
+    "images": {
+      "cover": "/games/covers/thelegendofzeldatwilightprincesshd.jpg",
+      "logo": "/games/logos/thelegendofzeldatwilightprincesshd.png",
+      "parallax": {
+        "url": "/games/parallaxs/thelegendofzeldatwilightprincesshd.png",
+        "truncated": false
+      }
+    },
+    "review": null
+  },
+  {
+    "id": 75,
+    "title": "Bayonetta",
+    "franchise": "Bayonetta",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Platinum Games",
+    "genre": "Action",
+    "pegi": 18,
+    "language": "Française / Voix : Japonaise",
+    "releaseDate": "2014-10",
+    "estimatedPlaytime": 11,
+    "description": "Sorti en 2010, le premier opus de la saga Bayonetta vous a fait découvrir son action effrénée, un univers à l'action explosive dans un style bien trempé. Avec une arme dans chaque main et sur chaque pied, Bayonetta élimine ses adversaires avec des attaques combo aussi belles que brutales. Évitez les attaques ennemies au bon moment pour activer l'Envoûtement : vos adversaires au ralenti se retrouvent sans défense face à votre enchaînement de coups de pieds, de coups de poings et de tirs. Puis achevez-les avec une Attaque sadique. Aucun ange n'arrête Bayonetta !",
+    "youtubeId": "h7PZ1i992kc",
+    "images": {
+      "cover": "/games/covers/bayonetta.jpg",
+      "logo": "/games/logos/bayonetta.png",
+      "parallax": {
+        "url": "/games/parallaxs/bayonetta.webp",
+        "truncated": false
+      }
+    },
+    "review": null
+  },
+  {
+    "id": 76,
+    "title": "Bayonetta 2",
+    "franchise": "Bayonetta",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Platinum Games",
+    "genre": "Action",
+    "pegi": 16,
+    "language": "Française / Voix : Japonaise",
+    "releaseDate": "2014-10",
+    "estimatedPlaytime": 10,
+    "description": "Avec cette suite fracassante du jeu d'action Bayonetta acclamé par la critique, les joueurs seront collés à leur fauteuil du début à la fin. Ce jeu à l'action effrénée vous fera combattre dans des batailles épiques à couper le souffle. Combattez sur un jet volant au-dessus de la ville et tenez la dragée haute à un monstre angélique à la main dévastatrice sur un train lancé à vive allure ! Et filez dans les airs pour combattre un dragon démoniaque tout en partant à l'ascension d'un gratte-ciel !",
+    "youtubeId": "oKa4DG1Ug7s",
+    "images": {
+      "cover": "/games/covers/bayonetta2.jpg",
+      "logo": "/games/logos/bayonetta2.png",
+      "parallax": {
+        "url": "/games/parallaxs/bayonetta2.png",
+        "truncated": false
+      }
+    },
+    "review": null
+  },
+  {
+    "id": 77,
+    "title": "Donkey Kong Country - Tropical Freeze",
+    "franchise": "Donkey Kong",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Retro Studios",
+    "genre": "Plateforme",
+    "pegi": 3,
+    "language": "Française",
+    "releaseDate": "2014-02",
+    "estimatedPlaytime": 12,
+    "description": "Dans cette aventure, les Kong doivent reprendre le contrôle de leur île envahie par les Givrés venant des mers du nord. Pour ce faire, ils s'embarquent dans un voyage à travers cinq îles différentes et l'Île gelée de Donkey Kong.",
+    "youtubeId": "sCfi1ywAIfE",
+    "images": {
+      "cover": "/games/covers/donkeykongcountrytropicalfreeze.jpg",
+      "logo": "/games/logos/donkeykongcountrytropicalfreeze.png",
+      "parallax": {
+        "url": "/games/parallaxs/donkeykongcountrytropicalfreeze.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 13,
+      "completedDate": "2014-09",
+      "score": 8,
+      "pros": [
+        "Un très bon renouvellement des mondes",
+        "Un challenge accru",
+        "Le choix entre 4 singes",
+        "La bande sonore",
+        "Un gameplay simple et efficace"
+      ],
+      "cons": [
+        "Des combats de boss beaucoup trop long",
+        "Une difficulté parfois trop hardcore"
+      ],
+      "summary": "Ce 5e opus est un très bon jeu qui se renouvelle totalement grâce à ses environnements suffisamment différencié des épisodes précédents."
+    }
+  },
+  {
+    "id": 78,
+    "title": "Hyrule Warriors",
+    "franchise": "Hyrule Warriors",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Tecmo Koei",
+    "genre": "Beat'em all",
+    "pegi": 12,
+    "language": "Française",
+    "releaseDate": "2014-09",
+    "estimatedPlaytime": 13,
+    "description": "Les plus grands héros d'Hyrule se lancent dans la bataille dans Hyrule Warriors sur Wii U ! Incarnez Link, Impa et divers personnages de The Legend of Zelda et taillez en pièces des légions entières d'ennemis en plaçant de puissants coups dans le plus pur style Dynasty Warriors. Au cours de cette aventure épique se déroulant dans plusieurs lieux emblématiques d'Hyrule, vous devrez affronter les plus grands ennemis de la série Zelda. Réfléchissez à votre tactique et menez à bien des missions de manière la plus efficace possible pour sauver Hyrule !",
+    "youtubeId": "xtkfe47cEMA",
+    "images": {
+      "cover": "/games/covers/hyrulewarriors.png",
+      "logo": "/games/logos/hyrulewarriors.png",
+      "parallax": {
+        "url": "/games/parallaxs/hyrulewarriors.webp",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 25,
+      "completedDate": "2015-03",
+      "score": 7,
+      "pros": [
+        "Le fan service",
+        "Une très grosse durée de vie",
+        "La personnalisation de chaque personnage",
+        "Le casting venant des différents opus de la saga",
+        "Les différentes cartes"
+      ],
+      "cons": [
+        "Beaucoup trop répétitif",
+        "Des décors qui auraient mérités d'être plus soignés"
+      ],
+      "summary": "Hyrule Warriors est mon tout premier Musou. Pas particulièrement fan du genre, le fait d'adapter le jeu sur la série Zelda est une bonne idée."
+    }
+  },
+  {
+    "id": 79,
+    "title": "Mario Kart 8",
+    "franchise": "Mario Kart",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "Sport",
+    "pegi": 3,
+    "language": "Française",
+    "releaseDate": "2014-05",
+    "estimatedPlaytime": 6,
+    "description": "Roulez la tête à l'envers dans Mario Kart 8 en exclusivité sur Wii U ! Utilisez les modes antigravité et faites la course à l'envers et dans tous les sens sur des circuits incroyables, faites la compétition avec d'autres joueurs, qu'ils soient dans la même pièce ou à l'autre bout de la planète !",
+    "youtubeId": "gSWeU5NrqqQ",
+    "images": {
+      "cover": "/games/covers/mariokart8.jpg",
+      "logo": "/games/logos/mariokart8.png",
+      "parallax": {
+        "url": "/games/parallaxs/mariokart8.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 130,
+      "completedDate": "2014-08",
+      "score": 9,
+      "pros": [
+        "48 courses très inspirés",
+        "Le nombre de personnages, karts, etc...",
+        "Personnalisation avec effets",
+        "Le mode Online très fluide",
+        "La bande son"
+      ],
+      "cons": ["Le mode battle sans grand intérêt"],
+      "summary": "Mario Kart 8 est le meilleur opus de la série et le plus complet."
+    }
+  },
+  {
+    "id": 80,
+    "title": "Mario & Sonic aux Jeux Olympiques d'Hiver de Sotchi 2014",
+    "franchise": "Mario & Sonic aux Jeux Olympiques",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Sega",
+    "genre": "Sport",
+    "pegi": 3,
+    "language": "Française / Voix : Française",
+    "releaseDate": "2013-11",
+    "estimatedPlaytime": 5,
+    "description": "Bienvenue en Russie, et plus précisément à Sotchi, ville hôte des Jeux Olympiques d’hiver 2014 ! Mario & Sonic aux Jeux Olympiques de Sotchi 2014 propose aux joueurs de tous âges de s’affronter dans plusieurs disciplines classiques, telles que le patinage de vitesse ou le ski alpin. Que les accros des patins et du snowboard se réjouissent, les épreuves de patinage artistique en couple, Snowboard Slalom géant parallèle et snowboard slopestyle font leur entrée dans la série Mario & Sonic pour la première fois !",
+    "youtubeId": "7YBFDV8wlB8",
+    "images": {
+      "cover": "/games/covers/marioetsonicauxjeuxolympiquesdhiverdesotch2014.jpg",
+      "logo": "/games/logos/marioetsonicauxjeuxolympiquesdhiverdesotch2014.png",
+      "parallax": {
+        "url": "/games/parallaxs/marioetsonicauxjeuxolympiquesdhiverdesotch2014.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 5,
+      "completedDate": "2017-08",
+      "score": 6,
+      "pros": [
+        "Un bon casting",
+        "Les défis rêves",
+        "Propre graphiquement",
+        "Sympatique en multijoueur"
+      ],
+      "cons": [
+        "Gameplay parfois imprécis",
+        "Le mode online inexistant en compétition",
+        "Des épreuves qui se ressemblent"
+      ],
+      "summary": "La série Mario & Sonic aux Jeux Olympiques est surtout un titre qui se joue en multijoueur. Dommage que le mode online ne soit pas présent pour affronter en temps réel les autres joueurs."
+    }
+  },
+  {
+    "id": 81,
+    "title": "New Super Mario Bros. U",
+    "franchise": "Super Mario",
+    "console": "Wii U",
+    "format": "Digital",
+    "developer": "Nintendo",
+    "genre": "Plateforme",
+    "pegi": 3,
+    "language": "Française",
+    "releaseDate": "2012-11",
+    "estimatedPlaytime": 10,
+    "description": "Dans New Super Mario Bros. U, Mario, Luigi et Toad sont rejoints par un nouveau personnage : Vous ! Utilisez votre personnage Mii pour courir et sauter dans cette aventure Mario à défilement latéral. Explorez une carte gigantesque remplie de tout nouveaux stages et expérimentez des façons de jouer inédites et possibles.",
+    "youtubeId": "mFV4Ta7SQIM",
+    "images": {
+      "cover": "/games/covers/newsupermariobrosu.jpg",
+      "logo": "/games/logos/newsupermariobrosu.png",
+      "parallax": {
+        "url": "/games/parallaxs/newsupermariobrosu.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 12,
+      "completedDate": "2014-09",
+      "score": 7,
+      "pros": [
+        "Un gameplay efficace",
+        "Une bonne durée de vie",
+        "Graphismes soignées"
+      ],
+      "cons": [
+        "Toujours les mêmes environnements concernant les mondes",
+        "Un manque d'ambition cinglant"
+      ],
+      "summary": "New Super Mario Bros. U est un bon Mario, mais sans aucune réelle originalité."
+    }
+  },
+  {
+    "id": 82,
+    "title": "Nintendo Land",
+    "franchise": "Nintendo Land",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "Minis-jeux",
+    "pegi": 7,
+    "language": "Française",
+    "releaseDate": "2012-11",
+    "estimatedPlaytime": 10,
+    "description": "Faîtes un tour dans ce parc à thèmes virtuel et amusez-vous dans l'univers de Nintendo ! Explorez 12 attractions, chacune inspirée d'une célèbre série de jeux Nintendo, et profitez-en en solo ou à plusieurs selon le jeu",
+    "youtubeId": "JtICi4-DGm8",
+    "images": {
+      "cover": "/games/covers/nintendoland.webp",
+      "logo": "/games/logos/nintendoland.png",
+      "parallax": {
+        "url": "/games/parallaxs/nintendoland.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 7,
+      "completedDate": "2017-11",
+      "score": 6,
+      "pros": [
+        "Des minis-jeux dans l'esprit des jeux Nintendo",
+        "Des idées de gameplay sympathique",
+        "Très prenant en multi pour les jeux conçus uniquement en multijoueurs"
+      ],
+      "cons": [
+        "Près de la moitié des jeux bridés pour du multi",
+        "Rébarbatif en solo",
+        "Enchaînement de jeux uniquement en multi"
+      ],
+      "summary": "Nintendo Land est un bel ambassadeur concernant la Wii U pour découvrir les différents gameplay offerts par le Gamepad. "
+    }
+  },
+  {
+    "id": 83,
+    "title": "Rayman Legends",
+    "franchise": "Rayman",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Ubisoft",
+    "genre": "Plateforme",
+    "pegi": 7,
+    "language": "Française / Voix : Française",
+    "releaseDate": "2013-08",
+    "estimatedPlaytime": 10,
+    "description": "Une fois de plus, c'est le remue-ménage dans la Croisée des Rêves ! Au fil d'une sieste d'une centaine d'années, les cauchemars se sont démultipliés et ont gagné du terrain, créant ainsi de nouveaux monstres encore plus horribles que jamais ! Ces créatures sont légendaires… Avec l'aide de Murfy, Rayman et Globox se réveillent, bien décidés à combattre ces cauchemars pour sauver les Ptizêtres !",
+    "youtubeId": "m0mdUJPigG4",
+    "images": {
+      "cover": "/games/covers/raymanlegends.jpg",
+      "logo": "/games/logos/raymanlegends.png",
+      "parallax": {
+        "url": "/games/parallaxs/raymanlegends.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 12,
+      "completedDate": "2015-02",
+      "score": 8,
+      "pros": [
+        "Une direction artistique maîtrisée",
+        "Les environnements très différents",
+        "L'utilisation astucieuse de la mablette",
+        "Un excellent gameplay",
+        "La collaboration en co-op",
+        "Les niveaux musicaux qui demandent un rythme particulier",
+        "Très belle 2D"
+      ],
+      "cons": ["L'utilisation de la mablette pour les phases avec Murphy"],
+      "summary": "Rayman Legends est un jeu très soigné et totalement maîtrisé."
+    }
+  },
+  {
+    "id": 84,
+    "title": "Super Mario 3D World",
+    "franchise": "Super Mario",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "Plateforme",
+    "pegi": 3,
+    "language": "Française",
+    "releaseDate": "2013-11",
+    "estimatedPlaytime": 11,
+    "description": "Partez à l'aventure avec Mario, Luigi et leurs amis au royaume des Libella dans SUPER MARIO 3D WORLD ! Bowser a kidnappé la princesse Libella, et Mario et ses camarades sont partis à son secours, s'accrochant aux mâts de multiples stages en cours de route ! Le royaume des Libella est parsemé de toutes sortes de difficultés et de pièges que nos héros vont devoir déjouer : des enchevêtrements de tuyaux transparents, des bombes à jeter sur l'ennemi, et des trains semés d'embûches !",
+    "youtubeId": "7nF46ALi5mg",
+    "images": {
+      "cover": "/games/covers/supermario3dworld.jpg",
+      "logo": "/games/logos/supermario3dworld.png",
+      "parallax": {
+        "url": "/games/parallaxs/supermario3dworld.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 11,
+      "completedDate": "2017-07",
+      "score": 8,
+      "pros": [
+        "Des niveaux très inspirés",
+        "Une bonne durée de vie",
+        "Très beau graphismes",
+        "5 personnages jouables",
+        "Un mario à l'ancienne, en dimension",
+        "De très nombreux power up",
+        "Des niveaux avec différents gameplay"
+      ],
+      "cons": [
+        "Des problèmes de caméra qui peuvent desservir",
+        "La quête des étoiles vertes qui forcent trop à l'exploration"
+      ],
+      "summary": "Cette première tentative de transmettre les Mario rétro en 3D est une totale réussite. Le soin apporté à la réalisation du jeu est visible, et on trouve beaucoup d'inspiration."
+    }
+  },
+  {
+    "id": 85,
+    "title": "Super Mario Maker",
+    "franchise": "Super Mario",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "Plateforme",
+    "pegi": 3,
+    "language": "Française",
+    "releaseDate": "2015-09",
+    "estimatedPlaytime": 5,
+    "description": "Avec un nombre quasiment illimité de stages, Super Mario Maker disponible sur Wii U propose une expérience Mario amusante destinée à tous et sans limite. Créez les niveaux Mario de vos rêves et remplissez-les de multiples moments surprenants qui vous donneront envie d'y rejouer encore et encore.",
+    "youtubeId": "d4VKQabmkkc",
+    "images": {
+      "cover": "/games/covers/supermariomaker.jpg",
+      "logo": "/games/logos/supermariomaker.png",
+      "parallax": {
+        "url": "/games/parallaxs/supermariomaker.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 20,
+      "completedDate": "2016-01",
+      "score": 7,
+      "pros": [
+        "La facilité du soft de création",
+        "L'accès aux niveaux de la communauté",
+        "Un mode parcours",
+        " La possibilité de réaliser des niveaux selon 4 jeux Mario"
+      ],
+      "cons": [
+        "Manque de personnalisation concernant les environnements",
+        "Seulement 6 styles de niveaux",
+        "L'obligation d'attendre un certain délai de jours pour avoir accès à d'autres fonctionnalités"
+      ],
+      "summary": "Super Mario Maker possède un outil de création très efficace, mais le soft aurait pu proposer des environnements plus variés (désert, marais, etc...). Ce qui dessert les différents niveaux mis en ligne, en ayant l'impression de faire toujours les mêmes."
+    }
+  },
+  {
+    "id": 86,
+    "title": "Super Smash Bros. for Wii U",
+    "franchise": "Super Smash Bros.",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "Combat",
+    "pegi": 12,
+    "language": "Française / Voix : Française",
+    "releaseDate": "2014-11",
+    "estimatedPlaytime": 4,
+    "description": "Les plus grandes stars des franchises Nintendo et d'autres personnages surprise se retrouvent dans un jeu de combat en haute définition débordant d'actions spectaculaires sur Wii U. Avec des modes de jeu inédits, du multijoueur en ligne, la possibilité de personnaliser votre personnage et un choix de combattants jouables sans précédent, Super Smash Bros. for Wii U, c'est un véritable choc des titans !",
+    "youtubeId": "PJRK9uhhlQw",
+    "images": {
+      "cover": "/games/covers/supersmashbrosforwiiu.jpg",
+      "logo": "/games/logos/supersmashbrosforwiiu.png",
+      "parallax": {
+        "url": "/games/parallaxs/supersmashbrosforwiiu.avif",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 12,
+      "completedDate": "2015-04",
+      "score": 7,
+      "pros": [
+        "Le fan service",
+        "Le nombre colossal de personnages",
+        "Le nombre de niveaux variés",
+        "Graphiquement réussi",
+        "Un gameplay fluide"
+      ],
+      "cons": [
+        "Mode solo trop pauvre",
+        "Mode scénario remplacé par un jeu de plateau",
+        "Des DLC...",
+        "Un mode online bancal"
+      ],
+      "summary": "Le 4e opus joue sur le nombre de personnages et d'univers différents des jeux Nintendo. Mais le mode solo est moins garni que les épisodes précédents. Les DLCs nuisent à l'intérêt du jeu."
+    }
+  },
+  {
+    "id": 87,
+    "title": "The Legend of Zelda - The Wind Waker HD",
+    "franchise": "The Legend of Zelda",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "RPG - Dynamique",
+    "pegi": 7,
+    "language": "Française",
+    "releaseDate": "2013-10",
+    "estimatedPlaytime": 26,
+    "description": "Sur une petite île au beau milieu de la Grande Mer, un jeune homme se réveille le jour de son anniversaire sans avoir aucune idée de l'aventure qui l'attend. Quand la sœur de Link est enlevée et menée dans la Forteresse Maudite, il part à sa poursuite - accompagné de la pirate Tetra et son équipage. Pour secourir sa chère Arielle, Link se jette à l'eau, où il fera la rencontre du Lion Rouge, un sage bateau évoquant les légendaires Perles des Déesses. Ensemble, ils vont parcourir la Grande Mer dans cette quête primordiale pour sauver le monde de l'obscurité.",
+    "youtubeId": "jRoExeLwI00",
+    "images": {
+      "cover": "/games/covers/thelegendofzeldathewindwakerhd.webp",
+      "logo": "/games/logos/thelegendofzeldathewindwakerhd.png",
+      "parallax": {
+        "url": "/games/parallaxs/thelegendofzeldathewindwakerhd.webp",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 31,
+      "completedDate": "2015-04",
+      "score": 8,
+      "pros": [
+        "Un cell-shading très soigné",
+        "Des thèmes remixés légèrement",
+        "Des rectifications sur certaines quêtes",
+        "Un scénario plutôt agréable à suivre"
+      ],
+      "cons": [
+        "Un nombre de donjons un peu faible",
+        "Un donjon bonus aurait été le bienvenue."
+      ],
+      "summary": "The Wind Waker HD est une belle refonte du jeu d'origine. Pas mal de rajout pour améliorer l'expérience."
+    }
+  },
+  {
+    "id": 129,
+    "title": "The Legend of Zelda - Breath of the Wild ",
+    "franchise": "The Legend of Zelda",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "RPG - Dynamique",
+    "pegi": 12,
+    "language": "Française",
+    "releaseDate": "2017-03",
+    "estimatedPlaytime": 44,
+    "description": "Pas de royaume. Pas de souvenirs. Après un sommeil d'un siècle, tout ce qu'il lui restait... c'était l'espoir.",
+    "youtubeId": "vumJiWdxQSs",
+    "images": {
+      "cover": "/games/covers/thelegendofzeldabreathofthewild.png",
+      "logo": "/games/logos/thelegendofzeldabreathofthewild.png",
+      "parallax": {
+        "url": "/games/parallaxs/thelegendofzeldabreathofthewild.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 36,
+      "completedDate": "2018-03",
+      "score": 6,
+      "pros": [
+        "Un bon système de combat",
+        "Des passages bien épiques",
+        "Le principe de la cuisine",
+        "Un monde inspiré, notamment les villages",
+        "Les modules de la tablette Sheikah"
+      ],
+      "cons": [
+        "Le principe d'équipement qui se détériore",
+        "La progression du personnage par les sanctuaires peu emballant",
+        "La trame principale qui est plutôt en retrait",
+        "La moitié de la carte inutile"
+      ],
+      "summary": "L'opus Breath of the Wild est celui qui s'ouvre à l'open world dans la saga. Bien que le jeu reste très axé sur l'exploration, je suis pas rentré plus que ça dans le jeu malgré une trame principale sympathique à suivre. "
+    }
+  },
+  {
+    "id": 155,
+    "title": "Wii Sports Club",
+    "franchise": "Sports",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "Sport",
+    "pegi": 7,
+    "language": "Française",
+    "releaseDate": "2013-11",
+    "estimatedPlaytime": 2,
+    "description": "Bonjour et bienvenue au club ! Entrez, attrapez une serviette et détendez-vous : nous espérons que vous aimerez tous les sports que nous vous offrons ! Wii Sports Club est une nouvelle façon de découvrir vos activités Wii Sports préférées, complétées par de nouveaux modes de jeu et des éléments disponibles exclusivement sur Wii U. Profitez d'un gameplay plus immersif, d'un mode multijoueur en ligne et de la possibilité de rejoindre des clubs, tout en vous dépensant dans vos sports favoris !",
+    "youtubeId": "Q7AfWNuyLKY",
+    "images": {
+      "cover": "/games/covers/wiisportsclub.webp",
+      "logo": "/games/logos/wiisportsclub.png",
+      "parallax": {
+        "url": "/games/parallaxs/wiisportsclub.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 7,
+      "completedDate": "2017-11",
+      "score": 6,
+      "pros": [
+        "Le mode online",
+        "Différents modes de jeux",
+        "Quelques idées intéressantes de gameplay"
+      ],
+      "cons": [
+        "2 manettes pour la boxe",
+        "Fausse bonne idée de maniabilité concernant le golf",
+        "Suppression du mode Fitness"
+      ],
+      "summary": "La vraie force de ce Wii Sports Club est sans doute son mode online. Ça reste tout de même quelconque."
+    }
+  },
+  {
+    "id": 157,
+    "title": "Xenoblade Chronicles X",
+    "franchise": "Xenoblade Chronicles",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Monolith Soft",
+    "genre": "RPG - Dynamique",
+    "pegi": 12,
+    "language": "Française / Voix : Anglaise",
+    "releaseDate": "2015-12",
+    "estimatedPlaytime": 70,
+    "description": "En 2054, la Terre se retrouva piégée au cœur d'une guerre apocalyptique entre deux races extraterrestres avancées. Alors que l'annihilation totale de l'espèce humaine était proche, les gouvernements du monde entier unirent leurs forces pour élaborer un plan d'évacuation planétaire appelé 'projet Exodus'. Le projet Exodus entrant dans sa phase finale, les terriens rejoignirent tous la ville la plus proche de chez eux et une vaste flotte de vaisseaux les emmena à la recherche d'un nouveau monde. Mais pour la majeure partie de l'humanité, l'espoir fut de courte durée et d'innombrables vaisseaux furent abattus par les forces extraterrestres avant même d'avoir pu quitter l'orbite terrestre, et seuls quelques-uns parvinrent à s'échapper. Parmi eux, un vaisseau appelé la Grande Blanche...",
+    "youtubeId": "7hAqF2eV1tU",
+    "images": {
+      "cover": "/games/covers/xenobladechroniclesx.png",
+      "logo": "/games/logos/xenobladechroniclesx.png",
+      "parallax": {
+        "url": "/games/parallaxs/xenobladechroniclesx.png",
+        "truncated": false
+      }
+    },
+    "review": null
+  },
+  {
+    "id": 174,
+    "title": "Paper Mario - Color Splash",
+    "franchise": "Paper Mario",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "RPG - Cartes",
+    "pegi": 3,
+    "language": "Française",
+    "releaseDate": "2016-10",
+    "estimatedPlaytime": 30,
+    "description": "Imaginez un monde de papier. Par une sombre nuit d'orage, Mario entend frapper à sa porte. Qui cela pourrait-il être à cette heure tardive ? Quelle agréable surprise : c'est Princesse Peach ! Mais qu'est-ce que c'est que ça ? On dirait un message griffonné sur un bout de papier, mais en réalité, c'est… un Toad blanc. Il a perdu toutes ses couleurs ! Le cachet de la poste indique qu'il provient de l'île Barbouille. Mario et ses amis se mettent donc en route pour retrouver son expéditeur, et vite ! ",
+    "youtubeId": "2fon46tIHIs",
+    "images": {
+      "cover": "/games/covers/papermariocolorsplash.jpg",
+      "logo": "/games/logos/papermariocolorsplash.png",
+      "parallax": {
+        "url": "/games/parallaxs/papermariocolorsplash.png",
+        "truncated": false
+      }
+    },
+    "review": null
+  },
+  {
+    "id": 180,
+    "title": "Starfox Zero",
+    "franchise": "Star Fox",
+    "console": "Wii U",
+    "format": "Physical",
+    "developer": "Nintendo",
+    "genre": "Action",
+    "pegi": 7,
+    "language": "Française",
+    "releaseDate": "2016-04",
+    "estimatedPlaytime": 5,
+    "description": "Rejoignez Fox, Falco, Peppy et Slippy pour protéger la galaxie contre l'empire maléfique d'Andross dans Star Fox Zero, un jeu de tir spatial épique en 3D, disponible en exclusivité.",
+    "youtubeId": "2c9J2j0DV7U",
+    "images": {
+      "cover": "/games/covers/starfoxzero.avif",
+      "logo": "/games/logos/starfoxzero.png",
+      "parallax": {
+        "url": "/games/parallaxs/starfoxzero.png",
+        "truncated": false
+      }
+    },
+    "review": {
+      "playtime": 4,
+      "completedDate": "2022-12",
+      "score": 5,
+      "pros": [
+        "Le plaisir de retrouver le système solaire de Lylat",
+        "Les phases en airwings bien dynamique"
+      ],
+      "cons": [
+        "Le temps d'adaptation avec un tutoriel qui est plus long et décourageant",
+        "Les phases en gyroscopes qui nuit au plaisir de jeu",
+        "Les séances d'hélicoptère qui cassent le rythme"
+      ],
+      "summary": "Le gameplay asymétrique n'est pas forcément déplaisant une fois qu'on le maîtrise, mais les niveaux étirés inutilement et le gameplay au gyroscope ont nuit l'expérience de jeu au point de ne plus vouloir le retoucher pour découvrir les autres routes."
+    }
   }
 ]
