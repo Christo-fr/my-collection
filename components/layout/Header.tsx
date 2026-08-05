@@ -1,18 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react"; // 1. Import de DialogBackdrop
 import { useState } from "react";
 import ThemeSwitch from "@/components/ui/ThemeSwitch";
 
 const NAV_LINKS = [
-  { label: "Ma liste", href: "/liste" },
+  { label: "Ma liste", href: "/list" },
   { label: "Suggestion", href: "/suggestion" },
   { label: "Statistiques", href: "/statistiques" },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -34,7 +36,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-main uppercase hover:text-hover text-sm font-medium transition"
+                className={`uppercase hover:text-hover text-sm font-medium transition ${pathname === link.href ? "text-hover" : "text-main"}`}
               >
                 {link.label}
               </Link>
@@ -95,7 +97,7 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsModalOpen(false)}
-                    className="text-main uppercase hover:text-hover text-sm font-medium transition"
+                    className={`uppercase hover:text-hover text-sm font-medium transition ${pathname === link.href ? "text-hover" : ""}`}
                   >
                     {link.label}
                   </Link>
