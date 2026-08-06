@@ -16,6 +16,8 @@ import {
   CalendarDays,
   CalendarCheck,
   Award,
+  CircleDotDashed,
+  Disc,
 } from "lucide-react";
 
 // Providers & Layouts
@@ -303,7 +305,6 @@ export default function GameDetail() {
 
   return (
     <>
-      {" "}
       <LayoutSplit image={game.images.parallax}>
         {/* Logo du jeu */}
         {game.images.logo && (
@@ -330,7 +331,13 @@ export default function GameDetail() {
                 console={game.console}
                 className="h-2.5 w-auto object-contain"
               />
-              <span className="text-sm font-medium">{game.format}</span>
+              {/* Logo du jeu */}
+              {game.images.logo &&
+                (game.format === "Physical" ? (
+                  <Disc className="w-5 h-5" name="Physique" />
+                ) : (
+                  <CircleDotDashed className="w-5 h-5" name="Digital" />
+                ))}
             </div>
           </div>
 
