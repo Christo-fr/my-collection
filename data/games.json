@@ -602,7 +602,7 @@
       "logo": "/games/logos/crisiscorefinalfantasyVIIreunion.png",
       "parallax": {
         "url": "/games/parallaxs/crisiscorefinalfantasyVIIreunion.png",
-        "truncated": false
+        "truncated": true
       }
     },
     "review": {
@@ -3181,8 +3181,8 @@
   },
   {
     "id": 357,
-    "title": "Pokemon Épée",
-    "franchise": "Pokemon",
+    "title": "Pokémon Épée",
+    "franchise": "Pokémon",
     "console": "Switch",
     "format": "Physical",
     "developer": "Game Freak",
@@ -3197,7 +3197,7 @@
       "cover": "/games/covers/pokemonepee.jpg",
       "logo": "/games/logos/pokemonepee.png",
       "parallax": {
-        "url": "/games/parallaxs/pokemonepee.webp",
+        "url": "/games/parallaxs/pokemonepee.png",
         "truncated": false
       }
     },
@@ -3212,8 +3212,8 @@
   },
   {
     "id": 358,
-    "title": "Pokemon Perle Scintillante",
-    "franchise": "Pokemon",
+    "title": "Pokémon Perle Scintillante",
+    "franchise": "Pokémon",
     "console": "Switch",
     "format": "Physical",
     "developer": "Game Freak",
@@ -5753,7 +5753,7 @@
       "cover": "/games/covers/wiisportsresort.jpg",
       "logo": "/games/logos/wiisportsresort.png",
       "parallax": {
-        "url": "/games/parallaxs/wiisportsresort.webp",
+        "url": "/games/parallaxs/wiisportsresort.png",
         "truncated": false
       }
     },
@@ -5777,7 +5777,7 @@
       "cover": "/games/covers/thelegendofzeldacollectorsedition.jpg",
       "logo": "/games/logos/thelegendofzeldacollectorsedition.png",
       "parallax": {
-        "url": "/games/parallaxs/thelegendofzeldacollectorsedition.webp",
+        "url": "/games/parallaxs/thelegendofzeldacollectorsedition.png",
         "truncated": false
       }
     },
@@ -8025,7 +8025,7 @@
       "logo": "/games/logos/talesofgraces.png",
       "parallax": {
         "url": "/games/parallaxs/talesofgraces.webp",
-        "truncated": false
+        "truncated": true
       }
     },
     "review": {
