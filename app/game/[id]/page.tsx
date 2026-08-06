@@ -329,7 +329,7 @@ export default function GameDetail() {
             <div className="flex items-center gap-2">
               <ConsoleIcon
                 console={game.console}
-                className="h-2.5 w-auto object-contain"
+                className="h-5 w-auto object-contain"
               />
               {/* Logo du jeu */}
               {game.images.logo &&

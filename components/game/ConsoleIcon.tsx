@@ -31,7 +31,7 @@ export default function ConsoleIcon({
     <img
       src={iconPath}
       alt={console}
-      className={className}
+      className={`dark:invert ${className}`}
       onError={() => setHasError(true)}
     />
   ) : (
