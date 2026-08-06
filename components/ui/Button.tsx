@@ -4,6 +4,7 @@ import { Button as HeadlessButton } from "@headlessui/react";
 export interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary";
+  size?: "sm" | "md";
   href?: string;
   onClick?: () => void;
   icon?: React.ReactNode;
@@ -16,11 +17,12 @@ export default function Button({
   href,
   onClick,
   icon,
+  size = "md",
   className = "",
 }: ButtonProps) {
   // 1. Styles de base
   const baseStyles =
-    "inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium transition-all duration-300 select-none cursor-pointer";
+    "uppercase inline-flex items-center justify-center gap-2  rounded-xl transition-all duration-300 select-none cursor-pointer";
 
   // 2. Variantes de couleurs
   const variantStyles = {
@@ -29,7 +31,12 @@ export default function Button({
       "border border-primary/30 text-main hover:bg-primary/10 backdrop-blur-md",
   };
 
-  const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${className}`;
+  const sizeStyles = {
+    sm: "text-sm px-2.5 py-1.5",
+    md: "font-medium px-5 py-2.5",
+  };
+
+  const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
   // 3. Si c'est un lien de navigation Next.js
   if (href) {

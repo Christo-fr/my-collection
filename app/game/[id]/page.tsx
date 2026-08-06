@@ -248,7 +248,20 @@ export default function GameDetail() {
             </div>
 
             {/* Tabs */}
-            <Tabs items={sampleTabs} />
+            <Tabs
+              items={sampleTabs}
+              action={
+                game?.youtubeId && (
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => setIsTrailerOpen(true)}
+                  >
+                    Trailer
+                  </Button>
+                )
+              }
+            />
 
             <div>
               {relatedFranchiseGames.length > 0 && (
