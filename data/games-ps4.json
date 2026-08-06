@@ -8,7 +8,7 @@
     "developer": "Gust",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2016-06",
     "estimatedPlaytime": 41,
     "description": "17e épisode de la série Atelier. La jeune alchimiste Sophie de Kirchen Bell rencontre un mystérieux livre nommé Plachta et se lance dans une aventure merveilleuse dans l'espoir de concrétiser ses rêves.",
@@ -49,7 +49,7 @@
     "developer": "Ubisoft Entertainment",
     "genre": "RPG - Tour par tour",
     "pegi": 7,
-    "language": "Française / Voix Française",
+    "language": "FR / Voix FR",
     "releaseDate": "2014-04",
     "estimatedPlaytime": 11,
     "description": "La Reine Noire a volé le Soleil, la Lune et les Étoiles. Vous incarnez Aurora, une jeune princesse au cœur pur dont l'âme se retrouve projetée dans le Royaume de Lemuria. Embarquez dans une quête poétique pour récupérer les trois sources de lumière, vaincre la Reine Noire et sauver le Royaume de Lemuria. Prenez part à un voyage extraordinaire à travers le monde immense de Lemuria et échangez avec ses habitants pour découvrir leurs secrets. Avec un système de combat dynamique au tour par tour, affrontez vos ennemis aux côtés de la luciole Igniculus, contrôlable par un deuxième joueur. Fées, gnomes, loups ou dragons obscurs... Vous découvrirez un monde peuplé de personnages inoubliables à intégrer dans votre équipe, et de créatures prêtes à tout pour vous entraîner dans les ténèbres du Royaume.",
@@ -88,7 +88,7 @@
     "developer": "Corecell Technology",
     "genre": "Sport",
     "pegi": 3,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2016-06",
     "estimatedPlaytime": 5,
     "description": "Crazy Strike Bowling EX est un jeu de bowling familial et convivial avec des personnages de style d'anime et bowlings farfelues. Incarnez Aiden, M. Jenkins ou autres personnages mignons ! Jouer devant les pyramides d'Egypte ou la forêt amazonienne ! Il existe plusieurs modes de jeu, y compris l'exposition et le mode bataille. Chaque personnage possède une capacité spéciale amusement que vous pouvez utiliser. Découvrez le monde amusant de Crazy Strike Bowling EX aujourd'hui !",
@@ -105,11 +105,7 @@
       "playtime": 6,
       "completedDate": null,
       "score": 6,
-      "pros": [
-        "Bonne jouabilité",
-        "Différents stages",
-        "Equipements"
-      ],
+      "pros": ["Bonne jouabilité", "Différents stages", "Equipements"],
       "cons": [
         "Graphisme pas top (Personnages difficilement reconnaissables)",
         "Equipement non pris en compte lors des défis",
@@ -127,7 +123,7 @@
     "developer": "Nippon Ichi Software",
     "genre": "RPG - Tactique",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2015-10",
     "estimatedPlaytime": 44,
     "description": "Formez une alliance et prenez votre revanche dans le nouveau SRPG de la série Disgaea. Killia, pourtant solitaire, se voit obligé de former une armée rebelle avec plusieurs Overlords pour s'opposer au démoniaque Empereur Void Dark et l'empêcher de s'emparer de tout le Netherworld.",
@@ -151,9 +147,7 @@
         "Scénario convaincant",
         "Univers déjanté"
       ],
-      "cons": [
-        "Gestion des fonctionnalités complexes"
-      ],
+      "cons": ["Gestion des fonctionnalités complexes"],
       "summary": "Disgaea 5 est le premier opus que j'ai pu faire. Le système de jeu est très plaisant, que ce soit le système de combat ou la personnalisation de l'équipe. Les annexes sont très nombreuses, à condition de ne pas s'ennuyer à cause de la durée du jeu."
     }
   },
@@ -166,7 +160,7 @@
     "developer": "Humble Hearts",
     "genre": "RPG - Dynamique",
     "pegi": 7,
-    "language": "Française / Voix Anglaise",
+    "language": "FR / Voix UK",
     "releaseDate": "2014-10",
     "estimatedPlaytime": 10,
     "description": "Contrôlez Dust, un guerrier à la recherche de sa véritable destinée, alors qu'il unit ses forces avec la mystique épée d'Ahrah et sa protectrice, Fidget, afin de sauver le monde de Falana d'une armée comme on n'en a jamais vue !",
@@ -189,10 +183,7 @@
         "Système de combat bien dynamique",
         "Quêtes annexes agréables à réaliser"
       ],
-      "cons": [
-        "Durée de vie plutôt courte",
-        "Le chapitre 3"
-      ],
+      "cons": ["Durée de vie plutôt courte", "Le chapitre 3"],
       "summary": "Dust est un bijou en terme de jeu indépendant. La direction artistique est fabuleuse, on sent un travail très soigné. Bien que le scénario semble classique, je regrette le long chapitre 3 qui n'a aucun réel intérêt en plus de lasser. "
     }
   },
@@ -205,7 +196,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Dynamique",
     "pegi": 16,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2015-03",
     "estimatedPlaytime": 23,
     "description": "Final Fantasy Type-0 HD vous invite dans un univers impitoyable et sanguinaire, peuplé de personnages mémorables. Découvrez une histoire envoûtante et un système de jeu élaborés, dignes de la série. Explorez Orience, un monde captivant et palpitant, déchiré par un violent conflit armé opposant quatre nations. Prenez part au combat en incarnant les membres de la classe zéro, des élèves officiers d'élite dont la patrie subit les assauts incessants de l'empire Milites. Pour vaincre l'ennemi et découvrir les véritables raisons du conflit, il vous faudra maîtriser un grand nombre de compétences et de sorts puissants, à l'aide d'un nouveau système de combat qui vous plongera au cœur de l'action.",
@@ -229,7 +220,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Dynamique",
     "pegi": 16,
-    "language": "Française / Voix Française",
+    "language": "FR / Voix FR",
     "releaseDate": "2016-11",
     "estimatedPlaytime": 27,
     "description": "Final Fantasy XV est un action-RPG qui offre aux fans de la série comme à ceux qui la découvrent un nouveau type de fantaisie mêlée d'éléments de la réalité. Vous parcourez un monde immense aux côtés de personnages hauts en couleur dans le rôle du prince Noctis, qui aspire à libérer sa patrie tombée aux mains d'un ennemi impitoyable, et livrerez des batailles exaltantes avec une agilité et une rapidité extrêmes grâce à un système de combat aux commandes simples et intuitives.",
@@ -272,7 +263,7 @@
     "developer": "Studio Japan",
     "genre": "Action",
     "pegi": 12,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2016-02",
     "estimatedPlaytime": 11,
     "description": "Maîtrisez l'incroyable pouvoir de la gravité pour sauver un monde assiégé par d'étranges forces. Un mystérieux félin noir àDisha vos pieds et les forces de la gravité entre vos mains, vous voilà prêt à redéfinir les lois de la nature pour découvrir votre passé oublié et sauver une immense ville flottante d'une terrible tempête gravitationnelle.",
@@ -313,7 +304,7 @@
     "developer": "Square Enix",
     "genre": "Beat'em all",
     "pegi": 12,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2016-11",
     "estimatedPlaytime": 2,
     "description": "Se déroulant 30 ans avant les événements de Final Fantasy XV dans un passé fictif, ce jeu dispose de graphismes rétro et d’un système de combat rapide, influencé par les jeux modernes. Ce système de combat complexe mêle attaques intenses, magie dévastatrice et invocations puissantes, ainsi que des attaques de compagnons, fournissant une expérience de jeu unique dans trois lieux différents du monde de Final Fantasy XV.",
@@ -335,9 +326,7 @@
         "Les nombreuses possibilités en termes de gameplay",
         "Le pixel art"
       ],
-      "cons": [
-        "Seulement 3 environnements"
-      ],
+      "cons": ["Seulement 3 environnements"],
       "summary": "Un Beat'em all simple et efficace."
     }
   },
@@ -350,7 +339,7 @@
     "developer": "Capcom",
     "genre": "Action",
     "pegi": 7,
-    "language": "Anglaise",
+    "language": "UK",
     "releaseDate": "2016-02",
     "estimatedPlaytime": 23,
     "description": "Megaman Legacy Collection célèbre l'histoire en 8 bits du personnage emblématique de Capcom ! Fidèle aux origines de la franchise, cette collection reprend les six jeux d'origine et bien plus encore, ce qui ravira les fans de la première heure et présentera aux nouveaux joueurs les raisons qui ont fait le succès de ce petit personnage bleu devenu si célèbre. Megaman Legacy Collection propose non seulement les six jeux de la série, mais également des façons inédites d'y jouer. Le mode Défi mêle des séquences des six titres et donnera du fil à retordre aux joueurs expérimentés, tout en permettant aux débutants de faire leurs premiers pas dans cet univers. Le mode Musée, quant à lui, retrace l'histoire complète de la franchise et propose des illustrations haute résolution ainsi que des esquisses conceptuelles d'origine.",
@@ -374,9 +363,7 @@
         "Le principe des armes récupérés sur les boss",
         "Tous les bonus (artworks, musiques, guides, défis,...)"
       ],
-      "cons": [
-        "La compilation aurait pu contenir les 10 jeux"
-      ],
+      "cons": ["La compilation aurait pu contenir les 10 jeux"],
       "summary": "Megaman Legacy Collection est un portage un peu fainéant des 6 jeux nes. Capcom aurait pu compléter la collection avec les 4 derniers jeux de la saga."
     }
   },
@@ -389,7 +376,7 @@
     "developer": "Gust",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2016-04",
     "estimatedPlaytime": 15,
     "description": "Le monde était autrefois dirigé par le Nightlord. Dans ce monde vivaient une Saint, dont le destin était d'être offerte en sacrifice au Nightlord, et une Holy Knight, dotée du pouvoir d'utiliser des Servans. La rencontre de ces deux jeunes filles changea le sort du monde.",
@@ -413,7 +400,7 @@
     "developer": "Vanillaware",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2016-06",
     "estimatedPlaytime": 31,
     "description": "Le livre de contes est de nouveau ouvert… Bienvenue dans le monde richement illustré d'Odin Sphere Leifthrasir ! Contrées enneigées, forêts d'émeraudes, et abîmes d'où rejaillissent les flammes vous attirent vers une histoire qui attend d'être découverte. Dans Odin Sphere Leifthrasir, vivez les derniers jours du monde d'Erion, tandis que des royaumes en guerre se livrent bataille pour en prendre le contrôle. Incarnez des personnages sublimes créés à la main et arpentez un royaume enchanté qui recèle de créatures mythiques et de monstres gargantuesques. Cinq trames s'entrelacent au fil de chapitres centrés sur les souffrances d'un nouveau héros.",
@@ -439,9 +426,7 @@
         "Les nouveautés concernant les cartes",
         "Système de combat bien rapide"
       ],
-      "cons": [
-        "Manque d'environnement"
-      ],
+      "cons": ["Manque d'environnement"],
       "summary": "Odin Sphere Leifdrasir est la remasterisation de mon jeu préféré : Odin Sphere. Le soin apporté pour ce jeu est vraiment marquant. Une valeur sûre en termes de RPG Dynamique."
     }
   },
@@ -454,7 +439,7 @@
     "developer": "Gust",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2018-04",
     "estimatedPlaytime": 49,
     "description": "Lydie et Suelle sont des sœurs jumelles qui vivent à Merveille, la capitale du royaume d'Adalet. Elles sont également alchimistes, et leur objectif est d'avoir le meilleur atelier du royaume ! Un jour, elles découvrent un tableau mystérieux renfermant un monde aussi étrange que magnifique, plein de matériaux rares dont elles peuvent se servir pour leur alchimie. Cette découverte deviendra vite essentielle à la réalisation de leur rêve.",
@@ -494,7 +479,7 @@
     "developer": "WayForward",
     "genre": "Plateforme",
     "pegi": 12,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2016-04",
     "estimatedPlaytime": 8,
     "description": "Embarquez pour de nouvelles aventures avec Shantae, génie danseuse du ventre qui après avoir perdu ses pouvoirs doit s'allier à son ennemi juré, l'affreuse Risky Boots, pour libérer Sequin land d'une terrible malédiction. Devenue pirate, elle obtiendra de nouvelles armes, exterminera des monstres et d'énormes boss pour peut-être récupérer ses pouvoirs ! Mais peut-on faire confiance à un ennemi mortel ? Ce 3ème épisode est plus épique que jamais ! Au-delà de Sequin land s'étendent îles maudites et labyrinthes remplis de nouveaux équipements : pistolet de Flintlock, chapeau de pirate, cimeterre, bottes de Risky ou même un canon. Améliorez chevelure et armement, débloquez les techniques avancées de combat de Shantae, trouvez des cartes, récupérez les calamars en cœur, amassez un butin d'objets rares et riez aux éclats devant des personnages aussi sauvages qu'hilarants. ",
@@ -519,9 +504,7 @@
         "Gameplay maîtrisé",
         "Nombreux environnements"
       ],
-      "cons": [
-        "Graphisme qui aurait mérité d'être lissé"
-      ],
+      "cons": ["Graphisme qui aurait mérité d'être lissé"],
       "summary": "J'aurais aimé que cette version soit moins axée pixel art pour réellement profiter de cet univers."
     }
   },
@@ -534,7 +517,7 @@
     "developer": "WayForward",
     "genre": "Plateforme",
     "pegi": 12,
-    "language": "Anglaise / Voix : Anglaise",
+    "language": "UK / Voix : UK",
     "releaseDate": "2015-04",
     "estimatedPlaytime": 5,
     "description": "Élu «Jeu de l'année» par IGN et jeu le mieux noté en 2010 dans Metacritic, le revoilà ! Shantae : Risky’s Revenge – Director’s Cut est un baril de poudre explosif qui secoue les cheveux et fait se déhancher ! Il se compose de milliers d'images animées, de boss géants multi-sprites, et d'une quête infinie. Guide le «demi-génie» Shantae à travers des paysages désolés hantés, déserts brûlants, forêts enchantées, grottes ruisselantes et labyrinthes mortels. Découvre des sortilèges, prépare du café à des zombies, secours des bébés en or et maîtrise la danse du ventre afin que Shantae se transforme en des créatures plus puissantes. Utilise tes pouvoirs afin de déjouer les plans de la pirate Risky Boots et de sauver Sequin Land d'une ruine certaine ! Avec ses persos attachants, son humour aguicheur et son action excentrique succulente, Shantae : Risky's Revenge va secouer tes cheveux et faire danser ton ventre au max !",
@@ -575,7 +558,7 @@
     "developer": "Tri Ace",
     "genre": "RPG - Dynamique",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2016-07",
     "estimatedPlaytime": 22,
     "description": "Star Ocean, l’épopée mêlant S-F et RPG entraînant les joueurs au cœur d’un voyage dans les étoiles et au-delà, fait un retour triomphal sur le devant de la scène avec sa 5e itération.",
@@ -615,7 +598,7 @@
     "developer": "Namco Bandai",
     "genre": "RPG - Dynamique",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2015-10",
     "estimatedPlaytime": 41,
     "description": "Dans un monde déchiré par la guerre et les conflits politiques, acceptez le fardeau du Berger et combattez les forces du mal pour lutter contre la Malveillance et réunir les humains et les séraphins. Incarnez Sorey dans une aventure épique tandis qu'il parcourt un monde médiéval-fantastique. Découvrez des environnements immenses et variés.",
@@ -657,7 +640,7 @@
     "developer": "Square Enix",
     "genre": "Action",
     "pegi": 18,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2014-01",
     "estimatedPlaytime": 12,
     "description": "L'aventure qui force la jeune et inexpérimentée Lara Croft à devenir une survivante endurcie a été remaniée pour les consoles nouvelle génération. Vous y retrouverez une Lara incroyablement détaillée et un environnement qui ressemble à s'y méprendre au monde réel. Lara doit endurer des combats intenses, personnaliser ses armes et son équipement pour survivre à sa première aventure et découvrir le secret mortel de l'île.",
@@ -697,7 +680,7 @@
     "developer": "Frozenbytes",
     "genre": "Plateforme",
     "pegi": 12,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2019-10",
     "estimatedPlaytime": 30,
     "description": "Rejoignez Amadeus le Magicien, Pontius le Chevalier et Zoya la Voleuse et voyagez à travers un royaume en ruines. Liés par le Trine, les trois héros se servent de leurs pouvoirs pour combattre des morts-vivants, traverser des environnements hostiles et résoudre des casse-têtes lors d'une série de quêtes périlleuses. Au fil des trois premiers volets, ils découvrent, comprennent et tentent de maîtriser les pouvoirs octroyés par le Trine. Le dernier opus de la série revient aux sources avec sa perspective en 2,5D. Découvrez le mystérieux Prince Selius, un jeune sorcier tourmenté dont les rêves prennent vie et sèment le chaos dans la réalité. Nos héros doivent arranger la situation avant que les ombres créées par le prince ne ravagent le monde.",
@@ -738,7 +721,7 @@
     "developer": "Square Enix",
     "genre": "Aventure",
     "pegi": 12,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2018-05",
     "estimatedPlaytime": 7,
     "description": "Découvrez un monde merveilleux plein d'oublions, des objets du quotidien qui ont pris vie. Découvrez un univers animé à l'aide des techniques qui ont produit des films encensés par la critique.",
@@ -755,12 +738,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -773,7 +752,7 @@
     "developer": "Naughty Dog",
     "genre": "Action",
     "pegi": 12,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2015-10",
     "estimatedPlaytime": 27,
     "description": "Plongez-vous dans l'une des séries de jeux les plus aimées de tous les temps et suivez Nathan Drake dans sa périlleuse traversée du globe, de ses humbles débuts à ses extraordinaires découvertes. Vous rencontrerez des personnages mémorables, alors que Drake risque sa vie et celle de ses amis dans une course contre d'impitoyables ennemis afin de découvrir des trésors inimaginables.",
@@ -812,7 +791,7 @@
     "developer": "Nippon Ichi Software",
     "genre": "RPG - Tactique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2019-10",
     "estimatedPlaytime": 35,
     "description": "Lorsque les autorités de Hades se révèlent être corrompues, Valvatorez décide de lancer une rébellion afin de les destituer de leur pouvoir ! Armé jusqu'aux dents d'attaques ultra-dynamiques et d'une horde de fonctionnalités spéciales, découvrez la version ultime de Disgaea !",
@@ -836,10 +815,10 @@
     "developer": "Namco Bandai",
     "genre": "RPG - Dynamique",
     "pegi": 7,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2018-05",
     "estimatedPlaytime": 23,
-    "description": "Découvre les mystères de Luna Nova et le monde magique de l'animation japonaise selon Studio Trigger. Joue en équipe avec Akko et ses amies : explore des donjons, lance des sorts et utilise la magie pour retrouver les sept merveilles et résoudre le mystère du décalage temporel. Crois en la puissance de la magie et de l'amitié dans ce jeu de RPG beat'em up à défilement horizontal. ",
+    "description": "Découvre les mystères de Luna Nova et le monde magique de l'animation JP selon Studio Trigger. Joue en équipe avec Akko et ses amies : explore des donjons, lance des sorts et utilise la magie pour retrouver les sept merveilles et résoudre le mystère du décalage temporel. Crois en la puissance de la magie et de l'amitié dans ce jeu de RPG beat'em up à défilement horizontal. ",
     "youtubeId": "T3_oCKRVhgY",
     "images": {
       "cover": "/images/covers/little-witch-academia.jpg",
@@ -853,12 +832,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -871,7 +846,7 @@
     "developer": "Sega",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2018-07",
     "estimatedPlaytime": 30,
     "description": "Incarnez Yuma Ilvern et empêchez l'Empire d'exploiter le pouvoir des anciens dragons, ainsi que l'âme du dragon étincelant qui est en vous. Avec l'aide de vos amis, réalisez votre destin, sauvez Astoria et libérez la puissance que vous deviez jusque là retenir. On a longtemps pensé les dragons éteints et Yuma, possédant la capacité de se transformer en dragon étincelant, fut fait prisonnier de l'Empire. Avec l'aide des autres Dragoniers, Sonia, la princesse d'Astoria, implore Yuma de les aider dans leur combat pour sauver leur terre de la domination de l'Empire. Est-ce que Yuma, pourtant si timide, aura le courage de déployer la puissance qu'il garde au fond de lui ?",
@@ -915,7 +890,7 @@
     "developer": "Capcom",
     "genre": "Action",
     "pegi": 7,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2018-10",
     "estimatedPlaytime": 5,
     "description": "Mega Man est de retour ! Le nouvel opus de cette série de jeux vendus à des millions d'exemplaires dans le monde offre tous les défis d'un jeu de plateforme 2D classique dans un nouveau style graphique. Le célèbre gameplay s'enrichit d'un système d'équipement inédit permettant de rendre Mega Man plus rapide et plus puissant. Grâce aux différents niveaux de difficulté, c'est le titre idéal pour découvrir Mega Man !",
@@ -955,7 +930,7 @@
     "developer": "Namco Bandai",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2017-11",
     "estimatedPlaytime": 39,
     "description": "Reconnectez-vous à la trilogie .hack//G.U ! Retournez dans “The World” et aidez Haseo à pourchasser Tri-Edge dans .hack//G.U. Last Recode, qui offre des graphismes et un gameplay améliorés et de tout nouveaux modes !",
@@ -996,7 +971,7 @@
     "developer": "Square Enix",
     "genre": "Action",
     "pegi": 18,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2016-10",
     "estimatedPlaytime": 13,
     "description": "Dans Rise of the Tomb Raider, Lara Croft embarque pour sa première expédition de 'Tomb Raider' dans les régions hostiles de la Sibérie.",
@@ -1020,7 +995,7 @@
     "developer": "Clap Hanz",
     "genre": "Sport",
     "pegi": 3,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2017-08",
     "estimatedPlaytime": 15,
     "description": "Parcourez les fairways avec vos amis pour des parties de golf et des activités pleines de fun. Créez votre golfeur, choisissez vos clubs et améliorez vos compétences de swing à l'aide de contrôles simples à apprendre. Montez dans une voiturette et foncez sur les parcours ouverts, ou détendez-vous à côté des étangs pour une partie de pêche entre deux trous. Marquez des bogeys et des birdies en ligne ou en solo en participant à des matchs, des tournois, des missions et des mini-jeux chaque partie est l’occasion de découvrir quelque chose de nouveau. C'est le jeu de golf pour tous, où le fun, les rires et l'excitation sont le par de chaque parcours.",
@@ -1061,7 +1036,7 @@
     "developer": "Namco Bandai",
     "genre": "RPG - Dynamique",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2017-01",
     "estimatedPlaytime": 45,
     "description": "Incarnez la toute première héroïne solo de la célèbre série des Tales of. Trois ans plus tôt, la vie de Velvet a pris un tournant dramatique, lorsqu'un être cher lui a été retiré. Maintenant, elle ne désire qu'une chose : se venger. Comment va-t-elle s'y prendre ?",
@@ -1106,7 +1081,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Tour par tour",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2016-07",
     "estimatedPlaytime": 21,
     "description": "Sur l’île, il existe une tradition. Une fois tous les dix ans, un sacrifice était offert au monstre afin de maintenir la paix. Mais un jour, celui-ci devint violent avant la saison de l’offrande. Les habitants de l’île, terrifiés, décidèrent d’apaiser le monstre en lui sacrifiant Setsuna, choisie en raison de sa maîtrise de la magie. Setsuna doit désormais quitter tout ce qu’elle connaît en compagnie de ses protecteurs et se rendre dans un monde éloigné, où se déroulera le sacrifice.",
@@ -1146,7 +1121,7 @@
     "developer": "Comcept",
     "genre": "Action",
     "pegi": 12,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2016-06",
     "estimatedPlaytime": 5,
     "description": "Vous incarnez Beck, 9e d'une lignée de puissants robots et seul immunisé contre un mystérieux virus transformant les créatures mécanisées en machines de mort. Courez, sautez, tirez et transformez-vous à travers 12 niveaux retors, à l'aide de capacités volées à vos ennemis. Pourrez-vous vaincre les autres Mighty Numbers et le génie du mal qui menace la planète ?",
@@ -1187,7 +1162,7 @@
     "developer": "WayForward",
     "genre": "Plateforme",
     "pegi": 12,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2016-12",
     "estimatedPlaytime": 7,
     "description": "Shantae se lance dans sa première aventure en HD intégrale ! Quand une vague de crimes mystérieux frappe Sequin Land, c'est à Shantae l’héroïne demi-génie de sauver la mise ! Utilisez son attaque dévastatrice de fouet capillaire pour envoyer balader les monstres ou bien sa danse du ventre pour lui faire prendre des formes encore plus redoutables ! Faites tomber les cerveaux qui se cachent derrière chaque crime et préparez-vous à la confrontation finale avec l'ennemie jurée de Shantae - l’effrontée flibustière Risky Boots !",
@@ -1226,7 +1201,7 @@
     "developer": "Crypton Future Media",
     "genre": "Rythme",
     "pegi": 12,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2016-08",
     "estimatedPlaytime": 10,
     "description": "Hatsune Miku marque son retour avec le jeu Hatsune Miku : Project DIVA X. Dans ce jeu, Miku et ses amis rendent service en explorant les 5 Clouds de leur monde. Pour les adeptes de Miku, Project DIVA X offre 30 chansons et près de 300 modules !",
@@ -1266,7 +1241,7 @@
     "developer": "Atlus",
     "genre": "RPG - Tour par tour",
     "pegi": 16,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2017-04",
     "estimatedPlaytime": 95,
     "description": "Découvrez l'histoire picaresque d'une jeune équipe de Phantom Thieves dans ce nouvel opus de la cultissime série Persona. Le jour, vous mènerez une vie de lycéen hyperurbain en choisissant les occupations qui vous plaisent. Les liens que vous nouerez avec les autres deviendront autant de grands pouvoirs pour vous aider à accomplir votre destin ! Après les cours, utilisez l'application Metaverse Navigator de votre smartphone pour infiltrer les Palaces -- des mondes surréalistes créés à partir du cœur d'adultes corrompus -- et revêtez votre deuxième identité : celle d'un Phantom Thief.",
@@ -1309,7 +1284,7 @@
     "developer": "Spike Chunsoft",
     "genre": "RPG - Tactique",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2016-06",
     "estimatedPlaytime": 23,
     "description": "Dans le RPG tactique GRAND KINGDOM, vous rejoindrez la bataille pour l’avenir de Resonail ! Recrutez des unités parmi 17 classes de combattants uniques, personnalisez vos formations de combat et menez vos troops à la victoire ! Aidez à déjouer un sinistre complot dans une campagne solo passionnante ou concluez un accord avec une des Four Great Nations et rejoignez la bataille en ligne pour combattre d’autres joueurs et prendre le contrôle des territoires et de leurs ressources ! Choisissez soigneusement la nation avec laquelle passer un accord, car, dans cette guerre pour la suprématie, il ne peut y avoir qu’un seul Grand Kingdom !",
@@ -1352,7 +1327,7 @@
     "developer": "Marvelous",
     "genre": "Beat'em all",
     "pegi": 16,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2016-03",
     "estimatedPlaytime": 16,
     "description": "Suite à l'apparition d'un phénomène mystique, l'élite féminine shinobi se retrouve dans une dimension parallèle, chamboulant ses croyances sur la vie et l'au-delà. Découvrant un monde étrange et paradisiaque, les filles sont mises à l'épreuve physiquement et mentalement, se dépassant pour faire face aux défis inattendus qui les attendent.",
@@ -1394,7 +1369,7 @@
     "developer": "Studio Japan",
     "genre": "Action",
     "pegi": 12,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2017-01",
     "estimatedPlaytime": 22,
     "description": "Contrôlez une puissante force de gravité, alors que Kat affronte un nouveau danger qui menace de révéler la structure de l'univers. Aux côtés de votre ancienne rivale, Raven, faites la lumière sur les secrets des étranges ondes gravitationnelles qui balaient Hekseville... alors que s'approche une tempête gravitationnelle à une échelle sans précédent.",
@@ -1434,7 +1409,7 @@
     "developer": "Versus Evil",
     "genre": "RPG - Tactique",
     "pegi": 16,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2018-07",
     "estimatedPlaytime": 30,
     "description": "Tissez votre propre légende dans cette aventure RPG viking épique avec la trilogie Banner Saga. Guidez votre caravane à travers le paysage d'un monde en rupture, où le soleil s'est arrêté dans le ciel et où les dieux sont morts. Des décisions audacieuses, l'utilisation judicieuse des ressources et des tactiques de combat habiles sont essentielles pour assurer votre survie et celle de vos clans.",
@@ -1451,12 +1426,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -1469,7 +1440,7 @@
     "developer": "Sega",
     "genre": "RPG - Tactique",
     "pegi": 16,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2017-06",
     "estimatedPlaytime": 28,
     "description": "Au lendemain d'une révolution, les Vanargand, soldats d'élite du Jutland, doivent faire front commun pour vaincre le Ruzi Empire et arrêter la mort elle-même : la Valkyria. Avec son scénario haletant multipliant les intrigues politiques, son système de combat qui mêle batailles en temps réel et tactique, son style visuel somptueux et bien plus encore, Valkyria Revolution vous immergera sur les fronts d'une guerre désespérée. Équipée d'un arsenal à mana avancé et capable de lancer de redoutables sorts de ragnite, cette escouade de vétérans anti-Valkyria fera front pour combattre la menace terrifiante de la Valkyria. Quant à Amleth Gronkjaer, l'officier supérieur des Vanargand, il cache un terrible secret. Est-ce l'allié ou l'ennemi du pays qu'il a juré de protéger ?",
@@ -1493,7 +1464,7 @@
     "developer": "Cornfox & Bros",
     "genre": "RPG - Dynamique",
     "pegi": 7,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2016-09",
     "estimatedPlaytime": 10,
     "description": "Explorez les îles des Mers inconnues et plongez dans un monde rempli de dangers, d'énigmes et de secrets. Combattez des monstres, apprenez l'art de la magie et découvrez des trésors ancestraux qui vous aideront à progresser dans l'aventure.",
@@ -1517,7 +1488,7 @@
     "developer": "Sega",
     "genre": "Action",
     "pegi": 3,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2017-04",
     "estimatedPlaytime": 5,
     "description": "Des animations redessinées à la main, une bande-son réorchestrée, le jeu culte revient dans une nouvelle version mêlant exploration, action et aventure ! Métamorphosé en affreuse créature mi-humaine mi-lézard par le Meka-Dragon, vous ne pourrez retrouver votre apparence qu’en récupérant la Croix de Salamandre, seul objet magique capable de vous débarrasser de la malédiction. Explorez d’immenses environnements peuplés de monstres hideux et de dragons plus exotiques les uns que les autres. Attention, chaque dragon éliminé ne fera qu’empirer les choses et vous transformera en divers animaux ! Incarnez le classique Hu-Man ou découvrez le tout nouveau personnage Hu-Girl. Transformez-vous en Lizard-Man, Mouse-Man, Piranha-Man, Lion-Man ou Hawk-Man et utilisez les caractéristiques de chacun pour découvrir les secrets enfouis de Monster Land.",
@@ -1556,7 +1527,7 @@
     "developer": "Falcom",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2017-02",
     "estimatedPlaytime": 12,
     "description": "Suite à une invasion démoniaque, les déesses ont décidé d’utiliser leur magie afin de mettre les habitants de la légendaire Ys en sécurité dans les cieux. Alors que les créatures achèvent la construction d’une tour titanesque pour mettre les humains à leur portée, les déesses sont portées disparues. En tant que guerrier ou mage, partez à leur recherche dans la Tour Démoniaque. Vos talents d'épéiste et vos sorts impitoyables vous permettront-ils de chasser le mal de la terre de vos ancêtres ?",
@@ -1597,7 +1568,7 @@
     "developer": "Naughty Dog",
     "genre": "Action",
     "pegi": 16,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2016-05",
     "estimatedPlaytime": 15,
     "description": "Chaque trésor a un prix. À nouveau projeté dans le dangereux milieu de la pègre, Nathan Drake doit décider ce qu'il est prêt à sacrifier pour sauver ceux qu'il aime. Rejoignez Drake, Sam, Elena et Sully dans une aventure épique autour du monde, à travers des jungles insulaires, des villes animées et des sommets enneigés à la recherche d'un trésor perdu.",
@@ -1639,7 +1610,7 @@
     "developer": "Naughty Dog",
     "genre": "Action",
     "pegi": 16,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2017-08",
     "estimatedPlaytime": 7,
     "description": "Naughty Dog nous livre la première aventure indépendante de l'histoire de la franchise Uncharted, conduite par Chloe Frazer, le personnage préféré des fans. Afin de récupérer un antique et légendaire artefact indien et l'empêcher de tomber aux mains d'un impitoyable profiteur de guerre, Chloe Frazer doit demander l’aide de la célèbre mercenaire Nadine Ross. S'aventurant profondément dans les Ghats occidentaux d'Inde, Chloe et Nadine devront apprendre à travailler en équipe pour mettre la main sur l'artefact, affronter de féroces adversaires et empêcher la région de sombrer dans le chaos.",
@@ -1680,7 +1651,7 @@
     "developer": "Capcom",
     "genre": "Action",
     "pegi": 7,
-    "language": "Anglaise",
+    "language": "UK",
     "releaseDate": "2017-08",
     "estimatedPlaytime": 23,
     "description": "Le personnage emblématique de Capcom est de retour dans cette seconde collection de grands classiques du célèbre éditeur ! Fidèle aux graphismes de Mega Man 7 à Mega Man 10, le jeu est plein à craquer de contenu supplémentaire, dont des épreuves contre la montre, des défis, un lecteur de musique et une vaste galerie d'illustrations rares.",
@@ -1719,7 +1690,7 @@
     "developer": "Guerrilla",
     "genre": "RPG - Dynamique",
     "pegi": 16,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2017-03",
     "estimatedPlaytime": 32,
     "description": "La Terre ne nous appartient plus. Regardez le monde à travers les yeux d'Aloy, une femme rejetée par sa tribu depuis sa naissance, alors qu'elle mène une quête pour découvrir les secrets enfouis dans un lointain passé. Affrontez des tribus guerrières et de terrifiantes créatures mécanisées et entrez dans un univers luxuriant où la destruction de l'humanité est imminente. Transformez des prédateurs en proies, alliez outils primitifs et technologie de pointe, et parcourez des territoires tentaculaires et dangereux tout en examinant le monde qui vous entoure.",
@@ -1760,7 +1731,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Tour par tour",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2017-07",
     "estimatedPlaytime": 41,
     "description": "Plongez au cœur d’une ère de conflits dans le monde d’Ivalice. Le petit royaume de Dalmasca est en ruines après sa conquête par l’empire d’Archadia, et son avenir est incertain. La princesse Ashe, seule et unique prétendante au trône, se dévoue corps et âme à la résistance. Vaan, un jeune orphelin de guerre, rêve de voler sans contraintes à travers les nuages. Joignez-vous à ces alliés improbables et à leurs compagnons alors qu’ils entament une quête héroïque pour délivrer leur pays de l’envahisseur et rétablir la royauté déchue.",
@@ -1800,7 +1771,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Dynamique",
     "pegi": 7,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2018-02",
     "estimatedPlaytime": 14,
     "description": "L'aventure de Randy, Prim et Popoï fait son grand retour dans Secret of Mana ! Sorti pour la première fois en 1993, Secret of Mana est souvent considéré comme le meilleur RPG de tous les temps. Le jeu entraîne les joueurs dans une aventure pleine d'action sous les traits de Randy, accompagné de ses deux compagnons, Prim et Popoï, qui luttent contre un sinistre empire afin de récupérer le pouvoir magique de Mana et de restaurer l'ordre dans le monde. ",
@@ -1841,7 +1812,7 @@
     "developer": "Playtonic",
     "genre": "Plateforme",
     "pegi": 7,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2017-04",
     "estimatedPlaytime": 15,
     "description": "Yooka-Laylee est le nouveau jeu de plateforme à monde ouvert de Playtonic, les vétérans du genre ! Explorez des mondes vastes et mirifiques, rencontrez (et affrontez) des êtres inoubliables et amassez des trésors lors d'une aventure épique aux côtés de Yooka (la bestiole verte) et Laylee (la chauve-souris) pour contrecarrer l'abominable Capital B !",
@@ -1881,7 +1852,7 @@
     "developer": "Gust",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2017-04",
     "estimatedPlaytime": 29,
     "description": "Le deuxième épisode de la saga Mysterious suit les aventures de Firis Mistlud, jeune fille enthousiaste, et de sa grande sœur protectrice, Liane Mistlud. Elles ont vécu leur vie entière dans le village isolé d'Ertona, où Firis utilise ses compétences uniques pour découvrir où sont enterrés les cristaux de matériaux. Le destin de Firis se noue quand elle apprend l'existence de l'Alchemy Exam et décide de faire ses premiers pas dans le monde extérieur. C'est le début de sa grande aventure pour devenir une alchimiste qualifiée et découvrir les nombreux mystères de la vie !",
@@ -1921,7 +1892,7 @@
     "developer": " YummyYummyTummy",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2017-07",
     "estimatedPlaytime": 9,
     "description": "Fallen Legion : Sins of an Empire est un intense RPG et d'action où chaque bataille est une lutte haletante et où chaque choix déchirant affecte le royaume. Embarquez-vous dans une aventure avec la princesse Cécile et un mystérieux grimoire qui parle afin de restaurer la gloire de votre foyer en ruine. Explorez des terres fabuleuses et dignes des plus belles peintures où vivent guerriers rivaux et dragons féroces. Combattez les hordes d'ennemis avec une équipe d'armes vivantes et développez des attaques combo dévastatrices pour venir à bout des boss avec le puissant système de combat des Fallen Legion. Régnez sur votre empire avec ses féroces batailles, ses décisions difficiles et admirez les conséquences de vos choix. Tenterez-vous de faire du chantage à un prince pour gagner un bonus de force ou taxerez-vous un village affamé pour ressusciter l'un de vos personnages ?",
@@ -1959,7 +1930,7 @@
     "developer": "Level 5",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2018-03",
     "estimatedPlaytime": 37,
     "description": "Dépossédé de son trône lors d'un coup d'état, le jeune Evan embarque pour un voyage extraordinaire dans le but de fonder un nouveau royaume et de protéger les habitants des forces du mal qui les menacent.",
@@ -2001,10 +1972,10 @@
     "developer": "Capcom",
     "genre": "Action",
     "pegi": 12,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2017-12",
     "estimatedPlaytime": 36,
-    "description": "Découvrez cet incroyable chef-d'œuvre et son style graphique sumi-e inimitable en haute résolution. Incarnez Amaterasu, la déesse japonaise du soleil, qui prend la forme d'un loup blanc légendaire pour tenter de vaincre Orochi, un tyrannique démon à huit têtes n'ayant laissé du Nippon qu'un vaste champ de ruines.",
+    "description": "Découvrez cet incroyable chef-d'œuvre et son style graphique sumi-e inimitable en haute résolution. Incarnez Amaterasu, la déesse JP du soleil, qui prend la forme d'un loup blanc légendaire pour tenter de vaincre Orochi, un tyrannique démon à huit têtes n'ayant laissé du Nippon qu'un vaste champ de ruines.",
     "youtubeId": "RhnhRfTzRnw",
     "images": {
       "cover": "/images/covers/okami.jpg",
@@ -2025,7 +1996,7 @@
     "developer": "Gust",
     "genre": "RPG - Tour par tour",
     "pegi": 16,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2017-11",
     "estimatedPlaytime": 24,
     "description": "Un beau ciel d'été surplombe le lycée Hoshinomiya Girls' High School. Cette histoire commence avec le début d'une nouvelle vie scolaire pour Hinako Shirai, qui récupère du tragique accident où sa jambe a été grièvement touchée. Les sœurs magiques, Yuzu et Lime, lui ont confié un pouvoir spécial qui lui permet de devenir un 'Reflector'. Quand Hinako se transforme en Reflector magique, elle peut protéger le monde contre les forces dévastatrices et poursuivre le rêve qu'elle pensait devoir abandonner.",
@@ -2068,7 +2039,7 @@
     "developer": "Gust",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2017-11",
     "estimatedPlaytime": 15,
     "description": "L'histoire de trois belles jeunes filles réunies par le destin. Lorsque trois amies, trompées et séparées par les ténèbres, se retrouveront, leurs liens balaieront les ombres et les guideront sur le chemin de la vérité...",
@@ -2092,7 +2063,7 @@
     "developer": "Vanillaware",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2018-05",
     "estimatedPlaytime": 15,
     "description": "Plutôt magie que combat d'épées ? Le jeu de combat à progression et à défilement horizontal Dragon's Crown Pro vous offre un large choix de combats rapprochés et à distance. Jouez à plusieurs ou en solo. Incarnez l'une des six classes jouables, explorez le donjon tortueux et découvrez de nouvelles aventures à chaque tour. ",
@@ -2116,7 +2087,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Tour par tour",
     "pegi": 7,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2018-01",
     "estimatedPlaytime": 28,
     "description": "Explorez un monde fantastique bourré de labyrinthes dangereux et cherchez tout seul ou avec des amis en ligne le légendaire 'Dragon's Crown'. Choisissez votre aventurier et commencez votre aventure !",
@@ -2140,7 +2111,7 @@
     "developer": "Supergiant Games",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2015-04",
     "estimatedPlaytime": 7,
     "description": "Bastion est un RPG et d'action qui redéfinit le genre narratif dans les jeux avec des commentaires du narrateur qui suivent vos mouvements.",
@@ -2164,7 +2135,7 @@
     "developer": "Bandai Namco",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2019-01",
     "estimatedPlaytime": 50,
     "description": "Une lutte pour le pouvoir s'engage entre une civilisation dépendante d'une technologie antique, le blastia, et l'Empire qui la détient. Deux amis, ayant suivi des chemins différents, vont se retrouver pour préserver l'existence de ce monde.",
@@ -2206,7 +2177,7 @@
     "developer": "Bandai Namco",
     "genre": "Combat",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2018-10",
     "estimatedPlaytime": 20,
     "description": "Vingt ans après le tout premier opus, SoulCalibur VI revient aux sources tout en apportant des fonctionnalités de jeu inédites. Parcourez des niveaux emblématiques du XVIe siècle et prenez part à la lutte pour s'emparer des deux épées légendaires avec à votre disposition d'anciens personnages célèbres de SoulCalibur et des nouveaux venus !",
@@ -2249,7 +2220,7 @@
     "developer": "Bluth Group",
     "genre": "Autre",
     "pegi": 7,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2020-01",
     "estimatedPlaytime": 3,
     "description": "Dans «Dragon's Lair», vous jouez à l'héroïque Dirk the Daring, un vaillant chevalier sur une quête pour sauver la belle princesse des griffes d'un dragon maléfique ! «Space Ace» vous fera prendre le contrôle d'Ace-Defender of justice, de la vérité et de la planète Terre! Ace est attaqué par le mauvais commandant Borf. Luttez avec Dexter pour retrouver sa virilité. Détruisez l'Infanto-Ray. Défaites le malade Borf! Soyez un vaillant guerrier spatial, le destin de la Terre est entre vos mains! «Dragon's Lair II: Time Warp» encore une fois, avez-vous dirigé Dirk sur une perpétuelle quête! Spirite à une ruse dans le temps par le mécréant Mordroc, la princesse Daphne sera obligée de se marier avec le méchant Mordroc, à moins que Dirk ne puisse la sauver. Une fois que le cercueil de la fatalité s'est ouvert, Mordroc placera l'anneau de la mort sur le doigt de Daphne en mariage, et elle sera perdue à jamais dans le Time Warp.",
@@ -2266,10 +2237,7 @@
       "playtime": 3,
       "completedDate": "2018-04",
       "score": 5,
-      "pros": [
-        "Originalité des jeux",
-        "Qualité de l'animation de  l'époque"
-      ],
+      "pros": ["Originalité des jeux", "Qualité de l'animation de  l'époque"],
       "cons": [
         "Try & Retry bêtement",
         "Sans indication, limite impossible de deviner la combinaison de touches à accomplir"
@@ -2286,7 +2254,7 @@
     "developer": "Falcom",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2017-09",
     "estimatedPlaytime": 37,
     "description": "Pour la première fois depuis 8 ans, Ys est de retour avec une nouvelle aventure ! Adol s'éveille après un naufrage, échoué sur une île maudite. Il sauve d'autres naufragés et crée un village pour relever le défi des bêtes féroces et des ruines étranges que recèle l'île recluse. Adol rêve également d'une mystérieuse jeune femme qui vit dans un monde inconnu. Rejoignez Adol et élucidez l'énigme de l'île maudite et de Dana, la jeune femme aux cheveux bleus !",
@@ -2310,7 +2278,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Tour par tour",
     "pegi": 12,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2017-01",
     "estimatedPlaytime": 36,
     "description": "Embarquez dans une aventure sans pareille dans le tout nouveau WORLD OF FINAL FANTASY. Avec des visuels charmants et des styles pour les jeunes et grands enfants, les joueurs vont collectionner, élever et combattre des monstres légendaires en les empilant pour former des tours de monstres stratégiques. ",
@@ -2334,7 +2302,7 @@
     "developer": "Sega",
     "genre": "RPG - Tactique",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2018-09",
     "estimatedPlaytime": 36,
     "description": "Le système de combat BLiTZ et le moteur graphique CANVAS sont de retour ! Combinant stratégie au tour par tour, RPG et jeu d'action en temps réel à la 3e personne, la nouvelle génération du système de combat BLiTZ part à l'assaut du champ de bataille. Combattez la menace impériale avec plus d'unités sur des cartes plus grandes. Une nouvelle unité explosive, les grenadiers, fait son apparition dans Valkyria Chronicles 4, ainsi qu'un large éventail d'options de soutien offensif ou défensif. Avec un monde sublime aux couleurs vibrantes, le style visuel à main levée si typique de la série revient ! S'inspirant d'aquarelles, le moteur graphique CANVAS mêle des éléments réalistes à des graphismes imaginaires pour façonner un univers riche en sensations. Le périple de l'Escadron E déroule sous vos yeux une fresque interactive.",
@@ -2358,10 +2326,7 @@
         "Direction artistique",
         "Renouvellement des objectifs de mission"
       ],
-      "cons": [
-        "Quelques missions poussives",
-        "Dialogues lassants"
-      ],
+      "cons": ["Quelques missions poussives", "Dialogues lassants"],
       "summary": "Ce quatrième reprend exactement la même formule du premier épisode. La diversité des missions et des rajouts (nouvelle classe, ordres de navires, etc...) en font un excellent jeu."
     }
   },
@@ -2374,7 +2339,7 @@
     "developer": "Nippon Ichi Software",
     "genre": "RPG - Tactique",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2018-10",
     "estimatedPlaytime": 50,
     "description": "Pour célébrer le 15e anniversaire de la série Disgaea, le jeu révolutionnaire d'origine nous revient optimisé en HD pour les consoles modernes. Revivez les aventures développées de Laharl, Etna et Flonne dans Disgaea 1 Complete !",
@@ -2391,12 +2356,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -2409,7 +2370,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2019-01",
     "estimatedPlaytime": 29,
     "description": "Découvrez le pouvoir de l'amitié avec Sora et ses amis alors qu'ils se lancent dans une dangereuse aventure et affrontent ensemble des moments difficiles dans KINGDOM HEARTS III. Sora fait équipe avec Donald et Dingo, des émissaires envoyés du Château Disney par le Roi Mickey afin d'empêcher les Sans-Cœur d'envahir l'univers. Grâce au pouvoir de l'amitié et à leur attitude positive, Sora, Donald et Dingo font équipe avec des personnages Disney-Pixar cultes pour surmonter toutes les épreuves et tenir tête aux ténèbres qui menacent leurs mondes.",
@@ -2450,7 +2411,7 @@
     "developer": "Ankake Supa",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Anglaise",
+    "language": "UK",
     "releaseDate": "2016-11",
     "estimatedPlaytime": 6,
     "description": "Le vampire tristement célèbre Remilia Scarlet s'ennuie avec son chic vie. Donc ennuyé, que lorsque le journal local exécute une histoire d'un monstre gigantesque, elle décide qu'elle veut un morceau de l'action! Malheureusement, elle retourne à la maison de sa première incursion à trouver sa maison fortement endommagée, avec aucun indice quant à qui le coupable pourrait être. Maintenant, il est à Remilia et sa servante dévouée Sakuya Izayoi pour découvrir la vérité derrière ces rumeurs de monstres et de menaces - une odyssée qui va les prendre tous dans le monde entier de Gensokyo qu'ils correspondent esprits avec un casting de personnages colorés, dominer les ennemis avec compétences de signature et cartes de sorts, jusqu'à rugueux quelques fées, et démêler un complot odder qu'ils auraient pu imaginer.",
@@ -2490,7 +2451,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2019-03",
     "estimatedPlaytime": 120,
     "description": "Cherchant à éviter une autre Guerre des Keyblades, Sora, Donald, et Dingo se lancent dans une nouvelle aventure pour repousser les ténèbres qui gagnent du terrain. L'histoire de KINGDOM HEARTS vous emmène dans différents mondes Disney dans lesquels vous rencontrerez de nombreux personnages Disney célèbres. Comprend les opus suivants : : Kingdom Hearts Final Mix, Kingdom Hearts Re: Chain of Memories, Kingdom Hearts : 358/2 Days (cinématique), Kingdom Hearts II Final Mix, Kingdom Hearts : Birth By Sleep, Kingdom Hearts RE:CODED (cinématique), Kingdom Heart Dream Drop Distance HD, Kindgdom Hearts 0.2 Birth by Sleep et Kindgdom Hearts Unchained χ[chi] (cinématique)",
@@ -2516,7 +2477,7 @@
       ],
       "cons": [
         "Une histoire qui met du temps à se lancer",
-        "Voix anglaise imposée",
+        "Voix UK imposée",
         "Pas vraiment de nouveaux mondes (Re:Chain of Memories)",
         "Système de combat de cartes sans trop d'intérêt (Re:Chain of Memories)",
         "Mondes bâclés (Kingdom Hearts)",
@@ -2542,7 +2503,7 @@
     "developer": "David Wehle",
     "genre": "Autre",
     "pegi": 3,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2018-11",
     "estimatedPlaytime": 2,
     "description": "The First Tree est un jeu d’exploration en vue à la troisième personne, centré sur deux histoires parallèles : une renarde à la recherche de ses petits, et un fils qui cherche à renouer le lien rompu avec son père en Alaska. Dans cette aventure poignante qui vous conduira à la source de la vie et ne manquera pas de vous interpeller sur le sens de la mort, vous incarnerez la renarde. En chemin, vous découvrirez des objets clés qui dévoileront des pans du passé de ce fils, dont l’histoire s’entremêle avec celle de la renarde en quête du Premier Arbre.",
@@ -2580,7 +2541,7 @@
     "developer": "Game Freak",
     "genre": "Action",
     "pegi": 7,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2019-04",
     "estimatedPlaytime": 11,
     "description": "Dans un futur proche, la Terre a été ravagée par des envahisseurs robots, le destin de la planète repose sur les épaules d'une jeune fille devenue plus qu'humaine. Sauvée de la mort, elle se retrouve avec des pouvoirs cybernétiques incompréhensibles. C'est à elle, Reika Rekkeiji, de sauver l'humanité du maléfique Ajeet.",
@@ -2597,12 +2558,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -2615,7 +2572,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2019-08",
     "estimatedPlaytime": 22,
     "description": "Dans ONINAKI, vous incarnez Kagachi, un Gardien voyageant entre le monde des vivants et celui des morts, au-delà du Voile, pour sauver les Égarés. Vous découvrirez une tumultueuse histoire de vie et de mort axée sur les principes de la réincarnation.",
@@ -2632,12 +2589,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -2650,7 +2603,7 @@
     "developer": "Capcom",
     "genre": "Autre",
     "pegi": 12,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2019-04",
     "estimatedPlaytime": 60,
     "description": "La série d'aventures légales qui s'est vendue à plus de 6,7 millions d'exemplaires est enfin disponible ! Incarnez Phoenix Wright et succombez au frisson du combat judiciaire alors que vous luttez pour prouver l'innocence de vos clients au tribunal. Cette collection somptueuse rassemble les 14 épisodes des trois premiers jeux. Plongez au cœur de ces affaires et élucidez chacun de ces intrigants mystères !",
@@ -2691,7 +2644,7 @@
     "developer": "Firaxis Games",
     "genre": "RPG - Tactique",
     "pegi": 16,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2016-09",
     "estimatedPlaytime": 45,
     "description": "XCOM EN CAVALE : prenez le contrôle du Talion, un vaisseau de ravitaillement extraterrestre reconverti en QG mobile d'XCOM. Choisissez où envoyer votre équipe d'assaut, comment obtenir l'appui de la population, et quand combattre les contre-opérations ennemies.",
@@ -2708,12 +2661,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -2726,7 +2675,7 @@
     "developer": "Gust",
     "genre": "RPG - Gestion",
     "pegi": 7,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2019-09",
     "estimatedPlaytime": 47,
     "description": "Une ville d'Atelier rassemblant des alchimistes légendaires. Ce jeu vous plonge dans l'atmosphère d'une ville en pleine expansion, dans laquelle vous devrez collaborer avec différents personnages, et vous fera vivre tout le bonheur lié à la bonne gestion d'une ville et à l'extension de votre monde. Célébrant le 20e anniversaire des Atelier, ce jeu marque une nouvelle étape dans l'évolution de la série en fusionnant les thèmes du RPG et de la gestion de ville.",
@@ -2743,12 +2692,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -2761,7 +2706,7 @@
     "developer": "Lab Zero Games",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2019-10",
     "estimatedPlaytime": 20,
     "description": "Découvrez l’histoire d’Anja, une fille téméraire et un brin rebelle. Élevée par son père dans une banlieue rurale, elle voit sa vie sombrer dans le chaos lorsqu’elle est attaquée chez elle et qu’un pouvoir mystérieux s’éveille en elle. Ajna va rencontrer plusieurs« Incarnations» dans sa quête: des êtres qu’ elle peur absorber et faire apparaître pour combattre à ses côtés.En unissant des créatures venues de terres lointaines, Ajna en apprendra plus sur elle - même et sur le monde qu’ elle habite, et surtout sur la manière de le sauver ",
@@ -2778,12 +2723,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -2796,7 +2737,7 @@
     "developer": "Playtonic Games",
     "genre": "Plateforme",
     "pegi": 3,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2019-10",
     "estimatedPlaytime": 15,
     "description": "Yooka et Laylee sont de retour dans une nouvelle aventure plateforme hybride ! Ils doivent courir, sauter et rouler pour surmonter l'Overworld et des niveaux 2D ardus, et rassembler le bataillon royal pour vaincre le repère impossible de la Capital B !",
@@ -2837,7 +2778,7 @@
     "developer": "Ninja Theory",
     "genre": "Action",
     "pegi": 18,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2017-08",
     "estimatedPlaytime": 8,
     "description": "Voici le voyage brutal d'une guerrière celte brisée, entre mythes et folie. Cette guerrière entame une quête hallucinée qui la mènera jusqu'en enfer viking afin de retrouver l'âme de son amant décédé. Conçu en collaboration avec des chercheurs en neurosciences et des personnes atteintes de psychose, Hellblade: Senua's Sacrifice vous plongera dans la furie mélancolique de l'esprit désorienté de Senua.",
@@ -2854,12 +2795,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -2872,7 +2809,7 @@
     "developer": "Square Enix",
     "genre": "Action",
     "pegi": 18,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2019-11",
     "estimatedPlaytime": 13,
     "description": "Prenez part au moment décisif où Lara Croft devient pilleuse de tombeaux. Dans Shadow of the Tomb Raider, vous découvrirez les derniers secrets des origines de Lara. Découvrez le passé de la plus célèbre des pilleuses de tombeaux dans cette édition ultime.",
@@ -2889,12 +2826,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -2907,7 +2840,7 @@
     "developer": "Gust",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2019-06",
     "estimatedPlaytime": 28,
     "description": "Les aiguilles de l'horloge se sont remises à tourner... Et l'avenir de ce monde repose sur les épaules d'une seule jeune fille. Voici enfin le tant attendu 4e épisode de la célèbre série 'Arland', qui a commencé avec 'Atelier Rorona' ! Dans cette nouvelle histoire, les joueurs pourront revisiter le monde plein de nostalgie d'Arland et se lancer dans une passionnante aventure pour apprendre à maîtriser l'alchimie avec la fille de Rorona, Lulua. La jeune héroïne vit dans une petite ville à la frontière de la République d'Arland, et son rêve est de surpasser sa mère, qui est une alchimiste légendaire. Percez les mystères d'un vieux manuscrit, découvrez l'avenir qui attend Lulua et rejoignez ses compagnons pour vivre une aventure qui vous fera voyager à travers Arland !",
@@ -2924,12 +2857,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -2942,7 +2871,7 @@
     "developer": "Atlus",
     "genre": "RPG - Tour par tour",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2020-03",
     "estimatedPlaytime": 110,
     "description": " Enfilez le masque de Joker et ralliez-vous aux Voleurs fantômes. Brisez les chaînes de la société moderne et orchestrez des braquages d'envergure afin d'infiltrer les esprits corrompus et provoquer leur métanoïa ! Cette version regorge de personnages, contenu et lieux inédits, et grâce au grappin, de nouvelles zones sont aussi accessibles ! Entamez un nouveau semestre au lycée Shujin et renforcez vos compétences dans le métavers et votre vie quotidienne.",
@@ -2977,7 +2906,7 @@
         "Des scénarios annexes de confidents en dents de scie",
         "Un boss final en deçà de celui de la version précédente."
       ],
-      "summary": "Persona 5 Royal arrive à sublimer une formule qui était déjà plus que réussie, et avec enfin une traduction française ! C’est sans doute l’un de mes meilleurs JRPG de cette génération."
+      "summary": "Persona 5 Royal arrive à sublimer une formule qui était déjà plus que réussie, et avec enfin une traduction FR ! C’est sans doute l’un de mes meilleurs JRPG de cette génération."
     }
   },
   {
@@ -2989,7 +2918,7 @@
     "developer": "PQube",
     "genre": "Visual novel",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2020-02",
     "estimatedPlaytime": 10,
     "description": "Un roman visuel romantique aux dessous sombres et sinistres. Trouve ton âme sœur dans une histoire d'amour musicale emblématique du Japon et défends ton amour dans un cadre des plus éprouvants alors qu'un virus apocalyptique se répand à travers le monde et menace d'infecter tes proches.",
@@ -3006,12 +2935,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3024,7 +2949,7 @@
     "developer": "DOTEMU",
     "genre": "Beat'em all",
     "pegi": 12,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2020-04",
     "estimatedPlaytime": 3,
     "description": "Axel, Blaze et Adam reprennent du service, mais cette fois, ils peuvent compter sur l’aide de deux nouveaux combattants : Floyd Iraia et Cherry Hunter pour sauver la ville.",
@@ -3062,7 +2987,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Dynamique",
     "pegi": 7,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2020-08",
     "estimatedPlaytime": 21,
     "description": "FINAL FANTASY CRYSTAL CHRONICLES Remastered Edition est un jeu d'action-RPG enchanteur suivant les aventures épiques des caravaniers de cristal en quête de la myrrhe, liquide rare et précieux nécessaire à la purification du cristal protégeant leur monde d'un gaz mortel, le miasme. Riche en mises à jour, fonctionnalités et améliorations inédites, c'est le moment de vous joindre à la caravane !",
@@ -3107,7 +3032,7 @@
     "developer": "Bandai Namco",
     "genre": "Sport",
     "pegi": 7,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2020-08",
     "estimatedPlaytime": 25,
     "description": "Captain Tsubasa: Rise of New Champions est un jeu de foot révolutionnaire qui retranscrit l'action palpitante et les tirs surpuissants qui ont rendu le manga si célèbre. Grâce à ses graphismes fidèles à l'anime, son gameplay accessible et ses nombreux modes de jeu, les passionnés de foot ne passeront pas une seconde sur le banc !",
@@ -3149,7 +3074,7 @@
     "developer": "Atelier Mimina",
     "genre": "Aventure",
     "pegi": 7,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2020-08",
     "estimatedPlaytime": 6,
     "description": "À la suite d'un rêve étrange, Annika s'éveille sur l'île de Spica sans le moindre souvenir de son passé. Avec l'aide d'un garçon nommé Giraffe et de la sorcière Lily, elle doit trouver sur l'île trois singuliers fragments d'étoile qui lui permettront de retrouver la mémoire.",
@@ -3187,7 +3112,7 @@
     "developer": "Sega",
     "genre": "Action",
     "pegi": 7,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2018-12",
     "estimatedPlaytime": 18,
     "description": "La série légendaire revient avec une nouvelle grande aventure! Plongez dans un jeu d'action-aventure coloré créé en collaboration avec Ryuichi Nishizawa, le créateur originel de la série Wonder Boy in Monster World. Monster Boy et le Royaume Maudit emprunte le meilleur de cette série classique pour vous entraîner dans une aventure fraîche et moderne au gameplay amusant, à la bande-son mémorable et à de superbes animations dessinées à la main. Jin peut-il sauver le Royaume de Monster World?",
@@ -3204,12 +3129,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3222,7 +3143,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2020-05",
     "estimatedPlaytime": 21,
     "description": "Cette histoire de destins inextricablement liés change en fonction du protagoniste et des compagnons que vous choisissez ! Ces jeunes aventuriers parviendront-ils à utiliser le pouvoir de Mana afin de sauver le monde de la destruction qui le menace ?",
@@ -3262,7 +3183,7 @@
     "developer": "Atlus",
     "genre": "Puzzle",
     "pegi": 18,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2019-09",
     "estimatedPlaytime": 12,
     "description": "L'indécis Vincent sort avec Katherine, sa petite amie de longue date, depuis cinq ans. Mais au lieu de faire le grand saut et de se marier, il la trompe avec une bombe atomique très séduisante du nom de... Catherine ! Paniqué à l'idée d'être infidèle, il trouve refuge auprès de la douce Rin... ce qui ne fait qu'empirer sa situation. Et pour couronner le tout, il commence à faire des cauchemars qui le forcent à grimper toujours plus haut pour rester en vie... Parviendra-t-il à survivre aux vicissitudes de l'amour ou finira-t-il par succomber aux tentations ?",
@@ -3279,12 +3200,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3297,7 +3214,7 @@
     "developer": "WayForward",
     "genre": "Plateforme",
     "pegi": 7,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2020-05",
     "estimatedPlaytime": 8,
     "description": "Shantae revient dans une toute nouvelle aventure tropicale ! Pour sa cinquième aventure, l'héroïne demi-génie obtient des capacités de magie de fusion pour explorer une vaste cité engloutie, rencontrer de nouvelles amies demi-génies et combattre les Sept Ensorceleuses dans son aventure la plus trépidante à ce jour ! Mettant en vedette plusieurs villes et plus de labyrinthes que jamais, un voyage aquatique impressionnant plein de dangers et de découvertes vous attend !",
@@ -3337,7 +3254,7 @@
     "developer": "Microids",
     "genre": "Aventure",
     "pegi": 16,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2019-11",
     "estimatedPlaytime": 10,
     "description": "Au début des années 50, Joe Dunn, propriétaire d'un club de boxe, est retrouvé mort. Depuis lors, sa star montante Robert Yale, censée monter sur le ring pour disputer l’un des combats les plus importants de sa carrière, a mystérieusement disparu. Sonia Dunn, la fille de Joe, qui a pris le contrôle du club doit faire face à des difficultés financières. Elle engage alors le détective privé John Blacksad pour enquêter sur la disparition de Yale et le retrouver. Cette sombre affaire va emmener notre enquêteur dans les tréfonds sales et lugubres de New York.",
@@ -3354,12 +3271,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3372,7 +3285,7 @@
     "developer": "Cygames",
     "genre": "Combat",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2020-03",
     "estimatedPlaytime": 10,
     "description": "Le studio légendaire ARC SYSTEM WORKS et Cygames s'associent pour porter l'univers culte de Granblue Fantasy sur console dans un jeu de combat plein d'action. Granblue Fantasy: Versus offre un casting haut en couleur de ses personnages les plus populaires, chacun ayant son style de combat unique facile à prendre en main, mais difficile à maîtriser.",
@@ -3412,7 +3325,7 @@
     "developer": "Sega",
     "genre": "RPG - Tour par tour",
     "pegi": 18,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2020-11",
     "estimatedPlaytime": 45,
     "description": "Ichiban Kasuga, jeune recrue d'une famille de yakuzas modeste basée à Tokyo, accepte de passer 18 ans en prison pour un meurtre qu'il n'a pas commis. Il purge sa peine sans jamais perdre foi en son cercle, mais découvre à sa sortie que personne ne l'attendait et que le clan a été anéanti par l'homme qu'il admirait le plus au monde. Sans plus aucun repère et livré à lui-même, il se promet de découvrir la vérité cachée derrière cette trahison et de reprendre sa vie en main. Se faisant, il devient contre toute attente un héros aux yeux de tous les parias de la ville.Le studio légendaire ARC SYSTEM WORKS et Cygames s'associent pour porter l'univers culte de Granblue Fantasy sur console dans un jeu de combat plein d'action. Granblue Fantasy: Versus offre un casting haut en couleur de ses personnages les plus populaires, chacun ayant son style de combat unique facile à prendre en main, mais difficile à maîtriser.",
@@ -3429,12 +3342,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3447,7 +3356,7 @@
     "developer": "Gust",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2019-11",
     "estimatedPlaytime": 26,
     "description": "Le personnage principal, Ryza, est une jeune fille ordinaire. Lassée de sa vie rurale, elle s'enfuit de son village et rejoint ses amis dans un lieu secret pour parler de leurs rêves d'avenir et préparer des aventures passionnantes. Un beau jour, Ryza et ses amis s'élancent, déterminés à explorer l'île interdite de l'autre côté du rivage pour leur première expédition. Aux côtés de l'alchimiste et d'autres amis rencontrés sur place, ils vivent une aventure estivale qui restera à jamais gravée dans leurs mémoires.",
@@ -3464,12 +3373,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3482,7 +3387,7 @@
     "developer": "Vanillaware",
     "genre": "RPG - Tactique",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2020-09",
     "estimatedPlaytime": 32,
     "description": "Pars en quête de vérité et explore une aventure en 2D à défilement horizontal dans un cadre spectaculaire. Affronte les kaiju au cours de batailles trépidantes et épiques. Personnalise les Sentinelles avec une panoplie d'armes robotiques et bats-toi pour défendre l'humanité !",
@@ -3499,12 +3404,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3517,7 +3418,7 @@
     "developer": "Sega",
     "genre": "RPG - Dynamique",
     "pegi": 16,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2020-05",
     "estimatedPlaytime": 21,
     "description": "La troupe impériale défend Tokyo contre des démons dans cette aventure extraordinaire. Soldats en temps de guerre, comédiens en temps de paix, la Brigade des Fleurs ne fait pas honneur à sa réputation et risque d'être dissoute. C'est à vous, le nouveau capitaine Kamiyama, de remonter la pente.",
@@ -3556,7 +3457,7 @@
     "developer": "Gust",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2021-01",
     "estimatedPlaytime": 31,
     "description": "Trois ans se sont écoulés depuis la grande aventure secrète de Ryza sur l'Île de Kurken. Ryza, la seule de son groupe à être restée sur l'île, reçoit une lettre de son ami évoquant des ruines qui pourraient avoir un lien avec l'alchimie, ainsi qu'une mystérieuse demande impliquant une pierre brillante. Cela la pousse à quitter l'île pour se rendre dans la capitale, Ashra-am Baird. Ce que Ryza ignore, c'est qu'elle s'embarque dans une nouvelle aventure imaginative pendant laquelle elle cherchera à percer les mystères des ruines entourant la capitale et fera la rencontre d'une étrange créature qui changera sa vie.",
@@ -3573,12 +3474,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3591,10 +3488,10 @@
     "developer": "Atlus",
     "genre": "RPG - Dynamique",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2021-02",
     "estimatedPlaytime": 36,
-    "description": "Rejoignez les Voleurs Fantômes et ripostez face à la corruption qui s'étend sur les villes japonaises. Des vacances d'été entre amis tournent court lorsqu'émerge une réalité déformée : dévoilez la vérité et faites briller le cœur de ceux qui ont été pris au piège au centre de la singularité !",
+    "description": "Rejoignez les Voleurs Fantômes et ripostez face à la corruption qui s'étend sur les villes JPs. Des vacances d'été entre amis tournent court lorsqu'émerge une réalité déformée : dévoilez la vérité et faites briller le cœur de ceux qui ont été pris au piège au centre de la singularité !",
     "youtubeId": "O58DawxUxg0",
     "images": {
       "cover": "/images/covers/persona-5-s.jpg",
@@ -3608,12 +3505,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3626,7 +3519,7 @@
     "developer": "Ubisoft",
     "genre": "Beat'em all",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2021-01",
     "estimatedPlaytime": 5,
     "description": "Incarnez vos personnages préférés : Scott Pilgrim, Ramona Flowers, Knives Chau, Stephen Stills et d'autres encore. Améliorez vos personnages pour apprendre de nouveaux coups dévastateurs, débloquer des objets et modes secrets, invoquer de puissants alliés et plus encore ! Faites équipe avec vos amis face à des hordes d'ennemis retors, ou chacun pour soi dans des mini-jeux comme la balle au prisonnier. Votre objectif ultime : battre la Ligue des Ex maléfiques de Ramona !",
@@ -3665,7 +3558,7 @@
     "developer": "Krafton",
     "genre": "RPG - Tactique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2020-02",
     "estimatedPlaytime": 20,
     "description": "Dans Dark Crystal Tactics: Le temps de la résistance, vous dirigerez la résistance naissante des Gelflings face à leurs chefs tyranniques, les Skèksès, à travers plus de 50 combats RPG stratégiques uniques au tour par tour. Un conte riche en rebondissements - Explorez cette vaste histoire fantastique remplie de créatures mystiques dans les contrées lointaines du monde vibrant de Thra, où des vies Gelflings sont consumées pour leur essence par les infâmes Skèksès.",
@@ -3682,12 +3575,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3700,7 +3589,7 @@
     "developer": "CyberConnect2",
     "genre": "RPG - Tactique",
     "pegi": 16,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2021-07",
     "estimatedPlaytime": 16,
     "description": "Par une sombre nuit, un paisible village est emporté par les flammes de la guerre. De son côté, un groupe d'enfants rescapés embarque à bord d'un char géant afin de riposter.",
@@ -3741,7 +3630,7 @@
     "developer": " YummyYummyTummy",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2021-02",
     "estimatedPlaytime": 20,
     "description": "Le monde est recouvert de miasme et les derniers rescapés de l'humanité a trouvé refuge dans un château flottant où règne un fou. Alternez entre Lucien, politicien charismatique, et Rowena, fantôme vengeresse, pour effectuer des manœuvres politiques dans le château et affronter des monstres dans les terres désolées qui s'étendent dessous.",
@@ -3765,7 +3654,7 @@
     "developer": "Gust",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2022-02",
     "estimatedPlaytime": 50,
     "description": "Une histoire mystérieuse à propos d'un rêve mystérieux...C'est l'histoire de l'une des aventures que Sophie l'alchimiste a vécues après avoir quitté sa ville natale, Kirchen Bell. Elle raconte la quête de Sophie pour retrouver Plachta après qu'elles ont été séparées dans le monde onirique de Erde Wiege, et des nouveaux amis qu'elle y rencontre.",
@@ -3782,12 +3671,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3800,7 +3685,7 @@
     "developer": "Gust",
     "genre": "RPG - Tour par tour",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2021-11",
     "estimatedPlaytime": 38,
     "description": "« Tandis que le dernier jour d'été s'estompe, tout s'illumine. » Vous explorez des Heartscapes, des lieux qui représentent le cœur et l'esprit de chaque personnage. Profitez de voyages dans un monde mystérieux dans lequel la voix et les souvenirs du personnage sont revisités.",
@@ -3840,7 +3725,7 @@
     "developer": "Sega",
     "genre": "RPG - Tactique",
     "pegi": 16,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2016-06",
     "estimatedPlaytime": 28,
     "description": "Nous sommes en 1935. Dans le monde de Valkyria Chronicles, l'Europe plonge dans sa Seconde Guerre entre l'Alliance impériale autocratique d'Europe de l'Est, connue sous le nom d'Empire, et la Fédération atlantique, qui se battent pour une précieuse ressource, le ragnite. L'Empire dévaste le continent comme un feu de forêt, et ses yeux sont tournés sur les riches gisements de ragnite de la principauté de Gallia. Bien que Gallia soit pacifique et neutre dans ce conflit, ses citoyens devront défendre leurs foyers et leur pays contre une inévitable invasion. Les joueurs suivent le lieutenant Welkin Gunther et la fameuse escouade 7 de la milice de Gallia alors qu'ils affrontent les forces apparemment insurmontables de l'Empire.",
@@ -3864,7 +3749,7 @@
     "developer": "Atlus",
     "genre": "RPG - Tour par tour",
     "pegi": 16,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2021-05",
     "estimatedPlaytime": 50,
     "description": "Alors que Tokyo s'apprête à connaître une nouvelle journée ordinaire, le cataclysme surnaturel de la Conception s'abat sur le monde. Le chaos se répand, les démons envahissent les ruines de la capitale, et tandis que des forces divines et maléfiques se livrent une lutte sans merci, vos choix pourront déterminer qui doit vivre, renaître ou mourir... et qui triomphera.",
@@ -3881,12 +3766,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3899,7 +3780,7 @@
     "developer": "Enigami",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française  / Voix : Anglaise",
+    "language": "FR  / Voix : UK",
     "releaseDate": "2017-04",
     "estimatedPlaytime": 16,
     "description": "Rejoignez Chado et ses compagnons dans leur bateau volant, et découvrez les îles flottantes de la planète Mahera dévastée...Après vous être écrasé sur une île hostile, vous vous retrouvez au cœur d'un conflit entre plusieurs royaumes. Cependant, grâce au nouveau pouvoir de Chado lui permettant de communiquer avec Shiness, un esprit mystérieux imprégné de magie, cette situation explosive pourrait bien se résoudre de façon pacifique. Affrontez de dangereux adversaires dans des combats super dynamiques, qui combinent la magie et les mécanismes des jeux de combat traditionnels. Gagnez de l'expérience pour faire évoluer vos personnages, et débloquez de nouveaux talents et sortilèges. Devenez le héro qui unifiera enfin les civilisations de Mahera !",
@@ -3923,7 +3804,7 @@
     "developer": "Atlus",
     "genre": "RPG - Tour par tour",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2023-01",
     "estimatedPlaytime": 68,
     "description": "Il paraît que si on regarde une télé éteinte par une nuit pluvieuse, on voit son âme sœur...Une étrange rumeur se propage peu à peu dans la ville rurale d'Inaba, nouveau foyer du protagoniste. C'est également à ce moment que débute une série de meurtres mystérieux. En quête de la vérité, le protagoniste et ses amis s'aperçoivent qu'ils ont ouvert la porte d'un autre monde.",
@@ -3940,12 +3821,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -3958,7 +3835,7 @@
     "developer": "Namco Bandai",
     "genre": "RPG - Dynamique",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2023-02",
     "estimatedPlaytime": 47,
     "description": "Une lutte épique pour la survie : dans un monde en déclin, la légende raconte qu'un jour, l'Élu s'élèvera parmi les hommes et ranimera la terre. La frontière entre le bien et le mal est ténue dans cette aventure épique où se joue le destin de deux mondes étroitement liés.",
@@ -4000,7 +3877,7 @@
     "developer": "NIS America",
     "genre": "RPG - Tour par tour",
     "pegi": 7,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2022-03",
     "estimatedPlaytime": 15,
     "description": "Rejoignez une jeune fille intrépide qui s'évertue à devenir une héroïne lors de ses nombreuses aventures, avec l'aide du puissant dragon qui la protège. Rencontrez de nouveaux amis en chemin, obtenez des objets et aidez des gens issus de tous les horizons ! Découvrez un récit enchanteur qui traite de la bonté, de l'amitié et de la famille, le tout dans un monde merveilleux illustré à la main.",
@@ -4017,12 +3894,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4035,7 +3908,7 @@
     "developer": "Studio SiestA",
     "genre": "Shoot'em up",
     "pegi": 12,
-    "language": "Anglaise / Voix : Japonaise",
+    "language": "UK / Voix : JP",
     "releaseDate": "2023-03",
     "estimatedPlaytime": 1,
     "description": "Cette histoire ne se déroule pas dans le présent, mais dans un monde onirique où la vie prospère en abondance sans peur des Karunbunkurs. Ici, le temps passe lentement comme une immense vague ; les hommes et la nature cohabitent dans une harmonie et une prospérité éternelles. Les êtres vivant ici ont découvert un pouvoir miraculeux, qui était d'abord petit, puis est devenu suffisamment grand pour faire bouger le monde. Le pouvoir se transformait en « mana », une force qui ne pouvait être maniée que par quelques élus, à qui elle était confiée. Il a été utilisé correctement et transmis de génération en génération ; Aujourd’hui, après plusieurs millénaires, ce pouvoir est devenu courant et naturel, une forme commode de sorcellerie.",
@@ -4052,12 +3925,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4070,10 +3939,10 @@
     "developer": "Marvelous",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2023-06",
     "estimatedPlaytime": 10,
-    "description": "Entrez dans la peau de Nini, un adolescent fraîchement débarqué sur Terre arrivant dans la pittoresque ville japonaise d’Ashihara en août 1983. Explorez la ville, liez-vous d’amitié avec ses habitants, et affrontez les Kegal dans des combats au tour par tour dont l’issue dépendra des relations que vous aurez tissées et des décisions que vous aurez prises. Utilisez les connexions spéciales de Nini avec les dieux pour réinitialiser le monde, et chaque boucle permettra à Nini et à ses alliés de revivre le 8e mois jusqu’à ce qu’ils puissent régler le problème, ou que les Kegal ne les battent pour de bon.",
+    "description": "Entrez dans la peau de Nini, un adolescent fraîchement débarqué sur Terre arrivant dans la pittoresque ville JP d’Ashihara en août 1983. Explorez la ville, liez-vous d’amitié avec ses habitants, et affrontez les Kegal dans des combats au tour par tour dont l’issue dépendra des relations que vous aurez tissées et des décisions que vous aurez prises. Utilisez les connexions spéciales de Nini avec les dieux pour réinitialiser le monde, et chaque boucle permettra à Nini et à ses alliés de revivre le 8e mois jusqu’à ce qu’ils puissent régler le problème, ou que les Kegal ne les battent pour de bon.",
     "youtubeId": "7AlJr-Ytq1Y",
     "images": {
       "cover": "/images/covers/loop-8.jpg",
@@ -4087,12 +3956,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4105,7 +3970,7 @@
     "developer": "Gust",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2023-07",
     "estimatedPlaytime": 8,
     "description": "À la Royal Academy of Magic (connue simplement sous le nom d'Academy), Marie a du mal à étudier l'alchimie. Un jour, l'une de ses professeurs lui donne accès à un atelier dans le cadre d'un examen de fin d'études quelque peu spécial. Afin d'obtenir son diplôme, Marie doit parvenir à créer un objet qui impressionnera sa professeure. Mais d'abord, Marie doit améliorer ses compétences d'alchimiste, récolter des ingrédients et obtenir suffisamment d'argent pour recruter des aventuriers ou acheter des recettes et des ustensiles... Ajoutez à cela les synthèses, les combats et les quêtes qu'elle doit effectuer, et il devient clair qu'elle a beaucoup à faire avant d'être prête pour son examen !",
@@ -4122,12 +3987,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4140,7 +4001,7 @@
     "developer": "neko.works",
     "genre": "RPG - Tour par tour",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2019-11",
     "estimatedPlaytime": 3,
     "description": " Incarnez Haru et son amie d'enfance Kuroko alors qu'ils combattent un empire malfaisant dans la ville souterraine 'Lower City'.",
@@ -4178,7 +4039,7 @@
     "developer": "Capcom",
     "genre": "Autre",
     "pegi": 12,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2024-01",
     "estimatedPlaytime": 77,
     "description": "Accompagnez l'avocat junior Apollo Justice et son mentor, le légendaire Phoenix Wright, dans cette collection de 3 jeux !",
@@ -4217,7 +4078,7 @@
     "developer": "neko.works",
     "genre": "RPG - Tour par tour",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2021-11",
     "estimatedPlaytime": 3,
     "description": "L'épisode 2 reprend l'aventure juste après le climax de l'épisode précédant. Incarnez Haru et Ayaka alors qu'ils découvrent les mystères des terres profondes tout en cherchant un moyen de retrouver Kuroko, rencontrant une mystérieuse fille aux cheveux argentés en cours de route.",
@@ -4255,7 +4116,7 @@
     "developer": "Marvelous",
     "genre": "RPG - Gestion",
     "pegi": 12,
-    "language": "Anglaise / Voix Japonaise",
+    "language": "UK / Voix JP",
     "releaseDate": "2020-11",
     "estimatedPlaytime": 30,
     "description": "Sakuna, déesse gâtée des récoltes, se retrouve bannie de son opulente demeure céleste sur une île envahie par les démons. Dans cette région sauvage indomptée, cette fille d'un dieu guerrier et d'une déesse de la moisson doit retrouver son droit de naissance en résistant aux éléments, en combattant les monstres et en cultivant du riz, la source de son pouvoir. À ses côtés, dans ce lieu interdit, se trouvent son gardien Tama et un groupe d'humains exclus de leur peuple. Ensemble, ces compagnons improbables doivent unir leurs forces pour apprivoiser à la fois le sol et les démons de Hinoe Island.",
@@ -4272,12 +4133,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4290,7 +4147,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Tour par tour",
     "pegi": 16,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2019-09",
     "estimatedPlaytime": 40,
     "description": "C’est la guerre. La république de Galbadia, sous le joug de la sorcière Edea, a mobilisé sa puissante armée contre les autres nations du monde. Squall et les autres membres du groupe de mercenaires d'élite du SeeD s'allient avec Linoa, une résistante, pour lutter contre la tyrannie de Galbadia et empêcher Edea d'atteindre son objectif.",
@@ -4307,12 +4164,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4325,7 +4178,7 @@
     "developer": "Capcom",
     "genre": "Autre",
     "pegi": 12,
-    "language": "Française / Voix : Française",
+    "language": "FR / Voix : FR",
     "releaseDate": "2024-09",
     "estimatedPlaytime": 58,
     "description": "Quittez la salle d'audience pour examiner les scènes de crime avec Hunter à la recherche de preuves et d'indices, et interrogez les témoins et les suspects. Fiez-vous à votre sens de la déduction et aux éléments réunis pour résoudre avec logique des affaires aussi complexes qu'intrigantes.",
@@ -4342,12 +4195,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4360,7 +4209,7 @@
     "developer": "DotEmu",
     "genre": "Puzzle",
     "pegi": 7,
-    "language": "Française / Voix : Anglaise",
+    "language": "FR / Voix : UK",
     "releaseDate": "2023-07",
     "estimatedPlaytime": 25,
     "description": "Might & Magic: Clash of Heroes est un mélange unique de réflexion, de stratégie et de RPG : planifiez chacune de vos actions et combinez vos attaques pour vaincre vos ennemis dans des scénarios de combats inspirés de jeux de réflexion. Améliorez vos héros et vos créatures pour lancer des attaques de plus en plus dévastatrices sur vos adversaires et laissez le stratège en vous mener vos troupes à la victoire.",
@@ -4377,12 +4226,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4395,7 +4240,7 @@
     "developer": "Square Enix",
     "genre": "RPG - Tour par tour",
     "pegi": 7,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2023-04",
     "estimatedPlaytime": 140,
     "description": "Les jeux qui ont inspiré toute une génération font leur retour dans une version ultime en 2D pixel remaster !",
@@ -4436,7 +4281,7 @@
     "developer": "Square Enix",
     "genre": "Rythme",
     "pegi": 16,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2023-02",
     "estimatedPlaytime": 13,
     "description": "Un jeu d'action rythmique contenant 385 musiques soigneusement sélectionnées issues de toute la série FINAL FANTASY.",
@@ -4453,12 +4298,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4471,7 +4312,7 @@
     "developer": "Capcom",
     "genre": "Action",
     "pegi": 12,
-    "language": "Anglaise",
+    "language": "UK",
     "releaseDate": "2018-07",
     "estimatedPlaytime": 35,
     "description": "Obtenez les huit titres de la saga épique de Mega Man X et faites le plein d'adrénaline ! Montrez toute l'étendue de vos talents en affrontant deux redoutables boss simultanément dans le nouveau mode X Challenge. Explorez un gigantesque musée pour y découvrir des illustrations rares, toute une collection d'objets classiques à la gloire de Mega Man, les publicités originales et bien plus encore.",
@@ -4488,12 +4329,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4506,7 +4343,7 @@
     "developer": "Sega",
     "genre": "Action",
     "pegi": 7,
-    "language": "Française / Voix : Japonaise",
+    "language": "FR / Voix : JP",
     "releaseDate": "2012-03",
     "estimatedPlaytime": 5,
     "description": "Asha, la guerrière protagoniste du jeu, est impliquée dans un grave incident qui va affecter la survie de son monde. Notre héroïne aux cheveux verts n'a pas à sauver le monde toute seule et part à l'aventure avec son adorable ami volant, le Pepelogoo bleu. Asha et le Pepelogoo doivent travailler ensemble pour devenir les héros que le monde a besoin qu'ils soient. La route est longue : parviendront-ils à sauver leur monde ?",
@@ -4523,12 +4360,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4541,7 +4374,7 @@
     "developer": "GungHo",
     "genre": "RPG - Tour par tour",
     "pegi": 12,
-    "language": "Française / Voix Japonaise",
+    "language": "FR / Voix JP",
     "releaseDate": "2025-04",
     "estimatedPlaytime": 32,
     "description": "Silver Star Story vous plonge dans l'épopée d'Alex, un jeune aventurier déterminé à devenir maître-dragon. Accompagné de ses amis, il devra déjouer les plans du Tsar-Magique, souhaitant plonger le monde dans l’abysse.LUNAR 2: Eternal Blue se déroule mille ans plus tard, où l’on suit Hiro et ses compagnons dans leur quête pour retrouver la déesse Althéna aux côtés d'une mystérieuse jeune fille nommée Lucia. Dans cette aventure épique, ils devront affronter des ennemis comme Borgan ou le Chevalier Blanc Léo, qui les pourchassent pour éradiquer celle qu'ils considèrent comme la 'Destructrice de Lunar'. ",
@@ -4558,12 +4391,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   },
@@ -4576,7 +4405,7 @@
     "developer": "Vewo Interactive",
     "genre": "RPG - Tour par tour",
     "pegi": 7,
-    "language": "Française",
+    "language": "FR",
     "releaseDate": "2022-11",
     "estimatedPlaytime": 40,
     "description": "Que les combats commencent ! Attrapez et dressez plus de Nexomon que jamais et montez l'équipe ultime. Avec l'aide de vos fidèles amis, explorez le Nexomonde et combattez des dresseurs, des champions et des ennemis pour sauver le monde une bonne fois pour toutes et devenir le héros de ces deux aventures épiques.",
@@ -4593,12 +4422,8 @@
       "playtime": null,
       "completedDate": null,
       "score": null,
-      "pros": [
-        ""
-      ],
-      "cons": [
-        ""
-      ],
+      "pros": [""],
+      "cons": [""],
       "summary": null
     }
   }
