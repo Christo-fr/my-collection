@@ -59,3 +59,19 @@
     transform: translateY(-12px); /* Amplitude du flottement */
   }
 }
+
+/* Animation de fade (liste de jeux) */
+@keyframes fadeInGrid {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-grid {
+  animation: fadeInGrid 0.4s ease-out forwards;
+}
