@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Undo2 } from "lucide-react";
@@ -47,7 +48,7 @@ export default function GameDetail() {
    * Gestion intelligente du retour :
    * Redirige vers /list si l'utilisateur vient d'un site externe ou d'un nouvel onglet.
    */
-  const handleBack = () => {
+  /*const handleBack = () => {
     const hasInternalHistory = document.referrer.startsWith(
       window.location.origin,
     );
@@ -57,7 +58,7 @@ export default function GameDetail() {
     } else {
       router.back();
     }
-  };
+  };*/
 
   // =========================================================================
   // 3. EFFETS (LIFECYCLE)
@@ -117,6 +118,13 @@ export default function GameDetail() {
       setBgImage(null);
     };
   }, [game, setBgImage]);
+
+  // Effet C : Redirection si le jeu n'existe pas après chargement
+  useEffect(() => {
+    if (!loading && !game) {
+      router.push("/list");
+    }
+  }, [loading, game, router]);
   // =========================================================================
   // 4. CONFIGURATION DES ONGLETS (INFORMATIONS & AVIS)
   // =========================================================================
@@ -244,24 +252,19 @@ export default function GameDetail() {
         ]
       : []),
   ];
-
   // =========================================================================
   // 5. RENDU DU COMPOSANT
   // =========================================================================
-  if (loading) {
-    return <p className="p-8 text-gray-400">Chargement en cours...</p>;
-  }
 
-  if (!game) {
-    return <p className="p-8 text-main/60 text-sm">Aucun jeu trouvé</p>;
-  }
+  if (!game) return null;
 
   return (
     <>
+      {" "}
       <LayoutSplit image={game.images.parallax}>
         {/* Logo du jeu */}
         {game.images.logo && (
-          <div className="relative items-start mb-2 h-32 lg:flex-shrink-0">
+          <div className="relative items-start mb-2 h-32 w-full md:w-1/2 lg:flex-shrink-0">
             <Image
               src={game.images.logo}
               alt={game.title}
@@ -337,7 +340,7 @@ export default function GameDetail() {
         <div className="lg:flex-shrink-0">
           <Button
             variant="secondary"
-            onClick={handleBack}
+            onClick={() => router.push("/list")}
             icon={<Undo2 className="w-5 h-5" />}
           >
             Retour
@@ -345,20 +348,18 @@ export default function GameDetail() {
         </div>
       </LayoutSplit>
       {/* ========================================================================= */}
-      // 6. MODALES ET DIALOGS
+      {/* 6. MODALES ET DIALOGS
       {/* ========================================================================= */}
       {game.youtubeId && (
         <Dialog
           isOpen={isTrailerOpen}
           onClose={() => setIsTrailerOpen(false)}
-          title={`Trailer - ${game.title}`}
           maxWidth="max-w-7xl"
           centered
         >
           <div className="w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
             <iframe
               src={`https://www.youtube.com/embed/${game.youtubeId}?autoplay=1`}
-              title={`Trailer - ${game.title}`}
               className="w-full h-full border-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
