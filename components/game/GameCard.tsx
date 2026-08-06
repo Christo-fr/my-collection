@@ -11,7 +11,7 @@ interface GameCardProps {
 export default function GameCard({ game, variant = "default" }: GameCardProps) {
   return (
     <Link
-      href={`/games/${game.id}`}
+      href={`/game/${game.id}`}
       className={`relative w-full aspect-[2/3] rounded-xl overflow-hidden cursor-pointer select-none border border-main/10 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_2px_var(--color-secondary)]`}
       title={game.title}
     >
