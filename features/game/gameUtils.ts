@@ -145,3 +145,46 @@ export function filterGames(games: Game[], filters: GameFilters): Game[] {
       return diff !== 0 ? diff : a.title.localeCompare(b.title);
     });
 }
+
+// =============================================================
+//  RENVOIE 3 JEUX D'UNE MêME FRANCHISE (1 avant, 2 après)
+// =============================================================
+
+export function getRelatedFranchiseGames(
+  currentGame: Game,
+  franchiseGames: Game[],
+): Game[] {
+  // 1. Tri croissant par date de sortie
+  const sortedGames = [...franchiseGames].sort(
+    (a, b) =>
+      new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime(),
+  );
+
+  // 2. Position du jeu actuel dans la saga
+  const currentIndex = sortedGames.findIndex((g) => g.id === currentGame.id);
+
+  // Si le jeu n'est pas trouvé dans la liste, sécurité
+  if (currentIndex === -1) return [];
+
+  // 3. Découpage naturel des deux sous-listes
+  const gamesBefore = sortedGames.slice(0, currentIndex);
+  const gamesAfter = sortedGames.slice(currentIndex + 1);
+
+  // 3. Quotas par défaut
+  let countBefore = 1;
+  let countAfter = 2;
+
+  // 4. Report du manque d'un côté vers l'autre
+  if (gamesBefore.length < 1) {
+    countAfter += 1 - gamesBefore.length; // Si 0 avant -> countAfter devient 3
+  }
+  if (gamesAfter.length < 2) {
+    countBefore += 2 - gamesAfter.length; // Si 0 après -> countBefore devient 3, si 1 après -> 2
+  }
+
+  // 5. Extraction finale
+  const selectedBefore = gamesBefore.slice(-countBefore);
+  const selectedAfter = gamesAfter.slice(0, countAfter);
+
+  return [...selectedBefore, ...selectedAfter];
+}

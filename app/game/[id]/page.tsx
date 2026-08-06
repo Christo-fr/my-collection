@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 import Tabs from "@/components/ui/Tabs";
@@ -11,31 +12,69 @@ import LayoutSplit from "@/components/layout/LayoutSplit";
 import ConsoleIcon from "@/components/game/ConsoleIcon";
 import { Game } from "@/types/game";
 import { useBackground } from "@/components/providers/BackgroundProvider";
+import { getRelatedFranchiseGames } from "@/features/game/gameUtils";
 
 export default function GameDetail() {
   const { id } = useParams();
   const [game, setGame] = useState<Game | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const [relatedFranchiseGames, setRelatedFranchiseGames] = useState<Game[]>(
+    [],
+  );
 
   // 1. Remplace bgImage par setBgImage
   const { setBgImage } = useBackground();
 
   // Effet A : Chargement des données (inchangé)
   useEffect(() => {
+    // Guard clause : Si aucun ID n'est disponible dans les params, on stoppe net
     if (!id) return;
-    async function fetchGame() {
+
+    async function fetchGameData() {
       try {
+        // 1. Récupération du jeu principal
         const reponse = await fetch(`/api/games/${id}`);
+
+        // Sécurité : Si le serveur renvoie une erreur (404, 500...), on évite de parser du JSON inexistant
+        if (!reponse.ok) {
+          setGame(null);
+          setRelatedFranchiseGames([]);
+          return;
+        }
+
+        // La requête est 200 OK : conversion de la réponse en objet Game
         const data: Game = await reponse.json();
-        reponse.ok ? setGame(data) : setGame(null);
+        setGame(data);
+
+        // 2. Récupération des jeux voisins de la franchise
+        // On n'exécute la seconde requête que si le jeu possède bien une franchise
+        if (data.franchise) {
+          // encodeURIComponent sécurise la chaîne (ex: "Mario & Luigi" -> "Mario%20%26%20Luigi")
+          const franchiseResponse = await fetch(
+            `/api/games?franchise=${encodeURIComponent(data.franchise)}`,
+          );
+
+          if (franchiseResponse.ok) {
+            const franchiseData: Game[] = await franchiseResponse.json();
+
+            // Calcul algorithmique des 3 jeux voisins (1 avant, 2 après + fallbacks)
+            const relatedGames = getRelatedFranchiseGames(data, franchiseData);
+            setRelatedFranchiseGames(relatedGames);
+          }
+        } else {
+          // Pas de franchise renseignée pour ce jeu -> réinitialisation à un tableau vide
+          setRelatedFranchiseGames([]);
+        }
       } catch (error) {
-        console.error("Erreur lors du chargement du jeu :", error);
+        console.error("Erreur lors du chargement des données :", error);
       } finally {
+        // Désactivation de l'état de chargement, que la requête ait réussi ou échoué
         setLoading(false);
       }
     }
-    fetchGame();
+
+    fetchGameData();
   }, [id]);
 
   // Effet B : Gestion du fond d'écran
@@ -207,6 +246,35 @@ export default function GameDetail() {
 
             {/* Tabs */}
             <Tabs items={sampleTabs} />
+
+            <div>
+              {relatedFranchiseGames.length > 0 && (
+                <>
+                  <Heading as="h2" size="sm">
+                    De la même série...
+                  </Heading>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    {relatedFranchiseGames.map((game) => (
+                      <Link
+                        key={game.id}
+                        href={`/game/${game.id}`}
+                        className="transition-all duration-300 hover:scale-110"
+                      >
+                        <div className="relative h-24">
+                          <Image
+                            src={game.images.logo}
+                            alt={game.title}
+                            fill
+                            sizes="(max-width: 640px) 50vw, 20vw"
+                            className="object-contain object-left"
+                          />
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
           </section>
           <div className="lg:flex-shrink-0">
             <Button
