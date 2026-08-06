@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -24,10 +25,12 @@ export default function Footer() {
           aria-label="Mon GitHub"
           className="opacity-70 hover:opacity-100 transition"
         >
-          <img
-            src="icons/github.svg"
+          <Image
+            src="/icons/github.svg"
             alt="Mon GitHub"
-            className="w-6 h-6 inline-block mr-1 dark:invert"
+            width={24}
+            height={24}
+            className="inline-block mr-1 dark:invert"
           />
         </a>
       </div>

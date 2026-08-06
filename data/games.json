@@ -7713,7 +7713,7 @@
       "logo": "/games/logos/journey.png",
       "parallax": {
         "url": "/games/parallaxs/journey.png",
-        "truncated": false
+        "truncated": true
       }
     },
     "review": {
