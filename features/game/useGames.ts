@@ -47,7 +47,9 @@ export function useGames() {
     searchParams.get("status") ?? "all",
   );
   const [maxDuration, setMaxDuration] = useState<number>(
-    searchParams.get("duration") ? Number(searchParams.get("duration")) : 200,
+    searchParams.get("duration") && !isNaN(Number(searchParams.get("duration")))
+      ? Number(searchParams.get("duration"))
+      : 200,
   );
   const [sortBy, setSortBy] = useState<string>(
     searchParams.get("sort") ?? "alphabetical",
