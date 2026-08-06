@@ -188,3 +188,26 @@ export function getRelatedFranchiseGames(
 
   return [...selectedBefore, ...selectedAfter];
 }
+
+// =============================================================
+//  TRADUCTION DES DATES EN FRANÇAIS
+// =============================================================
+
+export function formatDate(dateString: string): string {
+  if (!dateString) return "";
+
+  // Découpage pour éviter les décalages de fuseau horaire UTC
+  const [year, month] = dateString.split("-").map(Number);
+  if (!year || !month) return dateString;
+
+  // Création de la date (les mois commencent à 0 en JS)
+  const date = new Date(year, month - 1);
+
+  const formatted = date.toLocaleDateString("fr-FR", {
+    month: "long",
+    year: "numeric",
+  });
+
+  // Met la première lettre du mois en majuscule (ex: "mars 2024" -> "Mars 2024")
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+}

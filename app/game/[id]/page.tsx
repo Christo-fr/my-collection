@@ -12,7 +12,10 @@ import LayoutSplit from "@/components/layout/LayoutSplit";
 import ConsoleIcon from "@/components/game/ConsoleIcon";
 import { Game } from "@/types/game";
 import { useBackground } from "@/components/providers/BackgroundProvider";
-import { getRelatedFranchiseGames } from "@/features/game/gameUtils";
+import {
+  getRelatedFranchiseGames,
+  formatDate,
+} from "@/features/game/gameUtils";
 
 export default function GameDetail() {
   const { id } = useParams();
@@ -113,7 +116,7 @@ export default function GameDetail() {
             {game?.releaseDate && (
               <div className="flex gap-2">
                 {<Undo2 className="w-5 h-5" />}
-                <span>{game?.releaseDate}</span>
+                <span>{formatDate(game?.releaseDate)}</span>
               </div>
             )}
 
@@ -154,7 +157,7 @@ export default function GameDetail() {
                   {game?.review.completedDate && (
                     <div className="flex gap-2">
                       {<Undo2 className="w-5 h-5" />}
-                      <span>{game?.review.completedDate}</span>
+                      <span>{formatDate(game?.review.completedDate)}</span>
                     </div>
                   )}
 
@@ -266,7 +269,7 @@ export default function GameDetail() {
                             alt={game.title}
                             fill
                             sizes="(max-width: 640px) 50vw, 20vw"
-                            className="object-contain object-left"
+                            className="object-contain object-center"
                           />
                         </div>
                       </Link>
@@ -279,7 +282,17 @@ export default function GameDetail() {
           <div className="lg:flex-shrink-0">
             <Button
               variant="secondary"
-              onClick={() => router.back()}
+              onClick={() => {
+                const hasInternalHistory = document.referrer.startsWith(
+                  window.location.origin,
+                );
+
+                if (!hasInternalHistory || window.history.length <= 1) {
+                  router.push("/list");
+                } else {
+                  router.back();
+                }
+              }}
               icon={<Undo2 className="w-5 h-5" />}
             >
               Retour
