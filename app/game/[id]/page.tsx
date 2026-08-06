@@ -5,7 +5,18 @@ import { useParams, useRouter } from "next/navigation";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Undo2 } from "lucide-react";
+import {
+  Undo2,
+  Play,
+  ShieldAlert,
+  Timer,
+  Languages,
+  Gamepad2,
+  CodeXml,
+  CalendarDays,
+  CalendarCheck,
+  Award,
+} from "lucide-react";
 
 // Providers & Layouts
 import { useBackground } from "@/components/providers/BackgroundProvider";
@@ -69,8 +80,8 @@ export default function GameDetail() {
     if (!id) return;
 
     async function fetchGameData() {
+      setLoading(true);
       try {
-        // Récupération du jeu principal
         const response = await fetch(`/api/games/${id}`);
 
         if (!response.ok) {
@@ -108,23 +119,19 @@ export default function GameDetail() {
 
   // Effet B : Gestion dynamique du fond d'écran (Parallax/Cover)
   // Effet B : Gestion du fond d'écran
+
   useEffect(() => {
     if (game?.images?.cover) {
       setBgImage(game.images.cover);
     }
-
-    // Nettoyage : signale au Provider de réinitialiser le fond en quittant la page
-    return () => {
-      setBgImage(null);
-    };
   }, [game, setBgImage]);
-
   // Effet C : Redirection si le jeu n'existe pas après chargement
   useEffect(() => {
     if (!loading && !game) {
       router.push("/list");
     }
   }, [loading, game, router]);
+
   // =========================================================================
   // 4. CONFIGURATION DES ONGLETS (INFORMATIONS & AVIS)
   // =========================================================================
@@ -136,43 +143,43 @@ export default function GameDetail() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {game?.developer && (
               <div className="flex gap-2 items-center">
-                <Undo2 className="w-5 h-5 text-main/60" />
+                <CodeXml className="w-5 h-5 " />
                 <span>{game.developer}</span>
               </div>
             )}
 
             {game?.language && (
               <div className="flex gap-2 items-center">
-                <Undo2 className="w-5 h-5 text-main/60" />
+                <Languages className="w-5 h-5 " />
                 <span>{game.language}</span>
               </div>
             )}
 
             {game?.releaseDate && (
               <div className="flex gap-2 items-center">
-                <Undo2 className="w-5 h-5 text-main/60" />
+                <CalendarDays className="w-5 h-5 " />
                 <span>{formatDate(game.releaseDate)}</span>
               </div>
             )}
 
             {game?.genre && (
               <div className="flex gap-2 items-center">
-                <Undo2 className="w-5 h-5 text-main/60" />
+                <Gamepad2 className="w-5 h-5 " />
                 <span>{game.genre}</span>
               </div>
             )}
 
             {game?.pegi && (
               <div className="flex gap-2 items-center">
-                <Undo2 className="w-5 h-5 text-main/60" />
-                <span>{game.pegi}</span>
+                <ShieldAlert className="w-5 h-5 " />
+                <span>PEGI {game.pegi}</span>
               </div>
             )}
 
             {game?.estimatedPlaytime && (
               <div className="flex gap-2 items-center">
-                <Undo2 className="w-5 h-5 text-main/60" />
-                <span>{game.estimatedPlaytime}</span>
+                <Timer className="w-5 h-5 " />
+                <span>{game.estimatedPlaytime} h</span>
               </div>
             )}
           </div>
@@ -181,6 +188,34 @@ export default function GameDetail() {
             <p className="mt-4 text-main/80 text-sm leading-relaxed">
               {game.description}
             </p>
+          )}
+
+          {/* Section "De la même série..." (Franchise) */}
+          {relatedFranchiseGames.length > 0 && (
+            <div className="mt-4">
+              <Heading as="h2" size="sm" className="mb-2">
+                De la même série...
+              </Heading>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                {relatedFranchiseGames.map((relatedGame) => (
+                  <Link
+                    key={relatedGame.id}
+                    href={`/game/${relatedGame.id}`}
+                    className="transition-all duration-300 hover:scale-105"
+                  >
+                    <div className="relative h-24">
+                      <Image
+                        src={relatedGame.images.logo}
+                        alt={relatedGame.title}
+                        fill
+                        sizes="(max-width: 640px) 50vw, 20vw"
+                        className="object-contain object-center"
+                      />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           )}
         </>
       ),
@@ -194,7 +229,7 @@ export default function GameDetail() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {game.review.completedDate && (
                     <div className="flex gap-2 items-center">
-                      <Undo2 className="w-5 h-5 text-main/60" />
+                      <CalendarCheck className="w-5 h-5 " />
                       <span>{formatDate(game.review.completedDate)}</span>
                     </div>
                   )}
@@ -202,7 +237,7 @@ export default function GameDetail() {
                   {game.review.score && (
                     <div className="col-span-2">
                       <div className="flex items-center gap-2">
-                        <Undo2 className="w-5 h-5 text-main/60" />
+                        <Award className="w-5 h-5 " />
                         <span>{game.review.score} /10</span>
                         <span className="flex flex-auto gap-2">
                           <ProgressBar value={game.review.score * 10} />
@@ -213,8 +248,8 @@ export default function GameDetail() {
 
                   {game.review.playtime && (
                     <div className="flex gap-2 items-center">
-                      <Undo2 className="w-5 h-5 text-main/60" />
-                      <span>{game.review.playtime}</span>
+                      <Timer className="w-5 h-5 " />
+                      <span>{game.review.playtime} h</span>
                     </div>
                   )}
                 </div>
@@ -223,8 +258,12 @@ export default function GameDetail() {
                   {game.review.pros && (
                     <ul className="space-y-1">
                       {game.review.pros.map((pro, index) => (
-                        <li key={index} className="text-main/80 text-sm">
-                          + {pro}
+                        <li
+                          key={index}
+                          className="text-main/80 text-sm flex gap-1"
+                        >
+                          <span className="text-main/60 shrink-0">+</span>
+                          <span>{pro}</span>
                         </li>
                       ))}
                     </ul>
@@ -233,8 +272,12 @@ export default function GameDetail() {
                   {game.review.cons && (
                     <ul className="space-y-1">
                       {game.review.cons.map((con, index) => (
-                        <li key={index} className="text-main/80 text-sm">
-                          - {con}
+                        <li
+                          key={index}
+                          className="text-main/80 text-sm flex gap-1"
+                        >
+                          <span className="text-main/60 shrink-0">-</span>
+                          <span>{con}</span>
                         </li>
                       ))}
                     </ul>
@@ -299,6 +342,7 @@ export default function GameDetail() {
                 <Button
                   variant="secondary"
                   size="sm"
+                  icon={<Play className="w-5 h-5" />}
                   onClick={() => setIsTrailerOpen(true)}
                 >
                   Trailer
@@ -306,34 +350,6 @@ export default function GameDetail() {
               )
             }
           />
-
-          {/* Section "De la même série..." (Franchise) */}
-          {relatedFranchiseGames.length > 0 && (
-            <div className="mt-4">
-              <Heading as="h2" size="sm" className="mb-2">
-                De la même série...
-              </Heading>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                {relatedFranchiseGames.map((relatedGame) => (
-                  <Link
-                    key={relatedGame.id}
-                    href={`/game/${relatedGame.id}`}
-                    className="transition-all duration-300 hover:scale-105"
-                  >
-                    <div className="relative h-24">
-                      <Image
-                        src={relatedGame.images.logo}
-                        alt={relatedGame.title}
-                        fill
-                        sizes="(max-width: 640px) 50vw, 20vw"
-                        className="object-contain object-center"
-                      />
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
         </section>
 
         {/* Bouton Retour de bas de page */}

@@ -2,41 +2,63 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useBackground } from "@/components/providers/BackgroundProvider";
 
 export default function AppBackground() {
   const { bgImage } = useBackground();
+  const pathname = usePathname();
 
-  const [currentBg, setCurrentBg] = useState<string | null>(null);
-  const [pendingBg, setPendingBg] = useState<string | null>(null);
-  const [isPendingLoaded, setIsPendingLoaded] = useState(false);
+  // Actif uniquement sur les fiches jeux (/game/...)
+  const isGamePage = pathname?.startsWith("/game/");
+  const targetImage = isGamePage ? bgImage : null;
+
+  // Calque principal (display) et calque entrant (incoming)
+  const [displayBg, setDisplayBg] = useState<string | null>(null);
+  const [incomingBg, setIncomingBg] = useState<string | null>(null);
+  const [isIncomingLoaded, setIsIncomingLoaded] = useState(false);
 
   useEffect(() => {
-    if (bgImage && bgImage !== currentBg && bgImage !== pendingBg) {
-      setPendingBg(bgImage);
-      setIsPendingLoaded(false);
+    // Cas 1 : Arrivée d'une nouvelle image de jeu
+    if (
+      targetImage &&
+      targetImage !== displayBg &&
+      targetImage !== incomingBg
+    ) {
+      setIncomingBg(targetImage);
+      setIsIncomingLoaded(false);
     }
-  }, [bgImage, currentBg, pendingBg]);
+    // Cas 2 : Sortie de la fiche jeu (retour vers /list, etc.)
+    else if (!targetImage && (displayBg || incomingBg)) {
+      setIncomingBg(null);
+      setIsIncomingLoaded(false);
+    }
+  }, [targetImage, displayBg, incomingBg]);
 
-  // Fin du fondu d'entrée du nouveau fond
-  const handlePendingTransitionEnd = () => {
-    if (isPendingLoaded && pendingBg) {
-      setCurrentBg(pendingBg);
-      setPendingBg(null);
-      setIsPendingLoaded(false);
+  // Image suivante chargée par le navigateur
+  const handleIncomingLoad = () => {
+    setIsIncomingLoaded(true);
+  };
+
+  // Fin du fondu d'entrée : la nouvelle image devient l'image principale
+  const handleIncomingTransitionEnd = () => {
+    if (incomingBg && isIncomingLoaded) {
+      setDisplayBg(incomingBg);
+      setIncomingBg(null);
+      setIsIncomingLoaded(false);
     }
   };
 
-  // Fin du fondu de sortie quand on quitte la fiche jeu (bgImage === null)
-  const handleCurrentTransitionEnd = () => {
-    if (!bgImage && currentBg) {
-      setCurrentBg(null);
+  // Fin du fondu de sortie vers la liste
+  const handleDisplayTransitionEnd = () => {
+    if (!targetImage) {
+      setDisplayBg(null);
     }
   };
 
   return (
     <div className="fixed inset-0 -z-20 opacity-30 pointer-events-none">
-      {/* 1. Fond Light mode par défaut */}
+      {/* 1. Fonds Light / Dark par défaut */}
       <Image
         src="/background/bg-modelight.webp"
         alt="Background light"
@@ -46,8 +68,6 @@ export default function AppBackground() {
         sizes="100vw"
         fill
       />
-
-      {/* 2. Fond Dark mode par défaut */}
       <Image
         src="/background/bg-modedark.webp"
         alt="Background dark"
@@ -58,35 +78,37 @@ export default function AppBackground() {
         fill
       />
 
-      {/* 3. Fond du jeu actuel (s'estompe vers opacity-0 si bgImage passe à null) */}
-      {currentBg && (
+      {/* 2. Image de fond actuelle (reste affichée pendant le fetch) */}
+      {displayBg && (
         <Image
-          src={currentBg}
-          alt="Background jeu actuel"
+          key={`display-${displayBg}`}
+          src={displayBg}
+          alt="Background jeu"
           fill
           priority
           quality={100}
           sizes="100vw"
-          onTransitionEnd={handleCurrentTransitionEnd}
+          onTransitionEnd={handleDisplayTransitionEnd}
           className={`object-cover transition-opacity duration-500 ease-in-out ${
-            bgImage ? "opacity-100" : "opacity-0"
+            targetImage ? "opacity-100" : "opacity-0"
           }`}
         />
       )}
 
-      {/* 4. Nouveau fond du jeu en cours de chargement */}
-      {pendingBg && (
+      {/* 3. Nouvelle image qui apparaît en fondu doux par-dessus */}
+      {incomingBg && (
         <Image
-          src={pendingBg}
+          key={`incoming-${incomingBg}`}
+          src={incomingBg}
           alt="Background jeu suivant"
           fill
           priority
           quality={100}
           sizes="100vw"
-          onLoad={() => setIsPendingLoaded(true)}
-          onTransitionEnd={handlePendingTransitionEnd}
-          className={`object-cover transition-opacity duration-500 ease-in-out ${
-            isPendingLoaded ? "opacity-100" : "opacity-0"
+          onLoad={handleIncomingLoad}
+          onTransitionEnd={handleIncomingTransitionEnd}
+          className={`object-cover transition-opacity duration-700 ease-in-out ${
+            isIncomingLoaded ? "opacity-100" : "opacity-0"
           }`}
         />
       )}
