@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ParallaxImage } from "@/types/game";
 
 export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
+  // État local pour gérer l'apparition progressive au chargement de l'image
+  const [isLoaded, setIsLoaded] = useState(false);
+
   // 1. Référence directe sur le nœud HTML pour muter le style CSS à 60 FPS sans déclencher de re-render React
   const characterRef = useRef<HTMLDivElement>(null);
 
@@ -27,8 +30,7 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
       const targetX = mousePos.current.x * 18;
       const targetY = mousePos.current.y * 12;
 
-      // Formule d'interpolation linéaire (Lerp) pour la fluidité des axes X et Y :
-      // NouvellePosition = PositionActuelle + (PositionCible - PositionActuelle) * Coefficient
+      // Formule d'interpolation linéaire (Lerp) pour la fluidité des axes X et Y
       charX += (targetX - charX) * 0.05;
       charY += (targetY - charY) * 0.05;
 
@@ -36,7 +38,6 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
       charScale += (targetScale.current - charScale) * 0.12;
 
       // Si le "pop" a dépassé 114% de sa taille, on réinitialise la cible vers 1 (100%)
-      // Le Lerp ramènera automatiquement l'image à sa taille initiale sans coupure
       if (targetScale.current > 1 && charScale > 1.14) {
         targetScale.current = 1;
       }
@@ -63,8 +64,6 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
 
-    // Normalisation des coordonnées de la souris :
-    // Centre du composant = (0, 0) | Coin haut-gauche = (-1, -1) | Coin bas-droit = (+1, +1)
     mousePos.current.x =
       (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
     mousePos.current.y =
@@ -73,7 +72,7 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
 
   // Easter Egg : Impulsion d'agrandissement au clic
   const handleClick = () => {
-    targetScale.current = 1.18; // Rebond à 118% de la taille d'origine
+    targetScale.current = 1.18;
   };
 
   const isTruncated = image.truncated === true;
@@ -83,8 +82,10 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
       ref={characterRef}
       onMouseMove={handleMouseMove}
       onClick={handleClick}
-      /*- isTruncated : décale l'ancrage (-bottom-10) pour enfouir la tranche inférieure sous le bord de l'écran*/
-      className={`relative w-full h-full will-change-transform hidden lg:block select-none ${
+      /* Ajout de la transition d'opacité en 1s (duration-1000) */
+      className={`relative w-full h-full will-change-transform hidden lg:block select-none transition-opacity duration-1000 ease-in-out ${
+        isLoaded ? "opacity-100" : "opacity-0"
+      } ${
         isTruncated
           ? "absolute -bottom-10 right-0 flex items-end justify-end"
           : ""
@@ -97,6 +98,7 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
         sizes="50vw"
         priority
         quality={100}
+        onLoad={() => setIsLoaded(true)}
         className={`object-contain pointer-events-none animate-[float_8s_ease-in-out_infinite] ${
           isTruncated ? "object-bottom translate-y-8" : "object-center"
         }`}
