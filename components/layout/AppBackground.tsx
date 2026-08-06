@@ -7,29 +7,36 @@ import { useBackground } from "@/components/providers/BackgroundProvider";
 export default function AppBackground() {
   const { bgImage } = useBackground();
 
-  // On stocke l'image à afficher et sa visibilité
-  const [displayedBg, setDisplayedBg] = useState<string | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [currentBg, setCurrentBg] = useState<string | null>(null);
+  const [pendingBg, setPendingBg] = useState<string | null>(null);
+  const [isPendingLoaded, setIsPendingLoaded] = useState(false);
 
   useEffect(() => {
-    if (bgImage) {
-      setDisplayedBg(bgImage);
-      setIsVisible(false); // Réinitialise pour déclencher le fondu d'entrée à l'onLoad
-    } else {
-      setIsVisible(false); // Déclenche le fondu de sortie (opacity-0)
+    if (bgImage && bgImage !== currentBg && bgImage !== pendingBg) {
+      setPendingBg(bgImage);
+      setIsPendingLoaded(false);
     }
-  }, [bgImage]);
+  }, [bgImage, currentBg, pendingBg]);
 
-  // Quand le fondu de sortie (500ms) est fini, on nettoie le composant si bgImage est null
-  const handleTransitionEnd = () => {
-    if (!isVisible && !bgImage) {
-      setDisplayedBg(null);
+  // Fin du fondu d'entrée du nouveau fond
+  const handlePendingTransitionEnd = () => {
+    if (isPendingLoaded && pendingBg) {
+      setCurrentBg(pendingBg);
+      setPendingBg(null);
+      setIsPendingLoaded(false);
+    }
+  };
+
+  // Fin du fondu de sortie quand on quitte la fiche jeu (bgImage === null)
+  const handleCurrentTransitionEnd = () => {
+    if (!bgImage && currentBg) {
+      setCurrentBg(null);
     }
   };
 
   return (
     <div className="fixed inset-0 -z-20 opacity-30 pointer-events-none">
-      {/* 1. Fond Light mode */}
+      {/* 1. Fond Light mode par défaut */}
       <Image
         src="/background/bg-modelight.webp"
         alt="Background light"
@@ -40,7 +47,7 @@ export default function AppBackground() {
         fill
       />
 
-      {/* 2. Fond Dark mode */}
+      {/* 2. Fond Dark mode par défaut */}
       <Image
         src="/background/bg-modedark.webp"
         alt="Background dark"
@@ -51,19 +58,35 @@ export default function AppBackground() {
         fill
       />
 
-      {/* 3. Image du jeu avec fondu entrée ET sortie */}
-      {displayedBg && (
+      {/* 3. Fond du jeu actuel (s'estompe vers opacity-0 si bgImage passe à null) */}
+      {currentBg && (
         <Image
-          src={displayedBg}
-          alt="Background jeu"
+          src={currentBg}
+          alt="Background jeu actuel"
           fill
           priority
           quality={100}
           sizes="100vw"
-          onLoad={() => setIsVisible(true)}
-          onTransitionEnd={handleTransitionEnd}
+          onTransitionEnd={handleCurrentTransitionEnd}
           className={`object-cover transition-opacity duration-500 ease-in-out ${
-            isVisible && bgImage ? "opacity-100" : "opacity-0"
+            bgImage ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      )}
+
+      {/* 4. Nouveau fond du jeu en cours de chargement */}
+      {pendingBg && (
+        <Image
+          src={pendingBg}
+          alt="Background jeu suivant"
+          fill
+          priority
+          quality={100}
+          sizes="100vw"
+          onLoad={() => setIsPendingLoaded(true)}
+          onTransitionEnd={handlePendingTransitionEnd}
+          className={`object-cover transition-opacity duration-500 ease-in-out ${
+            isPendingLoaded ? "opacity-100" : "opacity-0"
           }`}
         />
       )}
