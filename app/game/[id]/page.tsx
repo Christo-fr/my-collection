@@ -6,6 +6,7 @@ import Link from "next/link";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 import Tabs from "@/components/ui/Tabs";
+import Dialog from "@/components/ui/Dialog";
 import ProgressBar from "@/components/ui/ProgressBar";
 import { Undo2 } from "lucide-react";
 import LayoutSplit from "@/components/layout/LayoutSplit";
@@ -25,7 +26,7 @@ export default function GameDetail() {
   const [relatedFranchiseGames, setRelatedFranchiseGames] = useState<Game[]>(
     [],
   );
-
+  const [isTrailerOpen, setIsTrailerOpen] = useState(false);
   // 1. Remplace bgImage par setBgImage
   const { setBgImage } = useBackground();
 
@@ -252,13 +253,30 @@ export default function GameDetail() {
               items={sampleTabs}
               action={
                 game?.youtubeId && (
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    onClick={() => setIsTrailerOpen(true)}
-                  >
-                    Trailer
-                  </Button>
+                  <>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={() => setIsTrailerOpen(true)}
+                    >
+                      Trailer
+                    </Button>
+                    <Dialog
+                      isOpen={isTrailerOpen}
+                      onClose={() => setIsTrailerOpen(false)}
+                      maxWidth="max-w-7xl"
+                      centered
+                    >
+                      <div className="w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
+                        <iframe
+                          src={`https://www.youtube.com/embed/${game.youtubeId}?autoplay=1`}
+                          className="w-full h-full border-0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                    </Dialog>
+                  </>
                 )
               }
             />
