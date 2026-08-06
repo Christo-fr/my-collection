@@ -13,7 +13,7 @@ export default function LayoutSplit({
   className = "",
 }: SplitLayoutProps) {
   return (
-    <div className="relative w-full h-full flex justify-between px-12 py-8 gap-8">
+    <div className="relative w-full h-full flex justify-between px-6 py-4 gap-8 md:px-12 md:py-8">
       {/* ========================================================================
         ZONE GAUCHE (50%) : Catalogue de nos composants UI
         ========================================================================
