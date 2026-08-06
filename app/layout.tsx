@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { BackgroundProvider } from "@/components/providers/BackgroundProvider";
 import localFont from "next/font/local";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -39,18 +40,20 @@ export default function RootLayout({
       >
         {/* Gestion du Theme via le Provider*/}
         <ThemeProvider>
-          {/* Application */}
-          <div className="relative z-10 flex flex-col min-h-dvh md:h-dvh w-full">
-            <Header />
-            <main className="flex-1 w-full pt-20 px-6 md:px-12 lg:overflow-hidden">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          <BackgroundProvider>
+            {/* Application */}
+            <div className="relative z-10 flex flex-col min-h-dvh md:h-dvh w-full">
+              <Header />
+              <main className="flex-1 w-full pt-20 px-6 md:px-12 lg:overflow-hidden">
+                {children}
+              </main>
+              <Footer />
+            </div>
 
-          {/* Couches de Background  */}
-          <AppBackground />
-          <ParticlesBackground />
+            {/* Couches de Background */}
+            <AppBackground />
+            <ParticlesBackground />
+          </BackgroundProvider>
         </ThemeProvider>
       </body>
     </html>
