@@ -53,6 +53,8 @@ export default function GameDetail() {
     [],
   );
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
+  // Pilote le fondu de sortie de toute la fiche avant un changement de page
+  const [isLeaving, setIsLeaving] = useState(false);
 
   // =========================================================================
   // 2. FONCTIONS DE NAVIGATION ET HANDLERS
@@ -73,6 +75,12 @@ export default function GameDetail() {
     }
   };*/
 
+  // Fait disparaître la fiche en fondu, puis navigue une fois la transition (1s) terminée
+  const navigateWithFade = (path: string) => {
+    setIsLeaving(true);
+    setTimeout(() => router.push(path));
+  };
+
   // =========================================================================
   // 3. EFFETS (LIFECYCLE)
   // =========================================================================
@@ -80,6 +88,9 @@ export default function GameDetail() {
   // Effet A : Chargement du jeu principal et des jeux de sa franchise
   useEffect(() => {
     if (!id) return;
+
+    // Nouvelle fiche : on retire l'état "sortie" pour réafficher le contenu
+    setIsLeaving(false);
 
     async function fetchGameData() {
       setLoading(true);
@@ -203,6 +214,10 @@ export default function GameDetail() {
                   <Link
                     key={relatedGame.id}
                     href={`/game/${relatedGame.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigateWithFade(`/game/${relatedGame.id}`);
+                    }}
                     className="transition-all duration-300 hover:scale-105"
                   >
                     <div className="relative h-24">
@@ -305,71 +320,77 @@ export default function GameDetail() {
 
   return (
     <>
-      <LayoutSplit image={game.images.parallax}>
-        {/* Logo du jeu */}
-        {game.images.logo && (
-          <div className="relative items-start mb-2 h-32 w-full md:w-1/2 lg:flex-shrink-0">
-            <Image
-              src={game.images.logo}
-              alt={game.title}
-              fill
-              sizes="(max-width: 640px) 50vw, 20vw"
-              className="object-contain object-left"
-            />
-          </div>
-        )}
-
-        {/* Panneau principal des détails du jeu */}
-        <section className="w-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
-          {/* Header : Titre + Badge Console */}
-          <div className="flex flex-wrap justify-between items-center">
-            <Heading as="h1" size="lg">
-              {game.title}
-            </Heading>
-            <div className="flex items-center gap-2">
-              <ConsoleIcon
-                console={game.console}
-                className="h-5 w-auto object-contain"
+      <div
+        className={`w-full h-full transition-opacity duration-300 ease-in-out ${
+          isLeaving ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <LayoutSplit image={game.images.parallax}>
+          {/* Logo du jeu */}
+          {game.images.logo && (
+            <div className="relative items-start mb-2 h-32 w-full md:w-1/2 lg:flex-shrink-0">
+              <Image
+                src={game.images.logo}
+                alt={game.title}
+                fill
+                sizes="(max-width: 640px) 50vw, 20vw"
+                className="object-contain object-left"
               />
-              {/* Logo du jeu */}
-              {game.images.logo &&
-                (game.format === "Physical" ? (
-                  <Disc className="w-5 h-5" name="Physique" />
-                ) : (
-                  <CircleDotDashed className="w-5 h-5" name="Digital" />
-                ))}
             </div>
+          )}
+
+          {/* Panneau principal des détails du jeu */}
+          <section className="w-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
+            {/* Header : Titre + Badge Console */}
+            <div className="flex flex-wrap justify-between items-center">
+              <Heading as="h1" size="lg">
+                {game.title}
+              </Heading>
+              <div className="flex items-center gap-2">
+                <ConsoleIcon
+                  console={game.console}
+                  className="h-5 w-auto object-contain"
+                />
+                {/* Logo du jeu */}
+                {game.images.logo &&
+                  (game.format === "Physical" ? (
+                    <Disc className="w-5 h-5" name="Physique" />
+                  ) : (
+                    <CircleDotDashed className="w-5 h-5" name="Digital" />
+                  ))}
+              </div>
+            </div>
+
+            {/* Onglets Informations & Avis (avec bouton Trailer) */}
+            <Tabs
+              items={sampleTabs}
+              action={
+                game.youtubeId && (
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    icon={<Play className="w-5 h-5" />}
+                    onClick={() => setIsTrailerOpen(true)}
+                  >
+                    Trailer
+                  </Button>
+                )
+              }
+            />
+          </section>
+
+          {/* Bouton Retour de bas de page */}
+          <div className="lg:flex-shrink-0">
+            <Button
+              variant="secondary"
+              onClick={() => navigateWithFade("/list")}
+              icon={<Undo2 className="w-5 h-5" />}
+            >
+              Retour
+            </Button>
           </div>
-
-          {/* Onglets Informations & Avis (avec bouton Trailer) */}
-          <Tabs
-            items={sampleTabs}
-            action={
-              game.youtubeId && (
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  icon={<Play className="w-5 h-5" />}
-                  onClick={() => setIsTrailerOpen(true)}
-                >
-                  Trailer
-                </Button>
-              )
-            }
-          />
-        </section>
-
-        {/* Bouton Retour de bas de page */}
-        <div className="lg:flex-shrink-0">
-          <Button
-            variant="secondary"
-            onClick={() => router.push("/list")}
-            icon={<Undo2 className="w-5 h-5" />}
-          >
-            Retour
-          </Button>
-        </div>
-      </LayoutSplit>
+        </LayoutSplit>
+      </div>
       {/* ========================================================================= */}
       {/* 6. MODALES ET DIALOGS
       {/* ========================================================================= */}

@@ -62,7 +62,7 @@ export default function AppBackground() {
       <Image
         src="/background/bg-modelight.webp"
         alt="Background light"
-        className="object-cover opacity-100 transition-opacity duration-500 dark:opacity-0"
+        className="object-cover opacity-100 transition-opacity duration-200 dark:opacity-0"
         priority
         quality={100}
         sizes="100vw"
@@ -71,7 +71,7 @@ export default function AppBackground() {
       <Image
         src="/background/bg-modedark.webp"
         alt="Background dark"
-        className="object-cover opacity-0 transition-opacity duration-500 dark:opacity-100"
+        className="object-cover opacity-0 transition-opacity duration-200 dark:opacity-100"
         priority
         quality={100}
         sizes="100vw"
@@ -89,7 +89,7 @@ export default function AppBackground() {
           quality={100}
           sizes="100vw"
           onTransitionEnd={handleDisplayTransitionEnd}
-          className={`object-cover transition-opacity duration-500 ease-in-out ${
+          className={`object-cover transition-opacity duration-200 ease-in-out ${
             targetImage ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -107,7 +107,7 @@ export default function AppBackground() {
           sizes="100vw"
           onLoad={handleIncomingLoad}
           onTransitionEnd={handleIncomingTransitionEnd}
-          className={`object-cover transition-opacity duration-700 ease-in-out ${
+          className={`object-cover transition-opacity duration-200 ease-in-out ${
             isIncomingLoaded ? "opacity-100" : "opacity-0"
           }`}
         />

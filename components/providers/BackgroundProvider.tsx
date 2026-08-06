@@ -1,5 +1,6 @@
 "use client";
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 // 2. TYPAGE : On décrit la structure des données qui voyageront sur notre "canal".
 interface BackgroundContextType {
@@ -21,6 +22,15 @@ export function BackgroundProvider({
   // On crée un état local React pour stocker l'URL actuelle.
   // Par défaut, l'image vaut null (ce qui signifie : afficher le fond par défaut).
   const [bgImage, setBgImage] = useState<string | null>(null);
+  const pathname = usePathname();
+
+  // Nettoyage centralisé : quelle que soit la page d'arrivée (accueil, liste, futures pages),
+  // on vide le fond dès qu'on n'est plus sur une fiche jeu, pour éviter tout "flash" d'ancienne image.
+  useEffect(() => {
+    if (!pathname?.startsWith("/game/")) {
+      setBgImage(null);
+    }
+  }, [pathname]);
 
   return (
     // On met à disposition 'bgImage' et 'setBgImage' à TOUS les enfants situés à l'intérieur.
