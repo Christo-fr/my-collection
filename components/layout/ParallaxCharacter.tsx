@@ -83,7 +83,7 @@ export default function ParallaxCharacter({ image }: { image: ParallaxImage }) {
       onMouseMove={handleMouseMove}
       onClick={handleClick}
       /* Ajout de la transition d'opacité en 1s (duration-1000) */
-      className={`relative w-full h-full will-change-transform hidden lg:block select-none transition-opacity duration-1000 ease-in-out ${
+      className={`relative w-full h-full will-change-transform hidden lg:block select-none transition-opacity duration-500 ease-in-out ${
         isLoaded ? "opacity-100" : "opacity-0"
       } ${
         isTruncated
