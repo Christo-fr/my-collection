@@ -3105,7 +3105,7 @@
       "logo": "/games/logos/anothercodecollection.webp",
       "parallax": {
         "url": "/games/parallaxs/anothercodecollection.png",
-        "truncated": false
+        "truncated": true
       }
     },
     "review": {
