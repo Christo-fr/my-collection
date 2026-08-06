@@ -82,7 +82,7 @@ export default function MaListe() {
             <p className="text-main/60 text-sm">Aucun jeu trouvé</p>
           ) : (
             <div
-              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 animate-fade-in-grid"
+              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
               ref={animation}
             >
               {games.map((game) => (

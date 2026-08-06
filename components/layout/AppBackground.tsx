@@ -20,7 +20,7 @@ export default function AppBackground() {
     }
   }, [bgImage]);
 
-  // Quand le fondu de sortie (700ms) est fini, on nettoie le composant si bgImage est null
+  // Quand le fondu de sortie (500ms) est fini, on nettoie le composant si bgImage est null
   const handleTransitionEnd = () => {
     if (!isVisible && !bgImage) {
       setDisplayedBg(null);

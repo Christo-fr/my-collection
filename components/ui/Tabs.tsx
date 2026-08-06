@@ -16,7 +16,7 @@ export default function Tabs({ items, className = "" }: TabsProps) {
       <TabList className="flex items-center gap-2 flex-wrap border-b border-main/10 pb-3">
         {items.map((item) => (
           <Tab
-            className="px-4 py-2 text-sm font-medium rounded-lg transition-all outline-none cursor-pointer text-main/60 data-[hover]:text-main data-[hover]:bg-main/10 data-[selected]:bg-accent data-[selected]:text-white data-[selected]:shadow-md"
+            className="first:pl-0 px-4 uppercase text-sm font-medium rounded-lg transition-all outline-none cursor-pointer text-main/60 data-[hover]:text-main  data-[selected]:bg-accent data-[selected]:text-main "
             key={item.label}
           >
             {item.label}

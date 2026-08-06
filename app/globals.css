@@ -71,7 +71,3 @@
     transform: translateY(0);
   }
 }
-
-.animate-fade-in-grid {
-  animation: fadeInGrid 0.4s ease-out forwards;
-}

@@ -1482,8 +1482,8 @@
       "cover": "/games/covers/shantaeadvance.jpg",
       "logo": "/games/logos/shantaeadvance.png",
       "parallax": {
-        "url": "/games/parallaxs/shantaeadvance.png",
-        "truncated": false
+        "url": "/games/parallaxs/shantaeadvance.webp",
+        "truncated": true
       }
     },
     "review": {
