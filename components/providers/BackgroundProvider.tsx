@@ -1,55 +1,89 @@
 "use client";
-import { createContext, useState, useContext, useEffect } from "react";
+
+import { createContext, useState, useContext, useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 
-// 2. TYPAGE : On décrit la structure des données qui voyageront sur notre "canal".
+// =========================================================================
+// 1. LE TYPAGE (Le contrat d'échange)
+// On décrit la forme exacte des données qui vont circuler sur le canal :
+// - bgImage : l'URL textuelle de l'image (ou null si aucun fond spécifique)
+// - setBgImage : la fonction pour changer cette URL
+// =========================================================================
 interface BackgroundContextType {
-  bgImage: string | null; // Soit l'URL de l'image (ex: "/covers/zelda.jpg"), soit null (fond par défaut)
-  setBgImage: (url: string | null) => void; // La fonction qui permet de changer cette URL
+  bgImage: string | null;
+  setBgImage: (url: string | null) => void;
 }
 
-// 3. CRÉATION DU CANAL : On crée le contexte. Au départ, il n'a pas de valeur (undefined).
+// =========================================================================
+// 2. CRÉATION DU CANAL ( createContex )
+// On crée le canal de communication. Au départ, il est "undefined"
+// car aucun composant ne diffuse encore dessus.
+// =========================================================================
 const BackgroundContext = createContext<BackgroundContextType | undefined>(
   undefined,
 );
 
-// 4. LE PROVIDER (L'Antenne Relais) : C'est le composant qui va englober notre site.
+// =========================================================================
+// 3. LE PROVIDER (L'Émetteur)
+// C'est un composant enveloppe qui entoure tout ton site (dans layout.tsx).
+// Son rôle : contenir la VRAIE donnée (useState) et la diffuser vers le bas.
+// =========================================================================
 export function BackgroundProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // On crée un état local React pour stocker l'URL actuelle.
-  // Par défaut, l'image vaut null (ce qui signifie : afficher le fond par défaut).
+  // L'état local React qui contient l'URL de l'image actuellement affichée.
+  // Par défaut à 'null' (= fond light/dark standard).
   const [bgImage, setBgImage] = useState<string | null>(null);
+
+  // Hook Next.js pour connaître la route actuelle (ex: "/game/12", "/list", etc.)
   const pathname = usePathname();
 
-  // Nettoyage centralisé : quelle que soit la page d'arrivée (accueil, liste, futures pages),
-  // on vide le fond dès qu'on n'est plus sur une fiche jeu, pour éviter tout "flash" d'ancienne image.
+  // Nettoyage automatique :
+  // À chaque changement de page, si l'URL NE commence PAS par "/game/",
+  // on remet automatiquement le fond à null pour enlever l'image du jeu.
   useEffect(() => {
     if (!pathname?.startsWith("/game/")) {
       setBgImage(null);
     }
   }, [pathname]);
 
+  // Optimisation mémoire (useMemo) :
+  // On regroupe { bgImage, setBgImage } dans un seul objet.
+  // 'useMemo' évite de re-créer cet objet en mémoire à chaque rendu du site,
+  // sauf si l'image ou la fonction ont réellement changé.
+  const gameBackground = useMemo(
+    () => ({ bgImage, setBgImage }),
+    [bgImage, setBgImage],
+  );
+
+  // On injecte notre objet 'gameBackground' dans le canal.
+  // Tous les composants enfants contenus dans '{children}' y auront accès !
   return (
-    // On met à disposition 'bgImage' et 'setBgImage' à TOUS les enfants situés à l'intérieur.
-    <BackgroundContext.Provider value={{ bgImage, setBgImage }}>
+    <BackgroundContext.Provider value={gameBackground}>
       {children}
     </BackgroundContext.Provider>
   );
 }
 
-// 5. LE CUSTOM HOOK (Le Récepteur) : Une petite fonction pratique pour nos composants.
+// =========================================================================
+// 4. LE CUSTOM HOOK (Le Récepteur / La Prise de branchement)
+// C'est la fonction pratique que tu vas appeler dans tes composants
+// (ex: dans GameDetail ou AppBackground) pour te brancher sur le canal.
+// =========================================================================
 export function useBackground() {
+  // 'useContext' va chercher le Provider le plus proche situé au-dessus dans l'arbre React
   const context = useContext(BackgroundContext);
 
-  // Sécurité : Si un composant essaie d'utiliser useBackground() alors qu'il n'est pas dans le Provider, on prévient le dev.
+  // Sécurité pour le dev : si tu appelles useBackground() dans un composant
+  // qui n'est PAS emballé par le <BackgroundProvider>, on lève une erreur claire.
   if (!context) {
     throw new Error(
-      "useBackground doit être utilisé dans un BackgroundProvider",
+      "useBackground doit être utilisé à l'intérieur d'un BackgroundProvider",
     );
   }
 
-  return context; // Renvoie { bgImage, setBgImage }
+  // Renvoie { bgImage, setBgImage } au composant qui a appelé l'outil
+  return context;
 }

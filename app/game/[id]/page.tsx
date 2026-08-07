@@ -79,23 +79,31 @@ export default function GameDetail() {
 
   // Effet A : Chargement du jeu principal et des jeux de sa franchise
   useEffect(() => {
+    // 1. Garde (Guard Clause) : Si l'ID du jeu n'est pas encore disponible dans l'URL, on stoppe l'effet
     if (!id) return;
 
     async function fetchGameData() {
       try {
-        // Récupération du jeu principal
+        // 2. Appel API principal : Récupération des détails du jeu courant
         const response = await fetch(`/api/games/${id}`);
 
+        // 3. Gestion d'erreur HTTP (ex: 404 Jeu introuvable)
+        // On réinitialise tous les états pour éviter d'afficher des données résiduelles d'un autre jeu
         if (!response.ok) {
           setGame(null);
           setRelatedFranchiseGames([]);
+          setBgImage(null); // Réinitialise le fond global
           return;
         }
 
+        // 4. Succès de la requête principale
         const data: Game = await response.json();
         setGame(data);
 
-        // Récupération des jeux connexes de la même franchise
+        // Émission au Context : On injecte l'image de couverture du jeu dans le fond global
+        setBgImage(data.images.cover);
+
+        // 5. Requête secondaire "en cascade" : Si le jeu appartient à une franchise
         if (data.franchise) {
           const franchiseResponse = await fetch(
             `/api/games?franchise=${encodeURIComponent(data.franchise)}`,
@@ -103,21 +111,26 @@ export default function GameDetail() {
 
           if (franchiseResponse.ok) {
             const franchiseData: Game[] = await franchiseResponse.json();
+            // Filtrage des jeux connexes pour exclure le jeu actuel de sa propre liste
             const relatedGames = getRelatedFranchiseGames(data, franchiseData);
             setRelatedFranchiseGames(relatedGames);
           }
         } else {
+          // Si le jeu n'a pas de franchise, on s'assure que la liste des jeux connexes est vide
           setRelatedFranchiseGames([]);
         }
       } catch (error) {
+        // 6. Gestion des erreurs réseau ou d'exécution
         console.error("Erreur lors du chargement des données :", error);
+        setBgImage(null); // Sécurité : remet le fond par défaut en cas de crash
       } finally {
+        // 7. Fin du chargement : Désactive l'indicateur de chargement (succès ou échec)
         setLoading(false);
       }
     }
 
     fetchGameData();
-  }, [id]);
+  }, [id, setBgImage]);
 
   // Effet C : Redirection si le jeu n'existe pas après chargement
   useEffect(() => {
@@ -326,7 +339,7 @@ export default function GameDetail() {
 
               {/* Logo du jeu */}
 
-              {game.images.logo &&
+              {game.format &&
                 (game.format === "Physical" ? (
                   <Disc className="w-5 h-5 " name="Physique" />
                 ) : (

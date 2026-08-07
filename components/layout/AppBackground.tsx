@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
+import { useBackground } from "@/components/providers/BackgroundProvider";
 
 export default function AppBackground() {
+  const bgGame = useBackground();
   return (
     <div className="fixed inset-0 -z-20 opacity-30 pointer-events-none">
       <Image
@@ -21,6 +24,18 @@ export default function AppBackground() {
         sizes="100vw"
         fill
       />
+
+      {bgGame.bgImage && (
+        <Image
+          src={bgGame.bgImage}
+          alt="Background"
+          className="object-cover opacity-100 transition-opacity duration-500"
+          priority
+          quality={100}
+          sizes="100vw"
+          fill
+        />
+      )}
     </div>
   );
 }
