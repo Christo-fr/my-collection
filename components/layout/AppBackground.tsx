@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useBackground } from "@/components/providers/BackgroundProvider";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function AppBackground() {
   const bgGame = useBackground();
@@ -24,18 +25,28 @@ export default function AppBackground() {
         sizes="100vw"
         fill
       />
-
-      {bgGame.bgImage && (
-        <Image
-          src={bgGame.bgImage}
-          alt="Background"
-          className="object-cover opacity-100 transition-opacity duration-500"
-          priority
-          quality={100}
-          sizes="100vw"
-          fill
-        />
-      )}
+      <AnimatePresence>
+        {bgGame.bgImage && (
+          <motion.div
+            key={bgGame.bgImage}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={bgGame.bgImage}
+              alt="Background"
+              className="object-cover opacity-100 "
+              priority
+              quality={100}
+              sizes="100vw"
+              fill
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

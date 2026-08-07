@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -309,94 +310,105 @@ export default function GameDetail() {
 
   return (
     <>
-      <LayoutSplit image={game.images.parallax}>
-        {/* Logo du jeu */}
-        {game.images.logo && (
-          <div className="relative items-start mb-2 h-32 w-full md:w-1/2 lg:flex-shrink-0">
-            <Image
-              src={game.images.logo}
-              alt={game.title}
-              fill
-              sizes="(max-width: 640px) 50vw, 20vw"
-              className="object-contain object-left"
-            />
-          </div>
-        )}
-
-        {/* Panneau principal des détails du jeu */}
-        <section className="w-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
-          {/* Header : Titre + Badge Console */}
-          <div className="flex flex-wrap w-full justify-between items-start md:flex-nowrap">
-            <Heading as="h1" size="lg">
-              {game.title}
-            </Heading>
-
-            <div className="flex items-center gap-2 flex-shrink-0 mt-1.5">
-              <ConsoleIcon
-                console={game.console}
-                className="h-4 w-auto object-contain"
-              />
-
-              {/* Logo du jeu */}
-
-              {game.format &&
-                (game.format === "Physical" ? (
-                  <Disc className="w-5 h-5 " name="Physique" />
-                ) : (
-                  <CircleDotDashed className="w-5 h-5" name="Digital" />
-                ))}
-            </div>
-          </div>
-
-          {/* Onglets Informations & Avis (avec bouton Trailer) */}
-          <Tabs
-            items={sampleTabs}
-            action={
-              game.youtubeId && (
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  icon={<Play className="w-5 h-5" />}
-                  onClick={() => setIsTrailerOpen(true)}
-                >
-                  Trailer
-                </Button>
-              )
-            }
-          />
-        </section>
-
-        {/* Bouton Retour de bas de page */}
-        <div className="lg:flex-shrink-0">
-          <Button
-            variant="secondary"
-            onClick={() => router.push("/list")}
-            icon={<Undo2 className="w-5 h-5" />}
-          >
-            Retour
-          </Button>
-        </div>
-      </LayoutSplit>
-      {/* ========================================================================= */}
-      {/* 6. MODALES ET DIALOGS
-      {/* ========================================================================= */}
-      {game.youtubeId && (
-        <Dialog
-          isOpen={isTrailerOpen}
-          onClose={() => setIsTrailerOpen(false)}
-          maxWidth="max-w-7xl"
-          centered
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={game.id}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -12 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="w-full h-full flex flex-col min-h-0"
         >
-          <div className="w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
-            <iframe
-              src={`https://www.youtube.com/embed/${game.youtubeId}?autoplay=1`}
-              className="w-full h-full border-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </Dialog>
-      )}
+          <LayoutSplit image={game.images.parallax}>
+            {/* Logo du jeu */}
+            {game.images.logo && (
+              <div className="relative items-start mb-2 h-32 w-full md:w-1/2 lg:flex-shrink-0">
+                <Image
+                  src={game.images.logo}
+                  alt={game.title}
+                  fill
+                  sizes="(max-width: 640px) 50vw, 20vw"
+                  className="object-contain object-left"
+                />
+              </div>
+            )}
+
+            {/* Panneau principal des détails du jeu */}
+            <section className="w-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
+              {/* Header : Titre + Badge Console */}
+              <div className="flex flex-wrap w-full justify-between items-start md:flex-nowrap">
+                <Heading as="h1" size="lg">
+                  {game.title}
+                </Heading>
+
+                <div className="flex items-center gap-2 flex-shrink-0 mt-1.5">
+                  <ConsoleIcon
+                    console={game.console}
+                    className="h-4 w-auto object-contain"
+                  />
+
+                  {/* Logo du jeu */}
+
+                  {game.format &&
+                    (game.format === "Physical" ? (
+                      <Disc className="w-5 h-5 " name="Physique" />
+                    ) : (
+                      <CircleDotDashed className="w-5 h-5" name="Digital" />
+                    ))}
+                </div>
+              </div>
+
+              {/* Onglets Informations & Avis (avec bouton Trailer) */}
+              <Tabs
+                items={sampleTabs}
+                action={
+                  game.youtubeId && (
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      icon={<Play className="w-5 h-5" />}
+                      onClick={() => setIsTrailerOpen(true)}
+                    >
+                      Trailer
+                    </Button>
+                  )
+                }
+              />
+            </section>
+
+            {/* Bouton Retour de bas de page */}
+            <div className="lg:flex-shrink-0">
+              <Button
+                variant="secondary"
+                onClick={() => router.push("/list")}
+                icon={<Undo2 className="w-5 h-5" />}
+              >
+                Retour
+              </Button>
+            </div>
+          </LayoutSplit>
+          {/* ========================================================================= */}
+          {/* 6. MODALES ET DIALOGS
+      {/* ========================================================================= */}
+          {game.youtubeId && (
+            <Dialog
+              isOpen={isTrailerOpen}
+              onClose={() => setIsTrailerOpen(false)}
+              maxWidth="max-w-7xl"
+              centered
+            >
+              <div className="w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
+                <iframe
+                  src={`https://www.youtube.com/embed/${game.youtubeId}?autoplay=1`}
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </Dialog>
+          )}
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 }
