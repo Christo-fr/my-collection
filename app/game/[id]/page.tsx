@@ -1,312 +1,55 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Image from "next/image";
-import Link from "next/link";
-import {
-  Undo2,
-  Play,
-  ShieldAlert,
-  Timer,
-  Languages,
-  Gamepad2,
-  CodeXml,
-  CalendarDays,
-  CalendarCheck,
-  Award,
-  Disc,
-  CircleDotDashed,
-} from "lucide-react";
+import { Undo2, Disc, CircleDotDashed } from "lucide-react";
 
 // Providers & Layouts
-import { useBackground } from "@/components/providers/BackgroundProvider";
 import LayoutSplit from "@/components/layout/LayoutSplit";
 
 // UI Components Global
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
-import Tabs from "@/components/ui/Tabs";
-import Dialog from "@/components/ui/Dialog";
-import ProgressBar from "@/components/ui/ProgressBar";
 
-// Feature Game Components & Utils
+// Feature Game Components & Hooks
 import ConsoleIcon from "@/components/game/ConsoleIcon";
-import { Game } from "@/types/game";
-import {
-  getRelatedFranchiseGames,
-  formatDate,
-} from "@/features/game/gameUtils";
+import { useGameDetail } from "@/features/game/useGameDetail";
+import GameTabs from "@/components/game/GameTabs";
+import GameTrailerDialog from "@/components/game/GameTrailerDialog";
 
+/**
+ * Composant Page : GameDetail (/game/[id])
+ *
+ * RÔLE ET ARCHITECTURE :
+ * Sert de "composant chef d'orchestre" pour la vue détaillée d'un jeu.
+ * 1. Délègue la récupération de données et la navigation au Custom Hook `useGameDetail`.
+ * 2. Délègue la construction visuelle des détails/avis au sous-composant `GameTabs`.
+ * 3. Maintient uniquement l'état d'ouverture UI de la modale trailer (`GameTrailerDialog`).
+ */
 export default function GameDetail() {
   // =========================================================================
   // 1. HOOKS & ÉTATS LOCAUX
   // =========================================================================
-  const { id } = useParams();
-  const router = useRouter();
-  const { setBgImage } = useBackground();
+  // Executive Hook : Récupère les données du jeu, les jeux connexes de la franchise et la fonction retour
+  const { game, relatedFranchiseGames, loading, handleBack } = useGameDetail();
 
-  const [game, setGame] = useState<Game | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [relatedFranchiseGames, setRelatedFranchiseGames] = useState<Game[]>(
-    [],
-  );
+  // État local UI : Contrôle la visibilité du dialogue du trailer YouTube
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
 
   // =========================================================================
-  // 2. FONCTIONS DE NAVIGATION ET HANDLERS
+  // 2. SÉCURITÉ & GARDE DE CHARGEMENT
   // =========================================================================
-  /**
-   * Gestion intelligente du retour :
-   * Redirige vers /list si l'utilisateur vient d'un site externe ou d'un nouvel onglet.
-   */
-  const handleBack = () => {
-    const lastCatalogUrl = sessionStorage.getItem("lastCatalogUrl");
-
-    if (lastCatalogUrl) {
-      router.push(lastCatalogUrl);
-    } else {
-      router.push("/list");
-    }
-  };
-  // =========================================================================
-  // 3. EFFETS (LIFECYCLE)
-  // =========================================================================
-
-  // Effet A : Chargement du jeu principal et des jeux de sa franchise
-  useEffect(() => {
-    // 1. Garde (Guard Clause) : Si l'ID du jeu n'est pas encore disponible dans l'URL, on stoppe l'effet
-    if (!id) return;
-
-    async function fetchGameData() {
-      try {
-        // 2. Appel API principal : Récupération des détails du jeu courant
-        const response = await fetch(`/api/games/${id}`);
-
-        // 3. Gestion d'erreur HTTP (ex: 404 Jeu introuvable)
-        // On réinitialise tous les états pour éviter d'afficher des données résiduelles d'un autre jeu
-        if (!response.ok) {
-          setGame(null);
-          setRelatedFranchiseGames([]);
-          setBgImage(null); // Réinitialise le fond global
-          return;
-        }
-
-        // 4. Succès de la requête principale
-        const data: Game = await response.json();
-        setGame(data);
-
-        // Émission au Context : On injecte l'image de couverture du jeu dans le fond global
-        setBgImage(data.images.cover);
-
-        // 5. Requête secondaire "en cascade" : Si le jeu appartient à une franchise
-        if (data.franchise) {
-          const franchiseResponse = await fetch(
-            `/api/games?franchise=${encodeURIComponent(data.franchise)}`,
-          );
-
-          if (franchiseResponse.ok) {
-            const franchiseData: Game[] = await franchiseResponse.json();
-            // Filtrage des jeux connexes pour exclure le jeu actuel de sa propre liste
-            const relatedGames = getRelatedFranchiseGames(data, franchiseData);
-            setRelatedFranchiseGames(relatedGames);
-          }
-        } else {
-          // Si le jeu n'a pas de franchise, on s'assure que la liste des jeux connexes est vide
-          setRelatedFranchiseGames([]);
-        }
-      } catch (error) {
-        // 6. Gestion des erreurs réseau ou d'exécution
-        console.error("Erreur lors du chargement des données :", error);
-        setBgImage(null); // Sécurité : remet le fond par défaut en cas de crash
-      } finally {
-        // 7. Fin du chargement : Désactive l'indicateur de chargement (succès ou échec)
-        setLoading(false);
-      }
-    }
-
-    fetchGameData();
-  }, [id, setBgImage]);
-
-  // Effet C : Redirection si le jeu n'existe pas après chargement
-  useEffect(() => {
-    if (!loading && !game) {
-      router.push("/list");
-    }
-  }, [loading, game, router]);
-  // =========================================================================
-  // 4. CONFIGURATION DES ONGLETS (INFORMATIONS & AVIS)
-  // =========================================================================
-  const sampleTabs = [
-    {
-      label: "Informations",
-      content: (
-        <>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            {game?.developer && (
-              <div className="flex gap-2 items-center">
-                <CodeXml className="w-5 h-5 " />
-                <span>{game.developer}</span>
-              </div>
-            )}
-
-            {game?.language && (
-              <div className="flex gap-2 items-center">
-                <Languages className="w-5 h-5 " />
-                <span>{game.language}</span>
-              </div>
-            )}
-
-            {game?.releaseDate && (
-              <div className="flex gap-2 items-center">
-                <CalendarDays className="w-5 h-5 " />
-                <span>{formatDate(game.releaseDate)}</span>
-              </div>
-            )}
-
-            {game?.genre && (
-              <div className="flex gap-2 items-center">
-                <Gamepad2 className="w-5 h-5 " />
-                <span>{game.genre}</span>
-              </div>
-            )}
-
-            {game?.pegi && (
-              <div className="flex gap-2 items-center">
-                <ShieldAlert className="w-5 h-5 " />
-                <span>PEGI {game.pegi}</span>
-              </div>
-            )}
-
-            {game?.estimatedPlaytime && (
-              <div className="flex gap-2 items-center">
-                <Timer className="w-5 h-5 " />
-                <span>{game.estimatedPlaytime} h</span>
-              </div>
-            )}
-          </div>
-
-          {game?.description && (
-            <p className="mt-4 text-main/80 text-sm leading-relaxed">
-              {game.description}
-            </p>
-          )}
-
-          {/* Section "De la même série..." (Franchise) */}
-          {relatedFranchiseGames.length > 0 && (
-            <div className="mt-4">
-              <Heading as="h2" size="sm" className="mb-2">
-                De la même série...
-              </Heading>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                {relatedFranchiseGames.map((relatedGame) => (
-                  <Link
-                    key={relatedGame.id}
-                    href={`/game/${relatedGame.id}`}
-                    className="transition-all duration-300 hover:scale-105"
-                  >
-                    <div className="relative h-24">
-                      <Image
-                        src={relatedGame.images.logo}
-                        alt={relatedGame.title}
-                        fill
-                        sizes="(max-width: 640px) 50vw, 20vw"
-                        className="object-contain object-center"
-                      />
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </>
-      ),
-    },
-    ...(game?.review?.score
-      ? [
-          {
-            label: "Avis",
-            content: (
-              <>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  {game.review.completedDate && (
-                    <div className="flex gap-2 items-center">
-                      <CalendarCheck className="w-5 h-5 " />
-                      <span>{formatDate(game.review.completedDate)}</span>
-                    </div>
-                  )}
-
-                  {game.review.score && (
-                    <div className="col-span-2">
-                      <div className="flex items-center gap-2">
-                        <Award className="w-5 h-5 " />
-                        <span>{game.review.score} /10</span>
-                        <span className="flex flex-auto gap-2">
-                          <ProgressBar value={game.review.score * 10} />
-                        </span>
-                      </div>
-                    </div>
-                  )}
-
-                  {game.review.playtime && (
-                    <div className="flex gap-2 items-center">
-                      <Timer className="w-5 h-5 " />
-                      <span>{game.review.playtime} h</span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-                  {game.review.pros && (
-                    <ul className="space-y-1">
-                      {game.review.pros.map((pro, index) => (
-                        <li
-                          key={index}
-                          className="text-main/80 text-sm flex gap-1"
-                        >
-                          <span className="text-main/60 shrink-0">+</span>
-                          <span>{pro}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {game.review.cons && (
-                    <ul className="space-y-1">
-                      {game.review.cons.map((con, index) => (
-                        <li
-                          key={index}
-                          className="text-main/80 text-sm flex gap-1"
-                        >
-                          <span className="text-main/60 shrink-0">-</span>
-                          <span>{con}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
-                {game.review.summary && (
-                  <p className="mt-4 text-main/80 text-sm leading-relaxed">
-                    {game.review.summary}
-                  </p>
-                )}
-              </>
-            ),
-          },
-        ]
-      : []),
-  ];
-  // =========================================================================
-  // 5. RENDU DU COMPOSANT
-  // =========================================================================
-
+  // Si le jeu n'est pas encore chargé (ou inexistant), on bloque le rendu JSX
   if (!game) return null;
 
+  // =========================================================================
+  // 3. RENDU DU COMPOSANT
+  // =========================================================================
   return (
     <>
+      {/* AnimatePresence : Anime l'apparition/disparition lors des transitions de route */}
       <AnimatePresence mode="wait">
         <motion.div
           key={game.id}
@@ -316,8 +59,9 @@ export default function GameDetail() {
           transition={{ duration: 0.35, ease: "easeOut" }}
           className="w-full h-full flex flex-col min-h-0"
         >
+          {/* Disposition Split : Image Parallax à gauche, contenu à droite */}
           <LayoutSplit image={game.images.parallax}>
-            {/* Logo du jeu */}
+            {/* Logo officiel du jeu */}
             {game.images.logo && (
               <div className="relative items-start mb-2 h-32 w-full md:w-1/2 lg:flex-shrink-0">
                 <Image
@@ -330,9 +74,9 @@ export default function GameDetail() {
               </div>
             )}
 
-            {/* Panneau principal des détails du jeu */}
+            {/* Panneau principal d'informations */}
             <section className="w-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
-              {/* Header : Titre + Badge Console */}
+              {/* Header : Titre + Badge de la Console + Format du jeu */}
               <div className="flex flex-wrap w-full justify-between items-start md:flex-nowrap">
                 <Heading as="h1" size="lg">
                   {game.title}
@@ -344,8 +88,7 @@ export default function GameDetail() {
                     className="h-4 w-auto object-contain"
                   />
 
-                  {/* Logo du jeu */}
-
+                  {/* Badge du format (Physique vs Dématérialisé) */}
                   {game.format &&
                     (game.format === "Physical" ? (
                       <Disc className="w-5 h-5 " name="Physique" />
@@ -355,25 +98,15 @@ export default function GameDetail() {
                 </div>
               </div>
 
-              {/* Onglets Informations & Avis (avec bouton Trailer) */}
-              <Tabs
-                items={sampleTabs}
-                action={
-                  game.youtubeId && (
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      icon={<Play className="w-5 h-5" />}
-                      onClick={() => setIsTrailerOpen(true)}
-                    >
-                      Trailer
-                    </Button>
-                  )
-                }
+              {/* Composant d'onglets ("Informations" et "Avis") + Bouton Trailer */}
+              <GameTabs
+                game={game}
+                onOpenTrailer={() => setIsTrailerOpen(true)}
+                relatedFranchiseGames={relatedFranchiseGames}
               />
             </section>
 
-            {/* Bouton Retour de bas de page */}
+            {/* Bouton Retour Intelligent (Historique sessionStorage ou /list) */}
             <div className="lg:flex-shrink-0">
               <Button
                 variant="secondary"
@@ -384,25 +117,17 @@ export default function GameDetail() {
               </Button>
             </div>
           </LayoutSplit>
+
           {/* ========================================================================= */}
-          {/* 6. MODALES ET DIALOGS
-      {/* ========================================================================= */}
+          {/* MODALES ET DIALOGS                                                       */}
+          {/* ========================================================================= */}
+          {/* Dialogue du Trailer YouTube (rendu uniquement si une ID YouTube existe) */}
           {game.youtubeId && (
-            <Dialog
+            <GameTrailerDialog
               isOpen={isTrailerOpen}
               onClose={() => setIsTrailerOpen(false)}
-              maxWidth="max-w-7xl"
-              centered
-            >
-              <div className="w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
-                <iframe
-                  src={`https://www.youtube.com/embed/${game.youtubeId}?autoplay=1`}
-                  className="w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </Dialog>
+              youtubeId={game.youtubeId}
+            />
           )}
         </motion.div>
       </AnimatePresence>
