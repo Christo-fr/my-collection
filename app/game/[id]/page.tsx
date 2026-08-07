@@ -62,18 +62,15 @@ export default function GameDetail() {
    * Gestion intelligente du retour :
    * Redirige vers /list si l'utilisateur vient d'un site externe ou d'un nouvel onglet.
    */
-  /*const handleBack = () => {
-    const hasInternalHistory = document.referrer.startsWith(
-      window.location.origin,
-    );
+  const handleBack = () => {
+    const lastCatalogUrl = sessionStorage.getItem("lastCatalogUrl");
 
-    if (!hasInternalHistory || window.history.length <= 1) {
-      router.push("/list");
+    if (lastCatalogUrl) {
+      router.push(lastCatalogUrl);
     } else {
-      router.back();
+      router.push("/list");
     }
-  };*/
-
+  };
   // =========================================================================
   // 3. EFFETS (LIFECYCLE)
   // =========================================================================
@@ -380,7 +377,7 @@ export default function GameDetail() {
             <div className="lg:flex-shrink-0">
               <Button
                 variant="secondary"
-                onClick={() => router.push("/list")}
+                onClick={handleBack}
                 icon={<Undo2 className="w-5 h-5" />}
               >
                 Retour

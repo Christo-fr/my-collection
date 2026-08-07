@@ -1,4 +1,5 @@
 "use client";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useGames } from "@/features/game/useGames";
 import ListHeader from "@/components/game/ListHeader";
@@ -12,6 +13,8 @@ import Select from "@/components/ui/Select";
 import GameCard from "@/components/game/GameCard";
 
 export default function MaListe() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [animation] = useAutoAnimate();
   const {
     games,
