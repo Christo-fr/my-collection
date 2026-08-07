@@ -313,12 +313,12 @@ export default function GameDetail() {
         {/* Panneau principal des détails du jeu */}
         <section className="w-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
           {/* Header : Titre + Badge Console */}
-          <div className="flex flex-wrap justify-between items-center">
+          <div className="flex flex-wrap w-full justify-between items-start md:flex-nowrap">
             <Heading as="h1" size="lg">
               {game.title}
             </Heading>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-shrink-0 mt-1.5">
               <ConsoleIcon
                 console={game.console}
                 className="h-4 w-auto object-contain"
@@ -328,7 +328,7 @@ export default function GameDetail() {
 
               {game.images.logo &&
                 (game.format === "Physical" ? (
-                  <Disc className="w-5 h-5" name="Physique" />
+                  <Disc className="w-5 h-5 " name="Physique" />
                 ) : (
                   <CircleDotDashed className="w-5 h-5" name="Digital" />
                 ))}
