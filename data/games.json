@@ -295,7 +295,7 @@
     "youtubeId": "Pmwic3fHKiU",
     "images": {
       "cover": "/games/covers/astrosplayroom.jpg",
-      "logo": "/games/logos/astrosplayroom.webp",
+      "logo": "/games/logos/astrosplayroom.png",
       "parallax": {
         "url": "/games/parallaxs/astrosplayroom.png",
         "truncated": false
@@ -465,7 +465,7 @@
     "youtubeId": "6yqkSULLgmI",
     "images": {
       "cover": "/games/covers/scarletnexus.jpg",
-      "logo": "/games/logos/scarletnexus.webp",
+      "logo": "/games/logos/scarletnexus.png",
       "parallax": {
         "url": "/games/parallaxs/scarletnexus.webp",
         "truncated": false
@@ -1418,7 +1418,7 @@
     "youtubeId": "6zmiw3Qxmg0",
     "images": {
       "cover": "/games/covers/likeadragongaiden.jpg",
-      "logo": "/games/logos/likeadragongaiden.webp",
+      "logo": "/games/logos/likeadragongaiden.png",
       "parallax": {
         "url": "/games/parallaxs/likeadragongaiden.png",
         "truncated": false
@@ -1511,7 +1511,7 @@
     "youtubeId": "89xXLGeY0bA",
     "images": {
       "cover": "/games/covers/starfox.jpg",
-      "logo": "/games/logos/starfox.avif",
+      "logo": "/games/logos/starfox.png",
       "parallax": {
         "url": "/games/parallaxs/starfox.png",
         "truncated": true
