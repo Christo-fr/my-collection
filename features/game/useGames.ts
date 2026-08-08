@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { Game } from "@/types/game";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import * as gameUtils from "./gameUtils";
 
