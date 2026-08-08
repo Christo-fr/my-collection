@@ -50,7 +50,7 @@ export default function Dialog({
             size="sm"
             className="fixed top-6 right-6 z-50"
           >
-            <X className="w-6 h-6" />
+            <X className="w-6 h-6 text-white" />
           </Button>
           {title && <DialogTitle>{title}</DialogTitle>}
           {children}
