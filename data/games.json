@@ -844,7 +844,7 @@
     "releaseDate": "2023-06",
     "estimatedPlaytime": 4,
     "description": "Incarnez Mimi, et lancez-vous dans l'exploration des précieux moments de votre enfance et des souvenirs partagés avec votre défunte grand-mère. Confrontez vos choix d’adultes à vos doux rêves d’enfants et levez le voile sur des secrets de famille oubliés. Parcourez les paysages aux milles couleurs estivales de la Dordogne, au cœur de décors somptueux en aquarelle peints à la main. Au cours de votre voyage, remémorez-vous les instants, les panoramas, les senteurs, les sons et les sensations... autant de souvenirs que vous conterez dans votre journal - la collection des mémoires du passé familial de Mimi, un recueil unique à votre expérience et le reflet nostalgique et touchant de votre aventure.",
-    "youtubeId": null,
+    "youtubeId": "JadmIbv22A8",
     "images": {
       "cover": "/games/covers/dordogne.jpg",
       "logo": "/games/logos/dordogne.png",
@@ -1570,7 +1570,7 @@
     "releaseDate": "2026-02",
     "estimatedPlaytime": 45,
     "description": "Embarquez pour une incroyable quête d'identité, remastérisée pour la toute première fois. Alors que le royaume sacré attend son sauveur, une femme solitaire du nom de Velvet subit une terrible trahison. Rejoignez-la dans sa quête de vengeance aux côtés de personnages hauts en couleur et explorez l'archipel du royaume de Midgand.",
-    "youtubeId": "Kh4MMWW7uUUY",
+    "youtubeId": "Kh4MMWW7uUU",
     "images": {
       "cover": "/games/covers/talesofberseriaremastered.jpg",
       "logo": "/games/logos/talesofberseriaremastered.png",
@@ -1650,7 +1650,6 @@
       "summary": null
     }
   },
-
   {
     "id": 19,
     "title": "Rune Factory 4 - SPECIAL",
@@ -1735,7 +1734,7 @@
     "youtubeId": "3iEMYQr0EUk",
     "images": {
       "cover": "/games/covers/supersmashbrosultimate.jpg",
-      "logo": "/games/logos/supersmashbrosultimate.webp",
+      "logo": "/games/logos/supersmashbrosultimate.png",
       "parallax": {
         "url": "/games/parallaxs/supersmashbrosultimate.avif",
         "truncated": false
@@ -2285,7 +2284,7 @@
     "releaseDate": "2022-04",
     "estimatedPlaytime": 3,
     "description": "C'est sur cette jolie place de Spocco Square que tout commence ! D'ici, vous pouvez rejoindre le terrain de football pour enfiler vos crampons, lancer une partie de tennis, de badminton ou de volley-ball, tenter d'enchaîner les strikes au bowling ou encore mettre votre sang-froid à l'épreuve sur la plateforme de chambara.",
-    "youtubeId": "Lx2xUj1f-u8",
+    "youtubeId": "ITJJYuLe-6s",
     "images": {
       "cover": "/games/covers/nintendoswitchsports.webp",
       "logo": "/games/logos/nintendoswitchsports.png",
@@ -2944,7 +2943,7 @@
     "releaseDate": "2024-09",
     "estimatedPlaytime": 20,
     "description": "Faites appel à la sagesse de la princesse Zelda pour sauver le royaume d'Hyrule. Utilisez ses nouveaux pouvoirs de façon créative pour explorer le vaste royaume, affronter des monstres, traverser des donjons et enquêter sur les mystérieuses failles qui se sont ouvertes.",
-    "youtubeId": "6eyqkz5q3To",
+    "youtubeId": "Z-8H1PjRSvo",
     "images": {
       "cover": "/games/covers/thelegendofzeldaechoesofwisdom.jpg",
       "logo": "/games/logos/thelegendofzeldaechoesofwisdom.png",
@@ -3500,7 +3499,7 @@
     "releaseDate": "1999-05",
     "estimatedPlaytime": 12,
     "description": "Mystical Ninja 2 : Starring Goemon est un jeu de plates-formes sorti sur Nintendo 64. Goemon, Sasuke, Ebismaru et Yae se retrouvent plongés dans une folle course-poursuite pour retrouver Soeur Bismaru qui s'est emparé de la machine à faire revivre les fantômes du professeur Wiseman.",
-    "youtubeId": "O_ZBeEJ_XjQ",
+    "youtubeId": "DfR2acWekAM",
     "images": {
       "cover": "/games/covers/mysticalninja2starringgoemon.webp",
       "logo": "/games/logos/mysticalninja2starringgoemon.png",
@@ -3621,7 +3620,7 @@
     "releaseDate": "1998-11",
     "estimatedPlaytime": 27,
     "description": "Rejoignez le héros légendaire Link dans son épopée à travers Hyrule, ainsi que dans ses excursions temporelles, pour déjouer les plans de Ganondorf. Maniez des objets et des armes incroyables, affrontez des boss féroces et résolvez des énigmes complexes dans ce chapitre culte de la série Zelda.",
-    "youtubeId": "kRtBtcH8O5A",
+    "youtubeId": "Ce54YiolmvE",
     "images": {
       "cover": "/games/covers/thelegendofzeldaocarinaoftime.avif",
       "logo": "/games/logos/thelegendofzeldaocarinaoftime.png",
@@ -3659,7 +3658,7 @@
     "releaseDate": "1997-06",
     "estimatedPlaytime": 6,
     "description": "C'est le pied au plancher que vous traversez ce successeur du classique de la Super NES, Super Mario Kart. Mario Kart 64 vous offre des graphismes somptueux, des tonnes de bonus étonnants et une version 3D du fameux mode Bataille à vous tordre de rire. Une maniabilité exemplaire, comme toujours avec la série des Mario développée par Shigeru Miyamoto, fait de ce jeu un classique auquel vous ne vous lasserez pas de rejouer.",
-    "youtubeId": "C6IzrGGESCw",
+    "youtubeId": "MQ5ecYhJQTE",
     "images": {
       "cover": "/games/covers/mariokart64.jpg",
       "logo": "/games/logos/mariokart64.png",
@@ -3781,7 +3780,7 @@
     "releaseDate": "2000-11",
     "estimatedPlaytime": 20,
     "description": "Le mystère commence quelque trois mois après le triomphe de Link sur Ganondorf dans Ocarina of Time. Égaré dans la forêt, Link guide Epona à travers un sombre brouillard, à la recherche de sa fidèle amie, la petite fée Navi. Deux fées malicieuses surgissent du brouillard et effraient Epona. Paniqué, le coursier de Link recule brusquement. Ces deux fées sont des sœurs, justement baptisées Tatl et Tael. Link tombe à terre et perd connaissance ; un Skull Kid déguisé émerge alors du brouillard. À la fois gai et macabre, le maraudeur masqué s'empare de la précieuse Ocarina de Link et s'enfuit avec Epona. Évidemment, Link part à sa poursuite, totalement inconscient du fait qu'il ne poursuit pas un simple Skull Kid, mais un personnage possédé par le pouvoir mystérieux du Majora's Mask. Link suit involontairement le Skull Kid au travers d'un portail puissant qui le conduit dans un univers parallèle.",
-    "youtubeId": "Q5t5dXNI50A",
+    "youtubeId": "c8HqPzm-mUk",
     "images": {
       "cover": "/games/covers/thelegendofzeldamajorasmask.png",
       "logo": "/games/logos/thelegendofzeldamajorasmask.png",
@@ -4054,7 +4053,7 @@
     "releaseDate": "2010-03",
     "estimatedPlaytime": 13,
     "description": "Le vent souffle sur une contrée dévastée et n'emporte avec lui que le silence d'espaces vides et les ombres de compagnons d'autrefois. Il semble qu'un jeune homme appelé Seto soit le dernier humain. Où sont les voix et les rires ? Où sont passés tous les gens ? Que leur est-il arrivé ? Lorsque Seto enterra son grand-père à la fin de l'été, il se retrouva seul pour la première fois de sa vie. Et chacun sait que la solitude ronge l'esprit des hommes, tout comme le courant polit les rochers : de façon lente, inévitable, jusqu'à ce qu'il ne reste plus rien.",
-    "youtubeId": "1OKroJ4AcwU",
+    "youtubeId": "IcjsHMc0DD4",
     "images": {
       "cover": "/games/covers/fragiledreamsfarewellruinsofthemoon.jpg",
       "logo": "/games/logos/fragiledreamsfarewellruinsofthemoon.png",
@@ -4312,7 +4311,7 @@
     "releaseDate": "2009-09",
     "estimatedPlaytime": 32,
     "description": "Spectrobes Origines donne l'occasion pour vous de reprendre le combat contre les forces maléfiques des Krawls qui menacent tout l'univers. Avec de tout nouveaux Spectrobes à obtenir et faire évoluer, un mode de jeu coopératif à deux joueurs et une intrigue aux frontières du temps qui mettra vos méninges à rude épreuve, Spectrobes Origines va vous faire entrer dans une nouvelle dimension exaltante.",
-    "youtubeId": "P-K0TaGlXpQ",
+    "youtubeId": "xfZ-lLZC6X4",
     "images": {
       "cover": "/games/covers/spectrobesorigins.jpg",
       "logo": "/games/logos/spectrobesorigins.png",
@@ -4876,7 +4875,7 @@
     "releaseDate": "2004-06",
     "estimatedPlaytime": 12,
     "description": "Ce monde est au bord de la destruction. La population de la planète Coral s'apprête à émigrer vers une nouvelle planète et à découvrir les secrets d'une source d'énergie inconnue appelée 'Photon'. Après la découverte de la planète Ragol, le vaisseau spatial Pioneer 2 a été envoyé pour la coloniser. À son arrivée, un 'incident' s'est produit sur la planète, mais personne ou presque n'en a rien su. 21 ans se sont écoulés et la population n'a toujours pas été autorisée à s'installer sur Ragol. La vie suit son cours à bord du vaisseau Pioneer 2 sans que ses occupants ne soupçonnent que leur survie et celle de Ragol dépendent des luttes de pouvoir qui se livrent sous la nouvelle autorité appelée Principal Government. Pendant ce temps, Pioneer 2 poursuit son orbite silencieuse autour de la planète.",
-    "youtubeId": "6VSbK-FhEMA",
+    "youtubeId": "IOssl1PDjds",
     "images": {
       "cover": "/games/covers/fantasystaronlineepisodeiiicardrevolution.jpg",
       "logo": "/games/logos/fantasystaronlineepisodeiiicardrevolution.png",
@@ -4918,7 +4917,7 @@
     "releaseDate": "2003-09",
     "estimatedPlaytime": 3,
     "description": "Quatre années se sont écoulées depuis que les morceaux de l'épée Soul Edge ont été disséminés un peu partout à la surface de la terre. Sa néfaste influence est maintenant en train de retrouver toute sa force... ",
-    "youtubeId": "38bfzXVREFE",
+    "youtubeId": "ggTN-oY3BE4",
     "images": {
       "cover": "/games/covers/soulcaliburii.webp",
       "logo": "/games/logos/soulcaliburii.png",
@@ -7029,12 +7028,12 @@
     "releaseDate": "2014-04",
     "estimatedPlaytime": 10,
     "description": "Coupe du monde de la FIFA : Brésil 2014 est une simulation de football. Choisissez une des 203 sélections nationales disponibles et menez à bien la campagne de qualification pour espérer remporter la Coupe du monde au Brésil, seul ou avec vos amis, au niveau local ou en ligne. L'ensemble des 12 stades de la compétition et pas moins de 19 sélectionneurs nationaux sont également modélisés.",
-    "youtubeId": "dxaicvmq0Z4",
+    "youtubeId": "uO1HNUoDzxQ",
     "images": {
       "cover": "/games/covers/fifaworldcup2014brasil.webp",
       "logo": "/games/logos/fifaworldcup2014brasil.png",
       "parallax": {
-        "url": "/games/parallaxs/fifaworldcup2014brasil.webp",
+        "url": "/games/parallaxs/fifaworldcup2014brasil.png",
         "truncated": false
       }
     },
@@ -7296,7 +7295,7 @@
     "releaseDate": "2008-03",
     "estimatedPlaytime": 10,
     "description": "Everybody's Golf : World Tour est le premier jeu Everybody's Golf sur PS3. Le titre garde son univers très orienté dessin animé, et vous propose d'incarner au choix l'un des 15 personnages du titre. Différents modes de jeu (challenges, défis, entraînements) sont disponibles, ainsi que des modes multijoueurs et online.",
-    "youtubeId": "3Akm1qdy4qI",
+    "youtubeId": "2-C-l4APfgU",
     "images": {
       "cover": "/games/covers/everybodysgolfworldtour.webp",
       "logo": "/games/logos/everybodysgolfworldtour.png",
@@ -7614,7 +7613,7 @@
     "releaseDate": "2009-02",
     "estimatedPlaytime": 3,
     "description": "Créé par le studio à l'origine de titres hors du commun comme Journey™ et flOw™, voici Flower™, une expérience de jeu unique qui vous permet de vous envoler dans un monde onirique de champs luxuriants et de collines vallonnées. Contrôlez le vent pour amener un flot de pétales de fleurs dans chaque paysage et le regarder prendre vie. Chaque niveau possède ses objectifs et ses mystères – mais n'avez pas à vous en soucier si vous n'en avez pas envie. Dans Flower™, vous pouvez faire ce que vous voulez, quand vous le voulez. La liberté est totale.",
-    "youtubeId": "nJam5Auwj1E",
+    "youtubeId": "s1oZnf3475c",
     "images": {
       "cover": "/games/covers/flower.jpg",
       "logo": "/games/logos/flower.png",
@@ -7743,7 +7742,7 @@
     "releaseDate": "2013-02",
     "estimatedPlaytime": 46,
     "description": "Un chef d'œuvre de RPG animé, Ni no Kuni : La vengeance de la Sorcière céleste raconte l'histoire touchante d'un jeune garçon nommé Oliver parti explorer un monde parallèle dans l'espoir de ressusciter sa mère. Durant son périple, Oliver rencontrera de nombreux amis qui l'aideront à grandir et évoluer. Rejoignez Oliver dans cette quête qui lui fera traverser un monde enchanteur et affronter de nombreux ennemis redoutables. Cette charmante et dramatique histoire dévoilée de façon animée est créée par les légendaires studios Ghibli et est accompagnée par l'œuvre musicale du célèbre Joe Hisaishi.",
-    "youtubeId": "FDmUAlbs_PI",
+    "youtubeId": "P4EV7IMEuBQ",
     "images": {
       "cover": "/games/covers/ninokunilavengeancedelasorciereceleste.webp",
       "logo": "/games/logos/ninokunilavengeancedelasorciereceleste.png",
@@ -7897,7 +7896,7 @@
     "releaseDate": "2012-05",
     "estimatedPlaytime": 62,
     "description": "Amis depuis leur plus jeune âge, Aden et Sonia menaient une vie paisible sur l'île de Fenith jusqu'au jour où ils se réveillèrent sous l'emprise d'une mystérieuse malédiction. Pour ne rien arranger, leur île autrefois si familière semblait comme transformée. Guidez Aden et Sonia dans leurs périples à travers les océans et aidez-les à briser la malédiction et retrouver leur foyer.",
-    "youtubeId": "bxfNGu65xMs",
+    "youtubeId": "KEgjrmERLt8",
     "images": {
       "cover": "/games/covers/runefactoryoceans.jpg",
       "logo": "/games/logos/runefactoryoceans.png",
@@ -7979,7 +7978,7 @@
     "releaseDate": "2010-02",
     "estimatedPlaytime": 49,
     "description": "Star Ocean : The Last Hope est le quatrième volet de cette série de RPG japonais. Vous y découvrirez le début de la conquête spatiale en suivant les mésaventures de Edge. Celui-ci mènera sa route de planète en planète à bord du Calnus. Comme les autres épisodes de la série, The Last Hope s'appuie sur un système de combat en temps réel particulièrement dynamique.",
-    "youtubeId": "h2yJjGDn0CI",
+    "youtubeId": "oLCHb8uqFX4",
     "images": {
       "cover": "/games/covers/staroceanthelasthopeinternational.jpg",
       "logo": "/games/logos/staroceanthelasthopeinternational.png",
@@ -8141,7 +8140,7 @@
     "releaseDate": "2014-08",
     "estimatedPlaytime": 33,
     "description": "Repartez à l'aventure à Rieze Maxia et Elympios ! Incarnez un nouveau personnage, Ludger, façonnez votre destin par vos choix alors que vous explorez villes et environnements naturels fourmillant de détails, et menez d'intenses batailles. Personnalisez l'apparence de vos personnages et vivez une expérience véritablement unique !",
-    "youtubeId": "PA0D9RbZ1L0",
+    "youtubeId": "9xGPj4Cj66E",
     "images": {
       "cover": "/games/covers/talesofxillia2.jpg",
       "logo": "/games/logos/talesofxillia2.png",
