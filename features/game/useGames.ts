@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { Game } from "@/types/game";
+import { useGamesContext } from "@/components/providers/GamesProvider";
 import * as gameUtils from "./gameUtils";
 
 /**
@@ -28,9 +29,8 @@ export function useGames() {
   // =============================================================
   // 2. ÉTATS DU COMPOSANT (useState)
   // =============================================================
-  // Données brutes issues de l'API
-  const [games, setGames] = useState<Game[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Données brutes issues du provider GamesProvider (chargées depuis l'API)
+  const { games, loading } = useGamesContext();
 
   // Initialisation des filtres : si un paramètre existe déjà dans l'URL à l'arrivée,
   // on l'utilise direct comme valeur initiale, sinon on applique la valeur par défaut.
@@ -59,67 +59,46 @@ export function useGames() {
   // 3. EFFETS (useEffect)
   // =============================================================
 
-  // Effet A : Chargement initial des jeux + Validation de la cohérence de l'URL
+  // Effet A : Validation de la cohérence de l'URL une fois les jeux chargés dans le Context
   useEffect(() => {
-    async function fetchGames() {
-      try {
-        const reponse = await fetch("/api/games");
-        const data: Game[] = await reponse.json();
-        setGames(data);
+    if (games.length === 0) return;
 
-        // Sécurité URL : si l'utilisateur saisit manuellement une valeur invalide dans l'URL (ex: ?style=Inexistant)
-        if (data.length > 0) {
-          const { min: minTime, max: maxTime } =
-            gameUtils.getPlaytimeBounds(data);
-          const urlDuration = searchParams.get("duration");
+    const { min: minTime, max: maxTime } = gameUtils.getPlaytimeBounds(games);
+    const urlDuration = searchParams.get("duration");
 
-          if (urlDuration) {
-            const parsedDuration = Number(urlDuration);
-            if (!isNaN(parsedDuration) && parsedDuration >= minTime) {
-              setMaxDuration(Math.min(parsedDuration, maxTime));
-            } else {
-              setMaxDuration(maxTime);
-            }
-          } else {
-            setMaxDuration(maxTime);
-          }
-
-          const validStyles = data.map((game) => game.genre);
-          const urlStyle = searchParams.get("style");
-          if (
-            urlStyle &&
-            urlStyle !== "Tous" &&
-            !validStyles.includes(urlStyle)
-          ) {
-            setSelectedStyle("Tous");
-          }
-
-          const validConsoles = data.map((game) => game.console);
-          const urlConsole = searchParams.get("console");
-          if (
-            urlConsole &&
-            urlConsole !== "Toutes" &&
-            !validConsoles.includes(urlConsole)
-          ) {
-            setSelectedConsole("Toutes");
-          }
-
-          const validSorts = gameUtils.OPTIONS_SORT.map(
-            (option) => option.value,
-          );
-          const urlSort = searchParams.get("sort");
-          if (urlSort && !validSorts.includes(urlSort)) {
-            setSortBy("alphabetical");
-          }
-        }
-      } catch (error) {
-        console.error("Erreur lors du chargement des jeux :", error);
-      } finally {
-        setLoading(false);
+    if (urlDuration) {
+      const parsedDuration = Number(urlDuration);
+      if (!isNaN(parsedDuration) && parsedDuration >= minTime) {
+        setMaxDuration(Math.min(parsedDuration, maxTime));
+      } else {
+        setMaxDuration(maxTime);
       }
+    } else {
+      setMaxDuration(maxTime);
     }
-    fetchGames();
-  }, []);
+
+    const validStyles = games.map((game) => game.genre);
+    const urlStyle = searchParams.get("style");
+    if (urlStyle && urlStyle !== "Tous" && !validStyles.includes(urlStyle)) {
+      setSelectedStyle("Tous");
+    }
+
+    const validConsoles = games.map((game) => game.console);
+    const urlConsole = searchParams.get("console");
+    if (
+      urlConsole &&
+      urlConsole !== "Toutes" &&
+      !validConsoles.includes(urlConsole)
+    ) {
+      setSelectedConsole("Toutes");
+    }
+
+    const validSorts = gameUtils.OPTIONS_SORT.map((option) => option.value);
+    const urlSort = searchParams.get("sort");
+    if (urlSort && !validSorts.includes(urlSort)) {
+      setSortBy("alphabetical");
+    }
+  }, [games, searchParams]);
 
   // Effet B : Synchronisation inverse (du State vers l'URL)
   // À chaque fois qu'un filtre change dans l'application, on met à jour la barre d'adresse
