@@ -29,7 +29,7 @@ export function useGames() {
   // =============================================================
   // 2. ÉTATS DU COMPOSANT (useState)
   // =============================================================
-  // Données brutes issues du provider GamesProvider (chargées depuis l'API)
+  // Données issues du provider GamesProvider (chargées depuis l'API)
   const { games, loading } = useGamesContext();
 
   // Initialisation des filtres : si un paramètre existe déjà dans l'URL à l'arrivée,
