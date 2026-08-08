@@ -6,7 +6,7 @@ import LayoutSplit from "@/components/layout/LayoutSplit";
 
 export default function Home() {
   return (
-    <LayoutSplit image={{ url: "/parallax/truncate.webp", truncated: true }}>
+    <LayoutSplit image={{ url: "/parallax/home.webp", truncated: true }}>
       <section className="space-y-8">
         <Heading as="h1" size="2xl">
           Bienvenue <br /> dans votre vidéoludothèque.
