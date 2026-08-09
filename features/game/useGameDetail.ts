@@ -5,18 +5,26 @@ import { useGamesContext } from "@/components/providers/GamesProvider";
 import { getRelatedFranchiseGames } from "./gameUtils";
 
 export function useGameDetail() {
-  // 1. Hooks & Contextes
+  // =============================================================
+  // 1. HOOKS & CONTEXTES
+  // =============================================================
+
   const { id } = useParams();
   const router = useRouter();
   const { setBgImage } = useBackground();
 
-  // On récupère le catalogue global au lieu d'avoir des useState locaux
+  // Récupère le catalogue global
   const { games, loading, getGameById } = useGamesContext();
 
-  // 2. Recherche synchrone du jeu en mémoire (plus de fetch !)
+  // =============================================================
+  // 2. RECHERCHE DU JEU EN MEMO
+  // =============================================================
   const game = id ? getGameById(Number(id)) : undefined;
 
-  // 3. Gestion du bouton Retour
+  // =============================================================
+  // 3. GESTION DU BOUTON RETOUR
+  // =============================================================
+
   const handleBack = () => {
     const lastCatalogUrl = sessionStorage.getItem("lastCatalogUrl");
     if (lastCatalogUrl) {
@@ -26,7 +34,10 @@ export function useGameDetail() {
     }
   };
 
-  // 4. Calcul des jeux de la même franchise filtrés depuis la mémoire
+  // =============================================================
+  // 4. CALCUL DES JEUX DE LA MÊME FRANCHISE FILTRÉS DEPUIS LA MÉMOIRE
+  // =============================================================
+
   const relatedFranchiseGames = useMemo(() => {
     if (!game || !game.franchise) return [];
 
@@ -37,7 +48,10 @@ export function useGameDetail() {
     return getRelatedFranchiseGames(game, franchiseData);
   }, [game, games]);
 
-  // 5. Changement du fond global en fonction du jeu sélectionné
+  // =============================================================
+  // 5. CHANGEMENT DU BACKGROUND EN FONCTION DU JEU SÉLECTIONNÉ
+  // =============================================================
+
   useEffect(() => {
     if (game) {
       setBgImage(game.images.cover);
@@ -46,7 +60,9 @@ export function useGameDetail() {
     }
   }, [game, setBgImage]);
 
-  // 6.Redirection automatique vers la liste si le jeu n'existe pas
+  // =============================================================
+  // 6. REDIRECTION AUTOMATIQUE VERS LA LISTE SI LE JEU N'EXISTE PAS
+  // =============================================================
   useEffect(() => {
     if (!loading && !game) {
       router.push("/list");

@@ -313,7 +313,7 @@ export function getGachaSuggestion(
 }
 
 // =============================================================
-//  ¨PRECHARGE L'IMAGE DE GAMECARD LORS DU TIRAGE DE LA SUGGESTION
+//  PRECHARGE L'IMAGE DE GAMECARD LORS DU TIRAGE DE LA SUGGESTION
 // =============================================================
 
 export const preloadImage = (src: string): Promise<void> => {

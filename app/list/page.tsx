@@ -13,6 +13,9 @@ import Select from "@/components/ui/Select";
 import GameCard from "@/components/game/GameCard";
 
 export default function MaListe() {
+  // =========================================================================
+  // 1. HOOKS & ÉTATS LOCAUX
+  // =========================================================================
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [animation] = useAutoAnimate();
@@ -26,6 +29,9 @@ export default function MaListe() {
     setters,
   } = useGames();
 
+  // =========================================================================
+  // 2. RENDU DU COMPOSANT
+  // =========================================================================
   return (
     <LayoutFull title="Ma liste">
       {/* PANNEAU GAUCHE : FILTRES */}
@@ -68,7 +74,7 @@ export default function MaListe() {
 
       {/* PANNEAU DROIT : LISTE & TRI */}
       <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0">
-        {/* En-tête fixe réutilisable */}
+        {/* En-tête*/}
         <ListHeader
           title="Liste de jeux"
           totalResults={games.length}
