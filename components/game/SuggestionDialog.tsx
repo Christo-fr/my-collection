@@ -90,7 +90,7 @@ export default function SuggestionDialog({
         </motion.div>
 
         {/* Btn de relance */}
-        <div className="shrink-0 w-full">
+        <div className="shrink-0 w-full  max-w-sm">
           <Button
             onClick={onRePoll}
             icon={<RotateCw className="w-5 h-5" />}
