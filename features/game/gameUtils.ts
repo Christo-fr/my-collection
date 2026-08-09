@@ -211,3 +211,103 @@ export function formatDate(dateString: string): string {
   // Met la première lettre du mois en majuscule (ex: "mars 2024" -> "Mars 2024")
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 }
+
+// =============================================================
+//  SELECTION DE JEU DE LA SUGGESTION
+// =============================================================
+
+// 1. Les critères envoyés par le formulaire
+export interface SuggestionCriteria {
+  selectedConsole: string;
+  selectedStyle: string;
+  selectedStatus: string;
+  maxDuration: number;
+}
+
+// 2. Le paquet retourné après le tirage
+export interface SuggestionResult {
+  game: Game | null;
+  isMatch: boolean;
+  warningMessage?: string;
+}
+
+export function getGachaSuggestion(
+  criteria: SuggestionCriteria,
+  games: Game[],
+): SuggestionResult {
+  if (games.length === 0) {
+    return {
+      game: null,
+      isMatch: false,
+      warningMessage: "Liste de jeu non implémentée",
+    };
+  }
+
+  // 1. On liste nos étapes de dégradation (du plus strict au plus souple)
+  const steps = [
+    {
+      console: criteria.selectedConsole,
+      style: criteria.selectedStyle,
+      status: criteria.selectedStatus,
+      duration: criteria.maxDuration,
+      isMatch: true,
+    },
+    {
+      console: "Toutes", // On saute la console
+      style: criteria.selectedStyle,
+      status: criteria.selectedStatus,
+      duration: criteria.maxDuration,
+      isMatch: false,
+    },
+    {
+      console: "Toutes",
+      style: criteria.selectedStyle,
+      status: criteria.selectedStatus,
+      duration: Infinity, // On saute la durée
+      isMatch: false,
+    },
+    {
+      console: "Toutes",
+      style: criteria.selectedStyle,
+      status: "all", // On saute le statut
+      duration: Infinity,
+      isMatch: false,
+    },
+    {
+      console: "Toutes",
+      style: "Tous", // On saute le genre (dernier recours)
+      status: "all",
+      duration: Infinity,
+      isMatch: false,
+    },
+  ];
+
+  for (const step of steps) {
+    const pool = filterGames(games, {
+      searchQuery: "",
+      selectedConsole: step.console,
+      selectedStyle: step.style,
+      selectedStatus: step.status,
+      maxDuration: step.duration,
+      sortBy: "alphabetical",
+    });
+    if (pool.length > 0) {
+      const poolIndex = Math.floor(Math.random() * pool.length);
+
+      return {
+        game: pool[poolIndex],
+        isMatch: step.isMatch,
+        warningMessage: step.isMatch
+          ? ""
+          : "Aucun jeu n'a correspondu à vos critères. Alors on vous en a proposé un qui répondait le mieux à vos attentes...",
+      };
+    }
+  }
+  // 3. Repli ultime si la réserve de jeux est vide après tous les filtres
+  return {
+    game: null,
+    isMatch: false,
+    warningMessage:
+      "Aucun jeu ne correspond, même après assouplissement des critères.",
+  };
+}
