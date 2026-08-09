@@ -223,21 +223,15 @@ export default function SandboxPage() {
           </h2>
           <div className="flex items-center gap-4">
             <div className="w-48">
-              <Link href={`/fiche/${sampleGame.id}`}>
-                <GameCard game={sampleGame} variant="default" />
-              </Link>
+              <GameCard game={sampleGame} variant="default" />
             </div>
             <div className="w-48">
-              <Link href={`/fiche/${anotherGame.id}`}>
-                <GameCard game={anotherGame} variant="default" />
-              </Link>
+              <GameCard game={anotherGame} variant="default" />
             </div>
           </div>{" "}
           <div className="flex items-center gap-4">
             <div className="w-full">
-              <Link href={`/fiche/${veryGame.id}`}>
-                <GameCard game={veryGame} variant="xl" />
-              </Link>
+              <GameCard game={veryGame} variant="xl" />
             </div>
           </div>
         </section>
@@ -260,9 +254,7 @@ export default function SandboxPage() {
             title="Titre de la modale"
           >
             <div className="w-full">
-              <Link href={`/fiche/${veryGame.id}`}>
-                <GameCard game={veryGame} variant="xl" />
-              </Link>
+              <GameCard game={veryGame} variant="xl" />
             </div>
             <Button onClick={() => setIsDialogOpen(false)}>
               Fermer la modale
