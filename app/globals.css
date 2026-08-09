@@ -13,6 +13,9 @@
   --text-hover: black;
   --scrollbar: rgba(255, 255, 255, 0.5);
   --dialog-text: white;
+  --grad-gacha-start: #abfca4;
+  --grad-gacha-via: #ff9188;
+  --grad-gacha-end: #ff5acd;
 }
 
 .dark {
@@ -25,6 +28,9 @@
   --text-hover: white;
   --scrollbar: rgba(255, 255, 255, 0.3);
   --dialog-text: var(--color-gray-300);
+  --grad-gacha-start: #ffe51f;
+  --grad-gacha-via: #fda450;
+  --grad-gacha-end: #ff7243;
 }
 
 @theme inline {
@@ -39,6 +45,9 @@
   --color-hover: var(--text-hover);
   --color-scrollbar: var(--scrollbar);
   --color-dialog-text: var(--dialog-text);
+  --color-grad-gacha-start: var(--grad-gacha-start);
+  --color-grad-gacha-via: var(--grad-gacha-via);
+  --color-grad-gacha-end: var(--grad-gacha-end);
 }
 
 /* Animation des particules (via ParticlesBackground) */

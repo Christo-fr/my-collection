@@ -42,10 +42,10 @@ export default function SuggestionDialog({
         shapes: ["star"],
         colors: [
           getComputedStyle(document.documentElement)
-            .getPropertyValue("--color-grad-start")
+            .getPropertyValue("--color-grad-gacha-start")
             .trim(),
           getComputedStyle(document.documentElement)
-            .getPropertyValue("--color-secondary")
+            .getPropertyValue("--color-grad-gacha-end")
             .trim(),
           "#FFFFFF",
         ],
@@ -92,7 +92,7 @@ export default function SuggestionDialog({
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: [0, 0.9, 0.3], scale: [0.5, 1.2, 1.05] }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="absolute -inset-3 -z-10 rounded-3xl bg-gradient-to-r from-secondary via-grad-start to-grad-end blur-xl animate-pulse"
+            className="absolute -inset-3 -z-10 rounded-3xl bg-gradient-to-r from-grad-gacha-start via-grad-gacha-via to-grad-gacha-end blur-2xl animate-pulse"
           />
 
           {/* Rendu de la  GameCard */}
