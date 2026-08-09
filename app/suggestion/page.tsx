@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+
 import { Sparkles } from "lucide-react";
 
 // Providers & Layouts
@@ -20,6 +21,7 @@ import {
   getGachaSuggestion,
   OPTIONS_STATUS,
   SuggestionResult,
+  preloadImage,
 } from "@/features/game/gameUtils";
 
 export default function Suggestion() {
@@ -28,6 +30,17 @@ export default function Suggestion() {
   const [result, setResult] = useState<SuggestionResult | null>(null);
 
   const { games: rawGames } = useGamesContext();
+
+  const handlePoll = async () => {
+    const suggestion = getGachaSuggestion(filters, rawGames);
+
+    // Si un jeu a été trouvé, on attend que son image soit chargée
+    if (suggestion.game?.images?.cover) {
+      await preloadImage(suggestion.game.images.cover);
+    }
+
+    setResult(suggestion);
+  };
 
   // =========================================================================
   // 3. RENDU DU COMPOSANT
@@ -72,12 +85,7 @@ export default function Suggestion() {
               unit="h"
             />
             <Button
-              onClick={() => {
-                console.log("Mes jeux :", rawGames);
-                const suggestion = getGachaSuggestion(filters, rawGames);
-                console.log("Résultat Gacha :", suggestion);
-                setResult(suggestion);
-              }}
+              onClick={handlePoll}
               icon={<Sparkles className="w-5 h-5" />}
               variant="secondary"
               className="mt-8 w-full"
@@ -97,7 +105,7 @@ export default function Suggestion() {
           isOpen={!!result}
           onClose={() => setResult(null)}
           result={result}
-          onRePoll={() => setResult(getGachaSuggestion(filters, rawGames))}
+          onRePoll={handlePoll}
         />
       )}
     </>

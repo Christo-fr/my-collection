@@ -311,3 +311,12 @@ export function getGachaSuggestion(
       "Aucun jeu ne correspond, même après assouplissement des critères.",
   };
 }
+
+export const preloadImage = (src: string): Promise<void> => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => resolve();
+    img.onerror = () => resolve(); // En cas d'erreur réseau, on ne bloque pas le jeu
+  });
+};
