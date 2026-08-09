@@ -35,7 +35,7 @@ export default function SuggestionDialog({
       confetti({
         particleCount: 120,
         spread: 360,
-        ticks: 50,
+        ticks: 70,
         gravity: 0,
         decay: 0.94,
         startVelocity: 30,
@@ -69,7 +69,7 @@ export default function SuggestionDialog({
             Voici le jeu que nous vous suggérons :
           </Heading>
           {!result.isMatch && (
-            <p className="text-red-500 text-center whitespace-pre-line text-dialog-text">
+            <p className="text-center whitespace-pre-line text-dialog-text/80 text-sm">
               {result.warningMessage}
             </p>
           )}
@@ -109,7 +109,7 @@ export default function SuggestionDialog({
             variant="secondary"
             className="w-full mt-6 !text-dialog-text !border-dialog-text"
           >
-            Suggère moi un autre jeu !
+            Une autre idée ?
           </Button>
         </div>
       </div>

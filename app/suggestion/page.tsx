@@ -63,6 +63,11 @@ export default function Suggestion() {
         {/* Panneau principal de filtres */}
         <section className="w-full xl:w-1/2 lg:h-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
           <FilterPanel>
+            <p className="text-main/80 text-sm">
+              Pas d'idée pour votre prochaine session ? Ajustez vos critères
+              selon vos envies et on vous déniche la pépite idéale dans votre
+              collection !
+            </p>
             <Select
               label="Console"
               options={consoleOptions}
@@ -96,7 +101,7 @@ export default function Suggestion() {
               variant="secondary"
               className="mt-8 w-full"
             >
-              Suggère moi un jeu !
+              Surprenez-moi !
             </Button>
           </FilterPanel>
         </section>
