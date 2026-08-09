@@ -84,7 +84,7 @@ export default function MaListe() {
         />
 
         {/* Grille de jeux */}
-        <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
+        <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
           {loading ? (
             <p className="p-8 text-gray-400">Chargement des jeux...</p>
           ) : games.length === 0 ? (

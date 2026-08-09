@@ -20,7 +20,7 @@ export default function LayoutSplit({
       */}
       {/* ZONE GAUCHE (50% desktop, 100% mobile avec scroll natif) */}
       <div
-        className={`w-full flex flex-col lg:w-1/2 lg:overflow-y-auto lg:max-h-[calc(100vh-5rem)] pr-4 space-y-8 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent] ${className}`}
+        className={`w-full flex flex-col lg:w-1/2 lg:overflow-y-auto lg:max-h-[calc(100vh-5rem)] pr-4 space-y-8 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent] ${className}`}
       >
         {children}
       </div>

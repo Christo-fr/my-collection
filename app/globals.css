@@ -11,6 +11,7 @@
   --grad-end: #f6cdba;
   --text-main: var(--color-gray-700);
   --text-hover: black;
+  --scrollbar: rgba(255, 255, 255, 0.5);
 }
 
 .dark {
@@ -21,6 +22,7 @@
   --grad-end: white;
   --text-main: var(--color-gray-300);
   --text-hover: white;
+  --scrollbar: rgba(255, 255, 255, 0.3);
 }
 
 @theme inline {
@@ -33,6 +35,7 @@
   --color-grad-end: var(--grad-end);
   --color-main: var(--text-main);
   --color-hover: var(--text-hover);
+  --color-scrollbar: var(--scrollbar);
 }
 
 /* Animation des particules (via ParticlesBackground) */

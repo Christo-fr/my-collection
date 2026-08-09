@@ -81,7 +81,7 @@ export default function SandboxPage() {
         ========================================================================
       */}
       {/* ZONE GAUCHE (50% desktop, 100% mobile avec scroll natif) */}
-      <div className="w-full lg:w-1/2 lg:overflow-y-auto lg:max-h-[calc(100vh-5rem)] pr-4 space-y-8 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
+      <div className="w-full lg:w-1/2 lg:overflow-y-auto lg:max-h-[calc(100vh-5rem)] pr-4 space-y-8 [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
         {/* EN-TÊTE DE LA SANDBOX */}
         <header className="space-y-1 border-b border-main/10 pb-4">
           <Heading as="h1" size="3xl">
