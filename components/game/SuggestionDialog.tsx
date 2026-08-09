@@ -40,7 +40,15 @@ export default function SuggestionDialog({
         decay: 0.94,
         startVelocity: 30,
         shapes: ["star"],
-        colors: ["#FFD700", "#FFA500", "#FFFFFF"],
+        colors: [
+          getComputedStyle(document.documentElement)
+            .getPropertyValue("--color-grad-start")
+            .trim(),
+          getComputedStyle(document.documentElement)
+            .getPropertyValue("--color-secondary")
+            .trim(),
+          "#FFFFFF",
+        ],
       });
     }
   }, [isOpen, result]);
@@ -53,11 +61,15 @@ export default function SuggestionDialog({
       <div className="w-full h-full flex flex-col gap-4 items-center justify-between p-4">
         {/* En-tête : Titre et message alternatif */}
         <div className="flex flex-col mb-4 shrink-0 gap-4">
-          <Heading as="h2" size="md" className="text-center mb-2">
+          <Heading
+            as="h2"
+            size="md"
+            className="text-center mb-2 !text-dialog-text"
+          >
             Voici le jeu que nous vous suggérons :
           </Heading>
           {!result.isMatch && (
-            <p className="text-red-500 text-center whitespace-pre-line">
+            <p className="text-red-500 text-center whitespace-pre-line text-dialog-text">
               {result.warningMessage}
             </p>
           )}
@@ -80,7 +92,7 @@ export default function SuggestionDialog({
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: [0, 0.9, 0.3], scale: [0.5, 1.2, 1.05] }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="absolute -inset-3 -z-10 rounded-3xl bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500 blur-xl animate-pulse"
+            className="absolute -inset-3 -z-10 rounded-3xl bg-gradient-to-r from-secondary via-grad-start to-grad-end blur-xl animate-pulse"
           />
 
           {/* Rendu de la  GameCard */}
@@ -90,12 +102,12 @@ export default function SuggestionDialog({
         </motion.div>
 
         {/* Btn de relance */}
-        <div className="shrink-0 w-full  max-w-sm">
+        <div className="shrink-0 w-full max-w-sm ">
           <Button
             onClick={onRePoll}
-            icon={<RotateCw className="w-5 h-5" />}
+            icon={<RotateCw className="w-5 h-5 !border-dialog-text" />}
             variant="secondary"
-            className="w-full mt-6"
+            className="w-full mt-6 !text-dialog-text !border-dialog-text"
           >
             Suggère moi un autre jeu !
           </Button>
