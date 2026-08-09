@@ -12,6 +12,7 @@
   --text-main: var(--color-gray-700);
   --text-hover: black;
   --scrollbar: rgba(255, 255, 255, 0.5);
+  --dialog-text: white;
 }
 
 .dark {
@@ -23,6 +24,7 @@
   --text-main: var(--color-gray-300);
   --text-hover: white;
   --scrollbar: rgba(255, 255, 255, 0.3);
+  --dialog-text: var(--color-gray-300);
 }
 
 @theme inline {
@@ -36,6 +38,7 @@
   --color-main: var(--text-main);
   --color-hover: var(--text-hover);
   --color-scrollbar: var(--scrollbar);
+  --color-dialog-text: var(--dialog-text);
 }
 
 /* Animation des particules (via ParticlesBackground) */

@@ -44,7 +44,7 @@ export default function Dialog({
             variant="secondary"
             onClick={onClose}
             size="sm"
-            className="fixed top-6 right-6 z-50"
+            className="fixed top-6 right-6 z-50 !border-dialog-text"
           >
             <X className="w-6 h-6 text-white" />
           </Button>
