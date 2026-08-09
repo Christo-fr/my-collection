@@ -1,22 +1,24 @@
 "use client";
-import { useState } from "react";
 
+import { useState } from "react";
 import { Sparkles } from "lucide-react";
 
-// Providers & Layouts
-import LayoutSplit from "@/components/layout/LayoutSplit";
-
-// UI Components Global
-import Heading from "@/components/ui/Heading";
-import Button from "@/components/ui/Button";
-
-import FilterPanel from "@/components/game/FilterPanel";
-import RangeInput from "@/components/ui/RangeInput";
-import Select from "@/components/ui/Select";
+// Contextes & Hooks
 import { useGames } from "@/features/game/useGames";
 import { useGamesContext } from "@/components/providers/GamesProvider";
+
+// Layout & UI Globales
+import LayoutSplit from "@/components/layout/LayoutSplit";
+import Heading from "@/components/ui/Heading";
+import Button from "@/components/ui/Button";
+import Select from "@/components/ui/Select";
+import RangeInput from "@/components/ui/RangeInput";
+
+// Composants Métier
+import FilterPanel from "@/components/game/FilterPanel";
 import SuggestionDialog from "@/components/game/SuggestionDialog";
 
+// Utils & Types
 import {
   getGachaSuggestion,
   OPTIONS_STATUS,
@@ -25,16 +27,20 @@ import {
 } from "@/features/game/gameUtils";
 
 export default function Suggestion() {
-  const { bounds, consoleOptions, styleOptions, filters, setters, games } =
-    useGames();
+  // =========================================================================
+  // 1. HOOKS & ÉTATS LOCAUX
+  // =========================================================================
+  const { bounds, consoleOptions, styleOptions, filters, setters } = useGames();
+  const { games: gamesList } = useGamesContext();
   const [result, setResult] = useState<SuggestionResult | null>(null);
 
-  const { games: rawGames } = useGamesContext();
-
+  // =========================================================================
+  // 2. TRAITEMENT DU TIRAGE
+  // =========================================================================
   const handlePoll = async () => {
-    const suggestion = getGachaSuggestion(filters, rawGames);
+    const suggestion = getGachaSuggestion(filters, gamesList);
 
-    // Si un jeu a été trouvé, on attend que son image soit chargée
+    // Préchargement de la jaquette pour éviter le retard d'affichage
     if (suggestion.game?.images?.cover) {
       await preloadImage(suggestion.game.images.cover);
     }
@@ -54,7 +60,7 @@ export default function Suggestion() {
           Suggestion
         </Heading>
 
-        {/* Panneau principal d'informations */}
+        {/* Panneau principal de filtres */}
         <section className="w-full lg:w-1/2 h-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:[scrollbar-color:rgba(255,255,255,0.3)_transparent]">
           <FilterPanel>
             <Select
@@ -97,9 +103,9 @@ export default function Suggestion() {
       </LayoutSplit>
 
       {/* ========================================================================= */}
-      {/* MODALES ET DIALOGS                                                       */}
+      {/* DIALOG                                                       */}
       {/* ========================================================================= */}
-      {/* Dialogue de la suggestion */}
+      {/* Dialog du tirage d'un jeu si un résultat est présent */}
       {result && (
         <SuggestionDialog
           isOpen={!!result}

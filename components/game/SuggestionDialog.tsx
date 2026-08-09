@@ -1,11 +1,16 @@
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import confetti from "canvas-confetti";
+import { RotateCw } from "lucide-react";
+
+// Types
+import { SuggestionResult } from "@/features/game/gameUtils";
+
+// Composants UI
 import Dialog from "@/components/ui/Dialog";
 import GameCard from "@/components/game/GameCard";
-import { useEffect } from "react";
-import confetti from "canvas-confetti";
-import { SuggestionResult } from "@/features/game/gameUtils";
 import Button from "@/components/ui/Button";
-import { RotateCw } from "lucide-react";
-import { motion } from "framer-motion";
+import Heading from "@/components/ui/Heading";
 
 interface SuggestionDialogProps {
   isOpen: boolean;
@@ -20,10 +25,13 @@ export default function SuggestionDialog({
   result,
   onRePoll,
 }: SuggestionDialogProps) {
-  if (!result || !result.game) return null; // Sécurité si aucun résultat n'est présent
+  // Compteur d'animation : incrémenté à chaque tirage pour forcer Framer Motion à rejouer l'animation
+  const [count, setCount] = useState(0);
 
+  // Déclenchement des effets visuels (confetti + incrément d'animation)
   useEffect(() => {
     if (isOpen && result?.game) {
+      setCount((prev) => prev + 1);
       confetti({
         particleCount: 120,
         spread: 360,
@@ -37,21 +45,27 @@ export default function SuggestionDialog({
     }
   }, [isOpen, result]);
 
-  return (
-    <Dialog
-      isOpen={isOpen}
-      onClose={onClose}
-      maxWidth="max-w-md"
-      centered
-      title="Voici le jeu qu'on vous suggère !"
-    >
-      <div className="w-full">
-        {!result.isMatch && (
-          <p className="text-red-500">{result.warningMessage}</p>
-        )}
+  // Sécurité si aucun résultat n'est présent
+  if (!result || !result.game) return null;
 
+  return (
+    <Dialog isOpen={isOpen} onClose={onClose} maxWidth="max-w-xl" centered>
+      <div className="w-full h-full flex flex-col gap-4 items-center justify-between p-4">
+        {/* En-tête : Titre et message alternatif */}
+        <div className="flex flex-col mb-4 shrink-0 gap-4">
+          <Heading as="h2" size="md" className="text-center mb-2">
+            Voici le jeu que nous vous suggérons :
+          </Heading>
+          {!result.isMatch && (
+            <p className="text-red-500 text-center whitespace-pre-line">
+              {result.warningMessage}
+            </p>
+          )}
+        </div>
+
+        {/* Zone centrale : Carte de jeu avec animation Framer Motion */}
         <motion.div
-          key={result.game.id} // Rejoue l'animation à chaque "Relancer"
+          key={count} // Réinitialise l'animation à chaque évolution du compteur
           initial={{ scale: 0.2, opacity: 0, rotate: -8 }}
           animate={{ scale: 1, opacity: 1, rotate: 0 }}
           transition={{
@@ -59,9 +73,9 @@ export default function SuggestionDialog({
             stiffness: 300,
             damping: 18,
           }}
-          className="relative"
+          className="relative flex-1 min-h-0 w-full flex items-center justify-center py-2 max-w-sm"
         >
-          {/* Halo de rareté doré (éclat sous la carte) */}
+          {/* Halo lumineux de rareté sous la carte */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: [0, 0.9, 0.3], scale: [0.5, 1.2, 1.05] }}
@@ -69,18 +83,19 @@ export default function SuggestionDialog({
             className="absolute -inset-3 -z-10 rounded-3xl bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500 blur-xl animate-pulse"
           />
 
-          {/* Rendu de ta carte de jeu */}
-          <div className="w-100 h-full flex flex-col gap-4 mt-4">
+          {/* Rendu de la  GameCard */}
+          <div className="relative w-full max-w-[340px] aspect-[2/3] max-h-full flex items-center justify-center">
             <GameCard game={result.game} variant="xl" />
           </div>
         </motion.div>
 
-        <div>
+        {/* Btn de relance */}
+        <div className="shrink-0 w-full">
           <Button
             onClick={onRePoll}
             icon={<RotateCw className="w-5 h-5" />}
             variant="secondary"
-            className="mt-8 w-full"
+            className="w-full mt-6"
           >
             Suggère moi un autre jeu !
           </Button>

@@ -299,7 +299,7 @@ export function getGachaSuggestion(
         isMatch: step.isMatch,
         warningMessage: step.isMatch
           ? ""
-          : "Aucun jeu n'a correspondu à vos critères. Alors on vous en a proposé un qui répondait le mieux à vos attentes...",
+          : "Aucun jeu n'a correspondu à l'ensemble de vos critères. \n Mais nous vous proposons celui qui répond le mieux à vos attentes...",
       };
     }
   }
@@ -311,6 +311,10 @@ export function getGachaSuggestion(
       "Aucun jeu ne correspond, même après assouplissement des critères.",
   };
 }
+
+// =============================================================
+//  ¨PRECHARGE L'IMAGE DE GAMECARD LORS DU TIRAGE DE LA SUGGESTION
+// =============================================================
 
 export const preloadImage = (src: string): Promise<void> => {
   return new Promise((resolve) => {

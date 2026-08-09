@@ -119,9 +119,9 @@ export default function GameDetail() {
           </LayoutSplit>
 
           {/* ========================================================================= */}
-          {/* MODALES ET DIALOGS                                                       */}
+          {/* DIALOG                                                       */}
           {/* ========================================================================= */}
-          {/* Dialogue du Trailer YouTube (rendu uniquement si une ID YouTube existe) */}
+          {/* Dialog du Trailer YouTube (rendu uniquement si une ID YouTube existe) */}
           {game.youtubeId && (
             <GameTrailerDialog
               isOpen={isTrailerOpen}
