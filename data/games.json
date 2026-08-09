@@ -7535,7 +7535,7 @@
       "logo": "/games/logos/aceattorneytrilogyphoenixwright.png",
       "parallax": {
         "url": "/games/parallaxs/aceattorneytrilogyphoenixwright.webp",
-        "truncated": false
+        "truncated": true
       }
     },
     "review": {
@@ -11199,7 +11199,7 @@
       "logo": "/games/logos/aceattorneyinvestigationscollection.png",
       "parallax": {
         "url": "/games/parallaxs/aceattorneyinvestigationscollection.webp",
-        "truncated": false
+        "truncated": true
       }
     },
     "review": {
