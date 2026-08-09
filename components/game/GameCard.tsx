@@ -21,7 +21,7 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
         fill
         sizes={
           variant === "xl"
-            ? "(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 70vw"
+            ? "(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 380px"
             : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
         }
         quality={variant === "xl" ? 90 : 80}
@@ -57,18 +57,22 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
         )}
 
         {/* 2. Durée & Genre */}
-        <div className="text-sm text-main w-full truncate font-medium">
+        <div
+          className={` ${variant === "xl" ? "text-md" : "text-sm"} text-main w-full truncate font-medium`}
+        >
           {game.estimatedPlaytime}h • {game.genre}
         </div>
 
         {/* 3. Note /10*/}
         {game.review?.score ? (
-          <div className="text-sm text-main font-bold mt-0.5">
+          <div
+            className={` ${variant === "xl" ? "text-md" : "text-sm"} text-main font-bold mt-0.5`}
+          >
             {game.review.score}/10
           </div>
         ) : (
           <div
-            className="text-sm font-bold mt-0.5 opacity-0 select-none"
+            className={` ${variant === "xl" ? "text-md" : "text-sm"} font-bold mt-0.5 opacity-0 select-none`}
             aria-hidden="true"
           >
             /10
