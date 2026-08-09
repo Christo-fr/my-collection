@@ -102,7 +102,7 @@ export default function GameTabs({
 
           {/* Description textuelle du jeu */}
           {game?.description && (
-            <p className="mt-4 text-main/80 text-sm leading-relaxed">
+            <p className="mt-4 text-main/90 dark:text-main/80 text-sm leading-relaxed">
               {game.description}
             </p>
           )}
@@ -183,7 +183,7 @@ export default function GameTabs({
                       {game.review.pros.map((pro, index) => (
                         <li
                           key={index}
-                          className="text-main/80 text-sm flex gap-1"
+                          className="text-main/90 dark:text-main/80 text-sm flex gap-1"
                         >
                           <span className="text-main/60 shrink-0">+</span>
                           <span>{pro}</span>
@@ -197,7 +197,7 @@ export default function GameTabs({
                       {game.review.cons.map((con, index) => (
                         <li
                           key={index}
-                          className="text-main/80 text-sm flex gap-1"
+                          className="text-main/90 dark:text-main/80 text-sm flex gap-1"
                         >
                           <span className="text-main/60 shrink-0">-</span>
                           <span>{con}</span>
@@ -209,7 +209,7 @@ export default function GameTabs({
 
                 {/* Bilan récapitulatif */}
                 {game.review.summary && (
-                  <p className="mt-4 text-main/80 text-sm leading-relaxed">
+                  <p className="mt-4 text-main/90 dark:text-main/80 text-sm leading-relaxed">
                     {game.review.summary}
                   </p>
                 )}

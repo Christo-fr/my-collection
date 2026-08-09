@@ -1525,7 +1525,7 @@
   },
   {
     "id": 42,
-    "title": "Dragon Crown",
+    "title": "Dragon's Crown",
     "franchise": "Dragon's Crown",
     "console": "PS3",
     "format": "Physical",
@@ -4155,9 +4155,9 @@
     "youtubeId": "WGqR3TbpZ1c",
     "images": {
       "cover": "/games/covers/everybodysgolf.avif",
-      "logo": "/games/logos/everybodysgolf.png",
+      "logo": "/games/logos/everybodysgolf7.png",
       "parallax": {
-        "url": "/games/parallaxs/everybodysgolf.webp",
+        "url": "/games/parallaxs/everybodysgolf7.webp",
         "truncated": false
       }
     },
@@ -4378,7 +4378,7 @@
   },
   {
     "id": 119,
-    "title": "Phantasy Star Online episode III - C.A.R.D. Revolution",
+    "title": "Phantasy Star Online episode 3 - C.A.R.D. Revolution",
     "franchise": "Phantasy Star Online",
     "console": "GC",
     "format": "Physical",
@@ -5564,7 +5564,7 @@
   },
   {
     "id": 148,
-    "title": "Phantasy Star Online episode I & II",
+    "title": "Phantasy Star Online episode 1 & 2",
     "franchise": "Phantasy Star Online",
     "console": "GC",
     "format": "Physical",
@@ -6293,7 +6293,7 @@
   },
   {
     "id": 168,
-    "title": "Ni No Kuni II - Revenant Kingdom",
+    "title": "Ni No Kuni 2 - Revenant Kingdom",
     "franchise": "Ni No Kuni",
     "console": "PS4",
     "format": "Physical",
@@ -6637,7 +6637,7 @@
   },
   {
     "id": 178,
-    "title": "Dragon Crown Pro",
+    "title": "Dragon's Crown Pro",
     "franchise": "Dragon's Crown",
     "console": "PS4",
     "format": "Physical",
@@ -7104,7 +7104,7 @@
   },
   {
     "id": 192,
-    "title": "Ys VIII - Lacrimosa of Dana",
+    "title": "Ys 8 - Lacrimosa of Dana",
     "franchise": "Ys",
     "console": "PS4",
     "format": "Physical",
@@ -7129,7 +7129,7 @@
   {
     "id": 193,
     "title": "Fire Emblem Warriors",
-    "franchise": "Fire Emblem",
+    "franchise": "Fire Emblem Warriors",
     "console": "Switch",
     "format": "Physical",
     "developer": "Tecmo Koei",
@@ -7244,7 +7244,7 @@
   },
   {
     "id": 197,
-    "title": "Kingdom Hearts III",
+    "title": "Kingdom Hearts 3",
     "franchise": "Kingdom Hearts",
     "console": "PS4",
     "format": "Physical",
@@ -8034,7 +8034,7 @@
       "logo": "/games/logos/captaintsubasariseofnewchampions.png",
       "parallax": {
         "url": "/games/parallaxs/captaintsubasariseofnewchampions.webp",
-        "truncated": false
+        "truncated": true
       }
     },
     "review": {
@@ -9078,7 +9078,7 @@
   {
     "id": 248,
     "title": "Fuga - Melodies of Steel",
-    "franchise": "Fuga",
+    "franchise": "Fuga - Melodies of Steel",
     "console": "PS4",
     "format": "Digital",
     "developer": "CyberConnect2",
@@ -9399,7 +9399,7 @@
   },
   {
     "id": 258,
-    "title": "Shin Megami Tensei III - Nocturne",
+    "title": "Shin Megami Tensei 3 - Nocturne",
     "franchise": "Shin Megami Tensei",
     "console": "PS4",
     "format": "Physical",
@@ -9430,7 +9430,7 @@
   },
   {
     "id": 259,
-    "title": "Shin Megami Tensei V - Vengeance",
+    "title": "Shin Megami Tensei 5 - Vengeance",
     "franchise": "Shin Megami Tensei",
     "console": "PS5",
     "format": "Physical",
@@ -9566,7 +9566,7 @@
   {
     "id": 263,
     "title": "Hyrule Warriors - Definitive Edition",
-    "franchise": "The Legend of Zelda",
+    "franchise": "Hyrule Warriors",
     "console": "Switch",
     "format": "Physical",
     "developer": "Tecmo Koei",
@@ -9850,7 +9850,7 @@
   {
     "id": 272,
     "title": "Hyrule Warriors - L'Ère du Fléau",
-    "franchise": "The Legend of Zelda",
+    "franchise": "Hyrule Warriors",
     "console": "Switch",
     "format": "Physical",
     "developer": "Tecmo Koei",
@@ -10994,7 +10994,7 @@
     "description": "Accompagnez l'avocat junior Apollo Justice et son mentor, le légendaire Phoenix Wright, dans cette collection de 3 jeux !",
     "youtubeId": "GOBx2Vk3HpM",
     "images": {
-      "cover": "/games/covers/aceattorneytrilogyapollojustice.jpg",
+      "cover": "/games/covers/aceattorneytrilogyapollojustice.webp",
       "logo": "/games/logos/aceattorneytrilogyapollojustice.png",
       "parallax": {
         "url": "/games/parallaxs/aceattorneytrilogyapollojustice.png",
@@ -11523,7 +11523,7 @@
   {
     "id": 322,
     "title": "Super Mario Party Jamboree",
-    "franchise": "Super Mario",
+    "franchise": "Mario Party",
     "console": "Switch",
     "format": "Physical",
     "developer": "Nintendo",
@@ -11626,7 +11626,7 @@
   {
     "id": 325,
     "title": "Fire Emblem Warriors - Three Hopes",
-    "franchise": "Fire Emblem",
+    "franchise": "Fire Emblem Warriors",
     "console": "Switch",
     "format": "Physical",
     "developer": "Tecmo Koei",
@@ -11656,7 +11656,7 @@
   },
   {
     "id": 326,
-    "title": "Final Fantasy IX",
+    "title": "Final Fantasy 9",
     "franchise": "Final Fantasy",
     "console": "Switch",
     "format": "Physical",
@@ -11688,7 +11688,7 @@
   {
     "id": 327,
     "title": "Paper Mario - La Porte Millénaire",
-    "franchise": "Super Mario",
+    "franchise": "Paper Mario",
     "console": "Switch",
     "format": "Physical",
     "developer": "Nintendo",
