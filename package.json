@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@formkit/auto-animate": "^0.10.0",
     "@headlessui/react": "^2.2.10",
     "canvas-confetti": "^1.9.4",
     "framer-motion": "^13.0.0",
