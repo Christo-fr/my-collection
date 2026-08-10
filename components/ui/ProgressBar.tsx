@@ -19,7 +19,7 @@ export default function ProgressBar({
 }: ProgressBarProps) {
   const percentage = Math.round((value / max) * 100);
   return (
-    <div className={`flex flex-col gap-1.5 w-full ${className}`}>
+    <div className={`flex flex-col gap-1 w-full ${className}`}>
       {label && (
         <span className="text-sm font-medium text-main/80 px-0.5">{label}</span>
       )}
@@ -31,7 +31,7 @@ export default function ProgressBar({
       </div>
       {/* Pied de jauge */}
       {(labelLeft || labelRight) && (
-        <div className="flex justify-between items-center text-xs font-medium text-main/80 px-0.5">
+        <div className="flex justify-between items-center text-xs -mt-1 font-medium text-main/80 px-0.5">
           {/* Affiche à gauche SEULEMENT si labelLeft existe */}
           <span>
             {labelLeft &&

@@ -30,7 +30,7 @@ export default function Tabs({
         <div className="flex items-center gap-2 flex-wrap">
           {items.map((item) => (
             <Tab
-              className="md:first:pl-0 px-4 uppercase text-sm font-medium rounded-lg transition-all outline-none cursor-pointer text-main/60 data-[hover]:text-main data-[selected]:bg-accent data-[selected]:text-main"
+              className="md:first:pl-0 px-2 lg:px-4 uppercase text-sm font-medium rounded-lg transition-all outline-none cursor-pointer text-main/60 data-[hover]:text-main data-[selected]:bg-accent data-[selected]:text-main"
               key={item.label}
             >
               {item.label}
