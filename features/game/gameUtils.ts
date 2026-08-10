@@ -31,7 +31,7 @@ export const OPTIONS_RECORD_METRICS = [
   { label: "Temps de jeu", value: "playtime" },
   { label: "Écart de temps", value: "playtime_gap" },
   { label: "Date de complétion", value: "completion_date" },
-  { label: "Bilan annuel", value: "yearly_summary" },
+  { label: "Bilan dernière année", value: "yearly_summary" },
 ];
 
 // =============================================================
@@ -429,15 +429,15 @@ export function getRecordColumnTitle(
         return type === "max" ? "Meilleures avis" : "Avis modestes";
       }
       return type === "max"
-        ? `Meilleures notes (${score}/10)`
-        : `Notes les plus modestes (${score}/10)`;
+        ? `Meilleures avis (${score}/10)`
+        : `Avis modestes (${score}/10)`;
     }
 
     case "playtime": {
       const hours = game.review?.playtime ?? 0;
       return type === "max"
-        ? `Plus long temps de jeu (${hours} h)`
-        : `Plus court temps de jeu (${hours} h)`;
+        ? `Temps de jeu le plus élevé (${hours} h)`
+        : `Temps de jeu le plus faible (${hours} h)`;
     }
 
     case "playtime_gap": {
@@ -447,8 +447,8 @@ export function getRecordColumnTitle(
       const formattedGap = gap > 0 ? `+${gap} h` : `${gap} h`;
 
       return type === "max"
-        ? `Plus gros dépassement (${formattedGap})`
-        : `Jeux pliés le plus rapidement (${formattedGap})`;
+        ? `Plus gros dépassement d'estimation (${formattedGap})`
+        : `Plus grande avance sur l'estimation (${formattedGap})`;
     }
 
     case "completion_date": {
@@ -462,7 +462,7 @@ export function getRecordColumnTitle(
 
       return type === "max"
         ? `Derniers jeux terminés (${dateStr})`
-        : `Plus anciens jeux terminés (${dateStr})`;
+        : `Premiers jeux terminés (${dateStr})`;
     }
 
     case "yearly_summary": {

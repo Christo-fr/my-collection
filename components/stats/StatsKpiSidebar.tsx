@@ -32,7 +32,7 @@ export default function StatsKpiSidebar({
           size="md"
           className="font-semibold tracking-wide uppercase"
         >
-          Stats
+          Indicateurs
         </Heading>
       </div>
       <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">

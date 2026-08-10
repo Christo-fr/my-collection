@@ -25,7 +25,7 @@ export default function StatsRecordsPanel({
   return (
     <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0">
       <ListHeader
-        title="Analyses & Records"
+        title="Comparatif"
         sortBy={recordMetric}
         onSortChange={setRecordMetric}
         optionsSort={OPTIONS_RECORD_METRICS}
