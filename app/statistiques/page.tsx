@@ -8,6 +8,9 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import GameCard from "@/components/game/GameCard";
 
 export default function StatsPage() {
+  // =========================================================================
+  // 1. HOOKS & ÉTATS LOCAUX
+  // =========================================================================
   const {
     loading,
     consoleTabs,
@@ -23,6 +26,9 @@ export default function StatsPage() {
     hallOfShame,
   } = useStats();
 
+  // =========================================================================
+  // 2. GESTION DE LA NAVIGATION & ÉVÉNEMENTS
+  // =========================================================================
   const [animation] = useAutoAnimate({
     duration: 200, // Légèrement plus rapide que le défaut (250ms)
     easing: "cubic-bezier(0.4, 0, 0.2, 1)", // Courbe "smooth" moderne
@@ -40,8 +46,9 @@ export default function StatsPage() {
       setSelectedConsole(targetTab.value);
     }
   };
-
-  // 3. Génération des onglets
+  // =========================================================================
+  // 3. CONSTRUCTION DU CONTENU DES ONGLETS
+  // =========================================================================
   const tabItems = consoleTabs.map((tab) => ({
     label: tab.value,
     content: (
@@ -128,7 +135,7 @@ export default function StatsPage() {
                 ) : (
                   <>
                     <p className="text-sm font-semibold ">
-                      Meilleurs avis :{" "}
+                      Meilleurs avis :
                       <span className="font-bold ">
                         {hallOfFame[0].review?.score}/10
                       </span>
@@ -151,7 +158,7 @@ export default function StatsPage() {
                     hallOfFame[0].review?.score && (
                     <>
                       <p className="text-sm font-semibold ">
-                        Avis modeste :{" "}
+                        Avis modeste :
                         <span className="font-bold ">
                           {hallOfShame[0].review?.score}/10
                         </span>
@@ -173,7 +180,9 @@ export default function StatsPage() {
       </div>
     ),
   }));
-
+  // =========================================================================
+  // 4. RENDU DU COMPOSANT
+  // =========================================================================
   return (
     <LayoutFull title="Statistiques">
       {loading ? (
