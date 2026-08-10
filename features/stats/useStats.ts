@@ -1,28 +1,41 @@
 import { useState, useMemo } from "react";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { getConsoleOptions } from "@/features/game/gameUtils";
+import { getTopPodium, getExtremeGames } from "@/features/game/gameUtils";
+import type { Game } from "@/types/game";
 
 /**
  * Hook personnalisé calculant les statistiques globales et filtrées de la ludothèque.
  * Expose les métriques clés, le classement par genre équitable et les jeux d'exception.
  */
 export function useStats() {
-  // 1. Récupération des données globales via le contexte
+  // =============================================================
+  // 1. RÉCUPÉRATION DES DONNÉES GLOBALES
+  // =============================================================
   const { games, loading } = useGamesContext();
 
-  // 2. État du filtre d'onglet par console
+  // =============================================================
+  // 2. ÉTATS LOCAUX (FILTRES ET SÉLECTIONS)
+  // =============================================================
   const [selectedConsole, setSelectedConsole] = useState<string>("Toutes");
+  const [recordMetric, setRecordMetric] = useState<string>("score");
 
-  // 3. Extraction dynamique des onglets disponibles (mémorisé pour éviter les recalculs inutiles)
+  // =============================================================
+  // 3. EXTRACTION DYNAMIQUE DES ONGLETS DE CONSOLE
+  // =============================================================
   const consoleTabs = useMemo(() => getConsoleOptions(games), [games]);
 
-  // 4. Sous-ensemble de jeux filtrés selon la console sélectionnée
+  // =============================================================
+  // 4. SOUS-ENSEMBLE DE JEUX FILTRÉS SELON LA CONSOLE
+  // =============================================================
   const filteredGames = useMemo(() => {
     if (selectedConsole === "Toutes") return games;
     return games.filter((game) => game.console === selectedConsole);
   }, [games, selectedConsole]);
 
-  // 5. Calcul centralisé des métriques (exécuté uniquement si 'filteredGames' change)
+  // =============================================================
+  // 5. CALCUL CENTRALISÉ DES MÉTRIQUES (MEMOÏSÉ)
+  // =============================================================
   const stats = useMemo(() => {
     // --- MÉTRIQUES DE BASE ---
 
@@ -57,72 +70,109 @@ export function useStats() {
 
     // --- DICTIONNAIRE ET TRI DES GENRES ---
 
-    // Comptage des occurrences par genre sous forme de Hash Map { "Genre": quantité }
-    // Permet une mise à jour en temps linéaire O(N)
-    const genreCounts = filteredGames.reduce(
-      (counter, game) => {
-        const genre = game.genre;
-        // Si la clé existe on incrémente, sinon on l'initialise à 1
-        counter[genre] = (counter[genre] ?? 0) + 1;
-        return counter;
-      },
-      {} as Record<string, number>,
-    );
-
-    // Transformation du dictionnaire en tableau [genre, count] trié du plus grand au plus petit
-    const sortedGenres = Object.entries(genreCounts).sort(
-      (a, b) => b[1] - a[1],
-    );
-
-    // --- ALGORITHME DE CLASSEMENT ÉQUITABLE (PALIERS & EX ÆQUO) ---
-    // Règle : On conserve au moins 3 éléments. Si le genre suivant a un score strictement
-    // inférieur au dernier élément ajouté sur le podium, la boucle s'arrête.
-    let topGenres: [string, number][] = [];
-
-    for (const [genre, count] of sortedGenres) {
-      const lastAddedCount = topGenres[topGenres.length - 1]?.[1];
-
-      if (
-        topGenres.length >= 3 &&
-        lastAddedCount !== undefined &&
-        count < lastAddedCount
-      ) {
-        break; // Arrêt : le palier suivant est strictement inférieur
-      }
-
-      topGenres.push([genre, count]);
-    }
+    const topGenres = getTopPodium(filteredGames, (game) => game.genre);
+    const topFranchises = getTopPodium(filteredGames, (game) => game.franchise);
 
     // --- HALL OF FAME & HALL OF SHAME ---
 
-    // Isolation des jeux disposant d'une évaluation pour éviter de biaiser avec les jeux non notés
-    const ratedGames = filteredGames.filter(
-      (game) => game.review?.score != null,
-    );
-    const hasRatedGames = ratedGames.length > 0;
+    let recordMax: Game[] = [];
+    let recordMin: Game[] = [];
 
-    // Garde-fous : Math.max/min sur tableau vide renvoient -Infinity/Infinity
-    const maxScore = hasRatedGames
-      ? Math.max(...ratedGames.map((game) => game.review!.score))
-      : 0;
+    switch (recordMetric) {
+      case "score":
+        recordMax = getExtremeGames(
+          filteredGames,
+          (game) => game.review?.score,
+          "max",
+        );
+        recordMin = getExtremeGames(
+          filteredGames,
+          (game) => game.review?.score,
+          "min",
+        );
+        break;
+      case "playtime":
+        recordMax = getExtremeGames(
+          filteredGames,
+          (game) => game.review?.playtime,
+          "max",
+        );
+        recordMin = getExtremeGames(
+          filteredGames,
+          (game) => game.review?.playtime,
+          "min",
+        );
+        break;
+      case "playtime_gap":
+        recordMax = getExtremeGames(
+          filteredGames,
+          (game) =>
+            game.review?.playtime != null
+              ? game.review.playtime - game.estimatedPlaytime
+              : undefined,
+          "max",
+        );
+        recordMin = getExtremeGames(
+          filteredGames,
+          (game) =>
+            game.review?.playtime != null
+              ? game.review.playtime - game.estimatedPlaytime
+              : undefined,
+          "min",
+        );
+        break;
+      case "completion_date":
+        recordMax = getExtremeGames(
+          filteredGames,
+          (game) =>
+            game.review?.completedDate != null
+              ? Date.parse(game.review?.completedDate)
+              : undefined,
+          "max",
+        );
+        recordMin = getExtremeGames(
+          filteredGames,
+          (game) =>
+            game.review?.completedDate != null
+              ? Date.parse(game.review?.completedDate)
+              : undefined,
+          "min",
+        );
+        break;
+      case "yearly_summary": {
+        // 1. On isole tous les jeux qui ont une date de fin validée
+        const completedGames = filteredGames.filter(
+          (game) => game.review?.completedDate != null,
+        );
 
-    // Récupération de TOUS les jeux ayant la note maximale (gestion des ex æquo)
-    const hallOfFame = hasRatedGames
-      ? ratedGames
-          .filter((game) => game.review?.score === maxScore)
-          .sort((a, b) => a.title.localeCompare(b.title))
-      : [];
+        // Sécurité : si aucun jeu n'est terminé
+        if (completedGames.length === 0) {
+          recordMax = [];
+          recordMin = [];
+          break;
+        }
 
-    const minScore = hasRatedGames
-      ? Math.min(...ratedGames.map((game) => game.review!.score))
-      : 0;
+        // 2. Année actuelle et liste de toutes les années disponibles
+        const currentYear = new Date().getFullYear();
+        const availableYears = completedGames.map((game) =>
+          new Date(game.review.completedDate).getFullYear(),
+        );
 
-    // Récupération de TOUS les jeux ayant la note minimale (gestion des ex æquo)
-    const hallOfShame = hasRatedGames
-      ? ratedGames
-          .filter((game) => game.review?.score === minScore)
-          .sort((a, b) => a.title.localeCompare(b.title))
-      : [];
+        // 3. Année cible : l'année en cours si elle existe, sinon la plus récente disponible
+        const targetYear = availableYears.includes(currentYear)
+          ? currentYear
+          : Math.max(...availableYears);
+
+        // 4. On remplit la colonne principale avec les jeux de cette année-là
+        recordMax = completedGames.filter(
+          (game) =>
+            new Date(game.review.completedDate).getFullYear() === targetYear,
+        );
+        recordMin = []; // Pas de deuxième colonne pour le bilan annuel
+
+        break;
+      }
+    }
 
     return {
       totalGames,
@@ -131,17 +181,22 @@ export function useStats() {
       totalPhysical,
       totalAverageScore,
       topGenres,
-      hallOfFame,
-      hallOfShame,
+      topFranchises,
+      recordMin,
+      recordMax,
     };
-  }, [filteredGames]);
+  }, [filteredGames, recordMetric]);
 
-  // 6. Exposition de l'API publique pour les composants React
+  // =============================================================
+  // 6. RETOUR DU HOOK ("Le Paquet Cadeau")
+  // =============================================================
   return {
     loading,
     selectedConsole,
     setSelectedConsole,
     consoleTabs,
+    recordMetric,
+    setRecordMetric,
     ...stats,
   };
 }

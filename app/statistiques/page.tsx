@@ -134,8 +134,8 @@ export default function StatsPage() {
                   <p className="text-sm">Aucun jeu noté pour le moment.</p>
                 ) : (
                   <>
-                    <p className="text-sm font-semibold ">
-                      Meilleurs avis :
+                    <p className="text-sm">
+                      Meilleurs avis :{" "}
                       <span className="font-bold ">
                         {hallOfFame[0].review?.score}/10
                       </span>
@@ -157,8 +157,8 @@ export default function StatsPage() {
                   hallOfShame[0].review?.score !==
                     hallOfFame[0].review?.score && (
                     <>
-                      <p className="text-sm font-semibold ">
-                        Avis modeste :
+                      <p className="text-sm">
+                        Avis modeste :{" "}
                         <span className="font-bold ">
                           {hallOfShame[0].review?.score}/10
                         </span>

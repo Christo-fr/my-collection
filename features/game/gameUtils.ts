@@ -26,6 +26,14 @@ export const OPTIONS_SORT = [
   { label: "Note - décroissante", value: "score_descending" },
 ];
 
+export const OPTIONS_RECORD_METRICS = [
+  { label: "Notes attribuées", value: "score" },
+  { label: "Temps de jeu", value: "playtime" },
+  { label: "Écart de temps (Réel vs Estimé)", value: "playtime_gap" },
+  { label: "Date de complétion", value: "completion_date" },
+  { label: "Bilan annuel", value: "yearly_summary" },
+];
+
 // =============================================================
 //  OPTIONS DYNAMIQUES (SELECT / RANGEINPUT)
 // =============================================================
@@ -324,3 +332,72 @@ export const preloadImage = (src: string): Promise<void> => {
     img.onerror = () => resolve(); // En cas d'erreur réseau, on ne bloque pas le jeu
   });
 };
+
+// =============================================================
+// RETOUR LE TOP 3 D'UN CRITÈRE (GENRE OU FRANCHISE)
+// =============================================================
+export function getTopPodium(
+  games: Game[],
+  getValue: (game: Game) => string | undefined,
+): [string, number][] {
+  const keyCounts = games.reduce(
+    (counter, game) => {
+      const key = getValue(game);
+      if (!key) return counter; // Si pas de valeur (ex: pas de franchise), on saute
+
+      counter[key] = (counter[key] ?? 0) + 1;
+      return counter;
+    },
+    {} as Record<string, number>,
+  );
+
+  // Transformation du dictionnaire en tableau [genre, count] trié du plus grand au plus petit
+  const sortedKeys = Object.entries(keyCounts).sort((a, b) => b[1] - a[1]);
+
+  // --- ALGORITHME DE CLASSEMENT ÉQUITABLE (PALIERS & EX ÆQUO) ---
+  // Règle : On conserve au moins 3 éléments. Si le genre suivant a un score strictement
+  // inférieur au dernier élément ajouté sur le podium, la boucle s'arrête.
+  let topKeys: [string, number][] = [];
+
+  for (const [key, count] of sortedKeys) {
+    const lastAddedCount = topKeys[topKeys.length - 1]?.[1];
+
+    if (
+      topKeys.length >= 3 &&
+      lastAddedCount !== undefined &&
+      count < lastAddedCount
+    ) {
+      break; // Arrêt : le palier suivant est strictement inférieur
+    }
+
+    topKeys.push([key, count]);
+  }
+  return topKeys;
+}
+
+// =============================================================
+// RETOUR LISTE JEU D'UN EXTREME
+// =============================================================
+export function getExtremeGames(
+  games: Game[],
+  getValue: (game: Game) => number | null | undefined,
+  type: "max" | "min",
+): Game[] {
+  // 1. Isolation des jeux ayant une valeur numérique valide
+  const validGames = games.filter((game) => {
+    const key = getValue(game);
+    return key != null && !Number.isNaN(key);
+  });
+
+  if (validGames.length === 0) return [];
+
+  // 2. Calcul du pôle (valeur maximale ou minimale)
+  const values = validGames.map((game) => getValue(game) as number);
+  const targetValue =
+    type === "max" ? Math.max(...values) : Math.min(...values);
+
+  // 3. Filtrage des ex æquo et tri alphabétique par titre
+  return validGames
+    .filter((game) => getValue(game) === targetValue)
+    .sort((a, b) => a.title.localeCompare(b.title));
+}
