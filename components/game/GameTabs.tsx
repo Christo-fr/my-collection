@@ -148,7 +148,7 @@ export default function GameTabs({
             content: (
               <>
                 {/* Statistiques d'accomplissement (Date de fin, Note, Temps passé) */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 ">
                   {game.review.completedDate && (
                     <div className="flex gap-2 items-center">
                       <CalendarCheck className="w-5 h-5" />
@@ -225,6 +225,7 @@ export default function GameTabs({
   // =========================================================================
   return (
     <Tabs
+      className="pt-4"
       // Bouton "Trailer" optionnel injecté en haut à droite des onglets
       action={
         game.youtubeId && (

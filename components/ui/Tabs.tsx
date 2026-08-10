@@ -42,11 +42,11 @@ export default function Tabs({
       </TabList>
 
       {/* min-h-0 et flex-1 permettent de propager la hauteur aux sections enfant */}
-      <TabPanels className="flex-1 min-h-0 flex flex-col pt-4">
+      <TabPanels className="flex-1 min-h-0 flex flex-col">
         {items.map((item) => (
           <TabPanel
             unmount={false}
-            className="flex-1 min-h-0 flex flex-col focus:outline-none"
+            className={`flex-1 min-h-0 flex flex-col focus:outline-none ${className}`}
             key={item.label}
           >
             {item.content}
