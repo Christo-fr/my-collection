@@ -1,3 +1,4 @@
+import Heading from "@/components/ui/Heading";
 interface FilterPanelProps {
   title?: string;
   children: React.ReactNode;
@@ -10,9 +11,13 @@ export default function FilterPanel({
   return (
     <>
       <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
-        <h2 className="text-lg font-semibold tracking-wide uppercase">
+        <Heading
+          as="h2"
+          size="md"
+          className="font-semibold tracking-wide uppercase"
+        >
           {title}
-        </h2>
+        </Heading>
       </div>
       <div className="space-y-4 px-2 py-4 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
         {children}

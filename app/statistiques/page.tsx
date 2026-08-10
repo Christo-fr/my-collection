@@ -36,6 +36,8 @@ export default function StatsPage() {
       <div className="w-full flex-1 min-h-0 flex flex-col lg:flex-row gap-4">
         <StatsKpiSidebar
           totalGames={stats.totalGames}
+          totalDataGames={stats.totalDataGames}
+          totalDataPlaytimeGames={stats.totalDataPlaytimeGames}
           totalCompletedGames={stats.totalCompletedGames}
           totalPlaytime={stats.totalPlaytime}
           totalPhysical={stats.totalPhysical}

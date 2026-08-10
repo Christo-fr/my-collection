@@ -334,16 +334,17 @@ export const preloadImage = (src: string): Promise<void> => {
 };
 
 // =============================================================
-// RETOUR LE TOP 3 D'UN CRITÈRE (GENRE OU FRANCHISE)
+// RETOURNE LE TOP 3 D'UN CRITÈRE (GENRE OU FRANCHISE)
 // =============================================================
 export function getTopPodium(
   games: Game[],
   getValue: (game: Game) => string | undefined,
 ): [string, number][] {
+  // 1. Comptage des occurrences par catégorie
   const keyCounts = games.reduce(
     (counter, game) => {
       const key = getValue(game);
-      if (!key) return counter; // Si pas de valeur (ex: pas de franchise), on saute
+      if (!key) return counter;
 
       counter[key] = (counter[key] ?? 0) + 1;
       return counter;
@@ -351,32 +352,32 @@ export function getTopPodium(
     {} as Record<string, number>,
   );
 
-  // Transformation du dictionnaire en tableau [genre, count] trié du plus grand au plus petit
-  const sortedKeys = Object.entries(keyCounts).sort((a, b) => {
-    const diff = b[1] - a[1];
-    if (diff !== 0) return diff;
-    return a[0].localeCompare(b[0]);
-  });
-
-  // --- ALGORITHME DE CLASSEMENT ÉQUITABLE (PALIERS & EX ÆQUO) ---
-  // Règle : On conserve au moins 3 éléments. Si le genre suivant a un score strictement
-  // inférieur au dernier élément ajouté sur le podium, la boucle s'arrête.
-  let topKeys: [string, number][] = [];
-
-  for (const [key, count] of sortedKeys) {
-    const lastAddedCount = topKeys[topKeys.length - 1]?.[1];
-
-    if (
-      topKeys.length >= 3 &&
-      lastAddedCount !== undefined &&
-      count < lastAddedCount
-    ) {
-      break; // Arrêt : le palier suivant est strictement inférieur
+  // 2. Regroupement des noms par score
+  const groupedByCount: Record<number, string[]> = {};
+  for (const [key, count] of Object.entries(keyCounts)) {
+    if (!groupedByCount[count]) {
+      groupedByCount[count] = [];
     }
-
-    topKeys.push([key, count]);
+    groupedByCount[count].push(key);
   }
-  return topKeys;
+
+  // 3. Récupération des 3 meilleurs scores distincts
+  let topCounts = Object.keys(groupedByCount)
+    .map(Number)
+    .sort((a, b) => b - a)
+    .slice(0, 3);
+
+  // 4. Masquage de la 3e position si elle est à 1 jeu
+  if (topCounts.length === 3 && topCounts[2] === 1) {
+    topCounts = topCounts.slice(0, 2);
+  }
+
+  // 5. Construction des lignes (tous les noms séparés par des virgules)
+  return topCounts.map((count) => {
+    const names = groupedByCount[count].sort((a, b) => a.localeCompare(b));
+
+    return [names.join(" / "), count];
+  });
 }
 
 // =============================================================

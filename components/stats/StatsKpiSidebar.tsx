@@ -1,7 +1,10 @@
 import ProgressBar from "@/components/ui/ProgressBar";
+import Heading from "@/components/ui/Heading";
 
 interface StatsKpiSidebarProps {
   totalGames: number;
+  totalDataGames: number;
+  totalDataPlaytimeGames: number;
   totalCompletedGames: number;
   totalPlaytime: number;
   totalPhysical: number;
@@ -12,6 +15,8 @@ interface StatsKpiSidebarProps {
 
 export default function StatsKpiSidebar({
   totalGames,
+  totalDataGames,
+  totalDataPlaytimeGames,
   totalCompletedGames,
   totalPlaytime,
   totalPhysical,
@@ -21,18 +26,29 @@ export default function StatsKpiSidebar({
 }: StatsKpiSidebarProps) {
   return (
     <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
-      <div className="pr-2 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
+      <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
+        <Heading
+          as="h2"
+          size="md"
+          className="font-semibold tracking-wide uppercase"
+        >
+          Stats
+        </Heading>
+      </div>
+      <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
         {/* CHIFFRES CLÉS */}
-        <div className="mb-4">
-          {totalCompletedGames > 0 && (
-            <p className="text-sm">
-              Temps de jeu passé :{" "}
-              <span className="font-bold">{totalPlaytime} heures</span>
-            </p>
-          )}
-          <p className="text-sm">
-            Nombre de jeux : <span className="font-bold">{totalGames}</span>
-          </p>
+        <div className="mb-4 space-y-2">
+          <ProgressBar
+            value={totalPlaytime}
+            max={totalDataPlaytimeGames}
+            label={`Temps de jeu passé : ${totalPlaytime} / ${totalDataPlaytimeGames} heures`}
+          />
+
+          <ProgressBar
+            value={totalGames}
+            max={totalDataGames}
+            label={`Nombre de jeux : ${totalGames} / ${totalDataGames}`}
+          />
         </div>
 
         {/* JAUGES PRINCIPALES */}

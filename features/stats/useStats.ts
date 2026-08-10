@@ -44,6 +44,7 @@ export function useStats() {
     // -------------------------------------------------------------
     // A. CHIFFRES CLÉS & VOLUMES GLOBATION
     // -------------------------------------------------------------
+
     const totalGames = filteredGames.length;
 
     // Jeux considérés comme évalués/terminés (note présente)
@@ -54,7 +55,7 @@ export function useStats() {
 
     // Cumul des heures de jeu enregistrées
     const totalPlaytime = filteredGames.reduce(
-      (acc, game) => acc + (game.review?.playtime ?? 0),
+      (counter, game) => counter + (game.review?.playtime ?? 0),
       0,
     );
 
@@ -67,7 +68,7 @@ export function useStats() {
     // B. QUALITÉ & MOYENNES
     // -------------------------------------------------------------
     const totalScoreSum = filteredGames.reduce(
-      (acc, game) => acc + (game.review?.score ?? 0),
+      (counter, game) => counter + (game.review?.score ?? 0),
       0,
     );
 
@@ -202,6 +203,11 @@ export function useStats() {
   // =============================================================
   return {
     loading,
+    totalDataGames: games.length,
+    totalDataPlaytimeGames: games.reduce(
+      (counter, game) => counter + (game.review?.playtime ?? 0),
+      0,
+    ),
     selectedConsole,
     setSelectedConsole,
     consoleTabs,
