@@ -1,7 +1,11 @@
 import { useState, useMemo } from "react";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { getConsoleOptions } from "@/features/game/gameUtils";
-import { getTopPodium, getExtremeGames } from "@/features/game/gameUtils";
+import {
+  getTopPodium,
+  getRecordGames,
+  getRecordColumnTitle,
+} from "@/features/game/gameUtils";
 import type { Game } from "@/types/game";
 
 /**
@@ -80,31 +84,31 @@ export function useStats() {
 
     switch (recordMetric) {
       case "score":
-        recordMax = getExtremeGames(
+        recordMax = getRecordGames(
           filteredGames,
           (game) => game.review?.score,
           "max",
         );
-        recordMin = getExtremeGames(
+        recordMin = getRecordGames(
           filteredGames,
           (game) => game.review?.score,
           "min",
         );
         break;
       case "playtime":
-        recordMax = getExtremeGames(
+        recordMax = getRecordGames(
           filteredGames,
           (game) => game.review?.playtime,
           "max",
         );
-        recordMin = getExtremeGames(
+        recordMin = getRecordGames(
           filteredGames,
           (game) => game.review?.playtime,
           "min",
         );
         break;
       case "playtime_gap":
-        recordMax = getExtremeGames(
+        recordMax = getRecordGames(
           filteredGames,
           (game) =>
             game.review?.playtime != null
@@ -112,7 +116,7 @@ export function useStats() {
               : undefined,
           "max",
         );
-        recordMin = getExtremeGames(
+        recordMin = getRecordGames(
           filteredGames,
           (game) =>
             game.review?.playtime != null
@@ -122,7 +126,7 @@ export function useStats() {
         );
         break;
       case "completion_date":
-        recordMax = getExtremeGames(
+        recordMax = getRecordGames(
           filteredGames,
           (game) =>
             game.review?.completedDate != null
@@ -130,7 +134,7 @@ export function useStats() {
               : undefined,
           "max",
         );
-        recordMin = getExtremeGames(
+        recordMin = getRecordGames(
           filteredGames,
           (game) =>
             game.review?.completedDate != null
@@ -197,6 +201,7 @@ export function useStats() {
     consoleTabs,
     recordMetric,
     setRecordMetric,
+    getRecordColumnTitle,
     ...stats,
   };
 }

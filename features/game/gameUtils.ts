@@ -352,7 +352,11 @@ export function getTopPodium(
   );
 
   // Transformation du dictionnaire en tableau [genre, count] trié du plus grand au plus petit
-  const sortedKeys = Object.entries(keyCounts).sort((a, b) => b[1] - a[1]);
+  const sortedKeys = Object.entries(keyCounts).sort((a, b) => {
+    const diff = b[1] - a[1];
+    if (diff !== 0) return diff;
+    return a[0].localeCompare(b[0]);
+  });
 
   // --- ALGORITHME DE CLASSEMENT ÉQUITABLE (PALIERS & EX ÆQUO) ---
   // Règle : On conserve au moins 3 éléments. Si le genre suivant a un score strictement
@@ -378,7 +382,7 @@ export function getTopPodium(
 // =============================================================
 // RETOUR LISTE JEU D'UN EXTREME
 // =============================================================
-export function getExtremeGames(
+export function getRecordGames(
   games: Game[],
   getValue: (game: Game) => number | null | undefined,
   type: "max" | "min",
@@ -400,4 +404,78 @@ export function getExtremeGames(
   return validGames
     .filter((game) => getValue(game) === targetValue)
     .sort((a, b) => a.title.localeCompare(b.title));
+}
+
+// =============================================================
+// INTITULÉS DES CRITÈRES DE RECORDS POUR L'AFFICHAGE
+// =============================================================
+
+export function getRecordColumnTitle(
+  metric: string,
+  game?: Game,
+  type: "max" | "min" = "max",
+): string {
+  if (!game) {
+    return type === "max"
+      ? "Valeurs les plus hautes"
+      : "Valeurs les plus basses";
+  }
+
+  switch (metric) {
+    case "score": {
+      const score = game.review?.score;
+      if (score === undefined) {
+        return type === "max" ? "Meilleures notes" : "Notes les plus modestes";
+      }
+      return type === "max"
+        ? `Meilleures notes (${score}/10)`
+        : `Notes les plus modestes (${score}/10)`;
+    }
+
+    case "playtime": {
+      const hours = game.review?.playtime ?? 0;
+      return type === "max"
+        ? `Plus long temps de jeu (${hours} h)`
+        : `Plus court temps de jeu (${hours} h)`;
+    }
+
+    case "playtime_gap": {
+      const actual = game.review?.playtime ?? 0;
+      const estimated = game.estimatedPlaytime ?? 0;
+      const gap = actual - estimated;
+      const formattedGap = gap > 0 ? `+${gap} h` : `${gap} h`;
+
+      return type === "max"
+        ? `Plus gros dépassement (${formattedGap})`
+        : `Jeux pliés le plus rapidement (${formattedGap})`;
+    }
+
+    case "completion_date": {
+      const rawDate = game.review?.completedDate;
+      const dateStr = rawDate
+        ? new Date(rawDate).toLocaleDateString("fr-FR", {
+            month: "short",
+            year: "numeric",
+          })
+        : "";
+
+      return type === "max"
+        ? `Derniers jeux terminés (${dateStr})`
+        : `Plus anciens jeux terminés (${dateStr})`;
+    }
+
+    case "yearly_summary": {
+      const rawDate = game.review?.completedDate;
+      const year = rawDate
+        ? new Date(rawDate).getFullYear()
+        : new Date().getFullYear();
+
+      return `Bilan de l'année ${year}`;
+    }
+
+    default:
+      return type === "max"
+        ? "Valeurs les plus hautes"
+        : "Valeurs les plus basses";
+  }
 }

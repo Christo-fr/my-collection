@@ -3,6 +3,8 @@
 import LayoutFull from "@/components/layout/LayoutFull";
 import Tabs from "@/components/ui/Tabs";
 import { useStats } from "@/features/stats/useStats";
+import { OPTIONS_RECORD_METRICS } from "@/features/game/gameUtils";
+import ListHeader from "@/components/game/ListHeader";
 import ProgressBar from "@/components/ui/ProgressBar";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import GameCard from "@/components/game/GameCard";
@@ -22,8 +24,12 @@ export default function StatsPage() {
     totalPhysical,
     totalAverageScore,
     topGenres,
-    hallOfFame,
-    hallOfShame,
+    topFranchises,
+    recordMin,
+    recordMax,
+    recordMetric,
+    setRecordMetric,
+    getRecordColumnTitle,
   } = useStats();
 
   // =========================================================================
@@ -106,10 +112,8 @@ export default function StatsPage() {
 
             {/* TOP GENRES */}
             {topGenres.length > 0 && (
-              <div>
-                <p className="text-sm font-semibold mb-2">
-                  Le top 3 des genres de la collection
-                </p>
+              <div className="mb-4">
+                <p className="text-sm font-semibold mb-2">Top 3 des genres</p>
                 <div className="space-y-2">
                   {topGenres.map(([genre, valeur]) => (
                     <ProgressBar
@@ -122,29 +126,52 @@ export default function StatsPage() {
                 </div>
               </div>
             )}
+
+            {/* TOP FRANCHISES */}
+            {topFranchises.length > 0 && (
+              <div>
+                <p className="text-sm font-semibold mb-2">
+                  Top 3 des franchises
+                </p>
+                <div className="space-y-2">
+                  {topFranchises.map(([franchise, valeur]) => (
+                    <ProgressBar
+                      key={franchise}
+                      value={valeur}
+                      labelLeft={franchise}
+                      max={totalGames}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
         {/* PANNEAU DROIT : LISTE DE JEUX / CARTES */}
         <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0">
+          <ListHeader
+            title="Analyses & Records"
+            totalResults={recordMax.length + recordMin.length}
+            sortBy={recordMetric}
+            onSortChange={setRecordMetric}
+            optionsSort={OPTIONS_RECORD_METRICS}
+          />
           <div className="px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
             <div className="flex flex-col lg:flex-row gap-3">
               <div className="flex flex-col gap-3 text-main lg:w-1/2">
-                {hallOfFame.length === 0 ? (
+                {recordMax.length === 0 ? (
                   <p className="text-sm">Aucun jeu noté pour le moment.</p>
                 ) : (
                   <>
-                    <p className="text-sm">
-                      Meilleurs avis :{" "}
-                      <span className="font-bold ">
-                        {hallOfFame[0].review?.score}/10
-                      </span>
+                    <p className="text-sm font-semibold">
+                      {getRecordColumnTitle(recordMetric, recordMax[0], "max")}
                     </p>
                     <div
                       className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
                       ref={animation}
                     >
-                      {hallOfFame.map((game) => (
+                      {recordMax.map((game) => (
                         <GameCard key={game.id} game={game} />
                       ))}
                     </div>
@@ -153,26 +180,21 @@ export default function StatsPage() {
               </div>
               <div className="lg:w-[1px] lg:bg-main/10" />
               <div className="flex flex-col gap-3 text-main lg:w-1/2">
-                {hallOfShame.length > 0 &&
-                  hallOfShame[0].review?.score !==
-                    hallOfFame[0].review?.score && (
-                    <>
-                      <p className="text-sm">
-                        Avis modeste :{" "}
-                        <span className="font-bold ">
-                          {hallOfShame[0].review?.score}/10
-                        </span>
-                      </p>
-                      <div
-                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
-                        ref={animation}
-                      >
-                        {hallOfShame.map((game) => (
-                          <GameCard key={game.id} game={game} />
-                        ))}
-                      </div>
-                    </>
-                  )}
+                {recordMin.length > 0 && (
+                  <>
+                    <p className="text-sm font-semibold">
+                      {getRecordColumnTitle(recordMetric, recordMin[0], "min")}
+                    </p>
+                    <div
+                      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
+                      ref={animation}
+                    >
+                      {recordMin.map((game) => (
+                        <GameCard key={game.id} game={game} />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
