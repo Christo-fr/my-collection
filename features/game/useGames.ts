@@ -76,6 +76,14 @@ export function useGames() {
       setMaxDuration(maxTime);
     }
 
+    const validStatuses = gameUtils.OPTIONS_STATUS.map(
+      (option) => option.value,
+    );
+    const urlStatus = searchParams.get("status");
+    if (urlStatus && !validStatuses.includes(urlStatus)) {
+      setSelectedStatus("all");
+    }
+
     const validStyles = games.map((game) => game.genre);
     const urlStyle = searchParams.get("style");
     if (urlStyle && urlStyle !== "Tous" && !validStyles.includes(urlStyle)) {
