@@ -7,19 +7,30 @@ interface TabItem {
 
 interface TabsProps {
   items: TabItem[];
-  action?: React.ReactNode; // Prop optionnelle pour insérer un élément à droite
+  selectedIndex?: number;
+  onChange?: (index: number) => void;
+  action?: React.ReactNode;
   className?: string;
 }
 
-export default function Tabs({ items, action, className = "" }: TabsProps) {
+export default function Tabs({
+  items,
+  selectedIndex,
+  onChange,
+  action,
+  className = "",
+}: TabsProps) {
   return (
-    <TabGroup className={`w-full ${className}`}>
-      <TabList className="flex items-center justify-between border-b border-main/10 pb-2">
-        {/* Groupe des onglets à gauche */}
+    <TabGroup
+      selectedIndex={selectedIndex}
+      onChange={onChange}
+      className={`w-full flex-1 min-h-0 flex flex-col ${className}`}
+    >
+      <TabList className="flex items-center justify-between border-b border-main/10 pb-2 flex-shrink-0">
         <div className="flex items-center gap-2 flex-wrap">
           {items.map((item) => (
             <Tab
-              className="first:pl-0 px-4 uppercase text-sm font-medium rounded-lg transition-all outline-none cursor-pointer text-main/60 data-[hover]:text-main data-[selected]:bg-accent data-[selected]:text-main"
+              className="md:first:pl-0 px-4 uppercase text-sm font-medium rounded-lg transition-all outline-none cursor-pointer text-main/60 data-[hover]:text-main data-[selected]:bg-accent data-[selected]:text-main"
               key={item.label}
             >
               {item.label}
@@ -27,13 +38,17 @@ export default function Tabs({ items, action, className = "" }: TabsProps) {
           ))}
         </div>
 
-        {/* Élément d'action (bouton) à droite */}
         {action && <div>{action}</div>}
       </TabList>
 
-      <TabPanels>
+      {/* min-h-0 et flex-1 permettent de propager la hauteur aux sections enfant */}
+      <TabPanels className="flex-1 min-h-0 flex flex-col pt-4">
         {items.map((item) => (
-          <TabPanel className="pt-4 focus:outline-none" key={item.label}>
+          <TabPanel
+            unmount={false}
+            className="flex-1 min-h-0 flex flex-col focus:outline-none"
+            key={item.label}
+          >
             {item.content}
           </TabPanel>
         ))}
