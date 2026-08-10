@@ -21,13 +21,12 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
         fill
         sizes={
           variant === "xl"
-            ? "(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 380px"
+            ? "580px"
             : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
         }
-        quality={variant === "xl" ? 90 : 80}
+        quality={variant === "xl" ? 100 : 80}
         className="object-cover"
         priority={variant === "xl"}
-        unoptimized={variant === "xl"}
       />
 
       {/* Pill Console */}

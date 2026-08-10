@@ -21,7 +21,7 @@ export default function ProgressBar({
   return (
     <div className={`flex flex-col gap-1.5 w-full ${className}`}>
       {label && (
-        <span className="text-xs font-medium text-main/80 px-0.5">{label}</span>
+        <span className="text-sm font-medium text-main/80 px-0.5">{label}</span>
       )}
       <div className="w-full h-2.5 rounded-full bg-main/30 overflow-hidden">
         <div
