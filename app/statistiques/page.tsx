@@ -39,6 +39,7 @@ export default function StatsPage() {
           totalDataGames={stats.totalDataGames}
           totalDataPlaytimeGames={stats.totalDataPlaytimeGames}
           totalCompletedGames={stats.totalCompletedGames}
+          totalEstimatedPlaytime={stats.totalEstimatedPlaytime}
           totalPlaytime={stats.totalPlaytime}
           totalPhysical={stats.totalPhysical}
           totalAverageScore={stats.totalAverageScore}

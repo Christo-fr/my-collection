@@ -59,6 +59,12 @@ export function useStats() {
       0,
     );
 
+    // Cumul des heures de jeu estimés
+    const totalEstimatedPlaytime = filteredGames.reduce(
+      (counter, game) => counter + (game.estimatedPlaytime ?? 0),
+      0,
+    );
+
     // Jeux au format physique
     const totalPhysical = filteredGames.filter(
       (game) => game.format === "Physical",
@@ -189,6 +195,7 @@ export function useStats() {
       totalGames,
       totalCompletedGames,
       totalPlaytime,
+      totalEstimatedPlaytime,
       totalPhysical,
       totalAverageScore,
       topGenres,
@@ -199,7 +206,7 @@ export function useStats() {
   }, [filteredGames, recordMetric]);
 
   // =============================================================
-  // 6. RETOUR DU HOOK ("Le Paquet Cadeau")
+  // 6. RETOUR DU HOOK
   // =============================================================
   return {
     loading,

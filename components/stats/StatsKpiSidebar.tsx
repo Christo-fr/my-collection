@@ -5,6 +5,7 @@ interface StatsKpiSidebarProps {
   totalGames: number;
   totalDataGames: number;
   totalDataPlaytimeGames: number;
+  totalEstimatedPlaytime: number;
   totalCompletedGames: number;
   totalPlaytime: number;
   totalPhysical: number;
@@ -18,6 +19,7 @@ export default function StatsKpiSidebar({
   totalDataGames,
   totalDataPlaytimeGames,
   totalCompletedGames,
+  totalEstimatedPlaytime,
   totalPlaytime,
   totalPhysical,
   totalAverageScore,
@@ -37,35 +39,12 @@ export default function StatsKpiSidebar({
       </div>
       <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
         {/* CHIFFRES CLÉS */}
-        <div className="mb-4 space-y-2">
-          <ProgressBar
-            value={totalPlaytime}
-            max={totalDataPlaytimeGames}
-            label={`Temps de jeu passé : ${totalPlaytime} / ${totalDataPlaytimeGames} heures`}
-          />
-
+        <div className="mb-6 space-y-1">
           <ProgressBar
             value={totalGames}
             max={totalDataGames}
             label={`Nombre de jeux : ${totalGames} / ${totalDataGames}`}
           />
-        </div>
-
-        {/* JAUGES PRINCIPALES */}
-        <div className="mb-4 space-y-2">
-          {totalCompletedGames > 0 && (
-            <ProgressBar
-              value={totalCompletedGames}
-              label={`Statut de la collection : ${
-                totalGames > 0
-                  ? Math.round((totalCompletedGames / totalGames) * 100)
-                  : 0
-              }% Terminés`}
-              max={totalGames}
-              labelLeft="Terminés"
-              labelRight="En cours"
-            />
-          )}
 
           <ProgressBar
             value={totalPhysical}
@@ -87,11 +66,48 @@ export default function StatsKpiSidebar({
           )}
         </div>
 
+        {/* JAUGES PRINCIPALES */}
+        <div className="mb-6 space-y-1">
+          {totalCompletedGames > 0 && (
+            <ProgressBar
+              value={totalCompletedGames}
+              label={`Statut de la collection : ${
+                totalGames > 0
+                  ? Math.round((totalCompletedGames / totalGames) * 100)
+                  : 0
+              }% Terminés`}
+              max={totalGames}
+              labelLeft="Terminés"
+              labelRight="En cours"
+            />
+          )}
+          <ProgressBar
+            value={totalPlaytime}
+            max={totalDataPlaytimeGames}
+            label={`Temps de jeu passé : ${totalPlaytime} / ${totalDataPlaytimeGames} heures`}
+          />
+          {totalCompletedGames > 0 && (
+            <ProgressBar
+              value={totalPlaytime}
+              max={totalPlaytime + totalEstimatedPlaytime}
+              label={`Temps de jeu passé  VS Temps estimé : ${
+                totalEstimatedPlaytime > 0
+                  ? `${totalPlaytime >= totalEstimatedPlaytime ? "+" : ""}${Math.round(
+                      ((totalPlaytime - totalEstimatedPlaytime) /
+                        totalEstimatedPlaytime) *
+                        100,
+                    )}%`
+                  : "0%"
+              }`}
+            />
+          )}
+        </div>
+
         {/* TOP GENRES */}
         {topGenres.length > 0 && (
           <div className="mb-4">
             <p className="text-sm font-semibold mb-2">Top 3 des genres</p>
-            <div className="space-y-2">
+            <div className="space-y-1">
               {topGenres.map(([genre, valeur]) => (
                 <ProgressBar
                   key={genre}
@@ -108,7 +124,7 @@ export default function StatsKpiSidebar({
         {topFranchises.length > 0 && (
           <div>
             <p className="text-sm font-semibold mb-2">Top 3 des franchises</p>
-            <div className="space-y-2">
+            <div className="space-y-1">
               {topFranchises.map(([franchise, valeur]) => (
                 <ProgressBar
                   key={franchise}
