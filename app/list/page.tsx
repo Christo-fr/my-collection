@@ -1,6 +1,4 @@
 "use client";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useGames } from "@/features/game/useGames";
 import ListHeader from "@/components/game/ListHeader";
 import { OPTIONS_SORT, OPTIONS_STATUS } from "@/features/game/gameUtils";
@@ -16,9 +14,6 @@ export default function MaListe() {
   // =========================================================================
   // 1. HOOKS & ÉTATS LOCAUX
   // =========================================================================
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [animation] = useAutoAnimate();
   const {
     games,
     loading,
@@ -28,6 +23,9 @@ export default function MaListe() {
     filters,
     setters,
   } = useGames();
+
+  // Clé composite pour rejouer l'animation de fondu à chaque changement de filtre
+  const gridKey = `${filters.selectedConsole}-${filters.selectedStyle}-${filters.selectedStatus}-${filters.sortBy}-${filters.searchQuery}-${filters.maxDuration}`;
 
   // =========================================================================
   // 2. RENDU DU COMPOSANT
@@ -91,8 +89,8 @@ export default function MaListe() {
             <p className="text-main/60 text-sm">Aucun jeu trouvé</p>
           ) : (
             <div
+              key={gridKey}
               className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
-              ref={animation}
             >
               {games.map((game) => (
                 <GameCard key={game.id} game={game} />
