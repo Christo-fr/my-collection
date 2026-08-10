@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Game } from "@/types/game";
 import Image from "next/image";
 import ConsoleIcon from "./ConsoleIcon";
+import { Check } from "lucide-react";
 
 interface GameCardProps {
   game: Game;
@@ -65,9 +66,10 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
         {/* 3. Note /10*/}
         {game.review?.score ? (
           <div
-            className={` ${variant === "xl" ? "text-md" : "text-sm"} text-main font-bold mt-0.5`}
+            className={` ${variant === "xl" ? "text-md" : "text-sm"} flex items-center gap-1 text-main font-bold mt-0.5`}
           >
-            {game.review.score}/10
+            <Check className={` ${variant === "xl" ? "h-5 w-5" : "h-4 w-4"}`} />
+            {game.review.playtime}h • {game.review.score}/10
           </div>
         ) : (
           <div
