@@ -38,47 +38,53 @@ export function useStats() {
   }, [games, selectedConsole]);
 
   // =============================================================
-  // 5. CALCUL CENTRALISÉ DES MÉTRIQUES (MEMOÏSÉ)
+  // 5. CALCUL CENTRALISÉ DES MÉTRIQUES
   // =============================================================
   const stats = useMemo(() => {
-    // --- MÉTRIQUES DE BASE ---
-
-    // Volume total de jeux dans la vue actuelle
+    // -------------------------------------------------------------
+    // A. CHIFFRES CLÉS & VOLUMES GLOBATION
+    // -------------------------------------------------------------
     const totalGames = filteredGames.length;
 
-    // Un jeu est considéré comme "terminé" uniquement s'il possède une note attribuée (review.score != null)
-    const totalCompletedGames = filteredGames.filter(
+    // Jeux considérés comme évalués/terminés (note présente)
+    const completedGames = filteredGames.filter(
       (game) => game.review?.score != null,
-    ).length;
+    );
+    const totalCompletedGames = completedGames.length;
 
-    // Accumulation des heures de jeu (fallback à 0 via l'opérateur '??' si non renseigné)
-    const totalPlaytime = filteredGames.reduce((counter, game) => {
-      return counter + (game.review?.playtime ?? 0);
-    }, 0);
+    // Cumul des heures de jeu enregistrées
+    const totalPlaytime = filteredGames.reduce(
+      (acc, game) => acc + (game.review?.playtime ?? 0),
+      0,
+    );
 
-    // Nombre de jeux possédés en version physique
+    // Jeux au format physique
     const totalPhysical = filteredGames.filter(
       (game) => game.format === "Physical",
     ).length;
 
-    // Somme cumulée de toutes les notes
-    const totalScoreSum = filteredGames.reduce((counter, game) => {
-      return counter + (game.review?.score ?? 0);
-    }, 0);
+    // -------------------------------------------------------------
+    // B. QUALITÉ & MOYENNES
+    // -------------------------------------------------------------
+    const totalScoreSum = filteredGames.reduce(
+      (acc, game) => acc + (game.review?.score ?? 0),
+      0,
+    );
 
-    // Moyenne arrondie à 1 décimale avec garde-fou contre la division par zéro (NaN)
     const totalAverageScore =
       totalCompletedGames > 0
         ? Math.round((totalScoreSum / totalCompletedGames) * 10) / 10
         : 0;
 
-    // --- DICTIONNAIRE ET TRI DES GENRES ---
-
+    // -------------------------------------------------------------
+    // C. PODIUMS (TOPS 3)
+    // -------------------------------------------------------------
     const topGenres = getTopPodium(filteredGames, (game) => game.genre);
     const topFranchises = getTopPodium(filteredGames, (game) => game.franchise);
 
-    // --- HALL OF FAME & HALL OF SHAME ---
-
+    // -------------------------------------------------------------
+    // D. RECORDS & SÉLECTIONS DYNAMIQUES (MAX / MIN)
+    // -------------------------------------------------------------
     let recordMax: Game[] = [];
     let recordMin: Game[] = [];
 

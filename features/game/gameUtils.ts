@@ -29,7 +29,7 @@ export const OPTIONS_SORT = [
 export const OPTIONS_RECORD_METRICS = [
   { label: "Notes attribuées", value: "score" },
   { label: "Temps de jeu", value: "playtime" },
-  { label: "Écart de temps (Réel vs Estimé)", value: "playtime_gap" },
+  { label: "Écart de temps", value: "playtime_gap" },
   { label: "Date de complétion", value: "completion_date" },
   { label: "Bilan annuel", value: "yearly_summary" },
 ];
@@ -425,7 +425,7 @@ export function getRecordColumnTitle(
     case "score": {
       const score = game.review?.score;
       if (score === undefined) {
-        return type === "max" ? "Meilleures notes" : "Notes les plus modestes";
+        return type === "max" ? "Meilleures avis" : "Avis modestes";
       }
       return type === "max"
         ? `Meilleures notes (${score}/10)`
