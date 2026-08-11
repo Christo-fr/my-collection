@@ -13,17 +13,17 @@ export const OPTIONS_STATUS = [
 
 // Select pour le tri des jeux
 export const OPTIONS_SORT = [
-  { label: "Alphabétique", value: "alphabetical" },
-  { label: "Anti-Alphabétique", value: "anti_alphabetical" },
-  { label: "Date de sortie - croissante", value: "releaseDate_ascending" },
-  { label: "Date de sortie - décroissante", value: "releaseDate_descending" },
-  { label: "Durée de vie - croissant", value: "estimatedPlaytime_ascending" },
+  { label: "Nom : Alphabétique", value: "alphabetical" },
+  { label: "Nom : Anti-Alphabétique", value: "anti_alphabetical" },
+  { label: "Date de sortie : Croissante", value: "releaseDate_ascending" },
+  { label: "Date de sortie : Décroissante", value: "releaseDate_descending" },
+  { label: "Durée de vie : Croissante", value: "estimatedPlaytime_ascending" },
   {
-    label: "Durée de vie - décroissant",
+    label: "Durée de vie : Décroissante",
     value: "estimatedPlaytime_descending",
   },
-  { label: "Note - croissante", value: "score_ascending" },
-  { label: "Note - décroissante", value: "score_descending" },
+  { label: "Note : Croissante", value: "score_ascending" },
+  { label: "Note : Décroissante", value: "score_descending" },
 ];
 
 export const OPTIONS_RECORD_METRICS = [
