@@ -221,7 +221,7 @@ export default function SandboxPage() {
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             6. Cartes de jeux (GameCard)
           </h2>
-          <div className="flex items-center gap-4">
+          {/* <div className="gap-4 w-full">
             <div className="w-48">
               <GameCard game={sampleGame} variant="default" />
             </div>
@@ -233,7 +233,7 @@ export default function SandboxPage() {
             <div className="w-full">
               <GameCard game={veryGame} variant="xl" />
             </div>
-          </div>
+          </div> */}
         </section>
         {/* -------------------------------------------------------------------
             SECTION 7 : DIALOGUE (<Dialog />)
