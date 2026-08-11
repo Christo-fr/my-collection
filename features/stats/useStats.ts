@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { getConsoleOptions } from "@/features/game/gameUtils";
 import {
@@ -25,12 +26,24 @@ export function useStats() {
   const [recordMetric, setRecordMetric] = useState<string>("score");
 
   // =============================================================
-  // 3. EXTRACTION DYNAMIQUE DES ONGLETS DE CONSOLE
+  // 3. SAUVEGARDE DE L'URL ACTUELLE POUR BTN RETOUR DE LA FICHE JEU
+  // =============================================================
+
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const currentUrl = `${pathname}?${searchParams.toString()}`;
+    sessionStorage.setItem("lastCatalogUrl", currentUrl);
+  }, [pathname, searchParams]);
+
+  // =============================================================
+  // 4. EXTRACTION DYNAMIQUE DES ONGLETS DE CONSOLE
   // =============================================================
   const consoleTabs = useMemo(() => getConsoleOptions(games), [games]);
 
   // =============================================================
-  // 4. SOUS-ENSEMBLE DE JEUX FILTRÉS SELON LA CONSOLE
+  // 5. SOUS-ENSEMBLE DE JEUX FILTRÉS SELON LA CONSOLE
   // =============================================================
   const filteredGames = useMemo(() => {
     if (selectedConsole === "Toutes") return games;
@@ -38,7 +51,7 @@ export function useStats() {
   }, [games, selectedConsole]);
 
   // =============================================================
-  // 5. CALCUL CENTRALISÉ DES MÉTRIQUES
+  // 6. CALCUL CENTRALISÉ DES MÉTRIQUES
   // =============================================================
   const stats = useMemo(() => {
     // -------------------------------------------------------------
