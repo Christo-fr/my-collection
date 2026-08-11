@@ -6,8 +6,8 @@ import { Sun, Moon } from "lucide-react";
 
 export default function ThemeSwitch() {
   // Récupération du thème actuel et de la fonction pour le modifier via next-themes
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
