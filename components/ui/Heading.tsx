@@ -22,7 +22,7 @@ export default function Heading({
   className = "",
 }: HeadingProps) {
   return (
-    <Tag className={`font-jewels text-main ${sizeStyles[size]} ${className}`}>
+    <Tag className={`font-noto text-main ${sizeStyles[size]} ${className}`}>
       {children}
     </Tag>
   );
