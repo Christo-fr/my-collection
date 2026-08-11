@@ -27,8 +27,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   ) => {
     // 1. Styles de base
     const baseStyles =
-      "uppercase inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-300 select-none cursor-pointer";
-
+      "uppercase inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-300 select-none cursor-pointer hover:bg-gradient-to-br hover:from-[var(--color-grad-gacha-end)] hover:to-transparent hover:to-[40%] ";
     // 2. Variantes de couleurs
     const variantStyles = {
       primary: "bg-primary text-background hover:opacity-90 shadow-md",
