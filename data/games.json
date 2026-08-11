@@ -786,7 +786,7 @@
       "logo": "/games/logos/forgottonanne.png",
       "parallax": {
         "url": "/games/parallaxs/forgottonanne.webp",
-        "truncated": false
+        "truncated": true
       }
     },
     "review": {
@@ -7531,7 +7531,7 @@
     "description": "La série d'aventures légales qui s'est vendue à plus de 6,7 millions d'exemplaires est enfin disponible ! Incarnez Phoenix Wright et succombez au frisson du combat judiciaire alors que vous luttez pour prouver l'innocence de vos clients au tribunal. Cette collection somptueuse rassemble les 14 épisodes des trois premiers jeux. Plongez au cœur de ces affaires et élucidez chacun de ces intrigants mystères !",
     "youtubeId": "PnYpTj_aUoA",
     "images": {
-      "cover": "/games/covers/aceattorneytrilogyphoenixwright.jpg",
+      "cover": "/games/covers/aceattorneytrilogyphoenixwright.png",
       "logo": "/games/logos/aceattorneytrilogyphoenixwright.png",
       "parallax": {
         "url": "/games/parallaxs/aceattorneytrilogyphoenixwright.webp",
@@ -9578,7 +9578,7 @@
     "description": "Le fragile équilibre de la Triforce a été rompu et le royaume d'Hyrule est menacé par des hordes maléfiques, menées par Cya, la sorcière noire. L'heure est venue pour le légendaire héros Link et son équipe de valeureux guerriers de retrouver la Princesse Zelda disparue. Il y a également des histoires secondaires à découvrir, suivez le périple de Linkle pour devenir un héros, dévoilez l'histoire additionnelle de Cia ou voguez sur les mers avec Link Cartoon et Tetra !",
     "youtubeId": "54nUhCpLR-g",
     "images": {
-      "cover": "/games/covers/hyrulewarriorsdefinitiveedition.png",
+      "cover": "/games/covers/hyrulewarriorsdefinitiveedition.jpg",
       "logo": "/games/logos/hyrulewarriorsdefinitiveedition.png",
       "parallax": {
         "url": "/games/parallaxs/hyrulewarriorsdefinitiveedition.webp",
