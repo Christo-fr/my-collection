@@ -91,9 +91,13 @@ export default function GameDetail() {
                   {/* Badge du format (Physique vs Dématérialisé) */}
                   {game.format &&
                     (game.format === "Physical" ? (
-                      <Disc className="w-5 h-5 " name="Physique" />
+                      <Disc className="w-5 h-5 " name="Physique">
+                        <title>Support Physique</title>
+                      </Disc>
                     ) : (
-                      <CircleDotDashed className="w-5 h-5" name="Digital" />
+                      <CircleDotDashed className="w-5 h-5" name="Digital">
+                        <title>Support Numérique</title>
+                      </CircleDotDashed>
                     ))}
                 </div>
               </div>
