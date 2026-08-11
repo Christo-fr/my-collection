@@ -31,7 +31,7 @@ export const OPTIONS_RECORD_METRICS = [
   { label: "Temps de jeu", value: "playtime" },
   { label: "Écart de temps", value: "playtime_gap" },
   { label: "Date de complétion", value: "completion_date" },
-  { label: "Bilan dernière année", value: "yearly_summary" },
+  //{ label: "Bilan dernière année", value: "yearly_summary" },
 ];
 
 // =============================================================
@@ -426,10 +426,10 @@ export function getRecordColumnTitle(
     case "score": {
       const score = game.review?.score;
       if (score === undefined) {
-        return type === "max" ? "Meilleures avis" : "Avis modestes";
+        return type === "max" ? "Meilleurs avis" : "Avis modestes";
       }
       return type === "max"
-        ? `Meilleures avis (${score}/10)`
+        ? `Meilleurs avis (${score}/10)`
         : `Avis modestes (${score}/10)`;
     }
 
