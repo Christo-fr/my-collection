@@ -68,24 +68,24 @@ export default function StatsKpiSidebar({
 
         {/* JAUGES PRINCIPALES */}
         <div className="mb-6 space-y-1">
+          <ProgressBar
+            value={totalCompletedGames}
+            label={`Statut de la collection : ${
+              totalGames > 0
+                ? Math.round((totalCompletedGames / totalGames) * 100)
+                : 0
+            }% Terminés`}
+            max={totalGames}
+            labelLeft="Terminés"
+            labelRight="En cours"
+          />
           {totalCompletedGames > 0 && (
             <ProgressBar
-              value={totalCompletedGames}
-              label={`Statut de la collection : ${
-                totalGames > 0
-                  ? Math.round((totalCompletedGames / totalGames) * 100)
-                  : 0
-              }% Terminés`}
-              max={totalGames}
-              labelLeft="Terminés"
-              labelRight="En cours"
+              value={totalPlaytime}
+              max={totalDataPlaytimeGames}
+              label={`Temps de jeu passé : ${totalPlaytime} / ${totalDataPlaytimeGames} heures`}
             />
           )}
-          <ProgressBar
-            value={totalPlaytime}
-            max={totalDataPlaytimeGames}
-            label={`Temps de jeu passé : ${totalPlaytime} / ${totalDataPlaytimeGames} heures`}
-          />
           {totalCompletedGames > 0 && (
             <ProgressBar
               value={totalPlaytime}
