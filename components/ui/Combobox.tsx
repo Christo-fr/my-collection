@@ -37,9 +37,10 @@ export default function Combobox({
   className = "",
   placeholder = "Sélectionner ou saisir...",
 }: ComboboxProps) {
+  // query Stocke uniquement le texte tapé dans le champ de recherche par l'utilisateur.
   const [query, setQuery] = useState("");
 
-  // 1. Filtrage classique selon la recherche
+  // 1. Filtre les options du catalogue existant sans tenir compte de la casse.
   const filteredOptions =
     query === ""
       ? options
@@ -47,12 +48,12 @@ export default function Combobox({
           option.label.toLowerCase().includes(query.toLowerCase()),
         );
 
-  // 2. Est-ce que ce qui est tapé existe déjà EXACTEMENT ?
+  // 2. Utilise .some() pour vérifier si le texte saisi existe déjà exactement dans les options
   const isExactMatch = options.some(
     (option) => option.label.toLowerCase() === query.trim().toLowerCase(),
   );
 
-  // 3. Option de création si saisie libre
+  // 3. Option de création si saisie libre (trim retire les espaces de la saisie)
   const displayOptions =
     query.trim() !== "" && !isExactMatch
       ? [
@@ -69,7 +70,7 @@ export default function Combobox({
         value={selectedValue}
         onChange={(val) => {
           if (val) onChange(val);
-          setQuery("");
+          setQuery(""); // On vide la recherche après une sélection
         }}
       >
         <div className="relative w-full">
