@@ -218,23 +218,19 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 6 : CARTES DE JEU (<GameCard />)
             ------------------------------------------------------------------- */}
-        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
+        <section className="bg-background/5 p-4 rounded-xl border border-main/10 w-full flex flex-col">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
-            6. Cartes de jeux (GameCard)
+            6. Cartes de jeu
           </h2>
-          {/* <div className="gap-4 w-full">
-            <div className="w-48">
-              <GameCard game={sampleGame} variant="default" />
+          {/* Grille de jeux */}
+          <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
+            <div
+              key={sampleGame.id}
+              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
+            >
+              <GameCard key={2} game={sampleGame} />
             </div>
-            <div className="w-48">
-              <GameCard game={anotherGame} variant="default" />
-            </div>
-          </div>{" "}
-          <div className="flex items-center gap-4">
-            <div className="w-full">
-              <GameCard game={veryGame} variant="xl" />
-            </div>
-          </div> */}
+          </div>
         </section>
         {/* -------------------------------------------------------------------
             SECTION 7 : DIALOGUE (<Dialog />)
