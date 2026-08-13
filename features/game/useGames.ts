@@ -139,12 +139,6 @@ export function useGames() {
     router,
   ]);
 
-  // Effet C : Sauvegarde de l'URL complète actuelle dans le sessionStorage
-  useEffect(() => {
-    const currentUrl = `${pathname}?${searchParams.toString()}`;
-    sessionStorage.setItem("lastCatalogUrl", currentUrl);
-  }, [pathname, searchParams]);
-
   // =============================================================
   // 4. VALEURS CALCULÉES ET OPTIMISÉES (useMemo)
   // =============================================================

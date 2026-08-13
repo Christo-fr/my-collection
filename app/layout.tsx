@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { GamesProvider } from "@/components/providers/GamesProvider";
 import { BackgroundProvider } from "@/components/providers/BackgroundProvider";
+import URLTracker from "@/components/layout/UrlTracker";
 import { Toaster } from "sonner";
 import localFont from "next/font/local";
 import Header from "@/components/layout/Header";
@@ -58,6 +59,7 @@ export default function RootLayout({
         <ThemeProvider>
           <BackgroundProvider>
             <GamesProvider>
+              <URLTracker />
               {/* Application */}
               <div className="relative z-10 flex flex-col min-h-dvh md:h-dvh w-full">
                 <Header />
