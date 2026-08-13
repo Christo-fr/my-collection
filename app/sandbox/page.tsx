@@ -14,6 +14,7 @@ import Tabs from "@/components/ui/Tabs";
 import Select from "@/components/ui/Select";
 import Dialog from "@/components/ui/Dialog";
 import Heading from "@/components/ui/Heading";
+import Checkbox from "@/components/ui/Checkbox";
 
 import { toast } from "sonner";
 
@@ -64,6 +65,9 @@ export default function SandboxPage() {
       ),
     },
   ];
+
+  //Case à cocher
+  const [isBw, setIsBw] = useState(false);
 
   // 1. Le State local pour garder en mémoire la console sélectionnée (initialisé à vide "")
   const [selectedConsole, setSelectedConsole] = useState<string>("");
@@ -263,7 +267,7 @@ export default function SandboxPage() {
     ------------------------------------------------------------------- */}
         <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
-            7. Menu déroulant (Select Headless UI)
+            8. Menu déroulant (Select Headless UI)
           </h2>
 
           <Select
@@ -285,11 +289,11 @@ export default function SandboxPage() {
         </section>
 
         {/* -------------------------------------------------------------------
-    SECTION  : Sooner
+    SECTION 9 : Sooner
     ------------------------------------------------------------------- */}
         <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
-            8. Sooner
+            9. Sooner
           </h2>
           <Button
             variant="primary"
@@ -300,6 +304,32 @@ export default function SandboxPage() {
           >
             Sooner
           </Button>
+        </section>
+
+        {/* -------------------------------------------------------------------
+    SECTION 10 : Checkbox
+    ------------------------------------------------------------------- */}
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            10. Checkbox
+          </h2>
+          <div className="space-y-4">
+            <Checkbox
+              label="Logo en N/B ?"
+              description="Cochez cette case si le logo de la console doit s'afficher en noir et blanc."
+              checked={isBw}
+              onChange={setIsBw}
+            />
+          </div>
+
+          <div className="pt-4 border-t border-main/10">
+            <p className="text-sm text-main/70">
+              État actuel de la variable :{" "}
+              <span className="font-mono font-bold text-accent">
+                {isBw ? "true" : "false"}
+              </span>
+            </p>
+          </div>
         </section>
       </div>
 
