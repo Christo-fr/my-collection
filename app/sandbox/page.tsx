@@ -20,6 +20,7 @@ import { toast } from "sonner";
 
 // 🎮 Imports Métier & Layout
 import GameCard from "@/components/game/GameCard";
+import AdminGameCard from "@/components/game/AdminGameCard";
 import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
 import gamesData from "@/data/games.json";
 import { Game } from "@/types/game";
@@ -110,6 +111,7 @@ export default function SandboxPage() {
             <Button
               variant="primary"
               href="/liste"
+              size="sm"
               icon={<List className="w-5 h-5" />}
             >
               Ma Liste
@@ -325,6 +327,25 @@ export default function SandboxPage() {
                 {isBw ? "true" : "false"}
               </span>
             </p>
+          </div>
+        </section>
+
+        {/* -------------------------------------------------------------------
+            SECTION 11 : CARTES DE JEU (<AdminGameCard />)
+            ------------------------------------------------------------------- */}
+        <section className="bg-background/5 p-4 rounded-xl border border-main/10 w-full flex flex-col">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            11. Cartes de jeu
+          </h2>
+          {/* Grille de jeux */}
+          <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
+            <div
+              key={sampleGame.id}
+              className="grid gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
+            >
+              <AdminGameCard key={2} game={sampleGame} />
+              <AdminGameCard key={20} game={gamesData[20] as Game} />
+            </div>
           </div>
         </section>
       </div>

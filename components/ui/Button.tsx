@@ -5,7 +5,8 @@ import { Button as HeadlessButton } from "@headlessui/react";
 export interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary";
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "xs";
+  title?: string;
   href?: string;
   onClick?: () => void;
   icon?: React.ReactNode;
@@ -22,6 +23,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       icon,
       size = "md",
       className = "",
+      title,
     },
     ref,
   ) => {
@@ -36,8 +38,9 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     };
 
     const sizeStyles = {
-      sm: "text-sm px-2.5 py-1.5",
-      md: "font-medium px-5 py-2.5",
+      xs: "text-sm px-1.25 py-1.25 rounded-sm",
+      sm: "text-sm px-2.5 py-1.5 rounded-md",
+      md: "font-medium px-5 py-2.5 rounded-xl",
     };
 
     const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
@@ -49,6 +52,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
           href={href}
           ref={ref as React.Ref<HTMLAnchorElement>}
           className={combinedClasses}
+          title={title}
         >
           {icon && <span>{icon}</span>}
           {children}
@@ -62,6 +66,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
         ref={ref as React.Ref<HTMLButtonElement>}
         onClick={onClick}
         className={combinedClasses}
+        title={title}
       >
         {icon && <span>{icon}</span>}
         {children}
