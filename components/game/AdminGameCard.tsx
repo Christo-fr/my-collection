@@ -12,7 +12,7 @@ interface GameCardProps {
 
 export default function AdminGameCard({ game, onDelete }: GameCardProps) {
   return (
-    <div className="relative flex items-center justify-between w-full min-h-20 py-2 rounded-xl overflow-hidden border border-main/10 bg-background/20 backdrop-blur-sm transition-all duration-300 select-none">
+    <div className=" relative flex items-center justify-between w-full min-h-20 py-2 rounded-xl overflow-hidden border border-main/10 bg-background/20 backdrop-blur-sm transition-all duration-300 select-none transition-all duration-300  hover:shadow-[0_0_15px_2px_var(--color-secondary)]">
       {/* COUCHE 1 : Arrière-plan fondu (Couverture) */}
       <div
         className="absolute top-0 left-0 w-[60%] md:w-[40%] h-full z-0 pointer-events-none"
