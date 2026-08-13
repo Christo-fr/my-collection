@@ -15,6 +15,8 @@ import Select from "@/components/ui/Select";
 import Dialog from "@/components/ui/Dialog";
 import Heading from "@/components/ui/Heading";
 
+import { toast } from "sonner";
+
 // 🎮 Imports Métier & Layout
 import GameCard from "@/components/game/GameCard";
 import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
@@ -135,7 +137,7 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 3 : INPUTS TEXTE & TEXTAREAS (<Input />, <Textarea />)
             ------------------------------------------------------------------- */}
-        <section className="relative overflow-hidden isolate space-y-3 bg-main/5 p-4 rounded-xl border border-main/10 before:content-[''] before:absolute before:-top-16 before:-left-16 before:w-40 before:h-40 before:bg-[var(--color-secondary)] before:rounded-full before:blur-2xl before:pointer-events-none">
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             3. Champs de saisie (Input & Textarea)
           </h2>
@@ -181,12 +183,7 @@ export default function SandboxPage() {
         {/* -------------------------------------------------------------------
             SECTION 4 : SLIDER DE DURÉE (<RangeInput />)
             ------------------------------------------------------------------- */}
-        <section
-          className="relative overflow-hidden isolate rounded-xl p-4 space-y-3 bg-main/5 border border-main/10
-  before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:rounded-[inherit]
-  before:bg-[radial-gradient(circle_at_top_left,var(--color-secondary)_0%,transparent_70%)]
-  before:opacity-30"
-        >
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
             4. Curseur de plage (RangeInput)
           </h2>
@@ -285,6 +282,24 @@ export default function SandboxPage() {
               {selectedConsole || "Aucune sélection"}
             </span>
           </div>
+        </section>
+
+        {/* -------------------------------------------------------------------
+    SECTION  : Sooner
+    ------------------------------------------------------------------- */}
+        <section className="space-y-3 bg-background/5 p-4 rounded-xl border border-main/10">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            8. Sooner
+          </h2>
+          <Button
+            variant="primary"
+            icon={<List className="w-5 h-5" />}
+            onClick={() =>
+              toast.success("Super ! Le toast fonctionne à merveille 🚀")
+            }
+          >
+            Sooner
+          </Button>
         </section>
       </div>
 

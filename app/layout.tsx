@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { GamesProvider } from "@/components/providers/GamesProvider";
 import { BackgroundProvider } from "@/components/providers/BackgroundProvider";
+import { Toaster } from "sonner";
 import localFont from "next/font/local";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -40,6 +41,20 @@ export default function RootLayout({
         className="font-noto min-h-dvh transition-colors duration-500 lg:h-full w-full mlg:overflow-hidden relative bg-background text-main"
       >
         {/* Gestion du Theme via le Provider*/}
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            // On force Sonner à utiliser TES variables CSS natives
+            style: {
+              background: "var(--bg-main)",
+              color: "var(--text-main)",
+              borderColor:
+                "color-mix(in srgb, var(--text-main) 20%, transparent)", // L'équivalent natif de border-main/20
+            },
+            // On conserve className pour l'effet de verre et l'arrondi
+            className: "backdrop-blur-md shadow-xl",
+          }}
+        />
         <ThemeProvider>
           <BackgroundProvider>
             <GamesProvider>
