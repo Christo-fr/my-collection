@@ -22,6 +22,8 @@ import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import SortableConsoleItem from "@/components/game/SortableConsoleItem";
 
+import Combobox from "@/components/ui/Combobox";
+
 // 🎮 Imports Métier & Layout
 import GameCard from "@/components/game/GameCard";
 import AdminGameCard from "@/components/game/AdminGameCard";
@@ -107,6 +109,15 @@ export default function SandboxPage() {
     { label: "Nintendo Switch", value: "switch" },
     { label: "PC", value: "pc" },
     { label: "Xbox Series X", value: "xbox" },
+  ];
+
+  //Combobox
+  const [franchise, setFranchise] = useState("mario");
+
+  const options = [
+    { label: "Super Mario", value: "mario" },
+    { label: "The Legend of Zelda", value: "zelda" },
+    { label: "Metroid", value: "metroid" },
   ];
 
   return (
@@ -393,6 +404,25 @@ export default function SandboxPage() {
                 ))}
               </SortableContext>
             </DndContext>
+          </div>
+        </section>
+
+        {/* -------------------------------------------------------------------
+            SECTION 13 : COMBOBOX
+            ------------------------------------------------------------------- */}
+        <section className="bg-background/5 p-4 rounded-xl border border-main/10 w-full flex flex-col">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            13. Drag & Drop
+          </h2>
+          {/* Grille de jeux */}
+          <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
+            <Combobox
+              label="Franchise"
+              options={options}
+              selectedValue={franchise}
+              onChange={setFranchise}
+              description={`Valeur sélectionnée dans le state : "${franchise}"`}
+            />
           </div>
         </section>
       </div>
