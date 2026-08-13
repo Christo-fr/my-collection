@@ -18,6 +18,10 @@ import Checkbox from "@/components/ui/Checkbox";
 
 import { toast } from "sonner";
 
+import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import { SortableContext, arrayMove } from "@dnd-kit/sortable";
+import SortableConsoleItem from "@/components/game/SortableConsoleItem";
+
 // 🎮 Imports Métier & Layout
 import GameCard from "@/components/game/GameCard";
 import AdminGameCard from "@/components/game/AdminGameCard";
@@ -66,6 +70,30 @@ export default function SandboxPage() {
       ),
     },
   ];
+
+  // State local pour la liste réordonnable
+  const [consoles, setConsoles] = useState([
+    { id: 1, name: "PlayStation 5" },
+    { id: 2, name: "Nintendo Switch" },
+    { id: 3, name: "PC" },
+    { id: 4, name: "Xbox Series X" },
+  ]);
+
+  // Gestionnaire de fin de survol / déplacement
+  function handleDragEnd(event: DragEndEvent) {
+    const { active, over } = event;
+
+    if (over && active.id !== over.id) {
+      setConsoles((prevConsoles) => {
+        const oldIndex = prevConsoles.findIndex(
+          (item) => item.id === active.id,
+        );
+        const newIndex = prevConsoles.findIndex((item) => item.id === over.id);
+
+        return arrayMove(prevConsoles, oldIndex, newIndex);
+      });
+    }
+  }
 
   //Case à cocher
   const [isBw, setIsBw] = useState(false);
@@ -346,6 +374,25 @@ export default function SandboxPage() {
               <AdminGameCard key={2} game={sampleGame} />
               <AdminGameCard key={20} game={gamesData[20] as Game} />
             </div>
+          </div>
+        </section>
+
+        {/* -------------------------------------------------------------------
+            SECTION 12 : DRAG & DROP
+            ------------------------------------------------------------------- */}
+        <section className="bg-background/5 p-4 rounded-xl border border-main/10 w-full flex flex-col">
+          <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
+            12. Drag & Drop
+          </h2>
+          {/* Grille de jeux */}
+          <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
+            <DndContext onDragEnd={handleDragEnd}>
+              <SortableContext items={consoles.map((c) => c.id)}>
+                {consoles.map((c) => (
+                  <SortableConsoleItem key={c.id} id={c.id} name={c.name} />
+                ))}
+              </SortableContext>
+            </DndContext>
           </div>
         </section>
       </div>
