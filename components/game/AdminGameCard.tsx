@@ -36,7 +36,7 @@ export default function AdminGameCard({ game, onDelete }: GameCardProps) {
         {/* Bloc Gauche : Logo + Titre */}
         <div className="flex flex-row items-center gap-2 sm:gap-4 min-w-0 pr-2">
           {game.images.logo && (
-            <div className="relative w-20 h-10 sm:w-28 sm:h-12 shrink-0 drop-shadow-md">
+            <div className="relative w-26 h-16 sm:w-36 shrink-0 drop-shadow-md">
               <Image
                 src={game.images.logo}
                 alt={game.title}
@@ -47,7 +47,7 @@ export default function AdminGameCard({ game, onDelete }: GameCardProps) {
             </div>
           )}
 
-          <h3 className="font-bold text-xs sm:text-sm md:text-base text-main line-clamp-1 drop-shadow-md hidden sm:block md:truncate lg:whitespace-normal">
+          <h3 className="font-bold text-xs sm:text-sm md:text-base text-main line-clamp-1 drop-shadow-md hidden sm:block md:truncate lg:whitespace-normal lg:hidden xl:block">
             {game.title}
           </h3>
         </div>
