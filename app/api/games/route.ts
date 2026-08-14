@@ -1,8 +1,9 @@
 export const dynamic = "force-dynamic"; // Empeche Next.js de mettre l'API en cache statique
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/server";
 
 export async function GET(request: Request) {
+  const supabase = await createClient();
   const { searchParams } = new URL(request.url);
   const franchise = searchParams.get("franchise");
 

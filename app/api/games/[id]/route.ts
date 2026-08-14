@@ -1,11 +1,12 @@
 export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/server";
 
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  const supabase = await createClient();
   const { id } = await params;
 
   // On demande à Supabase le jeu qui a cet ID précis

@@ -28,16 +28,18 @@ import Combobox from "@/components/ui/Combobox";
 import GameCard from "@/components/game/GameCard";
 import AdminGameCard from "@/components/game/AdminGameCard";
 import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
-import gamesData from "@/data/games.json";
-import { Game } from "@/types/game";
+import { useGamesContext } from "@/components/providers/GamesProvider";
 
 export default function SandboxPage() {
   // ---------------------------------------------------------------------------
   // 1. ÉTATS LOCAUX & DONNÉES DE TEST (MOCKS)
   // ---------------------------------------------------------------------------
-  const sampleGame = gamesData[0] as Game;
-  const anotherGame = gamesData[1] as Game;
-  const veryGame = gamesData[2] as Game;
+  // Jeux issus de la BDD (via le Provider) au lieu du fichier JSON statique
+  const { getGameById, loading } = useGamesContext();
+  const sampleGame = getGameById(1);
+  const anotherGame = getGameById(2);
+  const veryGame = getGameById(3);
+  const otherGame = getGameById(20);
 
   // State local pour valider le RangeInput
   const [duration, setDuration] = useState(25);
@@ -119,6 +121,11 @@ export default function SandboxPage() {
     { label: "The Legend of Zelda", value: "zelda" },
     { label: "Metroid", value: "metroid" },
   ];
+
+  // Tant que le Provider n'a pas fini de charger les jeux depuis la BDD, on attend
+  if (loading || !sampleGame || !anotherGame || !veryGame) {
+    return <p className="p-8 text-main/60">Chargement des jeux...</p>;
+  }
 
   return (
     <div className="relative w-full h-full flex justify-between px-12 py-8 gap-8">
@@ -383,7 +390,7 @@ export default function SandboxPage() {
               className="grid gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
             >
               <AdminGameCard key={2} game={sampleGame} />
-              <AdminGameCard key={20} game={gamesData[20] as Game} />
+              {otherGame && <AdminGameCard key={20} game={otherGame} />}
             </div>
           </div>
         </section>
