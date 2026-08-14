@@ -1,10 +1,10 @@
 export interface GameReview {
-  playtime: number;
-  completedDate: string;
-  score: number;
-  pros: string[];
-  cons: string[];
-  summary: string;
+  playtime?: number;
+  completedDate?: string;
+  score?: number;
+  pros?: string[];
+  cons?: string[];
+  summary?: string;
 }
 
 export interface ParallaxImage {
@@ -33,5 +33,5 @@ export interface Game {
   description: string;
   youtubeId: string;
   images: GameImages;
-  review: GameReview;
+  review?: GameReview | null; // Peut être indéfini ou null
 }

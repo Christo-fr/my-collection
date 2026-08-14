@@ -1,17 +1,23 @@
+export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
-import gamesData from "@/data/games.json";
+import { supabase } from "@/lib/supabase";
 
-//Traitement de la requête GET pour l'API pour recupérer un jeu en fonction de son ID
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const game = gamesData.find((game) => game.id === Number(id));
 
-  if (game) {
-    return NextResponse.json(game);
-  } else {
+  // On demande à Supabase le jeu qui a cet ID précis
+  const { data: game, error } = await supabase
+    .from("games")
+    .select("*")
+    .eq("id", Number(id))
+    .single(); // .single() dit à Supabase : "Renvoie-moi un seul objet, pas un tableau"
+
+  if (error || !game) {
     return NextResponse.json({ error: "Jeu non trouvé" }, { status: 404 });
   }
+
+  return NextResponse.json(game);
 }
