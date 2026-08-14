@@ -10,7 +10,7 @@ import { KeyRound } from "lucide-react";
 // Composants Métier
 import FilterPanel from "@/components/game/FilterPanel";
 
-export default function Loggin() {
+export default function Login() {
   // =========================================================================
   // 1. HOOKS & ÉTATS LOCAUX
   // =========================================================================
