@@ -441,7 +441,8 @@ export default function SandboxPage() {
       <div className="hidden lg:block w-1/2 h-full relative">
         <ParallaxCharacter
           image={{
-            url: "/parallax/no-truncate.webp",
+            url: "/parallax/admin.webp",
+            truncated: true,
           }}
         />
       </div>
