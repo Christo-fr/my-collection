@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn } from "lucide-react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react"; // 1. Import de DialogBackdrop
 import { useState } from "react";
 import ThemeSwitch from "@/components/ui/ThemeSwitch";
+import Button from "@/components/ui/Button";
 
 const NAV_LINKS = [
   { label: "Ma liste", href: "/list" },
@@ -31,7 +32,7 @@ export default function Header() {
           </Link>
 
           {/* --- MENU : DESKTOP --- */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -45,16 +46,27 @@ export default function Header() {
         </div>
 
         {/* --- SWITCH, MENU ADMIN : DESKTOP & BTN BURGER MENU --- */}
-        <div className="flex items-center text-sm p-4 px-6 border-b">
-          <button
+        <div className="flex items-center text-sm p-4 px-6 border-b ">
+          <Button
             onClick={() => setIsModalOpen(true)}
-            className="md:hidden text-main hover:text-hover transition-opacity p-2 focus:outline-none"
+            className="lg:hidden text-main hover:text-hover transition-opacity p-2 focus:outline-none"
             aria-label="Ouvrir le menu"
+            size="sm"
+            variant="secondary"
           >
             <Menu className="w-6 h-6" />
-          </button>
-          <div className="hidden md:flex">
+          </Button>
+          <div className="hidden lg:flex gap-3 items-center">
             <ThemeSwitch />
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              className="text-main hover:text-hover transition-opacity p-2 focus:outline-none"
+              aria-label="Authentification"
+              size="sm"
+              variant="secondary"
+            >
+              <LogIn className="w-6 h-6" />
+            </Button>
           </div>
         </div>
       </header>
@@ -102,6 +114,14 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
+                <Link
+                  key="/login"
+                  href="/login"
+                  onClick={() => setIsModalOpen(false)}
+                  className={`uppercase hover:text-hover text-sm font-medium transition ${pathname === "/login" ? "text-hover" : ""}`}
+                >
+                  Authentification
+                </Link>
               </nav>
             </div>
 
