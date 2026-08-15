@@ -3,14 +3,19 @@
 import { Game } from "@/types/game";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import { File, Pencil, X } from "lucide-react";
+import { File, Pencil, X, Check } from "lucide-react";
 
 interface GameCardProps {
   game: Game;
   onDelete?: (id: number) => void;
+  priority?: boolean;
 }
 
-export default function AdminGameCard({ game, onDelete }: GameCardProps) {
+export default function AdminGameCard({
+  game,
+  onDelete,
+  priority,
+}: GameCardProps) {
   return (
     <div className=" relative flex items-center justify-between w-full min-h-20 py-2 rounded-xl overflow-hidden border border-main/10 bg-background/20 backdrop-blur-sm transition-all duration-300 select-none transition-all duration-300  hover:shadow-[0_0_15px_2px_var(--color-secondary)]">
       {/* COUCHE 1 : Arrière-plan fondu (Couverture) */}
@@ -29,6 +34,7 @@ export default function AdminGameCard({ game, onDelete }: GameCardProps) {
           sizes="(max-width: 640px) 60vw, 50vw"
           quality={80}
           className="object-cover object-left opacity-50"
+          priority={priority}
         />
       </div>
       {/* COUCHE 2 : Contenu (Logo, Titre, Actions) */}
@@ -42,14 +48,25 @@ export default function AdminGameCard({ game, onDelete }: GameCardProps) {
                 alt={game.title}
                 fill
                 sizes="(max-width: 640px) 80px, 112px"
-                className="object-contain object-left"
+                className="object-contain object-center"
               />
             </div>
           )}
 
-          <h3 className="font-bold text-xs sm:text-sm md:text-base text-main line-clamp-1 drop-shadow-md hidden sm:block md:truncate lg:whitespace-normal lg:hidden xl:block">
-            {game.title}
-          </h3>
+          <div className="flex flex-col gap-0.5 min-w-0">
+            <h3 className="font-bold text-xs sm:text-sm text-main drop-shadow-md hidden sm:block">
+              {game.title}
+            </h3>
+            <div className="flex flex-wrap items-center gap-1 text-main font-medium">
+              {game.estimatedPlaytime}h • {game.genre}
+              {game.review?.score && (
+                <div className="flex items-center gap-1 text-main font-bold mt-0.5">
+                  (<Check className="h-4 w-4" />
+                  {game.review.playtime}h • {game.review.score}/10)
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Bloc Droite : Les 3 boutons */}

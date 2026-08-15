@@ -112,6 +112,15 @@ export default function Header() {
           <div
             className={` ${!isSignupPage ? "hidden" : "flex"} lg:flex gap-3 items-center`}
           >
+            {isLoggedIn && (
+              <Link
+                key="administration"
+                href="/administration"
+                className={`uppercase hover:text-hover text-sm font-medium transition ${pathname === "/administration" ? "text-hover" : "text-main"}`}
+              >
+                Administration
+              </Link>
+            )}
             <ThemeSwitch />
             {!isSignupPage && (
               <Button
@@ -177,14 +186,37 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
-                <Link
-                  key="/login"
-                  href="/login"
-                  onClick={() => setIsModalOpen(false)}
-                  className={`uppercase hover:text-hover text-sm font-medium transition ${pathname === "/login" ? "text-hover" : ""}`}
-                >
-                  Authentification
-                </Link>
+                {isLoggedIn && (
+                  <>
+                    <Link
+                      key="/administration"
+                      href="/administration"
+                      onClick={() => setIsModalOpen(false)}
+                      className={`uppercase hover:text-hover text-sm font-medium transition ${pathname === "/administration" ? "text-hover" : ""}`}
+                    >
+                      Administration
+                    </Link>
+                    <div
+                      onClick={() => {
+                        handleLogout();
+                        setIsModalOpen(false);
+                      }}
+                      className={`uppercase hover:text-hover text-sm font-medium transition cursor-pointer`}
+                    >
+                      Déconnexion
+                    </div>
+                  </>
+                )}
+                {!isLoggedIn && (
+                  <Link
+                    key="/login"
+                    href="/login"
+                    onClick={() => setIsModalOpen(false)}
+                    className={`uppercase hover:text-hover text-sm font-medium pointer transition ${pathname === "/login" ? "text-hover" : ""}`}
+                  >
+                    Authentification
+                  </Link>
+                )}
               </nav>
             </div>
 
