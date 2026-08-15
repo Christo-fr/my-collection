@@ -68,8 +68,8 @@ export default function StatsRecordsPanel({
                   key={recordMetric}
                   className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
                 >
-                  {recordMin.map((game) => (
-                    <GameCard key={game.id} game={game} />
+                  {recordMin.map((game, index) => (
+                    <GameCard key={game.id} game={game} priority={index < 6} />
                   ))}
                 </div>
               </div>
