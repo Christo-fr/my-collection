@@ -41,7 +41,7 @@ export default function Login() {
     });
     if (error) {
       setError(
-        "Identifiants invalides : Veuillez vérifier votre adresse courriel et votre mot de passe.",
+        "Identifiants invalides : Veuillez vérifier votre courriel et votre mot de passe.",
       );
     } else {
       toast.success("Connexion réussie ! Redirection en cours...");

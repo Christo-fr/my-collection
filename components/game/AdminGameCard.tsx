@@ -57,7 +57,7 @@ export default function AdminGameCard({
             <h3 className="font-bold text-xs sm:text-sm text-main drop-shadow-md hidden sm:block">
               {game.title}
             </h3>
-            <div className="flex flex-wrap items-center gap-1 text-main font-medium">
+            <div className="flex flex-wrap items-center gap-1 text-main text-xs sm:text-sm font-medium">
               {game.estimatedPlaytime}h • {game.genre}
               {game.review?.score && (
                 <div className="flex items-center gap-1 text-main font-bold mt-0.5">
