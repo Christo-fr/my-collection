@@ -92,8 +92,8 @@ export default function MaListe() {
               key={gridKey}
               className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 animate-[fadeInGrid_0.4s_ease-out_forwards]"
             >
-              {games.map((game) => (
-                <GameCard key={game.id} game={game} />
+              {games.map((game, index) => (
+                <GameCard key={game.id} game={game} priority={index < 5} />
               ))}
             </div>
           )}

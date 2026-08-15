@@ -7,15 +7,23 @@ import { Check } from "lucide-react";
 interface GameCardProps {
   game: Game;
   variant?: "default" | "xl";
+  priority?: boolean;
 }
 
-export default function GameCard({ game, variant = "default" }: GameCardProps) {
+export default function GameCard({
+  game,
+  variant = "default",
+  priority = false,
+}: GameCardProps) {
   return (
     <Link
       href={`/game/${game.id}`}
       className={`relative w-full aspect-[2/3] rounded-xl overflow-hidden cursor-pointer select-none border border-main/10 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_2px_var(--color-secondary)]`}
       title={game.title}
     >
+      {/* Fond affiché tant que la jaquette n'a pas fini de s'afficher */}
+      <div className="absolute inset-0 -z-10 animate-pulse bg-main/10" />
+
       <Image
         src={game.images.cover}
         alt={game.title}
@@ -23,11 +31,11 @@ export default function GameCard({ game, variant = "default" }: GameCardProps) {
         sizes={
           variant === "xl"
             ? "580px"
-            : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+            : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
         }
         quality={variant === "xl" ? 100 : 80}
         className="object-cover"
-        priority={variant === "xl"}
+        priority={variant === "xl" || priority}
       />
 
       {/* Pill Console */}
