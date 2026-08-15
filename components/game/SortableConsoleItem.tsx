@@ -58,7 +58,7 @@ export default function SortableConsoleItem({
           </div>
 
           {/* Nom complet */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <Input
               label="Nom complet*"
               placeholder="ex: PlayStation 5"
@@ -67,7 +67,7 @@ export default function SortableConsoleItem({
           </div>
 
           {/* Upload Fichier */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <Input
               label="Logo de la console*"
               type="file"
@@ -75,6 +75,11 @@ export default function SortableConsoleItem({
               name="logo"
               accept="image/png, image/jpeg, image/webp"
             />
+          </div>
+
+          {/* Checkbox N/B */}
+          <div className="lg:col-span-2 pt-2 sm:pt-0">
+            <Checkbox label="N/B ?" />
           </div>
 
           {/* Prévisualisation Logo */}
@@ -88,11 +93,6 @@ export default function SortableConsoleItem({
                 className="object-contain max-h-8"
               />
             </div>
-          </div>
-
-          {/* Checkbox N/B */}
-          <div className="lg:col-span-2 pt-2 sm:pt-0">
-            <Checkbox label="N/B ?" />
           </div>
         </div>
       </div>

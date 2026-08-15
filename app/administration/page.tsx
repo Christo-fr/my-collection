@@ -96,7 +96,7 @@ export default function Administration() {
                 </Button>
                 <Button
                   variant="secondary"
-                  href="/suggestion"
+                  href="/administration/console"
                   icon={<Gamepad className="w-5 h-5" />}
                 >
                   Gestion des consoles
