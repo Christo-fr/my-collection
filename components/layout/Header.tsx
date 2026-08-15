@@ -125,7 +125,7 @@ export default function Header() {
               </nav>
             </div>
 
-            <div className="pt-6 mt-8 border-t border-white/10 flex justify-between items-center text-main text-sm">
+            <div className="pt-6 mt-8 border-t border-main/10 flex justify-between items-center text-main text-sm">
               <span>Thème</span>
               <ThemeSwitch />
             </div>
