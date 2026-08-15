@@ -44,9 +44,9 @@ export default function Login() {
         "Identifiants invalides : Veuillez vérifier votre adresse courriel et votre mot de passe.",
       );
     } else {
+      toast.success("Connexion réussie ! Redirection en cours...");
       router.refresh(); // pour notifier Next.js et revalider la session côté serveur
       router.push("/list"); // Redirige vers le tableau de bord après la connexion réussie
-      toast.success("Connexion réussie ! Redirection en cours...");
     }
   };
   // =========================================================================
