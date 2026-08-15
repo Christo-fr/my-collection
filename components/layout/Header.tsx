@@ -59,7 +59,7 @@ export default function Header() {
           <div className="hidden lg:flex gap-3 items-center">
             <ThemeSwitch />
             <Button
-              onClick={() => setIsModalOpen(true)}
+              href="/login"
               className="text-main hover:text-hover transition-opacity p-2 focus:outline-none"
               aria-label="Authentification"
               size="sm"
