@@ -17,8 +17,6 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.getAll();
         },
         setAll(cookiesToSet) {
-          // Si Supabase doit rafraîchir la session, on applique les nouveaux cookies
-          // sur la requête ET sur la réponse qui partira vers le navigateur.
           cookiesToSet.forEach(({ name, value }) =>
             request.cookies.set(name, value),
           );
@@ -33,9 +31,41 @@ export async function updateSession(request: NextRequest) {
     },
   );
 
-  // 3. Cette ligne déclenche la vérification de session auprès de Supabase.
-  // Si le cookie a besoin d'être renouvelé, la fonction `setAll` ci-dessus s'exécute automatiquement.
+  // 3. On rafraîchit la session Supabase si nécessaire
   await supabase.auth.getUser();
+
+  // 4. RÉCUPÉRATION DU CHEMIN ACTUEL ET COMPTAGE DES COMPTES
+  const pathname = request.nextUrl.pathname;
+
+  // On ignore les Server Actions, les routes API et les requêtes RSC internes
+  const isServerAction = request.headers.has("next-action");
+  const isRscRequest = request.headers
+    .get("accept")
+    ?.includes("text/x-component");
+
+  if (pathname.startsWith("/api") || isServerAction || isRscRequest) {
+    return supabaseResponse;
+  }
+
+  const { count } = await supabase
+    .from("profiles")
+    .select("*", { count: "exact", head: true });
+
+  const totalProfiles = count ?? 0;
+
+  // RÈGLE 1 : Aucun compte n'existe encore -> On force la redirection vers /signup
+  if (totalProfiles === 0 && pathname !== "/signup") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/signup";
+    return NextResponse.redirect(url);
+  }
+
+  // RÈGLE 2 : Un compte existe déjà ET l'utilisateur tente d'aller sur /signup -> Redirection vers /login
+  if (totalProfiles > 0 && pathname === "/signup") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+    return NextResponse.redirect(url);
+  }
 
   return supabaseResponse;
 }

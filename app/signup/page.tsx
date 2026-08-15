@@ -89,7 +89,9 @@ export default function Signup() {
       setErrorMessage("Un compte existe déjà avec cette adresse courriel.");
     } else {
       // --- D. Succès réel de la création de compte ---
-      toast.success("Compte administrateur créé avec succès !");
+      toast.success(
+        "Compte administrateur créé avec succès ! Création de votre vidéoludothèque en cours...",
+      );
       router.refresh();
       router.push("/administration");
     }

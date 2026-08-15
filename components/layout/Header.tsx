@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, LogIn } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Menu, X, LogIn, LogOut } from "lucide-react";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react"; // 1. Import de DialogBackdrop
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThemeSwitch from "@/components/ui/ThemeSwitch";
 import Button from "@/components/ui/Button";
+import { createClient } from "@/lib/supabase/client";
 
 const NAV_LINKS = [
   { label: "Ma liste", href: "/list" },
@@ -17,6 +19,53 @@ const NAV_LINKS = [
 export default function Header() {
   const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
+
+  //Savoir si l'user est connecté
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const supabase = createClient();
+
+  // Cache le menu de navigation sur la page d'inscription
+  const isSignupPage = pathname === "/signup";
+
+  // Déconnexion de l'utilisateur
+  const handleLogout = async () => {
+    // 1. On change l'icône INSTANTANÉMENT dans l'interface (effet zéro latence)
+    setIsLoggedIn(false);
+
+    // 2. On effectue la déconnexion Supabase en arrière-plan
+    await supabase.auth.signOut();
+
+    // 3. Si on était sur une page admin, on redirige
+    if (pathname.startsWith("/administration")) {
+      router.push("/list");
+    }
+  };
+
+  // Définition d'une fonction asynchrone pour vérifier l'utilisateur auprès du serveur Supabase
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      const {
+        data: { user }, // 1.On extrait directement l'objet "user" du résultat envoyé par Supabase
+      } = await supabase.auth.getUser();
+      setIsLoggedIn(!!user);
+    };
+
+    // 2. Écouteur d'événements Supabase (Temps réel)
+    // Il s'active automatiquement dès que l'état change (connexion, déconnexion...)
+    const {
+      data: { subscription }, // On récupère l'abonnement pour pouvoir le fermer plus tard
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      // Si une session existe, session?.user sera un objet (donc TRUE), sinon FALSE
+      setIsLoggedIn(!!session?.user);
+    });
+
+    // 3. Exécution de la vérification initiale au chargement de la page
+    checkLoggedIn();
+
+    // 4. Nettoyage (Clean-up)
+    return () => subscription.unsubscribe();
+  }, [supabase]);
 
   return (
     <>
@@ -32,41 +81,55 @@ export default function Header() {
           </Link>
 
           {/* --- MENU : DESKTOP --- */}
-          <nav className="hidden lg:flex items-center gap-6">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`uppercase hover:text-hover text-sm font-medium transition ${pathname === link.href ? "text-hover" : "text-main"}`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          {!isSignupPage && (
+            <nav className="hidden lg:flex items-center gap-6">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`uppercase hover:text-hover text-sm font-medium transition ${pathname === link.href ? "text-hover" : "text-main"}`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          )}
         </div>
 
         {/* --- SWITCH, MENU ADMIN : DESKTOP & BTN BURGER MENU --- */}
         <div className="flex items-center text-sm p-4 px-6 border-b ">
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            className="lg:hidden text-main hover:text-hover transition-opacity p-2 focus:outline-none"
-            aria-label="Ouvrir le menu"
-            size="sm"
-            variant="secondary"
-          >
-            <Menu className="w-6 h-6" />
-          </Button>
-          <div className="hidden lg:flex gap-3 items-center">
-            <ThemeSwitch />
+          {!isSignupPage && (
             <Button
-              href="/login"
-              className="text-main hover:text-hover transition-opacity p-2 focus:outline-none"
-              aria-label="Authentification"
+              onClick={() => setIsModalOpen(true)}
+              className="lg:hidden text-main hover:text-hover transition-opacity p-2 focus:outline-none"
+              aria-label="Ouvrir le menu"
               size="sm"
               variant="secondary"
             >
-              <LogIn className="w-6 h-6" />
+              <Menu className="w-6 h-6" />
             </Button>
+          )}
+          <div
+            className={` ${!isSignupPage ? "hidden" : "flex"} lg:flex gap-3 items-center`}
+          >
+            <ThemeSwitch />
+            {!isSignupPage && (
+              <Button
+                onClick={
+                  isLoggedIn ? handleLogout : () => router.push("/login")
+                }
+                className="text-main hover:text-hover transition-opacity p-2 focus:outline-none"
+                aria-label="Authentification"
+                size="sm"
+                variant="secondary"
+              >
+                {isLoggedIn ? (
+                  <LogOut className="w-6 h-6" aria-label="Se déconnecter" />
+                ) : (
+                  <LogIn className="w-6 h-6" aria-label="Se connecter" />
+                )}
+              </Button>
+            )}
           </div>
         </div>
       </header>
