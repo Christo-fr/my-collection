@@ -8,6 +8,7 @@ export interface ButtonProps {
   size?: "sm" | "md" | "xs";
   title?: string;
   href?: string;
+  type?: "button" | "submit";
   onClick?: () => void;
   icon?: React.ReactNode;
   className?: string;
@@ -24,6 +25,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       size = "md",
       className = "",
       title,
+      type = "button",
     },
     ref,
   ) => {
@@ -63,6 +65,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     // 4. Si c'est un bouton d'action Headless UI
     return (
       <HeadlessButton
+        type={type}
         ref={ref as React.Ref<HTMLButtonElement>}
         onClick={onClick}
         className={combinedClasses}
