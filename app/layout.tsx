@@ -45,14 +45,12 @@ export default function RootLayout({
         <Toaster
           position="top-center"
           toastOptions={{
-            // On force Sonner à utiliser TES variables CSS natives
             style: {
               background: "var(--bg-main)",
               color: "var(--text-main)",
               borderColor:
-                "color-mix(in srgb, var(--text-main) 20%, transparent)", // L'équivalent natif de border-main/20
+                "color-mix(in srgb, var(--text-main) 20%, transparent)",
             },
-            // On conserve className pour l'effet de verre et l'arrondi
             className: "backdrop-blur-md shadow-xl",
           }}
         />

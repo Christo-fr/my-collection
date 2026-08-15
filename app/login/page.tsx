@@ -1,26 +1,53 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 // Layout & UI Globales
 import LayoutSplit from "@/components/layout/LayoutSplit";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import FormError from "@/components/ui/FormError";
+import { toast } from "sonner";
 import { KeyRound } from "lucide-react";
+import { useState, type SubmitEvent } from "react";
 
 // Composants Métier
 import FilterPanel from "@/components/game/FilterPanel";
+
+//Supabase
+import { createClient } from "@/lib/supabase/client";
 
 export default function Login() {
   // =========================================================================
   // 1. HOOKS & ÉTATS LOCAUX
   // =========================================================================
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const router = useRouter();
+  const supabase = createClient();
 
   // =========================================================================
   // 2. TRAITEMENT
   // =========================================================================
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault(); // 1. Empêche le rechargement de page natif du navigateur
-    // 2. Ton code de connexion Supabase ira ici
+    // Appel à Supabase Auth pour vérifier les identifiants
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      setError(
+        "Identifiants invalides : Veuillez vérifier votre adresse courriel et votre mot de passe.",
+      );
+    } else {
+      router.refresh(); // pour notifier Next.js et revalider la session côté serveur
+      router.push("/list"); // Redirige vers le tableau de bord après la connexion réussie
+      toast.success("Connexion réussie ! Redirection en cours...");
+    }
   };
   // =========================================================================
   // 3. RENDU DU COMPOSANT
@@ -40,12 +67,26 @@ export default function Login() {
                 label="Courriel"
                 type="email"
                 placeholder="Saisir votre email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError("");
+                }}
+                error={!!error} //ré-inverse le résultat pour redonner la vérité logique de la valeur d'origine.
               />
               <Input
                 label="Mot de passe"
                 type="password"
                 placeholder="Saisir votre mot de passe"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setError("");
+                }}
+                error={!!error}
               />
+              {/* Message d'erreur global */}
+              {error && <FormError message={error} />}
 
               {/* Bouton de type "submit" */}
               <Button

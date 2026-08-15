@@ -6,7 +6,7 @@ import Label from "@/components/ui/Label";
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   description?: string;
-  error?: string;
+  error?: string | boolean;
 }
 
 // forwardRef sert de passerelle ("passe-plat") :
@@ -30,7 +30,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        {error ? (
+        {typeof error === "string" ? (
           <Description className="text-red-500" description={error} />
         ) : description ? (
           <Description className="text-main/50" description={description} />
