@@ -46,7 +46,7 @@ export default function Login() {
     } else {
       toast.success("Connexion réussie ! Redirection en cours...");
       router.refresh(); // pour notifier Next.js et revalider la session côté serveur
-      router.push("/list"); // Redirige vers le tableau de bord après la connexion réussie
+      router.push("/administration"); // Redirige vers le tableau de bord après la connexion réussie
     }
   };
   // =========================================================================
