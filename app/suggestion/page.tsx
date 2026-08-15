@@ -23,7 +23,6 @@ import {
   getGachaSuggestion,
   OPTIONS_STATUS,
   SuggestionResult,
-  preloadImage,
 } from "@/features/game/gameUtils";
 
 export default function Suggestion() {
@@ -37,15 +36,8 @@ export default function Suggestion() {
   // =========================================================================
   // 2. TRAITEMENT DU TIRAGE
   // =========================================================================
-  const handlePoll = async () => {
-    const suggestion = getGachaSuggestion(filters, gamesList);
-
-    // Préchargement de la jaquette pour éviter le retard d'affichage
-    if (suggestion.game?.images?.cover) {
-      await preloadImage(suggestion.game.images.cover);
-    }
-
-    setResult(suggestion);
+  const handlePoll = () => {
+    setResult(getGachaSuggestion(filters, gamesList));
   };
 
   // =========================================================================
