@@ -14,7 +14,7 @@ export default function AppBackground() {
   const pathname = usePathname();
   const isAdministration = pathname === "/administration";
 
-  // Si on quitte une fiche jeu, on efface immédiatement (pas besoin d'attendre un chargement)
+  // Si on quitte une fiche jeu, on efface immédiatement
   useEffect(() => {
     if (!bgGame.bgImage) setCurrent(null);
   }, [bgGame.bgImage]);
