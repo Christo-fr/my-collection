@@ -9,7 +9,7 @@ import { Undo2, Gamepad } from "lucide-react";
 import FormError from "@/components/ui/FormError";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
-import SortableConsoleItem from "@/components/game/SortableConsoleItem";
+import SortableConsoleItem from "@/components/admin/SortableConsoleItem";
 
 export default function Console() {
   // =========================================================================
