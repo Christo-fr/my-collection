@@ -1,4 +1,5 @@
 "use client";
+
 import { useGames } from "@/features/game/useGames";
 import ListHeader from "@/components/game/ListHeader";
 import { OPTIONS_SORT, OPTIONS_STATUS } from "@/features/game/gameUtils";
@@ -11,7 +12,7 @@ import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
 import { Gamepad, FilePlus } from "lucide-react";
 import Heading from "@/components/ui/Heading";
-import AdminGameCard from "@/components/game/AdminGameCard";
+import AdminGameCard from "@/components/admin/AdminGameCard";
 
 export default function Administration() {
   // =========================================================================

@@ -20,13 +20,13 @@ import { toast } from "sonner";
 
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
-import SortableConsoleItem from "@/components/game/SortableConsoleItem";
+import SortableConsoleItem from "@/components/admin/SortableConsoleItem";
 
 import Combobox from "@/components/ui/Combobox";
 
 // 🎮 Imports Métier & Layout
 import GameCard from "@/components/game/GameCard";
-import AdminGameCard from "@/components/game/AdminGameCard";
+import AdminGameCard from "@/components/admin/AdminGameCard";
 import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 
