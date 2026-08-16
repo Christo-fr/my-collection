@@ -1,5 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useState, useMemo } from "react";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { getConsoleOptions } from "@/features/game/gameUtils";
 import {
@@ -173,7 +172,7 @@ export function useStats() {
         // 2. Année actuelle et liste de toutes les années disponibles
         const currentYear = new Date().getFullYear();
         const availableYears = completedGames.map((game) =>
-          new Date(game.review.completedDate).getFullYear(),
+          new Date(game.review!.completedDate!).getFullYear(),
         );
 
         // 3. Année cible : l'année en cours si elle existe, sinon la plus récente disponible
@@ -184,7 +183,7 @@ export function useStats() {
         // 4. On remplit la colonne principale avec les jeux de cette année-là
         recordMax = completedGames.filter(
           (game) =>
-            new Date(game.review.completedDate).getFullYear() === targetYear,
+            new Date(game.review!.completedDate!).getFullYear() === targetYear,
         );
         recordMin = []; // Pas de deuxième colonne pour le bilan annuel
 
