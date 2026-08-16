@@ -9,6 +9,7 @@ import {
   ReactNode,
 } from "react";
 import { Game } from "@/types/game";
+import { Console } from "@/types/console";
 
 // =========================================================================
 // 1. LE TYPAGE (Le contrat d'échange)
@@ -22,6 +23,8 @@ export interface GamesContextType {
   games: Game[];
   loading: boolean;
   refetchGames: () => Promise<void>;
+  refetchConsoles: () => Promise<void>;
+  consoles: Console[];
   getGameById: (id: number) => Game | undefined;
 }
 
@@ -40,6 +43,7 @@ const GamesContext = createContext<GamesContextType | undefined>(undefined);
 // =========================================================================
 export function GamesProvider({ children }: { children: ReactNode }) {
   const [games, setGames] = useState<Game[]>([]);
+  const [consoles, setConsoles] = useState<Console[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   // Appel API pour récupérer les jeux.
@@ -56,11 +60,24 @@ export function GamesProvider({ children }: { children: ReactNode }) {
       setLoading(false);
     }
   }, []);
+  const fetchConsoles = useCallback(async () => {
+    try {
+      setLoading(true);
+      const reponse = await fetch("/api/consoles");
+      const data = await reponse.json();
+      setConsoles(data);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des consoles :", error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   // Déclenchement automatique du premier chargement au montage du Provider
   useEffect(() => {
     fetchGames();
-  }, [fetchGames]);
+    fetchConsoles();
+  }, [fetchGames, fetchConsoles]);
 
   // Recherche directe dans le tableau `games` déjà stocké en mémoire RAM
   const getGameById = useCallback(
@@ -76,8 +93,10 @@ export function GamesProvider({ children }: { children: ReactNode }) {
     <GamesContext.Provider
       value={{
         games,
+        consoles,
         loading,
         refetchGames: fetchGames,
+        refetchConsoles: fetchConsoles,
         getGameById,
       }}
     >
