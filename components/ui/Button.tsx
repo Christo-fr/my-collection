@@ -12,6 +12,7 @@ export interface ButtonProps {
   onClick?: () => void;
   icon?: React.ReactNode;
   className?: string;
+  disabled?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
@@ -26,6 +27,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       className = "",
       title,
       type = "button",
+      disabled = false,
     },
     ref,
   ) => {
@@ -70,6 +72,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
         onClick={onClick}
         className={combinedClasses}
         title={title}
+        disabled={disabled}
       >
         {icon && <span>{icon}</span>}
         {children}
