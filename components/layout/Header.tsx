@@ -147,7 +147,7 @@ export default function Header() {
       <Dialog
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        className="relative z-50 md:hidden"
+        className="relative z-50 lg:hidden"
       >
         {/* 1. Arrière-plan assombri (avec la prop transition) */}
         <DialogBackdrop
