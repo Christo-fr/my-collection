@@ -31,12 +31,12 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   ) => {
     // 1. Styles de base
     const baseStyles =
-      "uppercase inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-300 select-none cursor-pointer hover:bg-gradient-to-br hover:from-[var(--color-grad-gacha-end)] hover:to-transparent hover:to-[40%] ";
+      "uppercase inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-300 select-none cursor-pointer hover:-translate-y-0.5 hover:shadow-lg";
     // 2. Variantes de couleurs
     const variantStyles = {
-      primary: "bg-primary text-background hover:opacity-90 shadow-md",
+      primary: "bg-primary text-background shadow-md hover:bg-primary/85",
       secondary:
-        "border border-primary/30 text-main hover:bg-primary/10 backdrop-blur-md",
+        "border border-primary/30 text-main backdrop-blur-md hover:bg-primary hover:text-background hover:border-primary",
     };
 
     const sizeStyles = {

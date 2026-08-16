@@ -33,7 +33,7 @@ export default function Home() {
         {/* Boutons d'action */}
         <div className="flex items-center gap-3 flex-wrap">
           <Button
-            variant="primary"
+            variant="secondary"
             href="/list"
             icon={<List className="w-5 h-5" />}
           >
