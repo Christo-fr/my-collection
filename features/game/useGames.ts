@@ -125,8 +125,9 @@ export function useGames() {
 
     const search = params.toString();
     const query = search ? `?${search}` : "";
-    // replace met à jour l'URL à la volée sans ajouter d'entrée inutile dans l'historique de retour
-    router.replace(`${pathname}${query}`, { scroll: false });
+    //Utilisation de l'API native du navigateur
+    // Cela met à jour l'URL instantanément SANS déclencher de requête serveur Next.js (RSC)
+    window.history.replaceState(null, "", `${pathname}${query}`);
   }, [
     searchQuery,
     selectedConsole,
