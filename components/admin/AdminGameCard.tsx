@@ -7,15 +7,10 @@ import { File, Pencil, X, Check } from "lucide-react";
 import DeleteDialog from "@/components/admin/DeleteDialog";
 interface GameCardProps {
   game: Game;
-  onDelete?: (id: number) => void;
   priority?: boolean;
 }
 
-export default function AdminGameCard({
-  game,
-  onDelete,
-  priority,
-}: GameCardProps) {
+export default function AdminGameCard({ game, priority }: GameCardProps) {
   // State local pour valider le Dialog
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 

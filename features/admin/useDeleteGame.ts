@@ -28,17 +28,18 @@ export function useDeleteGame() {
     const assets = [
       { bucket: "covers", url: game.images.cover },
       { bucket: "logos", url: game.images.logo },
-      { bucket: "parallaxes", url: game.images.parallax?.url },
+      { bucket: "parallaxes", url: game.images.parallax.url },
     ];
 
     // On parcourt les visuels pour supprimer les fichiers orphelins
     for (const asset of assets) {
       if (asset.url) {
-        // Extraction du nom de fichier depuis l'URL complète
         const fileName = asset.url.split("/").pop();
 
         if (fileName) {
-          await supabase.storage.from(asset.bucket).remove([fileName]);
+          const { data, error: storageError } = await supabase.storage
+            .from(asset.bucket)
+            .remove([fileName]);
         }
       }
     }
@@ -55,6 +56,7 @@ export function useDeleteGame() {
       toast.success("Jeu supprimé avec succès !");
       await refetchGames(); // Synchronise le contexte global et revalide le cache
       setIsDeleting(false);
+      console.log("ID transmis à Supabase :", game.id);
       return true; // Succès : l'UI peut fermer la modale
     }
   };

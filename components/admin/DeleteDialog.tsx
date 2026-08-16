@@ -3,8 +3,10 @@ import Dialog from "@/components/ui/Dialog";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import Image from "next/image";
-import { Undo2, X } from "lucide-react";
+import { LoaderCircle, Undo2, X } from "lucide-react";
 import { Game } from "@/types/game";
+import { useDeleteGame } from "@/features/admin/useDeleteGame";
+import FormError from "@/components/ui/FormError";
 
 interface DeleteDialogProps {
   isOpen: boolean;
@@ -17,6 +19,15 @@ export default function DeleteDialog({
   onClose,
   game,
 }: DeleteDialogProps) {
+  const { deleteGame, isDeleting, error } = useDeleteGame();
+
+  const handleDelete = async () => {
+    const success = await deleteGame(game);
+    if (success) {
+      onClose(); // Ferme la modale si la suppression est réussie
+    }
+  };
+
   return (
     <Dialog isOpen={isOpen} onClose={onClose} maxWidth="max-w-full" centered>
       <div className="w-full  h-full flex flex-col gap-4 items-center justify-between p-4 bg-gradient-to-r from-[var(--color-secondary)]  to-background">
@@ -46,15 +57,28 @@ export default function DeleteDialog({
 
         {/* Btn de relance */}
         <div className="flex flex-col items-center gap-2 w-full max-w-lg mx-auto">
+          {error && <FormError message={error} />}
           <div className="flex items-center justify-between w-full mt-6">
             <Button
               onClick={onClose}
               icon={<Undo2 className="w-5 h-5 " />}
               variant="secondary"
+              disabled={isDeleting}
             >
               Retour
             </Button>
-            <Button icon={<X className="w-5 h-5 " />} variant="secondary">
+            <Button
+              onClick={handleDelete}
+              icon={
+                isDeleting ? (
+                  <LoaderCircle className="w-5 h-5 animate-spin" />
+                ) : (
+                  <X className="w-5 h-5 " />
+                )
+              }
+              variant="secondary"
+              disabled={isDeleting}
+            >
               Supprimer
             </Button>
           </div>
