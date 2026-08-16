@@ -1,12 +1,9 @@
-import { RotateCw } from "lucide-react";
-
-// Types
-
 // Composants UI
 import Dialog from "@/components/ui/Dialog";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import Image from "next/image";
+import { Undo2, X } from "lucide-react";
 import { Game } from "@/types/game";
 
 interface DeleteDialogProps {
@@ -26,10 +23,10 @@ export default function DeleteDialog({
         {/* En-tête : Titre et message alternatif */}
 
         <div className="flex flex-col mb-4 shrink-0">
-          <Heading as="h2" size="lg" className="text-center !text-dialog-text">
+          <Heading as="h2" size="lg" className="text-center text-main">
             Suppression : {game.title}
           </Heading>
-          <p className="text-dialog-text text-center">
+          <p className=" text-center text-main">
             Êtes-vous sûr de vouloir supprimer ce jeu de votre collection ?
           </p>
         </div>
@@ -49,20 +46,15 @@ export default function DeleteDialog({
 
         {/* Btn de relance */}
         <div className="flex flex-col items-center gap-2 w-full max-w-lg mx-auto">
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-between w-full mt-6">
             <Button
               onClick={onClose}
-              icon={<RotateCw className="w-5 h-5 !border-dialog-text" />}
+              icon={<Undo2 className="w-5 h-5 " />}
               variant="secondary"
-              className="mt-6 !text-dialog-text !border-dialog-text"
             >
               Retour
             </Button>
-            <Button
-              icon={<RotateCw className="w-5 h-5 !border-dialog-text" />}
-              variant="secondary"
-              className="mt-6 !text-dialog-text !border-dialog-text"
-            >
+            <Button icon={<X className="w-5 h-5 " />} variant="secondary">
               Supprimer
             </Button>
           </div>

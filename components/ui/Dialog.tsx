@@ -34,7 +34,6 @@ export default function Dialog({
         className="fixed inset-0 bg-black/70 backdrop-blur-sm transition duration-300 ease-out data-[closed]:opacity-0"
       />
       <div className="fixed inset-0 z-10 overflow-y-auto flex min-h-full justify-center">
-        {/* Bouton sorti du DialogPanel : évite que le scale de la transition ne change son containing block */}
         <Button
           variant="secondary"
           onClick={onClose}

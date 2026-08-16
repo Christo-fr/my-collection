@@ -21,7 +21,7 @@ export default function AppBackground() {
 
   return (
     <div
-      className={`fixed inset-0 -z-20 pointer-events-none transition-opacity duration-500 ${isAdministration ? "opacity-15" : "opacity-30"}`}
+      className={`fixed inset-0 -z-20 pointer-events-none transition-opacity duration-500 opacity-30 `}
     >
       <Image
         src="/background/bg-modelight.webp"
