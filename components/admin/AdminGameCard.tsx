@@ -102,6 +102,7 @@ export default function AdminGameCard({
       <DeleteDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
+        game={game}
       ></DeleteDialog>
     </>
   );
