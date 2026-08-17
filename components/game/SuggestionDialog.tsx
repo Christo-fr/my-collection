@@ -107,7 +107,7 @@ export default function SuggestionDialog({
             onClick={onRePoll}
             icon={<RotateCw className="w-5 h-5 !border-dialog-text" />}
             variant="secondary"
-            className="w-full mt-6 !text-dialog-text !border-dialog-text"
+            className="w-full mt-6 !border-dialog-text !text-dialog-text  hover:!bg-primary hover:!text-background hover:!border-primary"
           >
             Une autre idée ?
           </Button>

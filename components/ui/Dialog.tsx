@@ -38,9 +38,9 @@ export default function Dialog({
           variant="secondary"
           onClick={onClose}
           size="sm"
-          className="fixed top-6 right-6 z-50 !border-dialog-text"
+          className="fixed top-6 right-6 z-50 !border-dialog-text !text-dialog-text  hover:!bg-primary hover:!text-background hover:!border-primary"
         >
-          <X className="w-6 h-6 text-white" />
+          <X className="w-6 h-6 " />
         </Button>
         <DialogPanel
           transition
