@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useGamesContext } from "@/components/providers/GamesProvider";
-import { getConsoleOptions } from "@/features/game/gameUtils";
+import { getConsoleTabs } from "@/features/game/gameUtils";
 import {
   getTopPodium,
   getRecordGames,
@@ -16,7 +16,7 @@ export function useStats() {
   // =============================================================
   // 1. RÉCUPÉRATION DES DONNÉES GLOBALES
   // =============================================================
-  const { games, loading } = useGamesContext();
+  const { games, consoles, loading } = useGamesContext();
 
   // =============================================================
   // 2. ÉTATS LOCAUX (FILTRES ET SÉLECTIONS)
@@ -27,7 +27,7 @@ export function useStats() {
   // =============================================================
   // 3. EXTRACTION DYNAMIQUE DES ONGLETS DE CONSOLE
   // =============================================================
-  const consoleTabs = useMemo(() => getConsoleOptions(games), [games]);
+  const consoleTabs = useMemo(() => getConsoleTabs(consoles), [consoles]);
 
   // =============================================================
   // 4. SOUS-ENSEMBLE DE JEUX FILTRÉS SELON LA CONSOLE

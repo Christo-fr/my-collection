@@ -29,7 +29,7 @@ export function useGames() {
   // 2. ÉTATS DU COMPOSANT (useState)
   // =============================================================
   // Données issues du provider GamesProvider (chargées depuis l'API)
-  const { games, loading } = useGamesContext();
+  const { games, consoles, loading } = useGamesContext();
 
   // Initialisation des filtres : si un paramètre existe déjà dans l'URL à l'arrivée,
   // on l'utilise direct comme valeur initiale, sinon on applique la valeur par défaut.
@@ -154,8 +154,8 @@ export function useGames() {
   // 2. Options dynamiques de Select : Extraient la liste unique des consoles/styles
   // Re-calculées UNIQUEMENT si la liste des jeux bruts change.
   const consoleOptions = useMemo(
-    () => gameUtils.getConsoleOptions(games),
-    [games],
+    () => gameUtils.getConsoleOptions(consoles),
+    [consoles],
   );
 
   const styleOptions = useMemo(() => gameUtils.getStyleOptions(games), [games]);

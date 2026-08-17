@@ -1,4 +1,5 @@
 import { Game } from "@/types/game";
+import { Console } from "@/types/console";
 
 // =============================================================
 // OPTIONS STATIQUES (Listes fixes)
@@ -53,21 +54,27 @@ export function getPlaytimeBounds(games: Game[]) {
   return { min: minEstimatedPlaytime, max: maxEstimatedPlaytime };
 }
 
-export function getConsoleOptions(games: Game[]) {
+export function getConsoleOptions(consoles: Console[]) {
   // 1. Options pour les Consoles
   const optionsConsole = [
     // Option par défaut pour désactiver le filtre
     { label: "Toutes", value: "Toutes" },
-    // 1. Premier .map() + Set : extraction et suppression des doublons
-    // 2. Second .map() : mise au format { label, value } pour le composant <Select />
-    ...Array.from(new Set(games.map((jeu) => jeu.console)))
-      .map((nomConsole) => ({
-        label: nomConsole,
-        value: nomConsole,
-      }))
-      .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
+    ...consoles.map((console) => ({
+      label: console.full_name || console.short_name,
+      value: console.short_name,
+    })),
   ];
   return optionsConsole;
+}
+
+export function getConsoleTabs(consoles: Console[]) {
+  return [
+    { label: "Toutes", value: "Toutes" },
+    ...consoles.map((c) => ({
+      label: c.short_name,
+      value: c.short_name,
+    })),
+  ];
 }
 
 export function getStyleOptions(games: Game[]) {
