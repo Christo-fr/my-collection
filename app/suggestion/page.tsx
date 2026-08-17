@@ -29,7 +29,8 @@ export default function Suggestion() {
   // =========================================================================
   // 1. HOOKS & ÉTATS LOCAUX
   // =========================================================================
-  const { bounds, consoleOptions, styleOptions, filters, setters } = useGames();
+  const { bounds, consoleOptions, styleOptions, filters, setters, loading } =
+    useGames();
   const { games: gamesList } = useGamesContext();
   const [result, setResult] = useState<SuggestionResult | null>(null);
 
@@ -54,48 +55,56 @@ export default function Suggestion() {
 
         {/* Panneau principal de filtres */}
         <section className="w-full xl:w-1/2 lg:h-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
-          <FilterPanel>
-            <p className="text-main/80 text-sm">
-              Pas d'idée pour votre prochaine session ? Ajustez vos critères
-              selon vos envies et on vous déniche la pépite idéale dans votre
-              collection !
-            </p>
-            <Select
-              label="Console"
-              options={consoleOptions}
-              selectedValue={filters.selectedConsole}
-              onChange={setters.setSelectedConsole}
-            />
-            <Select
-              label="Style"
-              options={styleOptions}
-              selectedValue={filters.selectedStyle}
-              onChange={setters.setSelectedStyle}
-            />
-            <Select
-              label="Statut"
-              options={OPTIONS_STATUS}
-              selectedValue={filters.selectedStatus}
-              onChange={setters.setSelectedStatus}
-            />
-            <RangeInput
-              label="Durée de vie maximale"
-              value={filters.maxDuration}
-              onChange={setters.setMaxDuration}
-              min={bounds.min}
-              max={bounds.max}
-              step={1}
-              unit="h"
-            />
-            <Button
-              onClick={handlePoll}
-              icon={<Sparkles className="w-5 h-5" />}
-              variant="secondary"
-              className="mt-8 w-full"
-            >
-              Surprenez-moi !
-            </Button>
-          </FilterPanel>
+          {loading ? (
+            <p className="p-8 text-gray-400">Chargement des jeux...</p>
+          ) : gamesList.length === 0 ? (
+            <p className="text-main/60 text-sm">Aucun jeu trouvé</p>
+          ) : (
+            <FilterPanel>
+              <p className="text-main/80 text-sm">
+                Pas d'idée pour votre prochaine session ? Ajustez vos critères
+                selon vos envies et on vous déniche la pépite idéale dans votre
+                collection !
+              </p>
+              <Select
+                label="Console"
+                options={consoleOptions}
+                selectedValue={filters.selectedConsole}
+                onChange={setters.setSelectedConsole}
+              />
+              <Select
+                label="Style"
+                options={styleOptions}
+                selectedValue={filters.selectedStyle}
+                onChange={setters.setSelectedStyle}
+              />
+              <Select
+                label="Statut"
+                options={OPTIONS_STATUS}
+                selectedValue={filters.selectedStatus}
+                onChange={setters.setSelectedStatus}
+              />
+              <RangeInput
+                label="Durée de vie maximale"
+                value={filters.maxDuration}
+                onChange={setters.setMaxDuration}
+                min={bounds.min}
+                max={bounds.max}
+                step={1}
+                unit="h"
+              />
+              {gamesList.length > 0 && (
+                <Button
+                  onClick={handlePoll}
+                  icon={<Sparkles className="w-5 h-5" />}
+                  variant="secondary"
+                  className="mt-8 w-full"
+                >
+                  Surprenez-moi !
+                </Button>
+              )}
+            </FilterPanel>
+          )}
         </section>
       </LayoutSplit>
 
