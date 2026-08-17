@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 
 // 2. Icônes & Drag and Drop (DndKit)
-import { Undo2, Gamepad } from "lucide-react";
+import { Undo2, Gamepad, LoaderCircle } from "lucide-react";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 
@@ -14,42 +14,39 @@ import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import FormError from "@/components/ui/FormError";
 import SortableConsoleItem from "@/components/admin/SortableConsoleItem";
+import { toast } from "sonner";
 
 // 4. Types & Utilitaires
 import { Console } from "@/types/console";
 import { useGamesContext } from "@/components/providers/GamesProvider";
-import { updateConsoleInList } from "@/features/admin/updateConsoles";
+import {
+  updateConsoleInList,
+  saveConsoles,
+} from "@/features/admin/updateConsoles";
 
+// =========================================================================
+// 2. COMPOSANT PRINCIPAL
+// =========================================================================
 export default function Consoles() {
-  // =========================================================================
-  // 1. HOOKS & ÉTATS LOCAUX
-  // =========================================================================
-
-  // Données brutes venues du Provider (la "source de vérité")
-  const { consoles: dbConsoles, loading } = useGamesContext();
-
-  // État local ("brouillon") pour les modifications et le réordonnancement
+  // --- A. Données du Context & États locaux ---
+  const { consoles: dbConsoles, loading, refetchConsoles } = useGamesContext();
   const [localConsoles, setLocalConsoles] = useState<Console[]>([]);
 
-  // États pour la gestion des erreurs de validation
+  // --- B. États d'UI (Chargement & Erreurs) ---
   const [formError, setFormError] = useState<string | null>(null);
   const [showErrors, setShowErrors] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
-  // =========================================================================
-  // 2. EFFETS (SYNCHRONISATION)
-  // =========================================================================
-
-  // Injection initiale : dés que dbConsoles est chargé depuis Supabase,
-  // on remplit notre état brouillon
+  // --- C. Synchronisation initiale avec la BDD ---
   useEffect(() => {
     setLocalConsoles(dbConsoles);
   }, [dbConsoles]);
 
   // =========================================================================
-  // 3. GESTIONNAIRES D'ÉVÉNEMENTS (HANDLERS)
+  // 3. HANDLERS (GESTIONNAIRES D'ÉVÉNEMENTS)
   // =========================================================================
 
-  // A. Drag & Drop : réordonne la liste locale au relâchement d'un élément
+  // A. Drag & Drop : Réordonnancement de la liste locale
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
@@ -57,59 +54,61 @@ export default function Consoles() {
       const oldIndex = localConsoles.findIndex((item) => item.id === active.id);
       const newIndex = localConsoles.findIndex((item) => item.id === over.id);
 
-      // 1. On déplace physiquement les éléments dans le tableau
       const reorderedList = arrayMove(localConsoles, oldIndex, newIndex);
 
-      // 2. On met à jour le display_order de chaque console (Ton code !)
-      const listWithNewOrder = reorderedList.map((console, index) => ({
-        ...console,
+      const listWithNewOrder = reorderedList.map((consoleItem, index) => ({
+        ...consoleItem,
         display_order: index + 1,
       }));
 
-      // 3. On sauvegarde ce nouveau tableau parfait dans notre brouillon
       setLocalConsoles(listWithNewOrder);
     }
   };
 
-  // B. Modification d'un champ (Nom, Diminutif, Checkbox, Image File)
+  // B. Modification d'un champ individuel (Nom, Diminutif, Logo, Checkbox)
   const updateConsoleField = (
     id: number,
     field: string,
     value: string | boolean | File,
   ) => {
-    const updateLocalConsole = localConsoles.map((consoleItem) => {
-      // 1. Est-ce que c'est la console qu'on est en train de modifier ?
-
-      if (consoleItem.id === id) {
-        return { ...consoleItem, [field]: value };
-      } else {
-        return consoleItem;
-      }
-    });
-
-    setLocalConsoles(updateLocalConsole);
+    setLocalConsoles((prevConsoles) =>
+      updateConsoleInList(prevConsoles, id, field, value),
+    );
   };
 
-  // C. Soumission et Validation du formulaire
-  const handleSave = () => {
+  // C. Soumission et sauvegarde globale
+  const handleSave = async () => {
     setFormError(null);
 
-    // Règle de validation : aucun diminutif ne doit être vide
+    // 1. Validation : vérifier que tous les diminutifs sont renseignés
     const hasInvalidConsole = localConsoles.some(
       (c) => !c.short_name || c.short_name.trim() === "",
     );
 
     if (hasInvalidConsole) {
-      setShowErrors(true); // Active la bordure rouge sur les Inputs concernés
+      setShowErrors(true);
       setFormError("Un ou plusieurs champs diminutif sont absents.");
       return;
     }
 
-    // TODO: Déclencher la sauvegarde Supabase via notre hook
+    // 2. Traitement de la sauvegarde
+    setIsSaving(true);
+    const result = await saveConsoles(localConsoles);
+
+    if (result.error) {
+      setShowErrors(true);
+      setFormError(result.error); // Corrigé : result.error est directement la chaîne de caractères
+    } else {
+      setShowErrors(false);
+      toast.success("Liste des consoles mise à jour avec succès !");
+      await refetchConsoles();
+    }
+
+    setIsSaving(false);
   };
 
   // =========================================================================
-  // 4. RENDU DU COMPOSANT (JSX)
+  // 4. RENDU UI (JSX)
   // =========================================================================
   return (
     <LayoutFull title="Gestion des consoles">
@@ -132,7 +131,7 @@ export default function Consoles() {
             </div>
           </div>
 
-          {/* Zone de Drag & Drop (Liste interactive) */}
+          {/* Zone de Drag & Drop (Liste des consoles) */}
           <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto h-auto lg:h-full overflow-x-hidden [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
             <DndContext onDragEnd={handleDragEnd}>
               <SortableContext items={localConsoles.map((c) => c.id)}>
@@ -152,9 +151,8 @@ export default function Consoles() {
             </DndContext>
           </div>
 
-          {/* Pied de page et Boutons d'action */}
+          {/* Pied de page (Message d'erreur & Boutons) */}
           <div className="flex flex-col px-2 lg:flex-shrink-0 pb-4">
-            {/* Affichage conditionnel de l'erreur globale */}
             {formError && (
               <div className="pt-2">
                 <FormError message={formError} />
@@ -172,7 +170,14 @@ export default function Consoles() {
               <Button
                 variant="secondary"
                 onClick={handleSave}
-                icon={<Gamepad className="w-5 h-5" />}
+                disabled={isSaving}
+                icon={
+                  isSaving ? (
+                    <LoaderCircle className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <Gamepad className="w-5 h-5" />
+                  )
+                }
               >
                 Sauvegarder
               </Button>
