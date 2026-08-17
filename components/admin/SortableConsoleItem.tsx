@@ -7,12 +7,18 @@ import Checkbox from "@/components/ui/Checkbox";
 
 interface SortableConsoleItemProps {
   id: number;
-  name: string;
+  shortName: string;
+  fullName?: string;
+  logoUrl?: string;
+  isBw: boolean;
 }
 
 export default function SortableConsoleItem({
   id,
-  name,
+  shortName,
+  fullName,
+  logoUrl,
+  isBw,
 }: SortableConsoleItemProps) {
   const {
     setNodeRef,
@@ -53,7 +59,7 @@ export default function SortableConsoleItem({
             <Input
               label="Diminutif*"
               placeholder="ex: PS5"
-              defaultValue="PS5"
+              defaultValue={shortName}
             />
           </div>
 
@@ -62,7 +68,7 @@ export default function SortableConsoleItem({
             <Input
               label="Nom complet*"
               placeholder="ex: PlayStation 5"
-              defaultValue={name}
+              defaultValue={fullName}
             />
           </div>
 
@@ -85,13 +91,19 @@ export default function SortableConsoleItem({
           {/* Prévisualisation Logo */}
           <div className="lg:col-span-1 flex self-start justify-center sm:pt-0">
             <div className="w-10 h-10 relative flex items-center justify-center p-1">
-              <Image
-                src="/icons/console/ps5.webp"
-                alt={name}
-                width={32}
-                height={32}
-                className="object-contain max-h-8"
-              />
+              {logoUrl ? (
+                <Image
+                  src={logoUrl}
+                  alt={shortName}
+                  width={32}
+                  height={32}
+                  className={`object-contain max-h-8  ${isBw && "dark:invert"}`}
+                />
+              ) : (
+                <span className="text-xs text-main/40 text-center leading-tight">
+                  Aucun logo
+                </span>
+              )}
             </div>
           </div>
         </div>

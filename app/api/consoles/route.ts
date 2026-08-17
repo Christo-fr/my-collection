@@ -1,28 +1,109 @@
-export const dynamic = "force-dynamic"; // Empeche Next.js de mettre l'API en cache statique
+export const dynamic = "force-dynamic";
+
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
 export async function GET() {
+  // =========================================================================
+  // 1. INITIALISATION DU CLIENT SUPABASE
+  // =========================================================================
   const supabase = await createClient();
 
-  // 1. On prépare la requête PostgreSQL de base
-  let query = supabase
+  // =========================================================================
+  // 2. RÉCUPÉRATION DES CONSOLES UTILISÉES DANS LA TABLE "GAMES"
+  // =========================================================================
+  const { data: gamesData, error: gamesError } = await supabase
+    .from("games")
+    .select("console");
+
+  if (gamesError) {
+    console.error("Erreur Supabase (games) :", gamesError.message);
+    return NextResponse.json(
+      { error: "Impossible de récupérer la liste des jeux" },
+      { status: 500 },
+    );
+  }
+
+  // Diminutifs uniques réellement attribués à au moins un jeu (ex: ["PS5", "Switch"])
+  const consolesInGames = Array.from(
+    new Set(gamesData.map((game) => game.console).filter(Boolean)),
+  );
+
+  // =========================================================================
+  // 3. RÉCUPÉRATION DU DICTIONNAIRE DANS LA TABLE "CONSOLES"
+  // =========================================================================
+  const { data: consolesInDb, error: consolesError } = await supabase
     .from("consoles")
     .select("*")
     .order("display_order", { ascending: true });
 
-  // 2. On exécute la requête auprès de Supabase
-  const { data, error } = await query;
-
-  // 3. Gestion d'erreur si la BDD ne répond pas
-  if (error) {
-    console.error("Erreur Supabase :", error.message);
+  if (consolesError) {
+    console.error("Erreur Supabase (consoles) :", consolesError.message);
     return NextResponse.json(
       { error: "Impossible de récupérer la liste des consoles" },
       { status: 500 },
     );
   }
 
-  // 4. On renvoie les données JSON lues en direct dans PostgreSQL
-  return NextResponse.json(data);
+  // =========================================================================
+  // 4. COMPARAISON ET DÉTECTION DES DÉCALAGES (AJOUTS / SUPPRESSIONS)
+  // =========================================================================
+  // À CRÉER : présent dans "games", mais absent de la table "consoles"
+  const consolesToAdd = consolesInGames.filter(
+    (shortName) => !consolesInDb.some((c) => c.short_name === shortName),
+  );
+
+  // À SUPPRIMER : présent dans la table "consoles", mais plus aucun jeu ne l'utilise
+  const consolesToDelete = consolesInDb.filter(
+    (console) =>
+      !consolesInGames.some((shortName) => shortName === console.short_name),
+  );
+
+  // =========================================================================
+  // 5. SYNCHRONISATION EN BDD (DELETE & INSERT) ET RETOUR JSON
+  // =========================================================================
+
+  // A. Suppression des consoles qui n'ont plus aucun jeu
+  if (consolesToDelete.length > 0) {
+    const idsToDelete = consolesToDelete.map((c) => c.id);
+    const { error: deleteError } = await supabase
+      .from("consoles")
+      .delete()
+      .in("id", idsToDelete);
+
+    if (deleteError) {
+      console.error("Erreur Supabase (delete) :", deleteError.message);
+    }
+  }
+
+  // B. Insertion des consoles manquantes
+  if (consolesToAdd.length > 0) {
+    const newConsolesToInsert = consolesToAdd.map((shortName, index) => ({
+      short_name: shortName,
+      full_name: shortName,
+      is_bw: false,
+      display_order: consolesInDb.length + index + 1,
+    }));
+
+    const { error: insertError } = await supabase
+      .from("consoles")
+      .insert(newConsolesToInsert);
+
+    if (insertError) {
+      console.error("Erreur Supabase (insert) :", insertError.message);
+    }
+  }
+
+  // C. Si une modification a eu lieu, on relit la BDD mise à jour
+  if (consolesToDelete.length > 0 || consolesToAdd.length > 0) {
+    const { data: updatedConsoles } = await supabase
+      .from("consoles")
+      .select("*")
+      .order("display_order", { ascending: true });
+
+    return NextResponse.json(updatedConsoles);
+  }
+
+  // D. Sinon, on renvoie la liste initiale
+  return NextResponse.json(consolesInDb);
 }

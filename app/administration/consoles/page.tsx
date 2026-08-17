@@ -1,7 +1,5 @@
 "use client";
-import { useState } from "react";
-import { useGames } from "@/features/game/useGames";
-
+import { useState, useEffect } from "react";
 import LayoutFull from "@/components/layout/LayoutFull";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
@@ -11,28 +9,32 @@ import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import SortableConsoleItem from "@/components/admin/SortableConsoleItem";
 
-export default function Console() {
+import { Console } from "@/types/console";
+import { useGamesContext } from "@/components/providers/GamesProvider";
+
+export default function Consoles() {
   // =========================================================================
   // 1. HOOKS & ÉTATS LOCAUX
   // =========================================================================
-  const { games, loading } = useGames();
+  // 2. On renomme la liste venant du Provider en "dbConsoles" (la source de vérité)
+  const { consoles: dbConsoles, loading } = useGamesContext();
+
+  // 3. On crée notre état "Brouillon" qu'on appelle "localConsoles"
+  const [localConsoles, setLocalConsoles] = useState<Console[]>([]);
+
+  // 4. Synchronisation : quand dbConsoles est chargé/modifié, on met à jour le brouillon
+  useEffect(() => {
+    setLocalConsoles(dbConsoles);
+  }, [dbConsoles]);
 
   // Clé composite pour rejouer l'animation de fondu à chaque changement de filtre
-
-  // State local pour la liste réordonnable
-  const [consoles, setConsoles] = useState([
-    { id: 1, name: "PlayStation 5" },
-    { id: 2, name: "Nintendo Switch" },
-    { id: 3, name: "PC" },
-    { id: 4, name: "Xbox Series X" },
-  ]);
 
   // Gestionnaire de fin de survol / déplacement
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
     if (over && active.id !== over.id) {
-      setConsoles((prevConsoles) => {
+      setLocalConsoles((prevConsoles) => {
         const oldIndex = prevConsoles.findIndex(
           (item) => item.id === active.id,
         );
@@ -48,9 +50,9 @@ export default function Console() {
   return (
     <LayoutFull title="Gestion des consoles">
       {loading ? (
-        <p className="p-8 text-gray-400">Chargement des jeux...</p>
-      ) : games.length === 0 ? (
-        <p className="text-main/60 text-sm">Aucun jeu trouvé</p>
+        <p className="p-8 text-gray-400">Chargement des consoles...</p>
+      ) : localConsoles.length === 0 ? (
+        <p className="text-main/60 text-sm">Aucune console trouvée</p>
       ) : (
         <>
           <section className="w-full flex flex-col h-auto lg:h-full min-h-0 overflow-x-hidden">
@@ -71,9 +73,16 @@ export default function Console() {
 
             <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto h-auto lg:h-full overflow-x-hidden [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
               <DndContext onDragEnd={handleDragEnd}>
-                <SortableContext items={consoles.map((c) => c.id)}>
-                  {consoles.map((c) => (
-                    <SortableConsoleItem key={c.id} id={c.id} name={c.name} />
+                <SortableContext items={localConsoles.map((c) => c.id)}>
+                  {localConsoles.map((c) => (
+                    <SortableConsoleItem
+                      key={c.id}
+                      id={c.id}
+                      shortName={c.short_name}
+                      fullName={c.full_name}
+                      logoUrl={c.logo_url}
+                      isBw={c.is_bw}
+                    />
                   ))}
                 </SortableContext>
               </DndContext>
