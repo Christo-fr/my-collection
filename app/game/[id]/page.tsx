@@ -33,7 +33,7 @@ export default function GameDetail() {
   // 1. HOOKS & ÉTATS LOCAUX
   // =========================================================================
   // Executive Hook : Récupère les données du jeu, les jeux connexes de la franchise et la fonction retour
-  const { game, relatedFranchiseGames, loading, handleBack } = useGameDetail();
+  const { game, relatedFranchiseGames, handleBack } = useGameDetail();
 
   // État local UI : Contrôle la visibilité du dialogue du trailer YouTube
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);

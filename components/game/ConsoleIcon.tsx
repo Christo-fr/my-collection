@@ -1,37 +1,27 @@
 "use client";
 
 import { useState } from "react";
-
-const CONSOLE_ICONS: Record<string, string> = {
-  GC: "/icons/console/gc.webp",
-  N64: "/icons/console/n64.webp",
-  PS3: "/icons/console/ps3.webp",
-  PS4: "/icons/console/ps4.webp",
-  PS5: "/icons/console/ps5.webp",
-  Switch: "/icons/console/switch.webp",
-  "Switch 2": "/icons/console/switch2.webp",
-  Wii: "/icons/console/wii.webp",
-  "Wii U": "/icons/console/wiiu.webp",
-};
+import { useGamesContext } from "@/components/providers/GamesProvider";
 
 export default function ConsoleIcon({
   console,
-  className,
+  className = "",
 }: {
   console: string;
   className?: string;
 }) {
-  // 1. Le state d'erreur
   const [hasError, setHasError] = useState(false);
+  const { consoles } = useGamesContext();
 
-  // 2. La recherche du chemin d'accès
-  const iconPath = CONSOLE_ICONS[console];
+  const currentConsole = consoles.find((c) => c.short_name === console);
 
-  return iconPath && !hasError ? (
+  // On vérifie aussi que logo_url existe bien
+  return currentConsole?.logo_url && !hasError ? (
     <img
-      src={iconPath}
-      alt={console}
-      className={`dark:invert ${className}`}
+      src={currentConsole.logo_url}
+      alt={currentConsole.full_name || currentConsole.short_name}
+      title={currentConsole.full_name || currentConsole.short_name}
+      className={`${currentConsole.is_bw ? "dark:invert" : ""} ${className}`}
       onError={() => setHasError(true)}
     />
   ) : (
