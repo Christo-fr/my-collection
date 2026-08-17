@@ -11,6 +11,7 @@ interface SortableConsoleItemProps {
   fullName?: string;
   logoUrl?: string;
   isBw: boolean;
+  onUpdate: (id: number, field: string, value: string | boolean | File) => void;
 }
 
 export default function SortableConsoleItem({
@@ -19,6 +20,7 @@ export default function SortableConsoleItem({
   fullName,
   logoUrl,
   isBw,
+  onUpdate,
 }: SortableConsoleItemProps) {
   const {
     setNodeRef,
@@ -59,7 +61,8 @@ export default function SortableConsoleItem({
             <Input
               label="Diminutif*"
               placeholder="ex: PS5"
-              defaultValue={shortName}
+              value={shortName}
+              onChange={(e) => onUpdate(id, "short_name", e.target.value)}
             />
           </div>
 
@@ -68,7 +71,8 @@ export default function SortableConsoleItem({
             <Input
               label="Nom complet"
               placeholder="ex: PlayStation 5"
-              defaultValue={fullName}
+              value={fullName}
+              onChange={(e) => onUpdate(id, "full_name", e.target.value)}
             />
           </div>
 
@@ -77,15 +81,29 @@ export default function SortableConsoleItem({
             <Input
               label="Logo de la console"
               type="file"
-              id={`logo-${id}`}
               name="logo"
               accept="image/png, image/jpeg, image/webp"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) {
+                  const previewUrl = URL.createObjectURL(file);
+
+                  // 1. Pour la prévisualisation immédiate
+                  onUpdate(id, "logo_url", previewUrl);
+                  // 2. Pour garder le fichier brut à envoyer à Supabase
+                  onUpdate(id, "file", file);
+                }
+              }}
             />
           </div>
 
           {/* Checkbox N/B */}
           <div className="lg:col-span-2 pt-2 sm:pt-0">
-            <Checkbox label="N/B ?" />
+            <Checkbox
+              label="N/B ?"
+              checked={isBw}
+              onChange={(checked) => onUpdate(id, "is_bw", checked)}
+            />
           </div>
 
           {/* Prévisualisation Logo */}

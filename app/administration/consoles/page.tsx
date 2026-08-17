@@ -11,6 +11,10 @@ import SortableConsoleItem from "@/components/admin/SortableConsoleItem";
 
 import { Console } from "@/types/console";
 import { useGamesContext } from "@/components/providers/GamesProvider";
+import {
+  updateConsoleInList,
+  saveConsoles,
+} from "@/features/admin/updateConsoles";
 
 export default function Consoles() {
   // =========================================================================
@@ -27,8 +31,6 @@ export default function Consoles() {
     setLocalConsoles(dbConsoles);
   }, [dbConsoles]);
 
-  // Clé composite pour rejouer l'animation de fondu à chaque changement de filtre
-
   // Gestionnaire de fin de survol / déplacement
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
@@ -44,6 +46,15 @@ export default function Consoles() {
       });
     }
   }
+
+  const updateConsoleField = (
+    id: number,
+    field: string,
+    value: string | boolean | File,
+  ) => {
+    setLocalConsoles(updateConsoleInList(localConsoles, id, field, value));
+  };
+
   // =========================================================================
   // 2. RENDU DU COMPOSANT
   // =========================================================================
@@ -82,6 +93,7 @@ export default function Consoles() {
                       fullName={c.full_name}
                       logoUrl={c.logo_url}
                       isBw={c.is_bw}
+                      onUpdate={updateConsoleField}
                     />
                   ))}
                 </SortableContext>

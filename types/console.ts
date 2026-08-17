@@ -5,4 +5,5 @@ export interface Console {
   logo_url?: string;
   is_bw: boolean;
   display_order: number;
+  logo_file?: File;
 }
