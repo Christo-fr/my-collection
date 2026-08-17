@@ -44,32 +44,33 @@ const GamesContext = createContext<GamesContextType | undefined>(undefined);
 export function GamesProvider({ children }: { children: ReactNode }) {
   const [games, setGames] = useState<Game[]>([]);
   const [consoles, setConsoles] = useState<Console[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loadingGames, setLoadingGames] = useState<boolean>(true);
+  const [loadingConsoles, setLoadingConsoles] = useState<boolean>(true);
 
   // Appel API pour récupérer les jeux.
   // useCallback évite de re-créer cette fonction à chaque rendu.
   const fetchGames = useCallback(async () => {
     try {
-      setLoading(true);
+      setLoadingGames(true);
       const reponse = await fetch("/api/games");
       const data: Game[] = await reponse.json();
       setGames(data);
     } catch (error) {
       console.error("Erreur lors de la récupération des jeux :", error);
     } finally {
-      setLoading(false);
+      setLoadingGames(false);
     }
   }, []);
   const fetchConsoles = useCallback(async () => {
     try {
-      setLoading(true);
+      setLoadingConsoles(true);
       const reponse = await fetch("/api/consoles");
       const data = await reponse.json();
       setConsoles(data);
     } catch (error) {
       console.error("Erreur lors de la récupération des consoles :", error);
     } finally {
-      setLoading(false);
+      setLoadingConsoles(false);
     }
   }, []);
 
@@ -94,7 +95,7 @@ export function GamesProvider({ children }: { children: ReactNode }) {
       value={{
         games,
         consoles,
-        loading,
+        loading: loadingGames || loadingConsoles,
         refetchGames: fetchGames,
         refetchConsoles: fetchConsoles,
         getGameById,
