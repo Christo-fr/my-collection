@@ -101,7 +101,7 @@ export default function Header() {
           {!isSignupPage && (
             <Button
               onClick={() => setIsModalOpen(true)}
-              className="lg:hidden text-main hover:text-hover transition-opacity p-2 focus:outline-none"
+              className="lg:hidden  transition-opacity p-2 focus:outline-none"
               aria-label="Ouvrir le menu"
               size="sm"
               variant="secondary"
@@ -127,13 +127,13 @@ export default function Header() {
                 onClick={
                   isLoggedIn ? handleLogout : () => router.push("/login")
                 }
-                className="text-main hover:text-hover transition-opacity p-2 focus:outline-none"
+                className="transition-opacity p-2 focus:outline-none"
                 aria-label="Authentification"
                 size="sm"
                 variant="secondary"
               >
                 {isLoggedIn ? (
-                  <LogOut className="w-6 h-6" aria-label="Se déconnecter" />
+                  <LogOut className="w-6 h-6 " aria-label="Se déconnecter" />
                 ) : (
                   <LogIn className="w-6 h-6" aria-label="Se connecter" />
                 )}
