@@ -88,11 +88,14 @@ export default function Consoles() {
               </DndContext>
             </div>
 
-            <div className="flex flex-col px-2 md:h-12 lg:flex-shrink-0">
+            <div className="flex flex-col px-2 lg:flex-shrink-0">
               {/* Message d'erreur global */}
-              <FormError message={""} />
 
-              <div className="w-full flex flex-row flex-wrap items-center justify-between items-baseline gap-2">
+              <div className="pt-4">
+                <FormError message={""} />
+              </div>
+
+              <div className="w-full flex flex-row flex-wrap items-center justify-between items-baseline gap-2 pt-4">
                 <Button
                   href="/administration"
                   variant="secondary"

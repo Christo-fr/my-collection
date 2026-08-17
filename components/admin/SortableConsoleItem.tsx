@@ -66,7 +66,7 @@ export default function SortableConsoleItem({
           {/* Nom complet */}
           <div className="lg:col-span-3">
             <Input
-              label="Nom complet*"
+              label="Nom complet"
               placeholder="ex: PlayStation 5"
               defaultValue={fullName}
             />
@@ -75,7 +75,7 @@ export default function SortableConsoleItem({
           {/* Upload Fichier */}
           <div className="lg:col-span-4">
             <Input
-              label="Logo de la console*"
+              label="Logo de la console"
               type="file"
               id={`logo-${id}`}
               name="logo"
@@ -89,7 +89,7 @@ export default function SortableConsoleItem({
           </div>
 
           {/* Prévisualisation Logo */}
-          <div className="lg:col-span-1 flex self-start justify-center sm:pt-0">
+          <div className="lg:col-span-1 flex self-center justify-center sm:pt-0">
             <div className="w-10 h-10 relative flex items-center justify-center p-1">
               {logoUrl ? (
                 <Image
@@ -97,7 +97,7 @@ export default function SortableConsoleItem({
                   alt={shortName}
                   width={32}
                   height={32}
-                  className={`object-contain max-h-8  ${isBw && "dark:invert"}`}
+                  className={`object-contain max-h-8  ${isBw === true && "dark:invert"}`}
                 />
               ) : (
                 <span className="text-xs text-main/40 text-center leading-tight">
