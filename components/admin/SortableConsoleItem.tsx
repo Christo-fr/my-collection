@@ -11,6 +11,7 @@ interface SortableConsoleItemProps {
   fullName?: string;
   logoUrl?: string;
   isBw: boolean;
+  showErrors?: boolean;
   onUpdate: (id: number, field: string, value: string | boolean | File) => void;
 }
 
@@ -21,6 +22,7 @@ export default function SortableConsoleItem({
   logoUrl,
   isBw,
   onUpdate,
+  showErrors,
 }: SortableConsoleItemProps) {
   const {
     setNodeRef,
@@ -63,6 +65,7 @@ export default function SortableConsoleItem({
               placeholder="ex: PS5"
               value={shortName}
               onChange={(e) => onUpdate(id, "short_name", e.target.value)}
+              error={showErrors && !shortName.trim() ? "Requis" : false}
             />
           </div>
 
@@ -71,7 +74,7 @@ export default function SortableConsoleItem({
             <Input
               label="Nom complet"
               placeholder="ex: PlayStation 5"
-              value={fullName}
+              value={fullName ?? ""}
               onChange={(e) => onUpdate(id, "full_name", e.target.value)}
             />
           </div>
