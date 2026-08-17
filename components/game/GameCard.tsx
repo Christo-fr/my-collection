@@ -33,7 +33,7 @@ export default function GameCard({
             ? "340px" // Correspond à la largeur réelle max de la carte dans la modal (max-w-[340px])
             : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
         }
-        quality={variant === "xl" ? 90 : 80}
+        quality={variant === "xl" ? 100 : 80}
         className="object-cover"
         priority={variant === "xl" || priority}
       />
