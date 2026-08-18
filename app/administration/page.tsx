@@ -83,8 +83,8 @@ export default function Administration() {
           </div>
           <div className="pr-2 pt-2 gap-4 text-main flex flex-col">
             <Button
+              href="/administration/add"
               variant="secondary"
-              href="/suggestion"
               icon={<FilePlus className="w-5 h-5" />}
             >
               Nouveau jeu
