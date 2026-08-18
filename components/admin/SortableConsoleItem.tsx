@@ -111,13 +111,14 @@ export default function SortableConsoleItem({
 
           {/* Prévisualisation Logo */}
           <div className="lg:col-span-1 flex self-center justify-center sm:pt-0">
-            <div className="w-10 h-10 relative flex items-center justify-center p-1">
+            <div className="w-12 h-12 relative flex items-center justify-center p-1">
               {logoUrl ? (
                 <Image
                   src={logoUrl}
                   alt={shortName}
-                  width={32}
-                  height={32}
+                  width={48}
+                  height={48}
+                  sizes="64px"
                   className={`object-contain max-h-8  ${isBw === true && "dark:invert"}`}
                 />
               ) : (

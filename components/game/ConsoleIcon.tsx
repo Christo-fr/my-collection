@@ -25,6 +25,6 @@ export default function ConsoleIcon({
       onError={() => setHasError(true)}
     />
   ) : (
-    <span>{console}</span>
+    <span className={` ${className}`}>{console}</span>
   );
 }

@@ -42,7 +42,7 @@ export default function GameCard({
       <div className="absolute top-2.5 left-2.5 bg-background/20 backdrop-blur-sm rounded-md p-1 font-bold text-main uppercase text-xs">
         <ConsoleIcon
           console={game.console}
-          className={` ${variant === "xl" ? "h-5" : "h-2.5"} w-auto object-contain`}
+          className={` ${variant === "xl" ? "h-5 text-[20px]" : "h-2.5 text-[10px]"} w-auto object-contain`}
         />
       </div>
 
