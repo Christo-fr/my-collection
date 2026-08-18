@@ -5,6 +5,7 @@
 // =========================================================================
 import { useState } from "react";
 import { Game } from "@/types/game";
+import { createClient } from "@/lib/supabase/client";
 
 interface GameFormProps {
   mode: "insert" | "update";
@@ -15,6 +16,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   // =========================================================================
   // 2. ÉTATS DU FORMULAIRE (STATES)
   // =========================================================================
+  const supabase = createClient();
 
   // --- A. Métadonnées (Informations) ---
   const [title, setTitle] = useState<string>(editGame?.title || "");
@@ -47,6 +49,32 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   );
   const [description, setDescription] = useState<string>(
     editGame?.description || "",
+  );
+
+  // --- A.2 Images (Informations) ---
+
+  const [uploadCover, setUploadCover] = useState<File | null>(null);
+  const [urlCover, setUrlCover] = useState<string>(
+    editGame?.images?.cover || "",
+  );
+
+  const [uploadLogo, setUploadLogo] = useState<File | null>(null);
+  const [urlLogo, setUrlLogo] = useState<string>(editGame?.images?.logo || "");
+
+  const [uploadParallax, setUploadParallax] = useState<File | null>(null);
+  const [urlParallax, setUrlParallax] = useState<string>(
+    editGame?.images?.parallax?.url || "",
+  );
+  const [parallaxTruncated, setParallaxTruncated] = useState<boolean>(
+    editGame?.images?.parallax?.truncated || false,
+  );
+
+  const [logoSourceType, setLogoSourceType] = useState<"file" | "url">("file");
+  const [coverSourceType, setCoverSourceType] = useState<"file" | "url">(
+    "file",
+  );
+  const [parallaxSourceType, setParallaxSourceType] = useState<"file" | "url">(
+    "file",
   );
 
   // --- B. Critique (Avis) ---
@@ -102,6 +130,43 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     setCons(cons.filter((_, index) => index !== indexToDelete));
   };
 
+  /**
+   * Upload une image dans un bucket Supabase Storage et retourne son URL publique.
+   * @param file Le fichier issu du champ <input type="file" />
+   * @param bucket Le nom du bucket Supabase ("logos", "covers" ou "parallaxes")
+   */
+  const uploadImageToSupabase = async (file: File, bucket: string) => {
+    // 1. HORODATAGE : On crée un nom unique (ex: "1723456789-mon_image.png")
+    // Date.now() renvoie le nombre de millisecondes actuelles, garantissant l'unicité du fichier.
+    const fileName = `${Date.now()}-${file.name}`;
+
+    // 2. TÉLÉVERSEMENT : On envoie le fichier binaire sur les serveurs de Supabase.
+    // supabase.storage.from() cible le bon bucket.
+    // .upload() prend le chemin visé (fileName) et le fichier brut.
+    const { data, error } = await supabase.storage
+      .from(bucket)
+      .upload(fileName, file);
+
+    // 3. SÉCURITÉ : Si Supabase renvoie une erreur (permissions, quota, réseau),
+    // on l'affiche en console et on stoppe la fonction en renvoyant null.
+    if (error) {
+      console.error(
+        `Erreur d'upload sur le bucket "${bucket}" :`,
+        error.message,
+      );
+      return null;
+    }
+
+    // 4. CONVERSION EN URL : L'upload a réussi ! 'data.path' contient le chemin relatif.
+    // .getPublicUrl() convertit ce chemin en une URL HTTP utilisable sur le web.
+    const { data: urlData } = supabase.storage
+      .from(bucket)
+      .getPublicUrl(data.path);
+
+    // 5. RETOUR : On renvoie l'URL publique sous forme de string (ex: "https://...supabase.co/.../image.png")
+    return urlData.publicUrl;
+  };
+
   // =========================================================================
   // 4. SOUMISSION DU FORMULAIRE (SUBMIT)
   // =========================================================================
@@ -135,6 +200,16 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     selectedPegi,
     estimatedPlaytime,
     description,
+    uploadCover,
+    urlCover,
+    uploadLogo,
+    urlLogo,
+    uploadParallax,
+    urlParallax,
+    parallaxTruncated,
+    logoSourceType,
+    coverSourceType,
+    parallaxSourceType,
     completedDate,
     playtime,
     score,
@@ -156,6 +231,16 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     setSelectedPegi,
     setEstimatedPlaytime,
     setDescription,
+    setLogoSourceType,
+    setCoverSourceType,
+    setParallaxSourceType,
+    setUploadCover,
+    setUrlCover,
+    setUploadLogo,
+    setUrlLogo,
+    setUploadParallax,
+    setUrlParallax,
+    setParallaxTruncated,
     setCompletedDate,
     setPlaytime,
     setScore,

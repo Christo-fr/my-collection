@@ -10,6 +10,7 @@ import Textarea from "@/components/ui/Textarea";
 import Checkbox from "@/components/ui/Checkbox";
 import FormError from "@/components/ui/FormError";
 import Tabs from "@/components/ui/Tabs";
+import ImageInput from "@/components/admin/ImageInput";
 import { useGameForm } from "@/features/admin/useGameForm";
 import { Undo2, FilePlus, WandSparkles, Plus, X, Save } from "lucide-react";
 
@@ -35,6 +36,16 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     selectedPegi,
     estimatedPlaytime,
     description,
+    uploadCover,
+    urlCover,
+    uploadLogo,
+    urlLogo,
+    uploadParallax,
+    urlParallax,
+    parallaxTruncated,
+    logoSourceType,
+    coverSourceType,
+    parallaxSourceType,
     completedDate,
     playtime,
     score,
@@ -54,6 +65,16 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     setSelectedPegi,
     setEstimatedPlaytime,
     setDescription,
+    setUploadCover,
+    setUrlCover,
+    setUploadLogo,
+    setUrlLogo,
+    setUploadParallax,
+    setUrlParallax,
+    setParallaxTruncated,
+    setLogoSourceType,
+    setCoverSourceType,
+    setParallaxSourceType,
     setCompletedDate,
     setPlaytime,
     setScore,
@@ -246,49 +267,40 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
             <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
               <div className="grid gap-2 mb-4">
                 <div>
-                  <Input
+                  <ImageInput
                     label="Logo*"
-                    type="file"
-                    name="logo"
-                    accept="image/png, image/jpeg, image/webp"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        URL.createObjectURL(file);
-                      }
-                    }}
+                    uploadFile={uploadLogo}
+                    onUploadChange={setUploadLogo}
+                    urlValue={urlLogo}
+                    onUrlChange={setUrlLogo}
+                    sourceType={logoSourceType}
+                    onSourceTypeChange={setLogoSourceType}
                   />
                 </div>
                 <div>
-                  <Input
+                  <ImageInput
                     label="Cover*"
-                    type="file"
-                    name="cover"
-                    accept="image/png, image/jpeg, image/webp"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        URL.createObjectURL(file);
-                      }
-                    }}
+                    uploadFile={uploadCover}
+                    onUploadChange={setUploadCover}
+                    urlValue={urlCover}
+                    onUrlChange={setUrlCover}
+                    sourceType={coverSourceType}
+                    onSourceTypeChange={setCoverSourceType}
                   />
                 </div>
                 <div>
-                  <Input
+                  <ImageInput
                     label="Parallax*"
-                    type="file"
-                    name="parallax"
-                    accept="image/png, image/jpeg, image/webp"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        URL.createObjectURL(file);
-                      }
-                    }}
+                    uploadFile={uploadParallax}
+                    onUploadChange={setUploadParallax}
+                    urlValue={urlParallax}
+                    onUrlChange={setUrlParallax}
+                    sourceType={parallaxSourceType}
+                    onSourceTypeChange={setParallaxSourceType}
+                    showTruncateCheckbox
+                    isTruncated={parallaxTruncated}
+                    onTruncateChange={setParallaxTruncated}
                   />
-                  <div className="mt-2">
-                    <Checkbox label="Tronqué ?" onChange={() => {}} />
-                  </div>
                 </div>
               </div>
             </div>
