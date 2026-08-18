@@ -287,11 +287,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     }}
                   />
                   <div className="mt-2">
-                    <Checkbox
-                      label="Tronqué ?"
-                      checked={false}
-                      onChange={() => {}}
-                    />
+                    <Checkbox label="Tronqué ?" onChange={() => {}} />
                   </div>
                 </div>
               </div>

@@ -19,7 +19,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && <Label label={label} />}
         <HeadlessInput
           name={label}
-          className={`w-full rounded-lg bg-main/5 px-3 py-2 text-sm text-main outline-none transition-all
+          className={`w-full rounded-xl bg-main/5 px-3.5 py-2.5 text-sm text-main outline-none transition-all
             placeholder:text-main/40 border border-main/20
             data-[hover]:bg-main/10
             data-[focus]:border-accent data-[focus]:ring-1 data-[focus]:ring-accent
