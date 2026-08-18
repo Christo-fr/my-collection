@@ -67,11 +67,30 @@ export async function GET() {
   if (consolesToDelete.length > 0) {
     for (const consoleItem of consolesToDelete) {
       if (consoleItem.logo_url) {
-        const fileName = consoleItem.logo_url.split("/").pop();
+        try {
+          const cleanUrl = consoleItem.logo_url.split("?")[0];
+          const match = cleanUrl.match(
+            /\/storage\/v1\/object\/public\/([^/]+)\/(.+)$/,
+          );
 
-        if (fileName) {
-          // <-- Ici : on cible directement le bucket "consoles"
-          await supabase.storage.from("consoles").remove([fileName]);
+          if (match) {
+            const targetBucket = match[1]; // "consoles" ou "logos"
+            const rawFilePath = match[2];
+            const filePath = decodeURIComponent(rawFilePath);
+
+            const { error: removeError } = await supabase.storage
+              .from(targetBucket)
+              .remove([filePath]);
+
+            if (removeError) {
+              console.error(
+                `[Route Sync Error] Suppression ${targetBucket}/${filePath} :`,
+                removeError.message,
+              );
+            }
+          }
+        } catch (err) {
+          console.warn("[Route Sync] Erreur lors du nettoyage Storage :", err);
         }
       }
     }
