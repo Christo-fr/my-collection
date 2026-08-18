@@ -82,10 +82,10 @@ export default function Combobox({
             }}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={placeholder}
-            className={`w-full py-2.5 pl-3.5 pr-10 rounded-xl border bg-background/20 backdrop-blur-sm text-sm text-main focus:outline-none transition-all ${
+            className={`w-full py-2.5 pl-3.5 pr-10 rounded-xl border bg-main/5 text-sm text-main focus:outline-none transition-all ${
               error
                 ? "border-red-500/50 focus:border-red-500"
-                : "border-main/10 focus:border-main/30"
+                : "border-main/20 focus:border-accent"
             }`}
           />
 

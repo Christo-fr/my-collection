@@ -21,7 +21,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <HeadlessCheckbox
           checked={checked}
           onChange={onChange}
-          className="group block size-4 rounded border  data-checked:bg-primary"
+          className="group block size-4 rounded-md border border-main/20 bg-main/5 outline-none transition-all cursor-pointer data-[focus]:border-accent data-[focus]:ring-2 data-[focus]:ring-accent/20 data-checked:bg-accent data-checked:border-accent"
           ref={ref}
           {...props}
         >

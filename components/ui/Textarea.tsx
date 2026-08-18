@@ -21,9 +21,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           name={label}
           rows={4}
           className={`
-            w-full rounded-lg bg-main/10 px-3 py-2 text-sm text-main outline-none transition-all
-            placeholder:text-main/40 border border-transparent
-            data-[hover]:bg-main/15
+            w-full rounded-lg bg-main/5 px-3 py-2 text-sm text-main outline-none transition-all
+            placeholder:text-main/40 border border-main/20
+            data-[hover]:bg-main/10
             data-[focus]:border-accent data-[focus]:ring-1 data-[focus]:ring-accent
             data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed
             ${error ? "border-red-500/50 focus:border-red-500" : ""}
