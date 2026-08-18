@@ -47,7 +47,7 @@ export default function Select({
       <Listbox value={selectedValue} onChange={onChange}>
         {/* 'group' permet à la flèche interne de réagir à l'état data-[open] du bouton */}
         <ListboxButton
-          className={`relative group w-full flex items-center justify-between px-3.5 py-2.5 text-sm rounded-xl border border-main/20 bg-main/5 text-main outline-none transition-all cursor-pointer data-[focus]:border-accent data-[focus]:ring-2 data-[focus]:ring-accent/20 ${className}`}
+          className={`relative group w-full flex items-center justify-between px-3.5 py-2.5 text-sm rounded-xl border border-main/20 bg-main/5 text-main outline-none transition-all cursor-pointer data-[hover]:bg-main/10 data-[focus]:border-accent data-[focus]:ring-2 data-[focus]:ring-accent/20 ${className}`}
         >
           {/* Libellé ou Placeholder si aucune valeur sélectionnée */}
           <span className={!selectedOption ? "text-main/40" : ""}>
