@@ -32,11 +32,20 @@ export async function saveConsoles(consoles: Console[]) {
     const fileToUpload = item.file || item.logo_file;
 
     if (fileToUpload) {
+      // A. Nettoyage : si une image existait déjà, on supprime l'ancien fichier
+      if (item.logo_url) {
+        const oldFileName = item.logo_url.split("/").pop();
+        if (oldFileName) {
+          await supabase.storage.from("consoles").remove([oldFileName]);
+        }
+      }
+
+      // B. Upload de la nouvelle image dans le bucket "consoles"
       const fileExt = fileToUpload.name.split(".").pop();
       const filePath = `${item.short_name.toLowerCase()}-${Date.now()}.${fileExt}`;
 
       const { error: uploadError } = await supabase.storage
-        .from("logos")
+        .from("consoles") // <-- Bucket corrigé
         .upload(filePath, fileToUpload, { upsert: true });
 
       if (uploadError) {
@@ -44,8 +53,9 @@ export async function saveConsoles(consoles: Console[]) {
         return { success: false, error: uploadError.message };
       }
 
+      // C. Récupération de la nouvelle URL publique
       const { data: urlData } = supabase.storage
-        .from("logos")
+        .from("consoles") // <-- Bucket corrigé
         .getPublicUrl(filePath);
 
       finalLogoUrl = urlData.publicUrl;

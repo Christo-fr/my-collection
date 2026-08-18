@@ -65,7 +65,19 @@ export async function GET() {
 
   // A. Suppression des consoles qui n'ont plus aucun jeu
   if (consolesToDelete.length > 0) {
+    for (const consoleItem of consolesToDelete) {
+      if (consoleItem.logo_url) {
+        const fileName = consoleItem.logo_url.split("/").pop();
+
+        if (fileName) {
+          // <-- Ici : on cible directement le bucket "consoles"
+          await supabase.storage.from("consoles").remove([fileName]);
+        }
+      }
+    }
+
     const idsToDelete = consolesToDelete.map((c) => c.id);
+
     const { error: deleteError } = await supabase
       .from("consoles")
       .delete()
