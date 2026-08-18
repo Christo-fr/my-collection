@@ -119,7 +119,8 @@ export default function SortableConsoleItem({
                   width={48}
                   height={48}
                   sizes="64px"
-                  className={`object-contain max-h-8  ${isBw === true && "dark:invert"}`}
+                  // logoUrl est une blob: URL tant que le nouveau fichier n'a pas été uploadé sur Supabase
+                  className={`object-contain max-h-8 ${logoUrl.startsWith("blob:") ? "border-2 border-emerald-500 rounded" : ""} ${isBw === true && "dark:invert"}`}
                 />
               ) : (
                 <span className="text-xs text-main/40 text-center leading-tight">
