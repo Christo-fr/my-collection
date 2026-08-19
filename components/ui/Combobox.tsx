@@ -25,6 +25,7 @@ export interface ComboboxProps {
   onChange: (value: string) => void;
   placeholder?: string;
   className?: string;
+  isAi?: boolean;
 }
 
 export default function Combobox({
@@ -36,6 +37,7 @@ export default function Combobox({
   onChange,
   className = "",
   placeholder = "Sélectionner ou saisir...",
+  isAi,
 }: ComboboxProps) {
   // query Stocke uniquement le texte tapé dans le champ de recherche par l'utilisateur.
   const [query, setQuery] = useState("");
@@ -85,7 +87,9 @@ export default function Combobox({
             className={`w-full py-2.5 pl-3.5 pr-10 rounded-xl border bg-main/5 text-sm text-main focus:outline-none transition-all data-[hover]:bg-main/10 ${
               error
                 ? "border-red-500/50 focus:border-red-500"
-                : "border-main/20 focus:border-accent"
+                : isAi
+                  ? "border-cyan-500/50 focus:border-cyan-500"
+                  : "border-main/20 focus:border-accent"
             }`}
           />
 

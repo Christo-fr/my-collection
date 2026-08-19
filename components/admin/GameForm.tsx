@@ -80,10 +80,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     // --- E. Gestion des Erreurs ---
     formError,
     fieldErrors,
-    clearFieldError,
 
     // --- F. AI ---
     isGeneratingAI,
+    fieldAIGenerated,
 
     // --- G. Setters ---
     setTitle,
@@ -117,6 +117,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     setSummary,
 
     // --- G. Handlers d'actions ---
+    clearField,
     handleAddPro,
     handleUpdatePro,
     handleDeletePro,
@@ -174,7 +175,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     value={title}
                     onChange={(e) => {
                       setTitle(e.target.value);
-                      clearFieldError("title");
+                      clearField("title");
                     }}
                     error={fieldErrors.title}
                   />
@@ -186,9 +187,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     selectedValue={selectedFranchise}
                     onChange={(val) => {
                       setSelectedFranchise(val);
-                      clearFieldError("selectedFranchise");
+                      clearField("selectedFranchise");
                     }}
                     error={fieldErrors.selectedFranchise}
+                    isAi={!!fieldAIGenerated.selectedFranchise}
                   />
                 </div>
                 <div>
@@ -198,9 +200,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     selectedValue={selectedConsole}
                     onChange={(val) => {
                       setSelectedConsole(val);
-                      clearFieldError("selectedConsole");
+                      clearField("selectedConsole");
                     }}
                     error={fieldErrors.selectedConsole}
+                    isAi={!!fieldAIGenerated.selectedConsole}
                   />
                 </div>
                 <div>
@@ -210,9 +213,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     selectedValue={selectedSupport}
                     onChange={(val) => {
                       setSelectedSupport(val);
-                      clearFieldError("selectedSupport");
+                      clearField("selectedSupport");
                     }}
                     error={fieldErrors.selectedSupport}
+                    isAi={!!fieldAIGenerated.selectedSupport}
                   />
                 </div>
                 <div>
@@ -222,9 +226,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     value={youtubeId}
                     onChange={(e) => {
                       setYoutubeId(e.target.value);
-                      clearFieldError("youtubeId");
+                      clearField("youtubeId");
                     }}
                     error={fieldErrors.youtubeId}
+                    isAi={!!fieldAIGenerated.youtubeId}
                   />
                 </div>
               </div>
@@ -238,9 +243,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     selectedValue={selectedDeveloper}
                     onChange={(val) => {
                       setSelectedDeveloper(val);
-                      clearFieldError("selectedDeveloper");
+                      clearField("selectedDeveloper");
                     }}
                     error={fieldErrors.selectedDeveloper}
+                    isAi={!!fieldAIGenerated.selectedDeveloper}
                   />
                 </div>
                 <div>
@@ -250,9 +256,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     selectedValue={selectedLanguage}
                     onChange={(val) => {
                       setSelectedLanguage(val);
-                      clearFieldError("selectedLanguage");
+                      clearField("selectedLanguage");
                     }}
                     error={fieldErrors.selectedLanguage}
+                    isAi={!!fieldAIGenerated.selectedLanguage}
                   />
                 </div>
                 <div>
@@ -262,9 +269,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     value={releaseDate}
                     onChange={(e) => {
                       setReleaseDate(e.target.value);
-                      clearFieldError("releaseDate");
+                      clearField("releaseDate");
                     }}
                     error={fieldErrors.releaseDate}
+                    isAi={!!fieldAIGenerated.releaseDate}
                   />
                 </div>
                 <div>
@@ -274,9 +282,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     selectedValue={selectedGenre}
                     onChange={(val) => {
                       setSelectedGenre(val);
-                      clearFieldError("selectedGenre");
+                      clearField("selectedGenre");
                     }}
                     error={fieldErrors.selectedGenre}
+                    isAi={!!fieldAIGenerated.selectedGenre}
                   />
                 </div>
                 <div>
@@ -286,9 +295,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     selectedValue={selectedPegi.toString()}
                     onChange={(val) => {
                       setSelectedPegi(Number(val));
-                      clearFieldError("selectedPegi");
+                      clearField("selectedPegi");
                     }}
                     error={fieldErrors.selectedPegi}
+                    isAi={!!fieldAIGenerated.selectedPegi}
                   />
                 </div>
                 <div>
@@ -299,9 +309,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     value={estimatedPlaytime}
                     onChange={(e) => {
                       setEstimatedPlaytime(Number(e.target.value));
-                      clearFieldError("estimatedPlaytime");
+                      clearField("estimatedPlaytime");
                     }}
                     error={fieldErrors.estimatedPlaytime}
+                    isAi={!!fieldAIGenerated.estimatedPlaytime}
                   />
                 </div>
               </div>
@@ -314,9 +325,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     value={description}
                     onChange={(e) => {
                       setDescription(e.target.value);
-                      clearFieldError("description");
+                      clearField("description");
                     }}
                     error={fieldErrors.description}
+                    isAi={!!fieldAIGenerated.description}
                     rows={4}
                   />
                 </div>
@@ -343,12 +355,12 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     uploadFile={uploadLogo}
                     onUploadChange={(file) => {
                       setUploadLogo(file);
-                      clearFieldError("logo");
+                      clearField("logo");
                     }}
                     urlValue={urlLogo}
                     onUrlChange={(url) => {
                       setUrlLogo(url);
-                      clearFieldError("logo");
+                      clearField("logo");
                     }}
                     sourceType={logoSourceType}
                     onSourceTypeChange={setLogoSourceType}
@@ -361,12 +373,12 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     uploadFile={uploadCover}
                     onUploadChange={(file) => {
                       setUploadCover(file);
-                      clearFieldError("cover");
+                      clearField("cover");
                     }}
                     urlValue={urlCover}
                     onUrlChange={(url) => {
                       setUrlCover(url);
-                      clearFieldError("cover");
+                      clearField("cover");
                     }}
                     sourceType={coverSourceType}
                     onSourceTypeChange={setCoverSourceType}
@@ -379,12 +391,12 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     uploadFile={uploadParallax}
                     onUploadChange={(file) => {
                       setUploadParallax(file);
-                      clearFieldError("parallax");
+                      clearField("parallax");
                     }}
                     urlValue={urlParallax}
                     onUrlChange={(url) => {
                       setUrlParallax(url);
-                      clearFieldError("parallax");
+                      clearField("parallax");
                     }}
                     sourceType={parallaxSourceType}
                     onSourceTypeChange={setParallaxSourceType}
@@ -427,7 +439,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                   value={completedDate}
                   onChange={(e) => {
                     setCompletedDate(e.target.value);
-                    clearFieldError("completedDate");
+                    clearField("completedDate");
                   }}
                   error={fieldErrors.completedDate}
                 />
@@ -441,7 +453,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     setPlaytime(
                       e.target.value === "" ? null : Number(e.target.value),
                     );
-                    clearFieldError("playtime");
+                    clearField("playtime");
                   }}
                   error={fieldErrors.playtime}
                 />
@@ -456,7 +468,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     setScore(
                       e.target.value === "" ? null : Number(e.target.value),
                     );
-                    clearFieldError("score");
+                    clearField("score");
                   }}
                   error={fieldErrors.score}
                 />
@@ -614,6 +626,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
           <Button
             type="submit"
             variant="secondary"
+            disabled={isGeneratingAI}
             icon={
               mode === "insert" ? (
                 <FilePlus className="w-5 h-5" />

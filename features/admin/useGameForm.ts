@@ -115,6 +115,9 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   // --- E. Génération IA ---
+  const [fieldAIGenerated, setFieldAIGenerated] = useState<
+    Record<string, boolean>
+  >({});
   const [isGeneratingAI, setIsGeneratingAI] = useState<boolean>(false);
 
   // =========================================================================
@@ -173,46 +176,33 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   };
 
   // =========================================================================
-  // 6. TRAITEMENT DES ERREURS
+  // 6. TRAITEMENT DES ENCARTS ERREURS ET IA
   // =========================================================================
-  /**
-   * Supprime l'erreur d'un champ spécifique dès que l'utilisateur commence à le corriger.
-   * @param fieldKey Le nom de la clé d'erreur à effacer (ex: "title", "selectedConsole")
-   */
-  const clearFieldError = (fieldKey: string) => {
-    // 1. Utilisation de 'prev' dans le setter :
-    // En React, les mises à jour d'état ne sont pas instantanées.
-    // Passer une fonction à 'setFieldErrors' avec 'prev' nous garantit
-    // qu'on travaille sur la version la plus RÉCENTE et exacte de 'fieldErrors'.
+  const clearField = (fieldKey: string) => {
+    // 1. Supprime l'erreur rouge sur le champ
     setFieldErrors((prev) => {
-      // 2. Copie de l'objet (...prev) :
-      // Règle d'or en React : on ne modifie jamais l'état original directement (immuabilité).
-      // On crée donc un nouvel objet 'nextErrors' qui duplique le contenu de 'prev'.
       const nextErrors = { ...prev };
-
-      // 3. Utilisation de 'delete' :
-      // 'delete' est l'opérateur natif de JavaScript conçu pour SUPPRIMER une propriété dans un objet.
-      // Ici, il retire la clé correspondant à 'fieldKey' (ex: delete nextErrors["title"]).
       delete nextErrors[fieldKey];
-
-      // 4. Nettoyage de l'erreur globale :
-      // Si 'nextErrors' ne contient plus aucune clé (sa longueur est 0),
-      // cela signifie que toutes les erreurs ont été corrigées. On remet donc 'formError' à null.
       if (Object.keys(nextErrors).length === 0) {
         setFormError(null);
       }
-
-      // 5. Retour du nouvel état :
-      // On renvoie la copie nettoyée à React pour mettre à jour l'affichage.
       return nextErrors;
+    });
+
+    // 2. Supprime la surbrillance cyan sur le champ
+    setFieldAIGenerated((prev) => {
+      const nextAIGenerated = { ...prev };
+      delete nextAIGenerated[fieldKey];
+      return nextAIGenerated;
     });
   };
 
   // =========================================================================
-  // 7.GESTION DE LA GÉNÉRATION IA (GEMINI)
+  // 7. GESTION DE LA GÉNÉRATION IA (GEMINI)
   // =========================================================================
   const handleGenerateAI = async () => {
     const cleanTitle = title.trim();
+    setFieldAIGenerated({});
 
     // 1. Validation du titre
     if (!cleanTitle) {
@@ -250,42 +240,65 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
         throw new Error(data.error || "Erreur lors de la génération IA.");
       }
 
+      // Initialisation du dictionnaire local pour capturer les champs mis à jour par l'IA
+      const newAiFields: Record<string, boolean> = {};
+
       // 3. Remplissage CONDITIONNEL (uniquement si le champ est vide)
       if (data.developer && !selectedDeveloper) {
         setSelectedDeveloper(data.developer);
+        newAiFields.selectedDeveloper = true;
       }
 
       if (data.console && !selectedConsole) {
         setSelectedConsole(data.console);
+        newAiFields.selectedConsole = true;
       }
+
       if (data.genre && !selectedGenre) {
         setSelectedGenre(data.genre);
+        newAiFields.selectedGenre = true;
       }
+
       if (data.language && !selectedLanguage) {
         setSelectedLanguage(data.language);
+        newAiFields.selectedLanguage = true;
       }
+
       if (data.releaseDate && !releaseDate) {
         setReleaseDate(data.releaseDate);
+        newAiFields.releaseDate = true;
       }
+
       if (data.description && !description) {
         setDescription(data.description);
+        newAiFields.description = true;
       }
+
       if (data.franchise && !selectedFranchise) {
         setSelectedFranchise(data.franchise);
+        newAiFields.selectedFranchise = true;
       }
+
       if (data.youtubeId && !youtubeId) {
         setYoutubeId(data.youtubeId);
+        newAiFields.youtubeId = true;
       }
+
       if (data.pegi && (selectedPegi === 3 || !selectedPegi)) {
         setSelectedPegi(Number(data.pegi));
+        newAiFields.selectedPegi = true;
       }
+
       if (
         data.estimatedPlaytime &&
         (estimatedPlaytime === 1 || !estimatedPlaytime)
       ) {
         setEstimatedPlaytime(Number(data.estimatedPlaytime));
+        newAiFields.estimatedPlaytime = true;
       }
 
+      // Mise à jour globale de l'état IA
+      setFieldAIGenerated(newAiFields);
       setFieldErrors({});
     } catch (error: any) {
       console.error("Erreur génération IA :", error);
@@ -302,6 +315,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   // =========================================================================
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFieldAIGenerated({});
 
     // -----------------------------------------------------------------------
     // A. SANITISATION DES DONNÉES EN ENTRÉE
@@ -479,6 +493,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     genreOptions,
     formError,
     fieldErrors,
+    fieldAIGenerated,
 
     // Setters
     setTitle,
@@ -514,7 +529,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     setFieldErrors,
 
     // Handlers
-    clearFieldError,
+    clearField,
     handleAddPro,
     handleUpdatePro,
     handleDeletePro,

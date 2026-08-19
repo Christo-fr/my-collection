@@ -10,32 +10,33 @@ import Description from "@/components/ui/Description";
 import Label from "@/components/ui/Label";
 
 export interface SelectOption {
-  label: string; // Ce qu'on affiche à l'écran (ex: "Nintendo Switch")
-  value: string; // La valeur stockée en DB/State (ex: "switch")
+  label: string;
+  value: string;
 }
 
 export interface SelectProps {
   label?: string;
   description?: string;
   error?: string;
-  options: SelectOption[]; // Liste des options disponibles
+  options: SelectOption[];
   selectedValue: string;
   onChange: (value: string) => void;
   className?: string;
   placeholder?: string;
+  isAi?: boolean;
 }
 
 export default function Select({
   label,
   description,
   error,
+  isAi,
   options,
   selectedValue,
   onChange,
   className = "",
   placeholder = "Sélectionner...",
 }: SelectProps) {
-  // On retrouve l'option sélectionnée pour afficher son libellé
   const selectedOption = options.find(
     (option) => option.value === selectedValue,
   );
@@ -45,9 +46,17 @@ export default function Select({
       {label && <Label label={label} />}
 
       <Listbox value={selectedValue} onChange={onChange}>
-        {/* 'group' permet à la flèche interne de réagir à l'état data-[open] du bouton */}
         <ListboxButton
-          className={`relative group w-full flex items-center justify-between px-3.5 py-2.5 text-sm rounded-xl border border-main/20 bg-main/5 text-main outline-none transition-all cursor-pointer data-[hover]:bg-main/10 data-[focus]:border-accent data-[focus]:ring-2 data-[focus]:ring-accent/20 ${className}`}
+          className={`relative group w-full flex items-center justify-between px-3.5 py-2.5 text-sm rounded-xl border bg-main/5 text-main outline-none transition-all cursor-pointer 
+            data-[hover]:bg-main/10 data-[focus]:border-accent data-[focus]:ring-2 data-[focus]:ring-accent/20 
+            ${
+              error
+                ? "border-red-500/50 focus:border-red-500"
+                : isAi
+                  ? "border-cyan-500/50 focus:border-cyan-500"
+                  : "border-main/20"
+            } 
+            ${className}`}
         >
           {/* Libellé ou Placeholder si aucune valeur sélectionnée */}
           <span className={!selectedOption ? "text-main/40" : ""}>
@@ -60,13 +69,13 @@ export default function Select({
 
         <ListboxOptions
           anchor="bottom start"
-          className="w-[var(--button-width)] z-50 bg-background/50 backdrop-blur-md border border-main/10 rounded-xl p-1 shadow-xl mt-1 focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 !max-h-100  overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]"
+          className="w-[var(--button-width)] z-50 bg-background/50 backdrop-blur-md border border-main/10 rounded-xl p-1 shadow-xl mt-1 focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 !max-h-100 overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]"
         >
           {options.map((option) => (
             <ListboxOption
               key={option.value}
               value={option.value}
-              className="flex items-center  justify-between px-3 py-2 text-sm rounded-lg cursor-pointer transition-colors text-main/80 data-[focus]:bg-accent data-[focus]:text-hover data-[selected]:font-semibold data-[selected]:text-accent"
+              className="flex items-center justify-between px-3 py-2 text-sm rounded-lg cursor-pointer transition-colors text-main/80 data-[focus]:bg-accent data-[focus]:text-hover data-[selected]:font-semibold data-[selected]:text-accent"
             >
               {option.label}
             </ListboxOption>
