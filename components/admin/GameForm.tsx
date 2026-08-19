@@ -287,12 +287,8 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     onUrlChange={setUrlLogo}
                     sourceType={logoSourceType}
                     onSourceTypeChange={setLogoSourceType}
+                    error={fieldErrors.logo}
                   />
-                  {fieldErrors.logo && (
-                    <p className="text-xs text-red-500 mt-1">
-                      {fieldErrors.logo}
-                    </p>
-                  )}
                 </div>
                 <div>
                   <ImageInput
@@ -303,12 +299,8 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     onUrlChange={setUrlCover}
                     sourceType={coverSourceType}
                     onSourceTypeChange={setCoverSourceType}
+                    error={fieldErrors.cover}
                   />
-                  {fieldErrors.cover && (
-                    <p className="text-xs text-red-500 mt-1">
-                      {fieldErrors.cover}
-                    </p>
-                  )}
                 </div>
                 <div>
                   <ImageInput
@@ -322,12 +314,8 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     showTruncateCheckbox
                     isTruncated={parallaxTruncated}
                     onTruncateChange={setParallaxTruncated}
+                    error={fieldErrors.parallax}
                   />
-                  {fieldErrors.parallax && (
-                    <p className="text-xs text-red-500 mt-1">
-                      {fieldErrors.parallax}
-                    </p>
-                  )}
                 </div>
               </div>
             </div>

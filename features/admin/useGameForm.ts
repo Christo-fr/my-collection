@@ -184,6 +184,8 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     const cleanLanguage = selectedLanguage.trim();
     const cleanGenre = selectedGenre.trim();
     const cleanDescription = description.trim();
+    const cleanFranchise = selectedFranchise.trim();
+    const cleanYoutubeId = youtubeId.trim();
     const cleanPros = pros.map((p) => p.trim()).filter(Boolean);
     const cleanCons = cons.map((c) => c.trim()).filter(Boolean);
 
@@ -194,8 +196,15 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     // -----------------------------------------------------------------------
     if (!cleanTitle) newErrors.title = "Le titre est obligatoire";
     if (!cleanConsole) newErrors.selectedConsole = "La console est obligatoire";
+    if (!cleanFranchise)
+      newErrors.selectedFranchise = "La franchise est obligatoire";
+    if (!cleanYoutubeId)
+      newErrors.youtubeId = "L'ID vidéo YouTube est obligatoire";
     if (!cleanDeveloper)
       newErrors.selectedDeveloper = "Le développeur est obligatoire";
+    if (!selectedSupport)
+      newErrors.selectedSupport = "Le support est obligatoire";
+    if (!selectedPegi) newErrors.selectedPegi = "Le PEGI est obligatoire";
     if (!cleanLanguage)
       newErrors.selectedLanguage = "La langue est obligatoire";
     if (!cleanGenre) newErrors.selectedGenre = "Le genre est obligatoire";

@@ -47,7 +47,11 @@ export default function ImageInput({
   const hasActiveValue = Boolean(previewUrl);
 
   return (
-    <div className="flex flex-col gap-2 p-3 bg-main/5 rounded-xl border border-main/10">
+    <div
+      className={`flex flex-col gap-2 p-3 bg-main/5 rounded-xl border transition-color ${
+        error ? "border-red-500/80 bg-red-500/5" : "border-main/10 bg-main/5"
+      }`}
+    >
       <TabGroup
         selectedIndex={selectedIndex}
         onChange={(index) => {
