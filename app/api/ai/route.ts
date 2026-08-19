@@ -117,8 +117,7 @@ Règles de formatage strictes :
     ) {
       return NextResponse.json(
         {
-          error:
-            "Quota de l'API Gemini temporairement dépassé. Patientez une minute avant de réessayer.",
+          error: "Quota de l'API Gemini dépassé pour aujourd'hui.",
         },
         { status: 429 },
       );

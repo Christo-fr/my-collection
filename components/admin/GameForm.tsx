@@ -80,6 +80,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     // --- E. Gestion des Erreurs ---
     formError,
     fieldErrors,
+    isSaving,
 
     // --- F. AI ---
     isGeneratingAI,
@@ -626,18 +627,22 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
           <Button
             type="submit"
             variant="secondary"
-            disabled={isGeneratingAI}
+            disabled={isGeneratingAI || isSaving}
             icon={
-              mode === "insert" ? (
+              isSaving ? (
+                <LoaderCircle className="w-5 h-5 animate-spin" />
+              ) : mode === "insert" ? (
                 <FilePlus className="w-5 h-5" />
               ) : (
                 <Save className="w-5 h-5" />
               )
             }
           >
-            {mode === "insert"
-              ? "Ajouter un jeu"
-              : "Enregistrer les modifications"}
+            {isSaving
+              ? "Enregistrement..."
+              : mode === "insert"
+                ? "Ajouter un jeu"
+                : "Editer"}
           </Button>
         </div>
       </div>
