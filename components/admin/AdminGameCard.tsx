@@ -13,6 +13,8 @@ interface GameCardProps {
 export default function AdminGameCard({ game, priority }: GameCardProps) {
   // State local pour valider le Dialog
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [coverLoaded, setCoverLoaded] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
 
   return (
     <>
@@ -32,8 +34,11 @@ export default function AdminGameCard({ game, priority }: GameCardProps) {
             fill
             sizes="(max-width: 640px) 60vw, 50vw"
             quality={80}
-            className="object-cover object-left opacity-50"
+            className={`object-cover object-left transition-opacity duration-500 ease-out ${
+              coverLoaded ? "opacity-50" : "opacity-0"
+            }`}
             priority={priority}
+            onLoad={() => setCoverLoaded(true)}
           />
         </div>
         {/* COUCHE 2 : Contenu (Logo, Titre, Actions) */}
@@ -47,7 +52,10 @@ export default function AdminGameCard({ game, priority }: GameCardProps) {
                   alt={game.title}
                   fill
                   sizes="(max-width: 640px) 80px, 112px"
-                  className="object-contain object-center"
+                  className={`object-contain object-center transition-opacity duration-500 ease-out ${
+                    logoLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                  onLoad={() => setLogoLoaded(true)}
                 />
               </div>
             )}

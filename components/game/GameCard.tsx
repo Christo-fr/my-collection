@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Game } from "@/types/game";
 import Image from "next/image";
@@ -15,6 +18,9 @@ export default function GameCard({
   variant = "default",
   priority = false,
 }: GameCardProps) {
+  const [coverLoaded, setCoverLoaded] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
+
   return (
     <Link
       href={`/game/${game.id}`}
@@ -34,8 +40,11 @@ export default function GameCard({
             : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
         }
         quality={variant === "xl" ? 100 : 80}
-        className="object-cover"
+        className={`object-cover transition-opacity duration-500 ease-out ${
+          coverLoaded ? "opacity-100" : "opacity-0"
+        }`}
         priority={variant === "xl" || priority}
+        onLoad={() => setCoverLoaded(true)}
       />
 
       {/* Pill Console */}
@@ -57,7 +66,10 @@ export default function GameCard({
               alt={game.title}
               fill
               sizes="(max-width: 640px) 50vw, 20vw"
-              className="object-contain"
+              className={`object-contain transition-opacity duration-500 ease-out ${
+                logoLoaded ? "opacity-100" : "opacity-0"
+              }`}
+              onLoad={() => setLogoLoaded(true)}
             />
           </div>
         ) : (
