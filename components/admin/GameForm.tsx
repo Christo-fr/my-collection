@@ -1,5 +1,8 @@
 "use client";
 
+// =========================================================================
+// 1. IMPORTS & TYPAGE
+// =========================================================================
 import { Game } from "@/types/game";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
@@ -20,9 +23,10 @@ interface GameFormProps {
 
 export default function GameForm({ mode, editGame }: GameFormProps) {
   // =========================================================================
-  // 1. HOOKS & OPTIONS LOCALES
+  // 2. EXTRACTION DU HOOK (ÉSTATS, HANDLERS & ERREURS)
   // =========================================================================
   const {
+    // --- A. Métadonnées ---
     title,
     selectedFranchise,
     selectedConsole,
@@ -35,6 +39,8 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     selectedPegi,
     estimatedPlaytime,
     description,
+
+    // --- B. Images ---
     uploadCover,
     urlCover,
     uploadLogo,
@@ -45,12 +51,16 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     logoSourceType,
     coverSourceType,
     parallaxSourceType,
+
+    // --- C. Avis & Critiques ---
     completedDate,
     playtime,
     score,
     pros,
     cons,
     summary,
+
+    // --- D. Options dynamiques des listes ---
     OPTIONS_PEGI,
     OPTIONS_SUPPORT,
     franchiseOptions,
@@ -58,7 +68,12 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     developerOptions,
     languageOptions,
     genreOptions,
+
+    // --- E. Gestion des Erreurs ---
     formError,
+    fieldErrors,
+
+    // --- F. Setters ---
     setTitle,
     setSelectedFranchise,
     setSelectedConsole,
@@ -87,6 +102,8 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     setPros,
     setCons,
     setSummary,
+
+    // --- G. Handlers d'actions ---
     handleAddPro,
     handleUpdatePro,
     handleDeletePro,
@@ -100,11 +117,14 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
   // 3. STRUCTURE DES ONGLETS (TABS)
   // =========================================================================
   const formTabs = [
+    // -----------------------------------------------------------------------
+    // ONGLET 1 : INFORMATIONS (MÉTADONNÉES & IMAGES)
+    // -----------------------------------------------------------------------
     {
       label: "Informations",
       content: (
         <div className="w-full flex-1 min-h-0 flex flex-col lg:flex-row gap-4">
-          {/* Section Métadonnées */}
+          {/* Bloc A : Métadonnées du jeu */}
           <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
             <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
               <Heading
@@ -128,7 +148,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     placeholder="Le nom du jeu"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    error=""
+                    error={fieldErrors.title}
                   />
                 </div>
                 <div>
@@ -137,7 +157,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     options={franchiseOptions}
                     selectedValue={selectedFranchise}
                     onChange={setSelectedFranchise}
-                    error=""
+                    error={fieldErrors.selectedFranchise}
                   />
                 </div>
                 <div>
@@ -146,7 +166,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     options={consoleOptions}
                     selectedValue={selectedConsole}
                     onChange={setSelectedConsole}
-                    error=""
+                    error={fieldErrors.selectedConsole}
                   />
                 </div>
                 <div>
@@ -155,7 +175,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     options={OPTIONS_SUPPORT}
                     selectedValue={selectedSupport}
                     onChange={(val) => setSelectedSupport(val)}
-                    error=""
+                    error={fieldErrors.selectedSupport}
                   />
                 </div>
                 <div>
@@ -164,7 +184,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     placeholder="YoutubeID"
                     value={youtubeId}
                     onChange={(e) => setYoutubeId(e.target.value)}
-                    error=""
+                    error={fieldErrors.youtubeId}
                   />
                 </div>
               </div>
@@ -177,7 +197,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     options={developerOptions}
                     selectedValue={selectedDeveloper}
                     onChange={setSelectedDeveloper}
-                    error=""
+                    error={fieldErrors.selectedDeveloper}
                   />
                 </div>
                 <div>
@@ -186,7 +206,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     options={languageOptions}
                     selectedValue={selectedLanguage}
                     onChange={setSelectedLanguage}
-                    error=""
+                    error={fieldErrors.selectedLanguage}
                   />
                 </div>
                 <div>
@@ -195,7 +215,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     type="date"
                     value={releaseDate}
                     onChange={(e) => setReleaseDate(e.target.value)}
-                    error=""
+                    error={fieldErrors.releaseDate}
                   />
                 </div>
                 <div>
@@ -204,7 +224,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     options={genreOptions}
                     selectedValue={selectedGenre}
                     onChange={setSelectedGenre}
-                    error=""
+                    error={fieldErrors.selectedGenre}
                   />
                 </div>
                 <div>
@@ -213,7 +233,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     options={OPTIONS_PEGI}
                     selectedValue={selectedPegi.toString()}
                     onChange={(val) => setSelectedPegi(Number(val))}
-                    error=""
+                    error={fieldErrors.selectedPegi}
                   />
                 </div>
                 <div>
@@ -225,7 +245,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     onChange={(e) =>
                       setEstimatedPlaytime(Number(e.target.value))
                     }
-                    error=""
+                    error={fieldErrors.estimatedPlaytime}
                   />
                 </div>
               </div>
@@ -237,7 +257,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Description*"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    error=""
+                    error={fieldErrors.description}
                     rows={4}
                   />
                 </div>
@@ -245,7 +265,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
             </div>
           </section>
 
-          {/* Section Images */}
+          {/* Bloc B : Gestion des Visuels */}
           <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
             <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
               <Heading
@@ -268,6 +288,11 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     sourceType={logoSourceType}
                     onSourceTypeChange={setLogoSourceType}
                   />
+                  {fieldErrors.logo && (
+                    <p className="text-xs text-red-500 mt-1">
+                      {fieldErrors.logo}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <ImageInput
@@ -279,6 +304,11 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     sourceType={coverSourceType}
                     onSourceTypeChange={setCoverSourceType}
                   />
+                  {fieldErrors.cover && (
+                    <p className="text-xs text-red-500 mt-1">
+                      {fieldErrors.cover}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <ImageInput
@@ -293,6 +323,11 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     isTruncated={parallaxTruncated}
                     onTruncateChange={setParallaxTruncated}
                   />
+                  {fieldErrors.parallax && (
+                    <p className="text-xs text-red-500 mt-1">
+                      {fieldErrors.parallax}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -300,11 +335,15 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
         </div>
       ),
     },
+
+    // -----------------------------------------------------------------------
+    // ONGLET 2 : AVIS (MÉTRIQUES, POINTS FORTS/FAIBLES & BILAN)
+    // -----------------------------------------------------------------------
     {
       label: "Avis",
       content: (
         <div className="w-full flex-1 min-h-0 flex flex-col lg:flex-row gap-4">
-          {/* Section Métriques Avis */}
+          {/* Bloc A : Métriques de complétion */}
           <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
             <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
               <Heading
@@ -323,16 +362,20 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     type="date"
                     value={completedDate}
                     onChange={(e) => setCompletedDate(e.target.value)}
-                    error=""
+                    error={fieldErrors.completedDate}
                   />
                   <div>
                     <Input
                       label="Temps de jeu (en heures)"
                       type="number"
                       min="1"
-                      value={playtime?.toString()}
-                      onChange={(e) => setPlaytime(Number(e.target.value))}
-                      error=""
+                      value={playtime?.toString() || ""}
+                      onChange={(e) =>
+                        setPlaytime(
+                          e.target.value === "" ? null : Number(e.target.value),
+                        )
+                      }
+                      error={fieldErrors.playtime}
                     />
                   </div>
                   <div>
@@ -341,9 +384,13 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                       type="number"
                       min="0"
                       max="10"
-                      value={score?.toString()}
-                      onChange={(e) => setScore(Number(e.target.value))}
-                      error=""
+                      value={score?.toString() || ""}
+                      onChange={(e) =>
+                        setScore(
+                          e.target.value === "" ? null : Number(e.target.value),
+                        )
+                      }
+                      error={fieldErrors.score}
                     />
                   </div>
                 </div>
@@ -351,7 +398,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
             </div>
           </section>
 
-          {/* Section Critique (Pros / Cons / Bilan) */}
+          {/* Bloc B : Critiques rédigées */}
           <section className="w-full lg:w-3/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
             <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
               <Heading
@@ -364,7 +411,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
             </div>
             <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
               <div className="grid md:grid-cols-2 gap-2 mb-4">
-                {/* Liste des Points Forts */}
+                {/* Liste dynamique des Points Forts */}
                 <div>
                   <div className="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-main/10">
                     <div className="text-xs font-medium text-main/80 px-0.5">
@@ -408,7 +455,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                   </ul>
                 </div>
 
-                {/* Liste des Points Faibles */}
+                {/* Liste dynamique des Points Faibles */}
                 <div>
                   <div className="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-main/10">
                     <div className="text-xs font-medium text-main/80 px-0.5">
@@ -452,13 +499,13 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                   </ul>
                 </div>
 
-                {/* Bilan Globale */}
+                {/* Bilan Global */}
                 <div className="md:col-span-2">
                   <Textarea
                     label="Bilan"
                     value={summary}
                     onChange={(e) => setSummary(e.target.value)}
-                    error=""
+                    error={fieldErrors.summary}
                     rows={5}
                   />
                 </div>
@@ -471,17 +518,17 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
   ];
 
   // =========================================================================
-  // 4. RENDU UI (FORMULAIRE)
+  // 4. RENDU UI (FORMULAIRE & ACTION BAR)
   // =========================================================================
   return (
     <form
       onSubmit={handleSubmit}
       className="flex-1 min-h-0 flex flex-col gap-4"
     >
-      {/* 1. Les Onglets */}
+      {/* 1. Onglets principaux */}
       <Tabs items={formTabs} className="p-2" />
 
-      {/* 2. Pied de page (Message d'erreur & Boutons) */}
+      {/* 2. Pied de page (Erreurs globales & Actions) */}
       <div className="flex flex-col px-2 lg:flex-shrink-0 pb-4">
         {formError && (
           <div className="pt-2">

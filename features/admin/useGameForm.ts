@@ -20,20 +20,22 @@ interface GameFormProps {
 }
 
 export function useGameForm({ mode, editGame }: GameFormProps) {
-  // 1. Récupération des données du Context
+  // =========================================================================
+  // 2. CONTEXTE & OPTIONS DYNAMIQUES
+  // =========================================================================
   const { games, consoles } = useGamesContext();
 
-  // 2. Options dynamiques pour les Combobox
   const franchiseOptions = getUniqueGameOptions(games, "franchise");
   const consoleOptions = getConsoleFormOptions(consoles);
   const developerOptions = getUniqueGameOptions(games, "developer");
   const languageOptions = getUniqueGameOptions(games, "language");
   const genreOptions = getUniqueGameOptions(games, "genre");
 
-  // =========================================================================
-  // 2. ÉTATS DU FORMULAIRE (STATES)
-  // =========================================================================
   const supabase = createClient();
+
+  // =========================================================================
+  // 3. ÉTATS DU FORMULAIRE (STATES)
+  // =========================================================================
 
   // --- A. Métadonnées (Informations) ---
   const [title, setTitle] = useState<string>(editGame?.title || "");
@@ -47,7 +49,6 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     editGame?.format || "Physical",
   );
   const [youtubeId, setYoutubeId] = useState<string>(editGame?.youtubeId || "");
-
   const [selectedDeveloper, setSelectedDeveloper] = useState<string>(
     editGame?.developer || "",
   );
@@ -68,8 +69,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     editGame?.description || "",
   );
 
-  // --- A.2 Images (Informations) ---
-
+  // --- B. Visuels (Images) ---
   const [uploadCover, setUploadCover] = useState<File | null>(null);
   const [urlCover, setUrlCover] = useState<string>(
     editGame?.images?.cover || "",
@@ -94,7 +94,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     "file",
   );
 
-  // --- B. Critique (Avis) ---
+  // --- C. Critique (Avis) ---
   const [completedDate, setCompletedDate] = useState<string>(
     editGame?.review?.completedDate || "",
   );
@@ -110,17 +110,16 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     editGame?.review?.summary || "",
   );
 
-  // --- C. Erreurs ---
+  // --- D. Gestion des Erreurs ---
   const [formError, setFormError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   // =========================================================================
-  // 3. GESTIONNAIRES DE LISTES DYNAMIQUES (PROS & CONS)
+  // 4. GESTIONNAIRES DE LISTES DYNAMIQUES (PROS & CONS)
   // =========================================================================
 
-  // --- A. Points Forts (Pros) ---
-  const handleAddPro = () => {
-    setPros([...pros, ""]);
-  };
+  // --- Points Forts (Pros) ---
+  const handleAddPro = () => setPros([...pros, ""]);
 
   const handleUpdatePro = (indexToUpdate: number, newValue: string) => {
     setPros(
@@ -132,10 +131,8 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     setPros(pros.filter((_, index) => index !== indexToDelete));
   };
 
-  // --- B. Points Faibles (Cons) ---
-  const handleAddCon = () => {
-    setCons([...cons, ""]);
-  };
+  // --- Points Faibles (Cons) ---
+  const handleAddCon = () => setCons([...cons, ""]);
 
   const handleUpdateCon = (indexToUpdate: number, newValue: string) => {
     setCons(
@@ -147,25 +144,16 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     setCons(cons.filter((_, index) => index !== indexToDelete));
   };
 
-  /**
-   * Upload une image dans un bucket Supabase Storage et retourne son URL publique.
-   * @param file Le fichier issu du champ <input type="file" />
-   * @param bucket Le nom du bucket Supabase ("logos", "covers" ou "parallaxes")
-   */
+  // =========================================================================
+  // 5. HELPER UPLOAD SUPABASE STORAGE
+  // =========================================================================
   const uploadImageToSupabase = async (file: File, bucket: string) => {
-    // 1. HORODATAGE : On crée un nom unique (ex: "1723456789-mon_image.png")
-    // Date.now() renvoie le nombre de millisecondes actuelles, garantissant l'unicité du fichier.
     const fileName = `${Date.now()}-${file.name}`;
 
-    // 2. TÉLÉVERSEMENT : On envoie le fichier binaire sur les serveurs de Supabase.
-    // supabase.storage.from() cible le bon bucket.
-    // .upload() prend le chemin visé (fileName) et le fichier brut.
     const { data, error } = await supabase.storage
       .from(bucket)
       .upload(fileName, file);
 
-    // 3. SÉCURITÉ : Si Supabase renvoie une erreur (permissions, quota, réseau),
-    // on l'affiche en console et on stoppe la fonction en renvoyant null.
     if (error) {
       console.error(
         `Erreur d'upload sur le bucket "${bucket}" :`,
@@ -174,34 +162,117 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
       return null;
     }
 
-    // 4. CONVERSION EN URL : L'upload a réussi ! 'data.path' contient le chemin relatif.
-    // .getPublicUrl() convertit ce chemin en une URL HTTP utilisable sur le web.
     const { data: urlData } = supabase.storage
       .from(bucket)
       .getPublicUrl(data.path);
 
-    // 5. RETOUR : On renvoie l'URL publique sous forme de string (ex: "https://...supabase.co/.../image.png")
     return urlData.publicUrl;
   };
 
   // =========================================================================
-  // 4. SOUMISSION DU FORMULAIRE (SUBMIT)
+  // 6. SOUMISSION & VALIDATION DU FORMULAIRE (SUBMIT)
   // =========================================================================
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // 1. Sanitisation des tableaux (retrait des espaces & entrées vides)
-    const cleanPros = pros.map((pro) => pro.trim()).filter((pro) => pro !== "");
-    const cleanCons = cons.map((con) => con.trim()).filter((con) => con !== "");
+    // -----------------------------------------------------------------------
+    // A. SANITISATION DES DONNÉES EN ENTRÉE
+    // -----------------------------------------------------------------------
+    const cleanTitle = title.trim();
+    const cleanConsole = selectedConsole.trim();
+    const cleanDeveloper = selectedDeveloper.trim();
+    const cleanLanguage = selectedLanguage.trim();
+    const cleanGenre = selectedGenre.trim();
+    const cleanDescription = description.trim();
+    const cleanPros = pros.map((p) => p.trim()).filter(Boolean);
+    const cleanCons = cons.map((c) => c.trim()).filter(Boolean);
 
-    // 2. Sanitisation des valeurs numériques
-    const cleanScore = score !== null && !isNaN(score) ? score : null;
+    const newErrors: Record<string, string> = {};
 
-    // TODO: Traitement BDD Supabase (étape suivante)
+    // -----------------------------------------------------------------------
+    // B. VALIDATION DES CHAMPS TEXTES OBLIGATOIRES
+    // -----------------------------------------------------------------------
+    if (!cleanTitle) newErrors.title = "Le titre est obligatoire";
+    if (!cleanConsole) newErrors.selectedConsole = "La console est obligatoire";
+    if (!cleanDeveloper)
+      newErrors.selectedDeveloper = "Le développeur est obligatoire";
+    if (!cleanLanguage)
+      newErrors.selectedLanguage = "La langue est obligatoire";
+    if (!cleanGenre) newErrors.selectedGenre = "Le genre est obligatoire";
+    if (!cleanDescription)
+      newErrors.description = "La description est obligatoire";
+
+    // -----------------------------------------------------------------------
+    // C. VALIDATION DES DATES ET MÉTRIQUES OBLIGATOIRES
+    // -----------------------------------------------------------------------
+    if (!releaseDate || isNaN(Date.parse(releaseDate))) {
+      newErrors.releaseDate = "La date de sortie est invalide ou manquante";
+    }
+
+    if (
+      !estimatedPlaytime ||
+      isNaN(estimatedPlaytime) ||
+      estimatedPlaytime < 1
+    ) {
+      newErrors.estimatedPlaytime = "Durée estimée invalide (1 h min.)";
+    }
+
+    // -----------------------------------------------------------------------
+    // D. VALIDATION DES VISUELS (FICHIER OU URL)
+    // -----------------------------------------------------------------------
+    const hasLogo =
+      logoSourceType === "file" ? uploadLogo !== null : urlLogo.trim() !== "";
+    if (!hasLogo) newErrors.logo = "Le logo est obligatoire";
+
+    const hasCover =
+      coverSourceType === "file"
+        ? uploadCover !== null
+        : urlCover.trim() !== "";
+    if (!hasCover) newErrors.cover = "La cover est obligatoire";
+
+    const hasParallax =
+      parallaxSourceType === "file"
+        ? uploadParallax !== null
+        : urlParallax.trim() !== "";
+    if (!hasParallax) newErrors.parallax = "Le parallax est obligatoire";
+
+    // -----------------------------------------------------------------------
+    // E. VALIDATION DES CHAMPS OPTIONNELS (ONGLET AVIS)
+    // -----------------------------------------------------------------------
+    if (completedDate && isNaN(Date.parse(completedDate))) {
+      newErrors.completedDate = "La date de complétion est invalide";
+    }
+
+    if (score !== null && (isNaN(score) || score < 0 || score > 10)) {
+      newErrors.score = "La note doit être comprise entre 0 et 10";
+    }
+
+    if (playtime !== null && (isNaN(playtime) || playtime < 1)) {
+      newErrors.playtime = "Le temps de jeu doit être d'au moins 1 heure";
+    }
+
+    // -----------------------------------------------------------------------
+    // F. VÉRIFICATION FINALE & TRAITEMENT
+    // -----------------------------------------------------------------------
+    if (Object.keys(newErrors).length > 0) {
+      setFieldErrors(newErrors);
+      setFormError("Veuillez corriger les erreurs du formulaire.");
+      return;
+    }
+
+    setFieldErrors({});
+    setFormError(null);
+
+    console.log("Formulaire valide ! Prêt pour Supabase.", {
+      cleanTitle,
+      cleanDescription,
+      cleanPros,
+      cleanCons,
+    });
   };
 
   // =========================================================================
-  // 5. VALEURS DE RETOUR (RETURN)
+  // 7. VALEURS DE RETOUR (RETURN)
   // =========================================================================
   return {
     // États
@@ -241,6 +312,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     languageOptions,
     genreOptions,
     formError,
+    fieldErrors,
 
     // Setters
     setTitle,
@@ -271,6 +343,8 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     setPros,
     setCons,
     setSummary,
+    setFormError,
+    setFieldErrors,
 
     // Handlers
     handleAddPro,
@@ -279,6 +353,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     handleAddCon,
     handleUpdateCon,
     handleDeleteCon,
+    uploadImageToSupabase,
     handleSubmit,
   };
 }
