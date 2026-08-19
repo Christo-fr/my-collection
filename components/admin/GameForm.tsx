@@ -329,7 +329,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     }}
                     error={fieldErrors.description}
                     isAi={!!fieldAIGenerated.description}
-                    rows={4}
+                    rows={6}
                   />
                 </div>
               </div>
