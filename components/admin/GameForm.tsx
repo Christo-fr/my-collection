@@ -72,6 +72,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     // --- E. Gestion des Erreurs ---
     formError,
     fieldErrors,
+    clearFieldError,
 
     // --- F. Setters ---
     setTitle,
@@ -147,7 +148,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Titre du jeu*"
                     placeholder="Le nom du jeu"
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e) => {
+                      setTitle(e.target.value);
+                      clearFieldError("title");
+                    }}
                     error={fieldErrors.title}
                   />
                 </div>
@@ -156,7 +160,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Franchise*"
                     options={franchiseOptions}
                     selectedValue={selectedFranchise}
-                    onChange={setSelectedFranchise}
+                    onChange={(val) => {
+                      setSelectedFranchise(val);
+                      clearFieldError("selectedFranchise");
+                    }}
                     error={fieldErrors.selectedFranchise}
                   />
                 </div>
@@ -165,7 +172,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Console*"
                     options={consoleOptions}
                     selectedValue={selectedConsole}
-                    onChange={setSelectedConsole}
+                    onChange={(val) => {
+                      setSelectedConsole(val);
+                      clearFieldError("selectedConsole");
+                    }}
                     error={fieldErrors.selectedConsole}
                   />
                 </div>
@@ -174,7 +184,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Support*"
                     options={OPTIONS_SUPPORT}
                     selectedValue={selectedSupport}
-                    onChange={(val) => setSelectedSupport(val)}
+                    onChange={(val) => {
+                      setSelectedSupport(val);
+                      clearFieldError("selectedSupport");
+                    }}
                     error={fieldErrors.selectedSupport}
                   />
                 </div>
@@ -183,7 +196,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Vidéo YoutubeID*"
                     placeholder="YoutubeID"
                     value={youtubeId}
-                    onChange={(e) => setYoutubeId(e.target.value)}
+                    onChange={(e) => {
+                      setYoutubeId(e.target.value);
+                      clearFieldError("youtubeId");
+                    }}
                     error={fieldErrors.youtubeId}
                   />
                 </div>
@@ -196,7 +212,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Développeur*"
                     options={developerOptions}
                     selectedValue={selectedDeveloper}
-                    onChange={setSelectedDeveloper}
+                    onChange={(val) => {
+                      setSelectedDeveloper(val);
+                      clearFieldError("selectedDeveloper");
+                    }}
                     error={fieldErrors.selectedDeveloper}
                   />
                 </div>
@@ -205,7 +224,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Langues*"
                     options={languageOptions}
                     selectedValue={selectedLanguage}
-                    onChange={setSelectedLanguage}
+                    onChange={(val) => {
+                      setSelectedLanguage(val);
+                      clearFieldError("selectedLanguage");
+                    }}
                     error={fieldErrors.selectedLanguage}
                   />
                 </div>
@@ -214,7 +236,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Date de sortie*"
                     type="month"
                     value={releaseDate}
-                    onChange={(e) => setReleaseDate(e.target.value)}
+                    onChange={(e) => {
+                      setReleaseDate(e.target.value);
+                      clearFieldError("releaseDate");
+                    }}
                     error={fieldErrors.releaseDate}
                   />
                 </div>
@@ -223,7 +248,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="Genre*"
                     options={genreOptions}
                     selectedValue={selectedGenre}
-                    onChange={setSelectedGenre}
+                    onChange={(val) => {
+                      setSelectedGenre(val);
+                      clearFieldError("selectedGenre");
+                    }}
                     error={fieldErrors.selectedGenre}
                   />
                 </div>
@@ -232,7 +260,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     label="PEGI*"
                     options={OPTIONS_PEGI}
                     selectedValue={selectedPegi.toString()}
-                    onChange={(val) => setSelectedPegi(Number(val))}
+                    onChange={(val) => {
+                      setSelectedPegi(Number(val));
+                      clearFieldError("selectedPegi");
+                    }}
                     error={fieldErrors.selectedPegi}
                   />
                 </div>
@@ -242,9 +273,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     type="number"
                     min="1"
                     value={estimatedPlaytime}
-                    onChange={(e) =>
-                      setEstimatedPlaytime(Number(e.target.value))
-                    }
+                    onChange={(e) => {
+                      setEstimatedPlaytime(Number(e.target.value));
+                      clearFieldError("estimatedPlaytime");
+                    }}
                     error={fieldErrors.estimatedPlaytime}
                   />
                 </div>
@@ -256,7 +288,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                   <Textarea
                     label="Description*"
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    onChange={(e) => {
+                      setDescription(e.target.value);
+                      clearFieldError("description");
+                    }}
                     error={fieldErrors.description}
                     rows={4}
                   />
@@ -282,9 +317,15 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                   <ImageInput
                     label="Logo*"
                     uploadFile={uploadLogo}
-                    onUploadChange={setUploadLogo}
+                    onUploadChange={(file) => {
+                      setUploadLogo(file);
+                      clearFieldError("logo");
+                    }}
                     urlValue={urlLogo}
-                    onUrlChange={setUrlLogo}
+                    onUrlChange={(url) => {
+                      setUrlLogo(url);
+                      clearFieldError("logo");
+                    }}
                     sourceType={logoSourceType}
                     onSourceTypeChange={setLogoSourceType}
                     error={fieldErrors.logo}
@@ -294,9 +335,15 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                   <ImageInput
                     label="Cover*"
                     uploadFile={uploadCover}
-                    onUploadChange={setUploadCover}
+                    onUploadChange={(file) => {
+                      setUploadCover(file);
+                      clearFieldError("cover");
+                    }}
                     urlValue={urlCover}
-                    onUrlChange={setUrlCover}
+                    onUrlChange={(url) => {
+                      setUrlCover(url);
+                      clearFieldError("cover");
+                    }}
                     sourceType={coverSourceType}
                     onSourceTypeChange={setCoverSourceType}
                     error={fieldErrors.cover}
@@ -306,9 +353,15 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                   <ImageInput
                     label="Parallax*"
                     uploadFile={uploadParallax}
-                    onUploadChange={setUploadParallax}
+                    onUploadChange={(file) => {
+                      setUploadParallax(file);
+                      clearFieldError("parallax");
+                    }}
                     urlValue={urlParallax}
-                    onUrlChange={setUrlParallax}
+                    onUrlChange={(url) => {
+                      setUrlParallax(url);
+                      clearFieldError("parallax");
+                    }}
                     sourceType={parallaxSourceType}
                     onSourceTypeChange={setParallaxSourceType}
                     showTruncateCheckbox
@@ -343,45 +396,46 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
               </Heading>
             </div>
             <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
-              <div className="grid gap-2 mb-4">
-                <div className="md:col-span-2">
-                  <Input
-                    label="Date de complétion"
-                    type="month"
-                    value={completedDate}
-                    onChange={(e) => setCompletedDate(e.target.value)}
-                    error={fieldErrors.completedDate}
-                  />
-                  <div>
-                    <Input
-                      label="Temps de jeu (en heures)"
-                      type="number"
-                      min="1"
-                      value={playtime?.toString() || ""}
-                      onChange={(e) =>
-                        setPlaytime(
-                          e.target.value === "" ? null : Number(e.target.value),
-                        )
-                      }
-                      error={fieldErrors.playtime}
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      label="Note /10"
-                      type="number"
-                      min="0"
-                      max="10"
-                      value={score?.toString() || ""}
-                      onChange={(e) =>
-                        setScore(
-                          e.target.value === "" ? null : Number(e.target.value),
-                        )
-                      }
-                      error={fieldErrors.score}
-                    />
-                  </div>
-                </div>
+              <div className="grid gap-4 mb-4">
+                <Input
+                  label="Date de complétion"
+                  type="month"
+                  value={completedDate}
+                  onChange={(e) => {
+                    setCompletedDate(e.target.value);
+                    clearFieldError("completedDate");
+                  }}
+                  error={fieldErrors.completedDate}
+                />
+
+                <Input
+                  label="Temps de jeu (en heures)"
+                  type="number"
+                  min="1"
+                  value={playtime?.toString() || ""}
+                  onChange={(e) => {
+                    setPlaytime(
+                      e.target.value === "" ? null : Number(e.target.value),
+                    );
+                    clearFieldError("playtime");
+                  }}
+                  error={fieldErrors.playtime}
+                />
+
+                <Input
+                  label="Note /10"
+                  type="number"
+                  min="0"
+                  max="10"
+                  value={score?.toString() || ""}
+                  onChange={(e) => {
+                    setScore(
+                      e.target.value === "" ? null : Number(e.target.value),
+                    );
+                    clearFieldError("score");
+                  }}
+                  error={fieldErrors.score}
+                />
               </div>
             </div>
           </section>

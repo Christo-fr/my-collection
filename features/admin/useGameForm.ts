@@ -170,7 +170,43 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   };
 
   // =========================================================================
-  // 6. SOUMISSION & VALIDATION DU FORMULAIRE (SUBMIT)
+  // 6. TRAITEMENT DES ERREURS
+  // =========================================================================
+  /**
+   * Supprime l'erreur d'un champ spécifique dès que l'utilisateur commence à le corriger.
+   * @param fieldKey Le nom de la clé d'erreur à effacer (ex: "title", "selectedConsole")
+   */
+  const clearFieldError = (fieldKey: string) => {
+    // 1. Utilisation de 'prev' dans le setter :
+    // En React, les mises à jour d'état ne sont pas instantanées.
+    // Passer une fonction à 'setFieldErrors' avec 'prev' nous garantit
+    // qu'on travaille sur la version la plus RÉCENTE et exacte de 'fieldErrors'.
+    setFieldErrors((prev) => {
+      // 2. Copie de l'objet (...prev) :
+      // Règle d'or en React : on ne modifie jamais l'état original directement (immuabilité).
+      // On crée donc un nouvel objet 'nextErrors' qui duplique le contenu de 'prev'.
+      const nextErrors = { ...prev };
+
+      // 3. Utilisation de 'delete' :
+      // 'delete' est l'opérateur natif de JavaScript conçu pour SUPPRIMER une propriété dans un objet.
+      // Ici, il retire la clé correspondant à 'fieldKey' (ex: delete nextErrors["title"]).
+      delete nextErrors[fieldKey];
+
+      // 4. Nettoyage de l'erreur globale :
+      // Si 'nextErrors' ne contient plus aucune clé (sa longueur est 0),
+      // cela signifie que toutes les erreurs ont été corrigées. On remet donc 'formError' à null.
+      if (Object.keys(nextErrors).length === 0) {
+        setFormError(null);
+      }
+
+      // 5. Retour du nouvel état :
+      // On renvoie la copie nettoyée à React pour mettre à jour l'affichage.
+      return nextErrors;
+    });
+  };
+
+  // =========================================================================
+  // 7. SOUMISSION & VALIDATION DU FORMULAIRE (SUBMIT)
   // =========================================================================
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -229,22 +265,50 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     // -----------------------------------------------------------------------
     // D. VALIDATION DES VISUELS (FICHIER OU URL)
     // -----------------------------------------------------------------------
-    const hasLogo =
-      logoSourceType === "file" ? uploadLogo !== null : urlLogo.trim() !== "";
-    if (!hasLogo) newErrors.logo = "Le logo est obligatoire";
+    // Helper rapide pour vérifier la structure d'une URL HTTP/HTTPS
+    const isValidHttpUrl = (url: string) => {
+      try {
+        const parsed = new URL(url);
+        return parsed.protocol === "http:" || parsed.protocol === "https:";
+      } catch {
+        return false;
+      }
+    };
 
-    const hasCover =
-      coverSourceType === "file"
-        ? uploadCover !== null
-        : urlCover.trim() !== "";
-    if (!hasCover) newErrors.cover = "La cover est obligatoire";
+    // --- LOGO ---
+    if (logoSourceType === "file") {
+      if (!uploadLogo) newErrors.logo = "Le logo est obligatoire";
+    } else {
+      const cleanUrl = urlLogo.trim();
+      if (!cleanUrl) {
+        newErrors.logo = "L'URL du logo est obligatoire";
+      } else if (!isValidHttpUrl(cleanUrl)) {
+        newErrors.logo = "L'URL du logo est invalide (ex: https://...)";
+      }
+    }
+    // --- COVER ---
+    if (coverSourceType === "file") {
+      if (!uploadCover) newErrors.cover = "La cover est obligatoire";
+    } else {
+      const cleanUrl = urlCover.trim();
+      if (!cleanUrl) {
+        newErrors.cover = "L'URL de la cover est obligatoire";
+      } else if (!isValidHttpUrl(cleanUrl)) {
+        newErrors.cover = "L'URL de la cover est invalide (ex: https://...)";
+      }
+    }
 
-    const hasParallax =
-      parallaxSourceType === "file"
-        ? uploadParallax !== null
-        : urlParallax.trim() !== "";
-    if (!hasParallax) newErrors.parallax = "Le parallax est obligatoire";
-
+    // --- PARALLAX ---
+    if (parallaxSourceType === "file") {
+      if (!uploadParallax) newErrors.parallax = "Le parallax est obligatoire";
+    } else {
+      const cleanUrl = urlParallax.trim();
+      if (!cleanUrl) {
+        newErrors.parallax = "L'URL du parallax est obligatoire";
+      } else if (!isValidHttpUrl(cleanUrl)) {
+        newErrors.parallax = "L'URL du parallax est invalide (ex: https://...)";
+      }
+    }
     // -----------------------------------------------------------------------
     // E. VALIDATION DES CHAMPS OPTIONNELS (ONGLET AVIS)
     // -----------------------------------------------------------------------
@@ -356,6 +420,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     setFieldErrors,
 
     // Handlers
+    clearFieldError,
     handleAddPro,
     handleUpdatePro,
     handleDeletePro,
