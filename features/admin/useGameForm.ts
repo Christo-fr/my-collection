@@ -214,7 +214,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   const handleGenerateAI = async () => {
     const cleanTitle = title.trim();
 
-    // Si aucun titre n'est saisi, on affiche une erreur ciblée
+    // 1. Validation du titre
     if (!cleanTitle) {
       setFieldErrors((prev) => ({
         ...prev,
@@ -223,16 +223,25 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
       return;
     }
 
-    //Déclenchement de l'état de chargement
     setIsGeneratingAI(true);
     setFormError(null);
 
-    //Requête HTTP vers le serveur
     try {
+      // 2. Envoi du titre, de la console et des listes d'options existantes
       const response = await fetch("/api/ai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: cleanTitle }),
+        body: JSON.stringify({
+          title: cleanTitle,
+          console: selectedConsole.trim() || undefined,
+          existingOptions: {
+            genres: genreOptions.map((opt) => opt.value),
+            developers: developerOptions.map((opt) => opt.value),
+            franchises: franchiseOptions.map((opt) => opt.value),
+            languages: languageOptions.map((opt) => opt.value),
+            consoles: consoleOptions.map((opt) => opt.value),
+          },
+        }),
       });
 
       const data = await response.json();
@@ -241,18 +250,42 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
         throw new Error(data.error || "Erreur lors de la génération IA.");
       }
 
-      // Remplissage automatique des champs si l'IA renvoie une valeur
-      if (data.developer) setSelectedDeveloper(data.developer);
-      if (data.genre) setSelectedGenre(data.genre);
-      if (data.pegi) setSelectedPegi(Number(data.pegi));
-      if (data.releaseDate) setReleaseDate(data.releaseDate);
-      if (data.estimatedPlaytime)
-        setEstimatedPlaytime(Number(data.estimatedPlaytime));
-      if (data.description) setDescription(data.description);
-      if (data.franchise) setSelectedFranchise(data.franchise);
-      if (data.youtubeId) setYoutubeId(data.youtubeId);
+      // 3. Remplissage CONDITIONNEL (uniquement si le champ est vide)
+      if (data.developer && !selectedDeveloper) {
+        setSelectedDeveloper(data.developer);
+      }
 
-      // Effacement des erreurs éventuelles sur ces champs
+      if (data.console && !selectedConsole) {
+        setSelectedConsole(data.console);
+      }
+      if (data.genre && !selectedGenre) {
+        setSelectedGenre(data.genre);
+      }
+      if (data.language && !selectedLanguage) {
+        setSelectedLanguage(data.language);
+      }
+      if (data.releaseDate && !releaseDate) {
+        setReleaseDate(data.releaseDate);
+      }
+      if (data.description && !description) {
+        setDescription(data.description);
+      }
+      if (data.franchise && !selectedFranchise) {
+        setSelectedFranchise(data.franchise);
+      }
+      if (data.youtubeId && !youtubeId) {
+        setYoutubeId(data.youtubeId);
+      }
+      if (data.pegi && (selectedPegi === 3 || !selectedPegi)) {
+        setSelectedPegi(Number(data.pegi));
+      }
+      if (
+        data.estimatedPlaytime &&
+        (estimatedPlaytime === 1 || !estimatedPlaytime)
+      ) {
+        setEstimatedPlaytime(Number(data.estimatedPlaytime));
+      }
+
       setFieldErrors({});
     } catch (error: any) {
       console.error("Erreur génération IA :", error);
