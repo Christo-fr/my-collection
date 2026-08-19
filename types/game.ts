@@ -21,7 +21,7 @@ export interface GameImages {
 export interface Game {
   id: number;
   title: string;
-  franchise?: string;
+  franchise: string;
   console: string;
   format: "Physical" | "Digital";
   developer: string;
