@@ -7,7 +7,6 @@ import Input from "@/components/ui/Input";
 import Combobox from "@/components/ui/Combobox";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
-import Checkbox from "@/components/ui/Checkbox";
 import FormError from "@/components/ui/FormError";
 import Tabs from "@/components/ui/Tabs";
 import ImageInput from "@/components/admin/ImageInput";
@@ -52,6 +51,13 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     pros,
     cons,
     summary,
+    OPTIONS_PEGI,
+    OPTIONS_SUPPORT,
+    franchiseOptions,
+    consoleOptions,
+    developerOptions,
+    languageOptions,
+    genreOptions,
     formError,
     setTitle,
     setSelectedFranchise,
@@ -89,20 +95,6 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     handleDeleteCon,
     handleSubmit,
   } = useGameForm({ mode, editGame });
-
-  // Options temporaires pour les Select / Combobox
-  const pegiOptions = [
-    { label: "3", value: "3" },
-    { label: "7", value: "7" },
-    { label: "12", value: "12" },
-    { label: "16", value: "16" },
-    { label: "18", value: "18" },
-  ];
-
-  const supportOptions = [
-    { label: "Physique", value: "Physical" },
-    { label: "Digital", value: "Digital" },
-  ];
 
   // =========================================================================
   // 3. STRUCTURE DES ONGLETS (TABS)
@@ -142,7 +134,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 <div>
                   <Combobox
                     label="Franchise*"
-                    options={pegiOptions}
+                    options={franchiseOptions}
                     selectedValue={selectedFranchise}
                     onChange={setSelectedFranchise}
                     error=""
@@ -151,7 +143,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 <div>
                   <Combobox
                     label="Console*"
-                    options={pegiOptions}
+                    options={consoleOptions}
                     selectedValue={selectedConsole}
                     onChange={setSelectedConsole}
                     error=""
@@ -160,7 +152,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 <div>
                   <Select
                     label="Support*"
-                    options={supportOptions}
+                    options={OPTIONS_SUPPORT}
                     selectedValue={selectedSupport}
                     onChange={(val) => setSelectedSupport(val)}
                     error=""
@@ -182,7 +174,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 <div>
                   <Combobox
                     label="Développeur*"
-                    options={supportOptions}
+                    options={developerOptions}
                     selectedValue={selectedDeveloper}
                     onChange={setSelectedDeveloper}
                     error=""
@@ -191,7 +183,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 <div>
                   <Combobox
                     label="Langues*"
-                    options={pegiOptions}
+                    options={languageOptions}
                     selectedValue={selectedLanguage}
                     onChange={setSelectedLanguage}
                     error=""
@@ -209,7 +201,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 <div>
                   <Combobox
                     label="Genre*"
-                    options={pegiOptions}
+                    options={genreOptions}
                     selectedValue={selectedGenre}
                     onChange={setSelectedGenre}
                     error=""
@@ -218,7 +210,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 <div>
                   <Select
                     label="PEGI*"
-                    options={pegiOptions}
+                    options={OPTIONS_PEGI}
                     selectedValue={selectedPegi.toString()}
                     onChange={(val) => setSelectedPegi(Number(val))}
                     error=""

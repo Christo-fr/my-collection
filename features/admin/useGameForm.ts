@@ -6,6 +6,13 @@
 import { useState } from "react";
 import { Game } from "@/types/game";
 import { createClient } from "@/lib/supabase/client";
+import {
+  getUniqueGameOptions,
+  getConsoleFormOptions,
+  OPTIONS_PEGI,
+  OPTIONS_SUPPORT,
+} from "@/features/admin/gameFormOptionsUtils";
+import { useGamesContext } from "@/components/providers/GamesProvider";
 
 interface GameFormProps {
   mode: "insert" | "update";
@@ -13,6 +20,16 @@ interface GameFormProps {
 }
 
 export function useGameForm({ mode, editGame }: GameFormProps) {
+  // 1. Récupération des données du Context
+  const { games, consoles } = useGamesContext();
+
+  // 2. Options dynamiques pour les Combobox
+  const franchiseOptions = getUniqueGameOptions(games, "franchise");
+  const consoleOptions = getConsoleFormOptions(consoles);
+  const developerOptions = getUniqueGameOptions(games, "developer");
+  const languageOptions = getUniqueGameOptions(games, "language");
+  const genreOptions = getUniqueGameOptions(games, "genre");
+
   // =========================================================================
   // 2. ÉTATS DU FORMULAIRE (STATES)
   // =========================================================================
@@ -216,6 +233,13 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     pros,
     cons,
     summary,
+    OPTIONS_PEGI,
+    OPTIONS_SUPPORT,
+    franchiseOptions,
+    consoleOptions,
+    developerOptions,
+    languageOptions,
+    genreOptions,
     formError,
 
     // Setters
