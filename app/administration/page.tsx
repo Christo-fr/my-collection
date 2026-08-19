@@ -23,13 +23,13 @@ export default function Administration() {
     loading,
     bounds,
     consoleOptions,
-    styleOptions,
+    genreOptions,
     filters,
     setters,
   } = useGames();
 
   // Clé composite pour rejouer l'animation de fondu à chaque changement de filtre
-  const gridKey = `${filters.selectedConsole}-${filters.selectedStyle}-${filters.selectedStatus}-${filters.sortBy}-${filters.searchQuery}-${filters.maxDuration}`;
+  const gridKey = `${filters.selectedConsole}-${filters.selectedGenre}-${filters.selectedStatus}-${filters.sortBy}-${filters.searchQuery}-${filters.maxDuration}`;
 
   // =========================================================================
   // 2. RENDU DU COMPOSANT
@@ -51,10 +51,10 @@ export default function Administration() {
             onChange={setters.setSelectedConsole}
           />
           <Select
-            label="Style"
-            options={styleOptions}
-            selectedValue={filters.selectedStyle}
-            onChange={setters.setSelectedStyle}
+            label="Genre"
+            options={genreOptions}
+            selectedValue={filters.selectedGenre}
+            onChange={setters.setSelectedGenre}
           />
           <Select
             label="Statut"

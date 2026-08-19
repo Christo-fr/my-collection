@@ -212,7 +212,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 <div>
                   <Input
                     label="Date de sortie*"
-                    type="date"
+                    type="month"
                     value={releaseDate}
                     onChange={(e) => setReleaseDate(e.target.value)}
                     error={fieldErrors.releaseDate}
@@ -347,7 +347,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 <div className="md:col-span-2">
                   <Input
                     label="Date de complétion"
-                    type="date"
+                    type="month"
                     value={completedDate}
                     onChange={(e) => setCompletedDate(e.target.value)}
                     error={fieldErrors.completedDate}

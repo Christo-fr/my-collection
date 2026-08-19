@@ -29,7 +29,7 @@ export default function Suggestion() {
   // =========================================================================
   // 1. HOOKS & ÉTATS LOCAUX
   // =========================================================================
-  const { bounds, consoleOptions, styleOptions, filters, setters, loading } =
+  const { bounds, consoleOptions, genreOptions, filters, setters, loading } =
     useGames();
   const { games: gamesList } = useGamesContext();
   const [result, setResult] = useState<SuggestionResult | null>(null);
@@ -73,10 +73,10 @@ export default function Suggestion() {
                 onChange={setters.setSelectedConsole}
               />
               <Select
-                label="Style"
-                options={styleOptions}
-                selectedValue={filters.selectedStyle}
-                onChange={setters.setSelectedStyle}
+                label="Genre"
+                options={genreOptions}
+                selectedValue={filters.selectedGenre}
+                onChange={setters.setSelectedGenre}
               />
               <Select
                 label="Statut"

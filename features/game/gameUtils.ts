@@ -77,9 +77,9 @@ export function getConsoleTabs(consoles: Console[]) {
   ];
 }
 
-export function getStyleOptions(games: Game[]) {
+export function getGenreOptions(games: Game[]) {
   // 2. Options pour les genres de jeux
-  const optionsStyle = [
+  const optionsGenre = [
     { label: "Tous", value: "Tous" },
     ...Array.from(new Set(games.map((jeu) => jeu.genre)))
       .map((nomGenre) => ({
@@ -88,7 +88,7 @@ export function getStyleOptions(games: Game[]) {
       }))
       .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
   ];
-  return optionsStyle;
+  return optionsGenre;
 }
 
 // =============================================================
@@ -98,7 +98,7 @@ export function getStyleOptions(games: Game[]) {
 export interface GameFilters {
   searchQuery: string;
   selectedConsole: string;
-  selectedStyle: string;
+  selectedGenre: string;
   selectedStatus: string;
   maxDuration: number;
   sortBy: string;
@@ -113,9 +113,9 @@ export function filterGames(games: Game[], filters: GameFilters): Game[] {
         // 2. Filtre sur la console
         (filters.selectedConsole === "Toutes" ||
           game.console === filters.selectedConsole) &&
-        // 3. Filtre sur le style/genre
-        (filters.selectedStyle === "Tous" ||
-          game.genre === filters.selectedStyle) &&
+        // 3. Filtre sur le genre
+        (filters.selectedGenre === "Tous" ||
+          game.genre === filters.selectedGenre) &&
         // 4. Filtre sur le statut (terminé / non terminé)
         (filters.selectedStatus === "all" ||
           (filters.selectedStatus === "completed" &&
@@ -234,7 +234,7 @@ export function formatDate(dateString: string): string {
 // 1. Les critères envoyés par le formulaire
 export interface SuggestionCriteria {
   selectedConsole: string;
-  selectedStyle: string;
+  selectedGenre: string;
   selectedStatus: string;
   maxDuration: number;
 }
@@ -262,35 +262,35 @@ export function getGachaSuggestion(
   const steps = [
     {
       console: criteria.selectedConsole,
-      style: criteria.selectedStyle,
+      genre: criteria.selectedGenre,
       status: criteria.selectedStatus,
       duration: criteria.maxDuration,
       isMatch: true,
     },
     {
       console: "Toutes", // On saute la console
-      style: criteria.selectedStyle,
+      genre: criteria.selectedGenre,
       status: criteria.selectedStatus,
       duration: criteria.maxDuration,
       isMatch: false,
     },
     {
       console: "Toutes",
-      style: criteria.selectedStyle,
+      genre: criteria.selectedGenre,
       status: criteria.selectedStatus,
       duration: Infinity, // On saute la durée
       isMatch: false,
     },
     {
       console: "Toutes",
-      style: criteria.selectedStyle,
+      genre: criteria.selectedGenre,
       status: "all", // On saute le statut
       duration: Infinity,
       isMatch: false,
     },
     {
       console: "Toutes",
-      style: "Tous", // On saute le genre (dernier recours)
+      genre: "Tous", // On saute le genre (dernier recours)
       status: "all",
       duration: Infinity,
       isMatch: false,
@@ -301,7 +301,7 @@ export function getGachaSuggestion(
     const pool = filterGames(games, {
       searchQuery: "",
       selectedConsole: step.console,
-      selectedStyle: step.style,
+      selectedGenre: step.genre,
       selectedStatus: step.status,
       maxDuration: step.duration,
       sortBy: "alphabetical",
