@@ -1,5 +1,7 @@
 allowBuilds:
+  '@google/genai': true
   '@tsparticles/engine': true
+  protobufjs: true
   sharp: true
   unrs-resolver: true
 ignoredBuiltDependencies:

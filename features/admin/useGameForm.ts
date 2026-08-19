@@ -114,6 +114,9 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   const [formError, setFormError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
+  // --- E. Génération IA ---
+  const [isGeneratingAI, setIsGeneratingAI] = useState<boolean>(false);
+
   // =========================================================================
   // 4. GESTIONNAIRES DE LISTES DYNAMIQUES (PROS & CONS)
   // =========================================================================
@@ -206,7 +209,63 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   };
 
   // =========================================================================
-  // 7. SOUMISSION & VALIDATION DU FORMULAIRE (SUBMIT)
+  // 7.GESTION DE LA GÉNÉRATION IA (GEMINI)
+  // =========================================================================
+  const handleGenerateAI = async () => {
+    const cleanTitle = title.trim();
+
+    // Si aucun titre n'est saisi, on affiche une erreur ciblée
+    if (!cleanTitle) {
+      setFieldErrors((prev) => ({
+        ...prev,
+        title: "Saisissez un titre pour générer les infos avec l'IA.",
+      }));
+      return;
+    }
+
+    //Déclenchement de l'état de chargement
+    setIsGeneratingAI(true);
+    setFormError(null);
+
+    //Requête HTTP vers le serveur
+    try {
+      const response = await fetch("/api/ai", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: cleanTitle }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Erreur lors de la génération IA.");
+      }
+
+      // Remplissage automatique des champs si l'IA renvoie une valeur
+      if (data.developer) setSelectedDeveloper(data.developer);
+      if (data.genre) setSelectedGenre(data.genre);
+      if (data.pegi) setSelectedPegi(Number(data.pegi));
+      if (data.releaseDate) setReleaseDate(data.releaseDate);
+      if (data.estimatedPlaytime)
+        setEstimatedPlaytime(Number(data.estimatedPlaytime));
+      if (data.description) setDescription(data.description);
+      if (data.franchise) setSelectedFranchise(data.franchise);
+      if (data.youtubeId) setYoutubeId(data.youtubeId);
+
+      // Effacement des erreurs éventuelles sur ces champs
+      setFieldErrors({});
+    } catch (error: any) {
+      console.error("Erreur génération IA :", error);
+      setFormError(
+        error.message || "Impossible de récupérer les métadonnées avec l'IA.",
+      );
+    } finally {
+      setIsGeneratingAI(false);
+    }
+  };
+
+  // =========================================================================
+  // 8. SOUMISSION & VALIDATION DU FORMULAIRE (SUBMIT)
   // =========================================================================
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -377,6 +436,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     pros,
     cons,
     summary,
+    isGeneratingAI,
     OPTIONS_PEGI,
     OPTIONS_SUPPORT,
     franchiseOptions,
@@ -416,6 +476,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     setPros,
     setCons,
     setSummary,
+    setIsGeneratingAI,
     setFormError,
     setFieldErrors,
 
@@ -428,6 +489,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     handleUpdateCon,
     handleDeleteCon,
     uploadImageToSupabase,
+    handleGenerateAI,
     handleSubmit,
   };
 }

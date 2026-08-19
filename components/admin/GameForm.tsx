@@ -14,7 +14,15 @@ import FormError from "@/components/ui/FormError";
 import Tabs from "@/components/ui/Tabs";
 import ImageInput from "@/components/admin/ImageInput";
 import { useGameForm } from "@/features/admin/useGameForm";
-import { Undo2, FilePlus, WandSparkles, Plus, X, Save } from "lucide-react";
+import {
+  Undo2,
+  FilePlus,
+  WandSparkles,
+  Plus,
+  X,
+  Save,
+  LoaderCircle,
+} from "lucide-react";
 
 interface GameFormProps {
   mode: "insert" | "update";
@@ -74,7 +82,10 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     fieldErrors,
     clearFieldError,
 
-    // --- F. Setters ---
+    // --- F. AI ---
+    isGeneratingAI,
+
+    // --- G. Setters ---
     setTitle,
     setSelectedFranchise,
     setSelectedConsole,
@@ -102,6 +113,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     setScore,
     setPros,
     setCons,
+    setIsGeneratingAI,
     setSummary,
 
     // --- G. Handlers d'actions ---
@@ -111,6 +123,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     handleAddCon,
     handleUpdateCon,
     handleDeleteCon,
+    handleGenerateAI,
     handleSubmit,
   } = useGameForm({ mode, editGame });
 
@@ -135,8 +148,19 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
               >
                 Contextes
               </Heading>
-              <Button href="/administration" variant="secondary" size="xs">
-                <WandSparkles className="w-5 h-5" />
+              <Button
+                type="button"
+                variant="secondary"
+                size="xs"
+                onClick={handleGenerateAI}
+                disabled={isGeneratingAI || !title.trim()}
+                title="Remplir automatiquement les champs avec Gemini IA"
+              >
+                {isGeneratingAI ? (
+                  <LoaderCircle className="w-5 h-5 animate-spin text-main" />
+                ) : (
+                  <WandSparkles className="w-5 h-5" />
+                )}
               </Button>
             </div>
 
