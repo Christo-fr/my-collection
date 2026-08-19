@@ -363,6 +363,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                       setUrlLogo(url);
                       clearField("logo");
                     }}
+                    initialUrl={editGame?.images?.logo}
                     sourceType={logoSourceType}
                     onSourceTypeChange={setLogoSourceType}
                     error={fieldErrors.logo}
@@ -381,6 +382,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                       setUrlCover(url);
                       clearField("cover");
                     }}
+                    initialUrl={editGame?.images?.cover}
                     sourceType={coverSourceType}
                     onSourceTypeChange={setCoverSourceType}
                     error={fieldErrors.cover}
@@ -399,6 +401,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                       setUrlParallax(url);
                       clearField("parallax");
                     }}
+                    initialUrl={editGame?.images?.parallax?.url}
                     sourceType={parallaxSourceType}
                     onSourceTypeChange={setParallaxSourceType}
                     showTruncateCheckbox

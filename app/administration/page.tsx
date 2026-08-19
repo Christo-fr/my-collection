@@ -94,7 +94,7 @@ export default function Administration() {
               href="/administration/consoles"
               icon={<Gamepad className="w-5 h-5" />}
             >
-              Gestion des consoles
+              Gestion consoles
             </Button>
           </div>
         </FilterPanel>

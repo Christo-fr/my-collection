@@ -74,18 +74,17 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   );
 
   // --- B. Visuels (Images) ---
+  // Note : urlCover, urlLogo et urlParallax démarrent à vide pour ne recevoir
+  // que les NOUVELLES saisies utilisateur. L'image de base vient d'editGame.
   const [uploadCover, setUploadCover] = useState<File | null>(null);
-  const [urlCover, setUrlCover] = useState<string>(
-    editGame?.images?.cover || "",
-  );
+  const [urlCover, setUrlCover] = useState<string>("");
 
   const [uploadLogo, setUploadLogo] = useState<File | null>(null);
-  const [urlLogo, setUrlLogo] = useState<string>(editGame?.images?.logo || "");
+  const [urlLogo, setUrlLogo] = useState<string>("");
 
   const [uploadParallax, setUploadParallax] = useState<File | null>(null);
-  const [urlParallax, setUrlParallax] = useState<string>(
-    editGame?.images?.parallax?.url || "",
-  );
+  const [urlParallax, setUrlParallax] = useState<string>("");
+
   const [parallaxTruncated, setParallaxTruncated] = useState<boolean>(
     editGame?.images?.parallax?.truncated || false,
   );
@@ -197,6 +196,27 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
       console.error("Erreur durant le traitement de l'image :", error);
       return null;
     }
+  };
+
+  const processImage = async (
+    sourceType: "file" | "url",
+    file: File | null,
+    newUrl: string,
+    existingUrl: string | undefined,
+    bucket: string,
+  ) => {
+    // 1. Un nouveau fichier a été déposé
+    if (sourceType === "file" && file) {
+      return uploadImageToSupabase(file, bucket);
+    }
+
+    // 2. Une nouvelle URL a été saisie
+    if (sourceType === "url" && newUrl.trim() !== "") {
+      return uploadImageToSupabase(newUrl.trim(), bucket);
+    }
+
+    // 3. Aucun changement : on conserve l'image BDD existante
+    return existingUrl || null;
   };
 
   // =========================================================================
@@ -382,30 +402,42 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
       }
     };
 
+    // Vérification présence images (soit BDD existante, soit nouvelle saisie)
+    const hasExistingLogo = Boolean(editGame?.images?.logo);
+    const hasExistingCover = Boolean(editGame?.images?.cover);
+    const hasExistingParallax = Boolean(editGame?.images?.parallax?.url);
+
     if (logoSourceType === "file") {
-      if (!uploadLogo) newErrors.logo = "Le logo est obligatoire";
+      if (!uploadLogo && !hasExistingLogo)
+        newErrors.logo = "Le logo est obligatoire";
     } else {
-      if (!urlLogo.trim()) newErrors.logo = "L'URL du logo est obligatoire";
-      else if (!isValidHttpUrl(urlLogo.trim()))
+      if (!urlLogo.trim() && !hasExistingLogo) {
+        newErrors.logo = "L'URL du logo est obligatoire";
+      } else if (urlLogo.trim() && !isValidHttpUrl(urlLogo.trim())) {
         newErrors.logo = "L'URL du logo est invalide";
+      }
     }
 
     if (coverSourceType === "file") {
-      if (!uploadCover) newErrors.cover = "La cover est obligatoire";
+      if (!uploadCover && !hasExistingCover)
+        newErrors.cover = "La cover est obligatoire";
     } else {
-      if (!urlCover.trim())
+      if (!urlCover.trim() && !hasExistingCover) {
         newErrors.cover = "L'URL de la cover est obligatoire";
-      else if (!isValidHttpUrl(urlCover.trim()))
+      } else if (urlCover.trim() && !isValidHttpUrl(urlCover.trim())) {
         newErrors.cover = "L'URL de la cover est invalide";
+      }
     }
 
     if (parallaxSourceType === "file") {
-      if (!uploadParallax) newErrors.parallax = "Le parallax est obligatoire";
+      if (!uploadParallax && !hasExistingParallax)
+        newErrors.parallax = "Le parallax est obligatoire";
     } else {
-      if (!urlParallax.trim())
+      if (!urlParallax.trim() && !hasExistingParallax) {
         newErrors.parallax = "L'URL du parallax est obligatoire";
-      else if (!isValidHttpUrl(urlParallax.trim()))
+      } else if (urlParallax.trim() && !isValidHttpUrl(urlParallax.trim())) {
         newErrors.parallax = "L'URL du parallax est invalide";
+      }
     }
 
     if (completedDate && isNaN(Date.parse(completedDate))) {
@@ -431,23 +463,36 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     // -----------------------------------------------------------------------
     // C. CONVERSION & UPLOAD DES IMAGES DANS SUPABASE
     // -----------------------------------------------------------------------
-    const logoSource = logoSourceType === "file" ? uploadLogo! : urlLogo.trim();
-    const coverSource =
-      coverSourceType === "file" ? uploadCover! : urlCover.trim();
-    const parallaxSource =
-      parallaxSourceType === "file" ? uploadParallax! : urlParallax.trim();
-
     const [logoPublicUrl, coverPublicUrl, parallaxPublicUrl] =
       await Promise.all([
-        uploadImageToSupabase(logoSource, "logos"),
-        uploadImageToSupabase(coverSource, "covers"),
-        uploadImageToSupabase(parallaxSource, "parallaxes"),
+        processImage(
+          logoSourceType,
+          uploadLogo,
+          urlLogo.trim(),
+          editGame?.images?.logo,
+          "logos",
+        ),
+        processImage(
+          coverSourceType,
+          uploadCover,
+          urlCover.trim(),
+          editGame?.images?.cover,
+          "covers",
+        ),
+        processImage(
+          parallaxSourceType,
+          uploadParallax,
+          urlParallax.trim(),
+          editGame?.images?.parallax?.url,
+          "parallaxes",
+        ),
       ]);
 
     if (!logoPublicUrl || !coverPublicUrl || !parallaxPublicUrl) {
       setFormError(
         "Une erreur est survenue lors de la conversion ou de l'upload des images.",
       );
+      setIsSaving(false);
       return;
     }
 

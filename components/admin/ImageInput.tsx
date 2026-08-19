@@ -1,4 +1,9 @@
-import { useMemo, useState } from "react";
+"use client";
+
+// =========================================================================
+// 1. IMPORTS & TYPAGE
+// =========================================================================
+import { useMemo, useRef, useEffect } from "react";
 import Image from "next/image";
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/react";
 import { ImageIcon } from "lucide-react";
@@ -11,6 +16,7 @@ interface ImageInputProps {
   onUploadChange: (file: File | null) => void;
   urlValue: string;
   onUrlChange: (url: string) => void;
+  initialUrl?: string;
   showTruncateCheckbox?: boolean;
   isTruncated?: boolean;
   onTruncateChange?: (truncated: boolean) => void;
@@ -25,37 +31,53 @@ export default function ImageInput({
   onUploadChange,
   urlValue,
   onUrlChange,
+  initialUrl,
   showTruncateCheckbox,
   isTruncated,
   onTruncateChange,
   error,
-  sourceType,
+  sourceType = "file",
   onSourceTypeChange,
 }: ImageInputProps) {
-  // 1. Suivi de l'onglet actif (0 = Fichier, 1 = URL)
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  // Stocke l'URL initiale BDD
+  const baseDbUrl = initialUrl || urlValue;
+  const initialUrlRef = useRef(baseDbUrl);
 
-  // 2. Prévisualisation basée STRICTEMENT sur l'onglet sélectionné
-  const previewUrl = useMemo(() => {
-    if (selectedIndex === 0) {
-      return uploadFile ? URL.createObjectURL(uploadFile) : null;
+  useEffect(() => {
+    if (initialUrl) {
+      initialUrlRef.current = initialUrl;
     }
-    return urlValue.trim() !== "" ? urlValue : null;
-  }, [selectedIndex, uploadFile, urlValue]);
+  }, [initialUrl]);
 
-  // 3. Détection si une source est valide dans l'onglet courant
-  const hasActiveValue = Boolean(previewUrl);
+  const selectedIndex = sourceType === "url" ? 1 : 0;
+
+  // 1. APERÇU : Fichier > Nouvelle URL saisie > Image BDD
+  const previewUrl = useMemo(() => {
+    if (sourceType === "file" && uploadFile) {
+      return URL.createObjectURL(uploadFile);
+    }
+    if (sourceType === "url" && urlValue.trim() !== "") {
+      return urlValue.trim();
+    }
+    return initialUrl || null;
+  }, [sourceType, uploadFile, urlValue, initialUrl]);
+
+  // 2. DÉTECTION DU CHANGEMENT (Bordure émeraude)
+  const isChanged = useMemo(() => {
+    if (sourceType === "file" && uploadFile) return true;
+    if (sourceType === "url" && urlValue.trim() !== "") return true;
+    return false;
+  }, [sourceType, uploadFile, urlValue]);
 
   return (
     <div
-      className={`flex flex-col gap-2 p-3 bg-main/5 rounded-xl border transition-color ${
+      className={`flex flex-col gap-2 p-3 bg-main/5 rounded-xl border transition-colors ${
         error ? "border-red-500/80 bg-red-500/5" : "border-main/10 bg-main/5"
       }`}
     >
       <TabGroup
         selectedIndex={selectedIndex}
         onChange={(index) => {
-          setSelectedIndex(index);
           onSourceTypeChange?.(index === 0 ? "file" : "url");
         }}
         className="flex flex-col gap-2"
@@ -80,9 +102,11 @@ export default function ImageInput({
             <Input
               type="file"
               accept="image/png, image/jpeg, image/webp"
-              onChange={(e) =>
-                onUploadChange(e.target.files ? e.target.files[0] : null)
-              }
+              onChange={(e) => {
+                const file = e.target.files ? e.target.files[0] : null;
+                onUploadChange(file);
+                if (file) onSourceTypeChange?.("file");
+              }}
               error={error}
             />
           </TabPanel>
@@ -92,7 +116,10 @@ export default function ImageInput({
               type="text"
               placeholder="https://..."
               value={urlValue}
-              onChange={(e) => onUrlChange(e.target.value)}
+              onChange={(e) => {
+                onUrlChange(e.target.value);
+                onSourceTypeChange?.("url");
+              }}
               error={error}
             />
           </TabPanel>
@@ -108,7 +135,7 @@ export default function ImageInput({
             fill
             unoptimized
             className={`object-contain p-1 transition-all ${
-              hasActiveValue ? "border-2 border-emerald-500/60 rounded-lg" : ""
+              isChanged ? "border-2 border-emerald-500/60 rounded-lg" : ""
             }`}
           />
         ) : (
