@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -7,21 +8,23 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function AppBackground() {
   const bgGame = useBackground();
-  // Couche réellement affichée : ne change qu'une fois la nouvelle image chargée (crossfade sans trou)
   const [current, setCurrent] = useState<string | null>(null);
 
-  // Reduit l'opacité du background sur la page d'administration
   const pathname = usePathname();
-  const isAdministration = pathname === "/administration";
+  // Atténue l'opacité sur /login, /administration et toutes ses sous-routes
+  const isDimmedRoute =
+    pathname === "/login" || pathname?.startsWith("/administration");
 
-  // Si on quitte une fiche jeu, on efface immédiatement
+  // Si on quitte une fiche jeu, on efface immédiatement le fond dédié
   useEffect(() => {
     if (!bgGame.bgImage) setCurrent(null);
   }, [bgGame.bgImage]);
 
   return (
     <div
-      className={`fixed inset-0 -z-20 pointer-events-none transition-opacity duration-500 opacity-30 `}
+      className={`fixed inset-0 -z-20 pointer-events-none transition-opacity duration-500 ${
+        isDimmedRoute ? "opacity-15" : "opacity-30"
+      }`}
     >
       <Image
         src="/background/bg-modelight.webp"
@@ -54,7 +57,7 @@ export default function AppBackground() {
             <Image
               src={current}
               alt="Background"
-              className="object-cover opacity-100 "
+              className="object-cover opacity-100"
               priority
               quality={100}
               sizes="100vw"
