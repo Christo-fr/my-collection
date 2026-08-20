@@ -66,7 +66,7 @@ export async function selectBestImageWithVision(
 
     let criteria = "";
     if (type === "logo") {
-      criteria = `Choisis le logo officiel correspondant EXACTEMENT au jeu « ${title} »${platformContext}. VÉRIFIE ATTENTIVEMENT le numéro, le sous-titre ou la plateforme figurant sur le logo (ex: ne choisis pas un autre opus ou une édition d'une autre console). L'image doit être un logo propre détouré sur fond transparent (PNG/WebP). Le nom du jeu doit être bien visible. REJETTE IMPÉRATIVEMENT tout visuel possédant un fond blanc, noir ou un faux quadrillage de transparence opaque.`;
+      criteria = `Choisis le logo officiel correspondant EXACTEMENT au jeu « ${title} »${platformContext}. VÉRIFIE ATTENTIVEMENT le numéro, le sous-titre ou la plateforme figurant sur le logo (ex: ne choisis pas un autre opus ou une édition d'une autre console). L'image doit être un logo propre détouré sur fond transparent (PNG/WebP). Le nom du jeu doit être bien visible. REJETTE IMPÉRATIVEMENT tout visuel possédant un fond blanc, noir ou un faux quadrillage de transparence opaque. Il ne doit y avoir aucun fond derrière le logo.`;
     } else if (type === "cover") {
       criteria = `Choisis la meilleure bannière/illustration officielle pour « ${title} »${platformContext} : le format DOIT être strictly HORIZONTAL (paysage / wallpaper), de très haute résolution (1920px+), idéale comme fond de présentation.`;
     } else if (type === "parallax") {
