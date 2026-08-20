@@ -108,7 +108,7 @@ export default function GameTabs({
 
           {/* Description textuelle du jeu */}
           {game?.description && (
-            <p className="mt-4 text-main/90 dark:text-main/80 text-sm leading-relaxed">
+            <p className="mt-4 whitespace-pre-line text-main/90 dark:text-main/80 text-sm leading-relaxed">
               {game.description}
             </p>
           )}
@@ -225,7 +225,7 @@ export default function GameTabs({
 
                 {/* Bilan récapitulatif */}
                 {game.review.summary && (
-                  <p className="mt-4 text-main/90 dark:text-main/80 text-sm leading-relaxed">
+                  <p className="mt-4 whitespace-pre-line text-main/90 dark:text-main/80 text-sm leading-relaxed">
                     {game.review.summary}
                   </p>
                 )}
