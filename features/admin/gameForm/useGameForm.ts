@@ -338,9 +338,12 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
           ? "Jeu ajouté avec succès !"
           : "Jeu mis à jour avec succès !",
       );
-      await refetchGames();
-      await refetchConsoles();
+      // Redirection immédiate : le refetch se fait en arrière-plan pour éviter
+      // que le passage de `loading` à true (état global du contexte) ne réaffiche
+      // le spinner de la page courante avant la navigation.
       router.push("/administration");
+      refetchGames();
+      refetchConsoles();
       setIsSaving(false);
     }
   };
