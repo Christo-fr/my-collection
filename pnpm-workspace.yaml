@@ -1,9 +1,12 @@
 allowBuilds:
-  '@google/genai': true
-  '@tsparticles/engine': true
+  "@google/genai": true
+  "@tsparticles/engine": true
   protobufjs: true
   sharp: true
   unrs-resolver: true
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+overrides:
+  # Force une seule version de sharp/libvips dans tout l'arbre (évite le conflit avec l'optimiseur d'images de Next.js)
+  sharp: ^0.34.5
