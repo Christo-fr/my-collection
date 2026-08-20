@@ -17,7 +17,7 @@ export const OPTIONS_PEGI = [
 /** Options du format de possession (Physique / Dématérialisé) */
 export const OPTIONS_SUPPORT = [
   { label: "Physique", value: "Physical" },
-  { label: "Digital", value: "Digital" },
+  { label: "Numérique", value: "Digital" },
 ];
 
 // =============================================================

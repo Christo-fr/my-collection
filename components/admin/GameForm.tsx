@@ -3,6 +3,7 @@
 // =========================================================================
 // 1. IMPORTS & TYPAGE
 // =========================================================================
+import Link from "next/link";
 import { Game } from "@/types/game";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
@@ -168,7 +169,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
 
             <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
               {/* Ligne 1 : Titre, Franchise, Console, Support, Youtube */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 mb-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 mb-2">
                 <div className="md:col-span-2">
                   <Input
                     label="Titre du jeu*"
@@ -222,7 +223,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                 </div>
                 <div>
                   <Input
-                    label="Vidéo YoutubeID*"
+                    label={`Vidéo YoutubeID*`}
                     placeholder="YoutubeID"
                     value={youtubeId}
                     onChange={(e) => {
@@ -232,6 +233,18 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
                     error={fieldErrors.youtubeId}
                     isAi={!!fieldAIGenerated.youtubeId}
                   />
+
+                  {youtubeId ? (
+                    <Link
+                      href={`https://www.youtube.com/watch?v=${youtubeId}`}
+                      className="text-xs text-main/80 hover:underline"
+                      target="_blank"
+                    >
+                      (Lien)
+                    </Link>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
 

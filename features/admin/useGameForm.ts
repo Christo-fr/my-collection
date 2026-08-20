@@ -12,7 +12,7 @@ import {
   getConsoleFormOptions,
   OPTIONS_PEGI,
   OPTIONS_SUPPORT,
-} from "@/features/admin/gameFormOptionsUtils";
+} from "@/features/admin/gameForm/gameFormOptionsUtils";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { toast } from "sonner";
 
