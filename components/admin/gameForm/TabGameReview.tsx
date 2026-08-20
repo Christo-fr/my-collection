@@ -107,7 +107,7 @@ export default function TabReview({
         </div>
 
         <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
-          <div className="grid md:grid-cols-2 gap-2 mb-4">
+          <div className="grid lg:grid-cols-2 gap-2 mb-4">
             {/* Liste dynamique des Points Forts */}
             <div>
               <div className="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-main/10">
