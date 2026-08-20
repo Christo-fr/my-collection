@@ -131,6 +131,7 @@ export default function TabInformations({
                 label="Vidéo YoutubeID*"
                 placeholder="YoutubeID"
                 value={info.youtubeId}
+                maxLength={11}
                 onChange={(e) => {
                   info.setYoutubeId(e.target.value);
                   clearField("youtubeId");
@@ -139,7 +140,7 @@ export default function TabInformations({
                 isAi={!!ai.fieldAIGenerated.youtubeId}
               />
 
-              {info.youtubeId ? (
+              {info.youtubeId.length === 11 ? (
                 <Link
                   href={`https://www.youtube.com/watch?v=${info.youtubeId}`}
                   className="text-xs text-main/80 hover:underline"

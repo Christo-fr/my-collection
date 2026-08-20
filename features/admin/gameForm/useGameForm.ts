@@ -116,8 +116,9 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     if (!cleanConsole) newErrors.selectedConsole = "La console est obligatoire";
     if (!cleanFranchise)
       newErrors.selectedFranchise = "La franchise est obligatoire";
-    if (!cleanYoutubeId)
-      newErrors.youtubeId = "L'ID vidéo YouTube est obligatoire";
+    if (!cleanYoutubeId || cleanYoutubeId.length !== 11)
+      newErrors.youtubeId =
+        "L'ID vidéo YouTube est obligatoire et doit contenir 11 caractères";
     if (!cleanDeveloper)
       newErrors.selectedDeveloper = "Le développeur est obligatoire";
     if (!info.selectedSupport)
