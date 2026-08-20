@@ -36,8 +36,46 @@ export function useGameImages(editGame?: Game) {
   );
 
   // =========================================================================
-  // 2. HELPER CONVERSION WEBP & UPLOAD SUPABASE
+  // 2. HELPERS NETTOYAGE STORAGE & UPLOAD
   // =========================================================================
+
+  /**
+   * Helper d'extraction : extrait le nom de fichier relatif dans le bucket Supabase
+   * à partir d'une URL publique complète (ex: ".../storage/v1/object/public/logos/1234.webp" -> "1234.webp").
+   */
+  const extractStoragePath = (url: string, bucket: string): string | null => {
+    try {
+      // 1. Isole l'URL avant d'éventuels paramètres de requête HTTP (?t=123...)
+      const cleanUrl = url.split("?")[0];
+      // 2. Expression rationnelle pour capturer tout ce qui se trouve après le nom du bucket
+      const match = cleanUrl.match(
+        new RegExp(`/storage/v1/object/public/${bucket}/(.+)$`),
+      );
+      // 3. Décode les caractères spéciaux Web (espaces encodés %20, etc.)
+      return match ? decodeURIComponent(match[1]) : null;
+    } catch {
+      return null;
+    }
+  };
+
+  /**
+   * Helper de suppression : retire un ancien fichier du bucket Supabase
+   * s'il s'agit bien d'une image hébergée sur ton Cloud Supabase.
+   */
+  const deleteImageFromSupabase = async (url: string, bucket: string) => {
+    const filePath = extractStoragePath(url, bucket);
+    // Si l'image de base n'était pas stockée sur Supabase (ex: URL externe), on ignore
+    if (!filePath) return;
+
+    // Supabase remove() attend uniquement le chemin relatif dans le bucket (ex: "1234.webp")
+    const { error } = await supabase.storage.from(bucket).remove([filePath]);
+    if (error) {
+      console.warn(
+        `[Storage Clean Warning] Impossible de supprimer ${filePath} :`,
+        error.message,
+      );
+    }
+  };
 
   /**
    * Fonction utilitaire : prend un fichier ou une URL, convertit l'image en .webp
@@ -99,8 +137,8 @@ export function useGameImages(editGame?: Game) {
   };
 
   /**
-   * Fonction décisionnelle : vérifie la source choisie ("file" ou "url") et si une
-   * nouvelle image a été fournie. Si rien n'a changé, conserve l'image BDD d'origine.
+   * Fonction décisionnelle : orchestre l'upload de la nouvelle image et supprime
+   * l'ancienne du bucket Supabase si la nouvelle image a été envoyée avec succès.
    */
   const processImage = async (
     sourceType: "file" | "url",
@@ -109,16 +147,31 @@ export function useGameImages(editGame?: Game) {
     existingUrl: string | undefined,
     bucket: string,
   ) => {
+    let uploadedPublicUrl: string | null = null;
+
     // 1. Un nouveau fichier local a été déposé
     if (sourceType === "file" && file) {
-      return uploadImageToSupabase(file, bucket);
+      uploadedPublicUrl = await uploadImageToSupabase(file, bucket);
     }
     // 2. Une nouvelle URL valide a été saisie
-    if (sourceType === "url" && newUrl.trim() !== "") {
-      return uploadImageToSupabase(newUrl.trim(), bucket);
+    else if (sourceType === "url" && newUrl.trim() !== "") {
+      uploadedPublicUrl = await uploadImageToSupabase(newUrl.trim(), bucket);
     }
     // 3. Aucun changement : on renvoie simplement l'URL déjà enregistrée en BDD
-    return existingUrl || null;
+    else {
+      return existingUrl || null;
+    }
+
+    // 4. Si la nouvelle image a bien été uploadée
+    if (uploadedPublicUrl) {
+      // Si une ancienne image existait et qu'elle est remplacée, on purge l'ancien fichier du bucket
+      if (existingUrl && existingUrl !== uploadedPublicUrl) {
+        await deleteImageFromSupabase(existingUrl, bucket);
+      }
+      return uploadedPublicUrl;
+    }
+
+    return null;
   };
 
   // =========================================================================
