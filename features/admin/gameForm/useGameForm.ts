@@ -20,7 +20,7 @@ interface GameFormProps {
 
 export function useGameForm({ mode, editGame }: GameFormProps) {
   const router = useRouter();
-  const { refetchGames } = useGamesContext();
+  const { refetchGames, refetchConsoles } = useGamesContext();
   const supabase = createClient();
 
   // =========================================================================
@@ -72,6 +72,21 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
           ...prev,
           title: "Saisissez un titre pour générer les infos avec l'IA.",
         })),
+      // Callback de succès : supprime les erreurs des champs remplis par l'IA
+      (generatedKeys) => {
+        setFieldErrors((prev) => {
+          const nextErrors = { ...prev };
+          generatedKeys.forEach((key) => {
+            delete nextErrors[key];
+          });
+
+          if (Object.keys(nextErrors).length === 0) {
+            setFormError(null);
+          }
+
+          return nextErrors;
+        });
+      },
     );
   };
 
@@ -234,7 +249,30 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
       return;
     }
 
-    // --- F. Assemblage du Payload final pour la BDD ---
+    // --- F. Vérification et création de la console ---
+    // 1. Vérifier si la console existe déjà dans la table consoles
+    const consoleExists = info.consoleOptions.some(
+      (opt) => opt.value.toLowerCase() === cleanConsole.toLowerCase(),
+    );
+
+    // 2. Si elle n'existe pas, on la crée d'abord dans la table "consoles"
+    if (!consoleExists) {
+      const { error: consoleErr } = await supabase.from("consoles").insert({
+        short_name: cleanConsole,
+        full_name: cleanConsole,
+        is_bw: false,
+        display_order: info.consoleOptions.length + 1,
+      });
+
+      if (consoleErr) {
+        console.error("Erreur création console :", consoleErr.message);
+        setFormError("Impossible de créer la nouvelle console en BDD.");
+        setIsSaving(false);
+        return;
+      }
+    }
+
+    // --- G. Assemblage du Payload final pour la BDD ---
     const hasReview =
       review.completedDate ||
       review.playtime ||
@@ -276,7 +314,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
         : null,
     };
 
-    // --- G. Enregistrement en base de données Supabase ---
+    // --- H. Enregistrement en base de données Supabase ---
     let error = null;
 
     if (mode === "insert") {
@@ -301,6 +339,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
           : "Jeu mis à jour avec succès !",
       );
       await refetchGames();
+      await refetchConsoles();
       router.push("/administration");
       setIsSaving(false);
     }
@@ -310,11 +349,10 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   // 5. VALEURS DE RETOUR (RETURN)
   // =========================================================================
   return {
-    // On déverse toutes les propriétés des sous-hooks pour ne pas casser le composant graphique
-    // Décompose l'objet pour exposer ses variables directement à la racine (ex: "title" au lieu de "info.title") et éviter de casser l'UI.
-    ...info,
-    ...img,
-    ...review,
+    info,
+    img,
+    review,
+    ai,
 
     // États et handlers spécifiques à l'IA
     isGeneratingAI: ai.isGeneratingAI,

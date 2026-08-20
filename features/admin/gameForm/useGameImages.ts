@@ -148,6 +148,7 @@ export function useGameImages(editGame?: Game) {
     parallaxTruncated,
     setParallaxTruncated,
 
+    initialImages: editGame?.images, // Expose les images initiales en BDD
     processImage,
   };
 }

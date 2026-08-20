@@ -1,5 +1,5 @@
 import LayoutFull from "@/components/layout/LayoutFull";
-import GameForm from "@/components/admin/GameForm";
+import GameForm from "@/components/admin/gameForm/GameForm";
 
 export default function AddGamePage() {
   return (

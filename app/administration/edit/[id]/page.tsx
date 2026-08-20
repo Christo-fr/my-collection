@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import LayoutFull from "@/components/layout/LayoutFull";
-import GameForm from "@/components/admin/GameForm";
+import GameForm from "@/components/admin/gameForm/GameForm";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
