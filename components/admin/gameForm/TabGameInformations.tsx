@@ -254,8 +254,8 @@ export default function TabInformations({
       </section>
 
       {/* -----------------------------------------------------------------
-          BLOC B : GESTION DES VISUELS
-         ----------------------------------------------------------------- */}
+    BLOC B : GESTION DES VISUELS
+   ----------------------------------------------------------------- */}
       <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
         <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
           <Heading
@@ -285,6 +285,7 @@ export default function TabInformations({
                 sourceType={img.logoSourceType}
                 onSourceTypeChange={img.setLogoSourceType}
                 error={fieldErrors.logo}
+                isAi={!!ai.fieldAIGenerated.logo}
               />
             </div>
             <div>
@@ -304,6 +305,7 @@ export default function TabInformations({
                 sourceType={img.coverSourceType}
                 onSourceTypeChange={img.setCoverSourceType}
                 error={fieldErrors.cover}
+                isAi={!!ai.fieldAIGenerated.cover}
               />
             </div>
             <div>
@@ -326,6 +328,7 @@ export default function TabInformations({
                 isTruncated={img.parallaxTruncated}
                 onTruncateChange={img.setParallaxTruncated}
                 error={fieldErrors.parallax}
+                isAi={!!ai.fieldAIGenerated.parallax}
               />
             </div>
           </div>

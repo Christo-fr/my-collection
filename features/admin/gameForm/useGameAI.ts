@@ -57,7 +57,7 @@ export function useGameAI(info: any, img: any) {
       // Objet temporaire pour accumuler les champs complétés par l'IA
       const newAiFields: Record<string, boolean> = {};
 
-      // Injecter UNIQUEMENT si le champ est vide côté utilisateur
+      // --- A. Métadonnées Texte ---
       if (data.developer && !info.selectedDeveloper) {
         info.setSelectedDeveloper(data.developer);
         newAiFields.selectedDeveloper = true;
@@ -100,6 +100,30 @@ export function useGameAI(info: any, img: any) {
       ) {
         info.setEstimatedPlaytime(Number(data.estimatedPlaytime));
         newAiFields.estimatedPlaytime = true;
+      }
+
+      // --- B. Visuels (Images) ---
+      if (data.images?.logo && !img.urlLogo && !img.uploadLogo) {
+        img.setUrlLogo(data.images.logo);
+        img.setLogoSourceType("url");
+        newAiFields.logo = true;
+      }
+
+      if (data.images?.cover && !img.urlCover && !img.uploadCover) {
+        img.setUrlCover(data.images.cover);
+        img.setCoverSourceType("url");
+        newAiFields.cover = true;
+      }
+
+      if (
+        data.images?.parallax?.url &&
+        !img.urlParallax &&
+        !img.uploadParallax
+      ) {
+        img.setUrlParallax(data.images.parallax.url);
+        img.setParallaxSourceType("url");
+        img.setParallaxTruncated(!!data.images.parallax.truncated);
+        newAiFields.parallax = true;
       }
 
       // Met à jour la liste des champs marqués "Généré par l'IA"

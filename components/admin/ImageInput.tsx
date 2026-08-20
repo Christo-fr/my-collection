@@ -23,6 +23,7 @@ interface ImageInputProps {
   error?: string;
   sourceType?: "file" | "url";
   onSourceTypeChange?: (type: "file" | "url") => void;
+  isAi?: boolean;
 }
 
 export default function ImageInput({
@@ -37,6 +38,7 @@ export default function ImageInput({
   onTruncateChange,
   error,
   sourceType = "file",
+  isAi,
   onSourceTypeChange,
 }: ImageInputProps) {
   // Stocke l'URL initiale BDD
@@ -62,6 +64,13 @@ export default function ImageInput({
     return initialUrl || null;
   }, [sourceType, uploadFile, urlValue, initialUrl]);
 
+  // Bascule automatiquement sur l'onglet "URL" lorsqu'une URL est injectée (ex: par l'IA)
+  useEffect(() => {
+    if (urlValue.trim() !== "" && !uploadFile) {
+      onSourceTypeChange?.("url");
+    }
+  }, [urlValue]);
+
   // 2. DÉTECTION DU CHANGEMENT (Bordure émeraude)
   const isChanged = useMemo(() => {
     if (sourceType === "file" && uploadFile) return true;
@@ -71,8 +80,12 @@ export default function ImageInput({
 
   return (
     <div
-      className={`flex flex-col gap-2 p-3 bg-main/5 rounded-xl border transition-colors ${
-        error ? "border-red-500/80 bg-red-500/5" : "border-main/10 bg-main/5"
+      className={`flex flex-col gap-2 p-3 rounded-xl border transition-colors ${
+        error
+          ? "border-red-500/80 bg-red-500/5"
+          : isAi
+            ? "border-cyan-500/50 bg-cyan-500/5"
+            : "border-main/10 bg-main/5"
       }`}
     >
       <TabGroup

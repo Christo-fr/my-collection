@@ -1,5 +1,11 @@
 import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
+import { getYouTubeTrailerId } from "@/lib/google/youtube";
+import { getBraveImageCandidates } from "@/lib/brave/search";
+import { selectBestImageWithVision } from "@/lib/google/vision";
+
+// Autorise la fonction Serverless à tourner jusqu'à 60 secondes sur Vercel/Next.js
+export const maxDuration = 60;
 
 // Initialisation du client Google Gen AI
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
@@ -17,7 +23,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 2. Construction du prompt détaillé pour Gemini Flash
+    // 2. Construction du prompt texte pour Gemini Flash
     const fallbackConsoleLabel =
       "Nom de la console (priorité à la liste des consoles existantes si non spécifiée)";
     const targetConsole = consoleName ? consoleName : fallbackConsoleLabel;
@@ -76,8 +82,7 @@ Format du JSON attendu :
   "pegi": 12,
   "releaseDate": "AAAA-MM",
   "estimatedPlaytime": 20,
-  "description": "Résumé accrocheur en français (4 à 5 phrases).",
-  "youtubeId": "dQw4w9WgXcQ"
+  "description": "Résumé accrocheur en français (4 à 5 phrases)."
 }
 
 Règles de formatage strictes :
@@ -85,18 +90,46 @@ Règles de formatage strictes :
 - "pegi" : Utilise en priorité la classification PEGI officielle (FR/EU). Si le jeu n'a pas de PEGI officiel, convertis la classification de son pays d'origine (ex: ESRB pour les USA, CERO pour le Japon) vers la valeur PEGI équivalente la plus proche. Le résultat DOIT obligatoirement être un nombre entier parmi [3, 7, 12, 16, 18].
 - "releaseDate" doit être au format "AAAA-MM" (ex: "1995-03") basé sur la date de sortie FR (ou EU / Origine si non disponible).
 - "estimatedPlaytime" doit être un nombre entier sans décimale représentant les heures de jeu pour la trame principale uniquement ("Main Story" sur HowLongToBeat).
-- "youtubeId" doit être l'identifiant exact de 11 caractères d'un trailer officiel sur YouTube. Si tu n'es pas certain à 100 % de l'ID exact, renvoie une chaîne vide "".
 - Réponds UNIQUEMENT avec l'objet JSON brut sans balises Markdown (\`\`\`json).
 `;
 
-    // 3. Envoi de la requête à Gemini Flash
-    const response = await ai.models.generateContent({
-      model: "gemini-3.6-flash",
-      contents: prompt,
-    });
+    // 3. Exécution simultanée (Métadonnées Texte, Trailer YouTube, Candidats Images)
+    const [
+      textResponse,
+      youtubeId,
+      logoCandidates,
+      coverCandidates,
+      parallaxCandidates,
+    ] = await Promise.all([
+      ai.models.generateContent({
+        model: "gemini-3.6-flash",
+        contents: prompt,
+      }),
+      getYouTubeTrailerId(title, consoleName),
+      getBraveImageCandidates(title, "logo", consoleName),
+      getBraveImageCandidates(title, "cover", consoleName),
+      getBraveImageCandidates(title, "parallax", consoleName),
+    ]);
 
-    // 4. Nettoyage de la réponse et parsing du JSON
-    const text = response.text || "";
+    // 4. Arbitrage visuel par Gemini Vision en parallèle sur les candidats retenus
+    const [bestLogoIdx, bestCoverIdx, bestParallaxIdx] = await Promise.all([
+      selectBestImageWithVision(logoCandidates, "logo", title, consoleName),
+      selectBestImageWithVision(coverCandidates, "cover", title, consoleName),
+      selectBestImageWithVision(
+        parallaxCandidates,
+        "parallax",
+        title,
+        consoleName,
+      ),
+    ]);
+
+    // Extraction des URL d'images retenues
+    const logoUrl = logoCandidates[bestLogoIdx]?.url || "";
+    const coverUrl = coverCandidates[bestCoverIdx]?.url || "";
+    const parallaxUrl = parallaxCandidates[bestParallaxIdx]?.url || "";
+
+    // 5. Nettoyage et parsing du JSON texte produit par Gemini
+    const text = textResponse.text || "";
     const sanitizedText = text
       .replace(/```json/g, "")
       .replace(/```/g, "")
@@ -104,24 +137,35 @@ Règles de formatage strictes :
 
     const parsedData = JSON.parse(sanitizedText);
 
-    // 5. Renvoi des métadonnées sous forme de réponse JSON
-    return NextResponse.json(parsedData);
+    // 6. Assemblage final structuré selon les interfaces TypeScript
+    const finalPayload = {
+      ...parsedData,
+      youtubeId: youtubeId || "",
+      images: {
+        logo: logoUrl,
+        cover: coverUrl,
+        parallax: {
+          url: parallaxUrl,
+          truncated: false,
+        },
+      },
+    };
+
+    return NextResponse.json(finalPayload);
   } catch (error: any) {
     console.error("Erreur serveur API AI :", error);
 
-    // 6. Gestion spécifique des erreurs de quota (HTTP 429)
     if (
       error.status === 429 ||
       error.message?.includes("429") ||
       error.message?.includes("RESOURCE_EXHAUSTED")
     ) {
       return NextResponse.json(
-        {
-          error: "Quota de l'API Gemini dépassé pour aujourd'hui.",
-        },
+        { error: "Quota de l'API Gemini dépassé pour aujourd'hui." },
         { status: 429 },
       );
     }
+
     if (
       error.status === 503 ||
       error.message?.includes("503") ||
