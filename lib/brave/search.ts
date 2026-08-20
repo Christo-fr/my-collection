@@ -74,10 +74,8 @@ export async function getBraveImageCandidates(
   let query = "";
 
   if (type === "logo") {
-    // Sur SteamGridDB, le titre du jeu suffit généralement
     query = `"${title}"${platform} logo png webp site:steamgriddb.com`;
   } else if (type === "cover") {
-    // Inscription de la console pour cibler le bon wallpaper / bannière
     query = `"${title}"${platform} official banner wallpaper artwork horizontal 1920x1080`;
   } else if (type === "parallax") {
     query = `"${title}"${platform} character key art render cutout transparent png webp`;
@@ -85,13 +83,13 @@ export async function getBraveImageCandidates(
 
   let candidates = await executeBraveImageSearch(apiKey, query, 12);
 
-  // Fallback Logo : ajout de la console en secours si le titre seul sur SteamGridDB n'a rien donné
+  // Fallback Logo : secours si SteamGridDB ne renvoie aucun résultat
   if (type === "logo" && candidates.length === 0) {
     const fallbackQuery = `"${title}"${platform} logo transparent png webp cutout`;
     candidates = await executeBraveImageSearch(apiKey, fallbackQuery, 12);
   }
 
-  // Filtre Cover : priorité aux bannières horizontales larges (>= 1920px)
+  // 1. Filtre Cover : priorité aux bannières horizontales larges (>= 1920px)
   if (type === "cover" && candidates.length > 0) {
     const horizontalHighRes = candidates.filter(
       (c) =>
@@ -103,7 +101,7 @@ export async function getBraveImageCandidates(
     }
   }
 
-  // Filtre Logo & Parallax : élimination stricte des fichiers JPEG / JPG
+  // 2. Filtre Logo & Parallax : élimination stricte des fichiers JPEG / JPG
   if ((type === "logo" || type === "parallax") && candidates.length > 0) {
     const transparentFormatsOnly = candidates.filter((c) => {
       const lowerUrl = c.url.toLowerCase();
@@ -111,6 +109,16 @@ export async function getBraveImageCandidates(
     });
     if (transparentFormatsOnly.length > 0) {
       candidates = transparentFormatsOnly;
+    }
+  }
+
+  // 3. Filtre Parallax : priorité aux visuels d'une hauteur minimale de 650px
+  if (type === "parallax" && candidates.length > 0) {
+    const minHeightCandidates = candidates.filter(
+      (c) => !c.height || c.height >= 650,
+    );
+    if (minHeightCandidates.length > 0) {
+      candidates = minHeightCandidates;
     }
   }
 
