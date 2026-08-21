@@ -11,12 +11,13 @@ import { toast } from "sonner";
 export default function EditGamePage() {
   const params = useParams();
   const router = useRouter();
-  const id = params?.id ? Number(params.id) : null;
+  const id = params?.id !== undefined ? Number(params.id) : null;
 
   const { getGameById, loading } = useGamesContext();
 
   // 1. Récupération synchrone du jeu depuis le context
-  const game = id ? getGameById(id) : undefined;
+  // (id peut valoir 0, donc on compare explicitement à null plutôt qu'un test de vérité)
+  const game = id !== null ? getGameById(id) : undefined;
 
   // 2. Redirection + Toast si le jeu est introuvable une fois le chargement fini
   useEffect(() => {
