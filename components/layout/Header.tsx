@@ -112,7 +112,7 @@ export default function Header() {
           <div
             className={` ${!isSignupPage ? "hidden" : "flex"} lg:flex gap-3 items-center`}
           >
-            {isLoggedIn && (
+            {isLoggedIn && !isSignupPage && (
               <Link
                 key="administration"
                 href="/administration"
@@ -186,7 +186,7 @@ export default function Header() {
                     {link.label}
                   </Link>
                 ))}
-                {isLoggedIn && (
+                {isLoggedIn && !isSignupPage && (
                   <>
                     <Link
                       key="/administration"
