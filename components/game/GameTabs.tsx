@@ -125,7 +125,7 @@ export default function GameTabs({
                     title={relatedGame.title}
                     key={relatedGame.id}
                     href={`/game/${relatedGame.id}`}
-                    className="transition-all duration-300 hover:scale-105"
+                    className="transition-transform duration-300 hover:scale-105"
                   >
                     <div className="relative h-24">
                       <Image

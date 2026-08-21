@@ -47,15 +47,15 @@ export default function Select({
 
       <Listbox value={selectedValue} onChange={onChange}>
         <ListboxButton
-          className={`relative group w-full flex items-center justify-between px-3.5 py-2.5 text-sm rounded-xl border bg-main/5 text-main outline-none transition-all cursor-pointer 
-            data-[hover]:bg-main/10 data-[focus]:border-accent data-[focus]:ring-2 data-[focus]:ring-accent/20 
+          className={`relative group w-full flex items-center justify-between px-3.5 py-2.5 text-sm rounded-xl border bg-main/5 text-main outline-none transition cursor-pointer
+            data-[hover]:bg-main/10 data-[focus]:border-accent data-[focus]:ring-2 data-[focus]:ring-accent/20
             ${
               error
                 ? "border-red-500/50 focus:border-red-500"
                 : isAi
                   ? "border-cyan-500/50 focus:border-cyan-500"
                   : "border-main/20"
-            } 
+            }
             ${className}`}
         >
           {/* Libellé ou Placeholder si aucune valeur sélectionnée */}

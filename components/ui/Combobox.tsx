@@ -84,7 +84,7 @@ export default function Combobox({
             }}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={placeholder}
-            className={`w-full py-2.5 pl-3.5 pr-10 rounded-xl border bg-main/5 text-sm text-main focus:outline-none transition-all data-[hover]:bg-main/10 ${
+            className={`w-full py-2.5 pl-3.5 pr-10 rounded-xl border bg-main/5 text-sm text-main focus:outline-none transition-colors data-[hover]:bg-main/10 ${
               error
                 ? "border-red-500/50 focus:border-red-500"
                 : isAi
@@ -101,7 +101,7 @@ export default function Combobox({
           {/* Liste déroulante des propositions */}
           <ComboboxOptions
             anchor="bottom start"
-            className="w-[var(--input-width)] mt-1 p-1 max-h-60 overflow-auto bg-background/50 backdrop-blur-md border border-main/10 rounded-xl shadow-xl focus:outline-none transition duration-100 ease-in  shadow-lg focus:outline-none z-50 transition duration-100 ease-out data-[closed]:scale-95 data-[closed]:opacity-0"
+            className="w-[var(--input-width)] mt-1 p-1 max-h-60 overflow-auto bg-background/50 backdrop-blur-md border border-main/10 rounded-xl shadow-xl focus:outline-none z-50 transition duration-100 ease-out data-[closed]:scale-95 data-[closed]:opacity-0"
           >
             {displayOptions.length === 0 ? (
               <div className="py-2 px-3 text-xs text-main/40">

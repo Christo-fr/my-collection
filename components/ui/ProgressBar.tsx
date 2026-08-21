@@ -25,7 +25,7 @@ export default function ProgressBar({
       )}
       <div className="w-full h-2.5 rounded-full bg-main/30 overflow-hidden">
         <div
-          className="h-full rounded-full transition-all duration-500 bg-linear-to-r from-grad-start to-grad-end "
+          className="h-full rounded-full transition-[width] duration-500 bg-linear-to-r from-grad-start to-grad-end"
           style={{ width: `${percentage}%` }}
         ></div>
       </div>

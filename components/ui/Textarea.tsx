@@ -22,7 +22,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           name={label}
           rows={4}
           className={`
-            w-full rounded-lg bg-main/5 px-3 py-2 text-sm text-main outline-none transition-all
+            w-full rounded-lg bg-main/5 px-3 py-2 text-sm text-main outline-none transition
             placeholder:text-main/40 border
             data-[hover]:bg-main/10
             data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed

@@ -36,8 +36,8 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     // donc on écrit les deux variantes (lien / bouton) en toutes lettres.
     // `:enabled` ne matche pas les <a> (Link), d'où la distinction.
     const baseStyles = href
-      ? "uppercase inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-300 select-none cursor-pointer hover:-translate-y-0.5 hover:shadow-lg"
-      : "uppercase inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-300 select-none cursor-pointer enabled:hover:-translate-y-0.5 enabled:hover:shadow-lg disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none";
+      ? "uppercase inline-flex items-center justify-center gap-2 rounded-xl transition duration-300 select-none cursor-pointer hover:-translate-y-0.5 hover:shadow-lg"
+      : "uppercase inline-flex items-center justify-center gap-2 rounded-xl transition duration-300 select-none cursor-pointer enabled:hover:-translate-y-0.5 enabled:hover:shadow-lg disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none";
 
     // 2. Variantes de couleurs
     const variantStyles = {

@@ -100,10 +100,10 @@ export default function ImageInput({
           <span className="text-xs font-medium text-main/80">{label}</span>
 
           <TabList className="flex gap-1 p-0.5 bg-main/10 rounded-lg">
-            <Tab className="px-2 py-0.5 text-[11px] font-medium uppercase rounded-md transition-all outline-none cursor-pointer text-main/60 data-[selected]:bg-accent data-[selected]:text-main data-[selected]:font-bold">
+            <Tab className="px-2 py-0.5 text-[11px] font-medium uppercase rounded-md transition-colors outline-none cursor-pointer text-main/60 data-[selected]:bg-accent data-[selected]:text-main data-[selected]:font-bold">
               Fichier
             </Tab>
-            <Tab className="px-2 py-0.5 text-[11px] font-medium uppercase rounded-md transition-all outline-none cursor-pointer text-main/60 data-[selected]:bg-accent data-[selected]:text-main data-[selected]:font-bold">
+            <Tab className="px-2 py-0.5 text-[11px] font-medium uppercase rounded-md transition-colors outline-none cursor-pointer text-main/60 data-[selected]:bg-accent data-[selected]:text-main data-[selected]:font-bold">
               URL
             </Tab>
           </TabList>
@@ -147,7 +147,7 @@ export default function ImageInput({
             alt={`Aperçu ${label}`}
             fill
             unoptimized
-            className={`object-contain p-1 transition-all ${
+            className={`object-contain p-1 transition-colors ${
               isChanged ? "border-2 border-emerald-500/60 rounded-lg" : ""
             }`}
           />

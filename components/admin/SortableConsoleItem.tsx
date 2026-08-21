@@ -42,9 +42,9 @@ export default function SortableConsoleItem({
     <div
       ref={setNodeRef}
       style={style}
-      className={`mb-3  ${isDragging ? " rounded-xl opacity-50 z-50 shadow-[0_0_15px_2px_var(--color-secondary)]" : ""}`}
+      className={`mb-3 ${isDragging ? "rounded-xl opacity-50 z-50 shadow-[0_0_15px_2px_var(--color-secondary)]" : ""}`}
     >
-      <div className="flex items-center gap-3 p-3 sm:p-4  rounded-xl border border-main/10 bg-background/20 backdrop-blur-sm transition-all duration-300  hover:shadow-[0_0_15px_2px_var(--color-secondary)]">
+      <div className="flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-main/10 bg-background/20 backdrop-blur-sm transition-shadow duration-300 hover:shadow-[0_0_15px_2px_var(--color-secondary)]">
         {/* 1. POIGNÉE DE GLISSEMENT (GRIP) */}
         <button
           type="button"
