@@ -9,7 +9,7 @@ export function useDeleteGame() {
   // 1. HOOKS & CONTEXTES
   // =============================================================
 
-  const { refetchGames } = useGamesContext(); // Permet de rafraîchir la liste globale des jeux
+  const { refetchGames, refetchConsoles } = useGamesContext(); // Permet de rafraîchir la liste globale des jeux et des consoles
   const [isDeleting, setIsDeleting] = useState(false); // État de chargement pour l'UI
   const [error, setError] = useState<string | null>(null); // Stocke le message d'erreur éventuel
   const supabase = createClient(); // Client Supabase côté navigateur
@@ -54,6 +54,7 @@ export function useDeleteGame() {
       return false; // Échec de la suppression
     } else {
       toast.success("Jeu supprimé avec succès !");
+      await refetchConsoles();
       await refetchGames(); // Synchronise le contexte global et revalide le cache
       setIsDeleting(false);
       console.log("ID transmis à Supabase :", game.id);
