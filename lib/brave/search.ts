@@ -1,3 +1,5 @@
+import { getSteamGridDbLogoCandidates } from "@/lib/steamgriddb/search";
+
 export interface ImageCandidate {
   url: string;
   thumbnailUrl?: string;
@@ -69,12 +71,25 @@ export async function getBraveImageCandidates(
     return [];
   }
 
+  // Le logo passe d'abord par l'API officielle SteamGridDB (voir lib/steamgriddb/search.ts),
+  // bien plus fiable pour cibler le bon jeu qu'une recherche d'image générique. Brave ne sert
+  // ici que de secours si SteamGridDB n'a pas de match (pas de clé, jeu absent ou trop incertain).
+  if (type === "logo") {
+    const steamGridDbCandidates = await getSteamGridDbLogoCandidates(
+      title,
+      consoleName,
+    );
+    if (steamGridDbCandidates.length > 0) {
+      return steamGridDbCandidates.slice(0, 12);
+    }
+  }
+
   // Formatage propre du nom de la console s'il est renseigné
   const platform = consoleName ? ` ${consoleName}` : "";
   let query = "";
 
   if (type === "logo") {
-    query = `"${title}"${platform} logo png webp site:steamgriddb.com`;
+    query = `"${title}"${platform} logo transparent png webp cutout`;
   } else if (type === "cover") {
     query = `"${title}"${platform} official banner wallpaper artwork horizontal 1920x1080`;
   } else if (type === "parallax") {
@@ -82,12 +97,6 @@ export async function getBraveImageCandidates(
   }
 
   let candidates = await executeBraveImageSearch(apiKey, query, 12);
-
-  // Fallback Logo : secours si SteamGridDB ne renvoie aucun résultat
-  if (type === "logo" && candidates.length === 0) {
-    const fallbackQuery = `"${title}"${platform} logo transparent png webp cutout`;
-    candidates = await executeBraveImageSearch(apiKey, fallbackQuery, 12);
-  }
 
   // 1. Filtre Cover : priorité aux bannières horizontales larges (>= 1920px)
   if (type === "cover" && candidates.length > 0) {
