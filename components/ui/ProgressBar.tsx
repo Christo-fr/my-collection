@@ -24,7 +24,7 @@ export default function ProgressBar({
 
   /*Animation de la jauge*/
   useEffect(() => {
-    percentage && setFillPercentage(percentage);
+    setFillPercentage(percentage);
   }, [percentage]);
 
   return (
