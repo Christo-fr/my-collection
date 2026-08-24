@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 export interface ProgressBarProps {
   value: number; // Valeur actuelle de la barre de progression (0 à 100)
   max?: number; // Valeur maximale de la barre de progression (par défaut 100)
@@ -18,6 +20,13 @@ export default function ProgressBar({
   showPercentage = false,
 }: ProgressBarProps) {
   const percentage = Math.round((value / max) * 100);
+  const [fillPercentage, setFillPercentage] = useState(0);
+
+  /*Animation de la jauge*/
+  useEffect(() => {
+    percentage && setFillPercentage(percentage);
+  }, [percentage]);
+
   return (
     <div className={`flex flex-col gap-1 w-full ${className}`}>
       {label && (
@@ -26,7 +35,7 @@ export default function ProgressBar({
       <div className="w-full h-2.5 rounded-full bg-main/30 overflow-hidden">
         <div
           className="h-full rounded-full transition-[width] duration-500 bg-linear-to-r from-grad-start to-grad-end"
-          style={{ width: `${percentage}%` }}
+          style={{ width: `${fillPercentage}%` }}
         ></div>
       </div>
       {/* Pied de jauge */}
