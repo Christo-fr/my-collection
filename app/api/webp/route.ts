@@ -80,7 +80,7 @@ export async function POST(request: Request) {
     // ---------------------------------------------------------------------
     // 4. Renvoi du fichier WebP binaire converti
     // ---------------------------------------------------------------------
-    return new Response(webpBuffer, {
+    return new Response(new Uint8Array(webpBuffer), {
       status: 200,
       headers: {
         "Content-Type": "image/webp",

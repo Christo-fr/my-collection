@@ -41,7 +41,7 @@ export function useGameDetail() {
   const relatedFranchiseGames = useMemo(() => {
     if (!game || !game.franchise) return [];
 
-    // 1. On reproduit ce que renvoyait /api/games?franchise=...
+    // 1. Renvoie la liste de jeu de la meme franchise
     const franchiseData = games.filter((g) => g.franchise === game.franchise);
 
     // 2. On passe ce sous-ensemble à la fonction utilitaire

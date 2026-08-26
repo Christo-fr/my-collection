@@ -1,27 +1,24 @@
-export const dynamic = "force-dynamic"; // Empeche Next.js de mettre l'API en cache statique
+// Force Next.js à exécuter cette route à chaque requête HTTP sans la mettre en cache statique
+export const dynamic = "force-dynamic";
+
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
-export async function GET(request: Request) {
+// =========================================================================
+// RECUPERATION DES JEUX
+// =========================================================================
+/** Récupère la liste globale des jeux dans Supabase, filtrable par franchise via query params */
+export async function GET() {
+  // Initialise le client Supabase serveur avec accès sécurisé aux cookies HTTP
   const supabase = await createClient();
-  const { searchParams } = new URL(request.url);
-  const franchise = searchParams.get("franchise");
 
-  // 1. On prépare la requête PostgreSQL de base
-  let query = supabase
+  // Exécute la requête de manière asynchrone auprès du serveur Supabase
+  const { data, error } = await supabase
     .from("games")
     .select("*")
     .order("id", { ascending: true });
 
-  // 2. Si le paramètre "franchise" existe dans l'URL, on ajoute le filtre WHERE
-  if (franchise) {
-    query = query.eq("franchise", franchise);
-  }
-
-  // 3. On exécute la requête auprès de Supabase
-  const { data, error } = await query;
-
-  // 4. Gestion d'erreur si la BDD ne répond pas
+  // Intercepte les erreurs réseau/BDD et renvoie une réponse HTTP 500
   if (error) {
     console.error("Erreur Supabase :", error.message);
     return NextResponse.json(
@@ -30,6 +27,6 @@ export async function GET(request: Request) {
     );
   }
 
-  // 5. On renvoie les données JSON lues en direct dans PostgreSQL
+  // Renvoie le tableau d'objets JSON lues en direct dans PostgreSQL
   return NextResponse.json(data);
 }

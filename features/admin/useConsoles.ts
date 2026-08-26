@@ -169,9 +169,9 @@ export function useConsoles() {
       setShowErrors(true);
       setFormError(error.message);
     } else {
+      await refetchConsoles();
       setShowErrors(false);
       toast.success("Liste des consoles mise à jour avec succès !");
-      await refetchConsoles();
       handleBack();
     }
 

@@ -1,18 +1,18 @@
 import { Game } from "@/types/game";
 import { Console } from "@/types/console";
 
-// =============================================================
-// OPTIONS STATIQUES (Listes fixes)
-// =============================================================
+// =========================================================================
+// 1. OPTIONS STATIQUES (Listes fixes partagées)
+// =========================================================================
 
-// Select pour le filtrage par statut (terminé / non terminé)
+/** Options de filtrage par état de complétion d'un jeu */
 export const OPTIONS_STATUS = [
   { label: "Tous", value: "all" },
   { label: "Terminé", value: "completed" },
   { label: "Non terminé", value: "not_completed" },
 ];
 
-// Select pour le tri des jeux
+/** Options des différents critères de tri disponibles pour le catalogue */
 export const OPTIONS_SORT = [
   { label: "Nom : Alphabétique", value: "alphabetical" },
   { label: "Nom : Anti-Alphabétique", value: "anti_alphabetical" },
@@ -27,26 +27,28 @@ export const OPTIONS_SORT = [
   { label: "Note : Décroissante", value: "score_descending" },
 ];
 
+/** Métriques de comparaison utilisables dans le panneau des records des statistiques */
 export const OPTIONS_RECORD_METRICS = [
   { label: "Notes attribuées", value: "score" },
   { label: "Temps de jeu", value: "playtime" },
   { label: "Écart de temps", value: "playtime_gap" },
   { label: "Date de complétion", value: "completion_date" },
-  //{ label: "Bilan dernière année", value: "yearly_summary" },
 ];
 
-// =============================================================
-//  OPTIONS DYNAMIQUES (SELECT / RANGEINPUT)
-// =============================================================
+// =========================================================================
+// 2. OPTIONS DYNAMIQUES (Select & RangeInput)
+// =========================================================================
 
+/** Calcule les limites min et max de durée de vie estimée parmi les jeux */
 export function getPlaytimeBounds(games: Game[]) {
-  // Calcul de la durée de vie maximale parmi tous les jeux pour définir la valeur maximale du RangeInput
-  const maxEstimatedPlaytime = // Sécurité si les données ne sont pas encore chargés
+  // Recherche la valeur maximale avec fallback de sécurité à 200 h
+  const maxEstimatedPlaytime =
     games.length > 0
       ? Math.max(...games.map((game) => game.estimatedPlaytime))
-      : 200; // Calcul de la durée de vie minimale parmi tous les jeux pour définir la valeur minimale du RangeInput
+      : 200;
 
-  const minEstimatedPlaytime = // Sécurité si les données ne sont pas encore chargés
+  // Recherche la valeur minimale avec fallback de sécurité à 0 h
+  const minEstimatedPlaytime =
     games.length > 0
       ? Math.min(...games.map((game) => game.estimatedPlaytime))
       : 0;
@@ -54,19 +56,18 @@ export function getPlaytimeBounds(games: Game[]) {
   return { min: minEstimatedPlaytime, max: maxEstimatedPlaytime };
 }
 
+/** Transforme la liste des consoles en un tableau d'options pour le composant Select */
 export function getConsoleOptions(consoles: Console[]) {
-  // 1. Options pour les Consoles
-  const optionsConsole = [
-    // Option par défaut pour désactiver le filtre
+  return [
     { label: "Toutes", value: "Toutes" },
     ...consoles.map((console) => ({
       label: console.full_name || console.short_name,
       value: console.short_name,
     })),
   ];
-  return optionsConsole;
 }
 
+/** Génère les onglets de consoles sous forme de tableau simplifié */
 export function getConsoleTabs(consoles: Console[]) {
   return [
     { label: "Toutes", value: "Toutes" },
@@ -77,24 +78,25 @@ export function getConsoleTabs(consoles: Console[]) {
   ];
 }
 
+/** Extrait et trie la liste unique des genres présents dans le catalogue */
 export function getGenreOptions(games: Game[]) {
-  // 2. Options pour les genres de jeux
-  const optionsGenre = [
+  return [
     { label: "Tous", value: "Tous" },
+    // Déduplique les genres avec Set et effectue un tri alphabétique sur les labels
     ...Array.from(new Set(games.map((jeu) => jeu.genre)))
       .map((nomGenre) => ({
         label: nomGenre,
         value: nomGenre,
       }))
-      .sort((a, b) => a.label.localeCompare(b.label)), // Tri alphabétique par label
+      .sort((a, b) => a.label.localeCompare(b.label)),
   ];
-  return optionsGenre;
 }
 
-// =============================================================
-//  FILTRAGE ET TRI DES JEUX
-// =============================================================
+// =========================================================================
+// 3. FEATURE : /list
+// =========================================================================
 
+/** Contrat d'interface regroupant les critères de filtrage actifs */
 export interface GameFilters {
   searchQuery: string;
   selectedConsole: string;
@@ -104,25 +106,26 @@ export interface GameFilters {
   sortBy: string;
 }
 
+/** Filtre et trie séquentiellement la liste des jeux selon les critères appliqués */
 export function filterGames(games: Game[], filters: GameFilters): Game[] {
   return games
     .filter(
       (game) =>
-        // 1. Filtre sur la durée
+        // Filtre la durée maximale
         game.estimatedPlaytime <= filters.maxDuration &&
-        // 2. Filtre sur la console
+        // Filtre la console supportée
         (filters.selectedConsole === "Toutes" ||
           game.console === filters.selectedConsole) &&
-        // 3. Filtre sur le genre
+        // Filtre le genre du jeu
         (filters.selectedGenre === "Tous" ||
           game.genre === filters.selectedGenre) &&
-        // 4. Filtre sur le statut (terminé / non terminé)
+        // Filtre le statut de complétion (terminé / non terminé)
         (filters.selectedStatus === "all" ||
           (filters.selectedStatus === "completed" &&
             game.review?.score != null) ||
           (filters.selectedStatus === "not_completed" &&
             game.review?.score == null)) &&
-        // 5. Filtre sur la recherche textuelle
+        // Recherche textuelle insensible à la casse
         game.title.toLowerCase().includes(filters.searchQuery.toLowerCase()),
     )
     .sort((a, b) => {
@@ -157,81 +160,75 @@ export function filterGames(games: Game[], filters: GameFilters): Game[] {
         default:
           break;
       }
+      // Applique un tri alphabétique secondaire en cas d'égalité stricte
       return diff !== 0 ? diff : a.title.localeCompare(b.title);
     });
 }
 
-// =============================================================
-//  RENVOIE 3 JEUX D'UNE MêME FRANCHISE (1 avant, 2 après)
-// =============================================================
+// =========================================================================
+// 4. FEATURE : /game/[id]
+// =========================================================================
 
+/** Extrait un sous-ensemble de 3 jeux proches au sein d'une même franchise */
 export function getRelatedFranchiseGames(
   currentGame: Game,
   franchiseGames: Game[],
 ): Game[] {
-  // 1. Tri croissant par date de sortie
+  // Ordonne les jeux de la franchise par date de sortie croissante
   const sortedGames = [...franchiseGames].sort(
     (a, b) =>
       new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime(),
   );
 
-  // 2. Position du jeu actuel dans la saga
+  // Recherche la position de l'opus sélectionné
   const currentIndex = sortedGames.findIndex((g) => g.id === currentGame.id);
-
-  // Si le jeu n'est pas trouvé dans la liste, sécurité
   if (currentIndex === -1) return [];
 
-  // 3. Découpage naturel des deux sous-listes
+  // Isole les opus sortis avant et après l'opus courant
   const gamesBefore = sortedGames.slice(0, currentIndex);
   const gamesAfter = sortedGames.slice(currentIndex + 1);
 
-  // 3. Quotas par défaut
   let countBefore = 1;
   let countAfter = 2;
 
-  // 4. Report du manque d'un côté vers l'autre
+  // Réajuste les quotas si un côté manque de jeux
   if (gamesBefore.length < 1) {
-    countAfter += 1 - gamesBefore.length; // Si 0 avant -> countAfter devient 3
+    countAfter += 1 - gamesBefore.length;
   }
   if (gamesAfter.length < 2) {
-    countBefore += 2 - gamesAfter.length; // Si 0 après -> countBefore devient 3, si 1 après -> 2
+    countBefore += 2 - gamesAfter.length;
   }
 
-  // 5. Extraction finale
+  // Extrait les jeux correspondants aux quotas ajustés
   const selectedBefore = gamesBefore.slice(-countBefore);
   const selectedAfter = gamesAfter.slice(0, countAfter);
 
   return [...selectedBefore, ...selectedAfter];
 }
 
-// =============================================================
-//  TRADUCTION DES DATES EN FRANÇAIS
-// =============================================================
-
+/** Formate une date YYYY-MM en chaîne littérale française (ex: "Mars 2024") */
 export function formatDate(dateString: string): string {
   if (!dateString) return "";
 
-  // Découpage pour éviter les décalages de fuseau horaire UTC
+  // Découpe l'année et le mois pour ignorer les décalages de fuseaux horaires UTC
   const [year, month] = dateString.split("-").map(Number);
   if (!year || !month) return dateString;
 
-  // Création de la date (les mois commencent à 0 en JS)
   const date = new Date(year, month - 1);
-
   const formatted = date.toLocaleDateString("fr-FR", {
     month: "long",
     year: "numeric",
   });
 
-  // Met la première lettre du mois en majuscule (ex: "mars 2024" -> "Mars 2024")
+  // Met en majuscule l'initiale du mois
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 }
 
-// =============================================================
-//  SELECTION DE JEU DE LA SUGGESTION
-// =============================================================
+// =========================================================================
+// 5. FEATURE : /suggestion
+// =========================================================================
 
-// 1. Les critères envoyés par le formulaire
+/** Contrat représentant les critères de tirage saisis par l'utilisateur */
 export interface SuggestionCriteria {
   selectedConsole: string;
   selectedGenre: string;
@@ -239,13 +236,14 @@ export interface SuggestionCriteria {
   maxDuration: number;
 }
 
-// 2. Le paquet retourné après le tirage
+/** Structure du résultat retourné après exécution d'un tirage gacha */
 export interface SuggestionResult {
   game: Game | null;
   isMatch: boolean;
   warningMessage?: string;
 }
 
+/** Effectue un tirage aléatoire en assouplissant progressivement les critères en cas de vide */
 export function getGachaSuggestion(
   criteria: SuggestionCriteria,
   games: Game[],
@@ -258,7 +256,7 @@ export function getGachaSuggestion(
     };
   }
 
-  // 1. On liste nos étapes de dégradation (du plus strict au plus souple)
+  // Définit la suite des règles de repli (du filtrage strict vers le plus permissif)
   const steps = [
     {
       console: criteria.selectedConsole,
@@ -268,7 +266,7 @@ export function getGachaSuggestion(
       isMatch: true,
     },
     {
-      console: "Toutes", // On saute la console
+      console: "Toutes",
       genre: criteria.selectedGenre,
       status: criteria.selectedStatus,
       duration: criteria.maxDuration,
@@ -278,25 +276,26 @@ export function getGachaSuggestion(
       console: "Toutes",
       genre: criteria.selectedGenre,
       status: criteria.selectedStatus,
-      duration: Infinity, // On saute la durée
-      isMatch: false,
-    },
-    {
-      console: "Toutes",
-      genre: criteria.selectedGenre,
-      status: "all", // On saute le statut
       duration: Infinity,
       isMatch: false,
     },
     {
       console: "Toutes",
-      genre: "Tous", // On saute le genre (dernier recours)
+      genre: criteria.selectedGenre,
+      status: "all",
+      duration: Infinity,
+      isMatch: false,
+    },
+    {
+      console: "Toutes",
+      genre: "Tous",
       status: "all",
       duration: Infinity,
       isMatch: false,
     },
   ];
 
+  // Parcourt les niveaux d'assouplissement jusqu'à trouver une réserve de jeux valide
   for (const step of steps) {
     const pool = filterGames(games, {
       searchQuery: "",
@@ -306,7 +305,9 @@ export function getGachaSuggestion(
       maxDuration: step.duration,
       sortBy: "alphabetical",
     });
+
     if (pool.length > 0) {
+      // Tire un élément au hasard au sein du réservoir valide
       const poolIndex = Math.floor(Math.random() * pool.length);
 
       return {
@@ -318,7 +319,7 @@ export function getGachaSuggestion(
       };
     }
   }
-  // 3. Repli ultime si la réserve de jeux est vide après tous les filtres
+
   return {
     game: null,
     isMatch: false,
@@ -327,14 +328,16 @@ export function getGachaSuggestion(
   };
 }
 
-// =============================================================
-// RETOURNE LE TOP 3 D'UN CRITÈRE (GENRE OU FRANCHISE)
-// =============================================================
+// =========================================================================
+// 6. FEATURE : /statistiques
+// =========================================================================
+
+/** Extrait le classement Top 3 selon une propriété textuelle donnée (ex: genre ou franchise) */
 export function getTopPodium(
   games: Game[],
   getValue: (game: Game) => string | undefined,
 ): [string, number][] {
-  // 1. Comptage des occurrences par catégorie
+  // Compte l'occurrence de chaque catégorie
   const keyCounts = games.reduce(
     (counter, game) => {
       const key = getValue(game);
@@ -346,7 +349,7 @@ export function getTopPodium(
     {} as Record<string, number>,
   );
 
-  // 2. Regroupement des noms par score
+  // Regroupe les valeurs identiques sous une même occurrence
   const groupedByCount: Record<number, string[]> = {};
   for (const [key, count] of Object.entries(keyCounts)) {
     if (!groupedByCount[count]) {
@@ -355,34 +358,31 @@ export function getTopPodium(
     groupedByCount[count].push(key);
   }
 
-  // 3. Récupération des 3 meilleurs scores distincts
+  // Conserve uniquement les 3 scores distincts les plus élevés
   let topCounts = Object.keys(groupedByCount)
     .map(Number)
     .sort((a, b) => b - a)
     .slice(0, 3);
 
-  // 4. Masquage de la 3e position si elle est à 1 jeu
+  // Masque le 3e niveau si la valeur associée est égale à 1
   if (topCounts.length === 3 && topCounts[2] === 1) {
     topCounts = topCounts.slice(0, 2);
   }
 
-  // 5. Construction des lignes (tous les noms séparés par des virgules)
+  // Construit les paires finales (noms regroupés par slash / nombre)
   return topCounts.map((count) => {
     const names = groupedByCount[count].sort((a, b) => a.localeCompare(b));
-
     return [names.join(" / "), count];
   });
 }
 
-// =============================================================
-// RETOUR LISTE JEU D'UN EXTREME
-// =============================================================
+/** Recherche la liste des jeux détenant une valeur extrême (maximale ou minimale) */
 export function getRecordGames(
   games: Game[],
   getValue: (game: Game) => number | null | undefined,
   type: "max" | "min",
 ): Game[] {
-  // 1. Isolation des jeux ayant une valeur numérique valide
+  // Filtre les jeux possédant une métrique numérique valide
   const validGames = games.filter((game) => {
     const key = getValue(game);
     return key != null && !Number.isNaN(key);
@@ -390,21 +390,18 @@ export function getRecordGames(
 
   if (validGames.length === 0) return [];
 
-  // 2. Calcul du pôle (valeur maximale ou minimale)
+  // Calcule la valeur cible extrême (min ou max)
   const values = validGames.map((game) => getValue(game) as number);
   const targetValue =
     type === "max" ? Math.max(...values) : Math.min(...values);
 
-  // 3. Filtrage des ex æquo et tri alphabétique par titre
+  // Isole les ex æquo et trie par ordre alphabétique
   return validGames
     .filter((game) => getValue(game) === targetValue)
     .sort((a, b) => a.title.localeCompare(b.title));
 }
 
-// =============================================================
-// INTITULÉS DES CRITÈRES DE RECORDS POUR L'AFFICHAGE
-// =============================================================
-
+/** Formate l'intitulé dynamique d'un en-tête de colonne de record pour les statistiques */
 export function getRecordColumnTitle(
   metric: string,
   game?: Game,

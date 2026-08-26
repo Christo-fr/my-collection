@@ -3,21 +3,11 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import * as gameUtils from "./gameUtils";
 
-/**
- * Custom Hook : useGames
- *
- * OBJECTIF ET RÔLE :
- * Ce hook sert de "chef d'orchestre" pour toute la logique de la page.
- * Plutôt que de tout mélanger dans un composant d'affichage (MaListe.tsx), ce hook :
- * 1. Maintient l'état local des filtres (recherche, console, Genre, statut, durée, tri).
- * 2. Récupère la donnée brute depuis l'API (/api/games) au chargement.
- * 3. Valide et synchronise en temps réel les filtres avec les paramètres d'URL (URLSearchParams).
- * 4. Effectue le filtrage/tri de manière optimisée (useMemo) avant de livrer le résultat.
- */
+// =========================================================================
+// 1. HOOK MAIN & INITIALISATION
+// =========================================================================
+/** Hook orchestrateur gérant les filtres, le tri, le calcul mémoïsé et la sync URL de la liste */
 export function useGames() {
-  // =============================================================
-  // 1. NAVIGATION & HOOKS NEXT.JS
-  // =============================================================
   // searchParams : permet de lire les clés/valeurs présentés dans l'URL (ex: ?console=PS5&sort=score_descending)
   const searchParams = useSearchParams();
   // router : permet de modifier l'URL du navigateur dynamiquement sans recharger la page
@@ -25,43 +15,48 @@ export function useGames() {
   // pathname : renvoie le chemin actuel (ex: "/ma-liste")
   const pathname = usePathname();
 
-  // =============================================================
-  // 2. ÉTATS DU COMPOSANT (useState)
-  // =============================================================
   // Données issues du provider GamesProvider (chargées depuis l'API)
   const { games, consoles, loading } = useGamesContext();
 
-  // Initialisation des filtres : si un paramètre existe déjà dans l'URL à l'arrivée,
-  // on l'utilise direct comme valeur initiale, sinon on applique la valeur par défaut.
+  // =========================================================================
+  // 2. ÉTATS LOCAUX (Initialisés depuis les paramètres d'URL)
+  // =========================================================================
+  // Initialise la recherche textuelle avec la valeur de l'URL ("q") ou une chaîne vide
   const [searchQuery, setSearchQuery] = useState<string>(
     searchParams.get("q") ?? "",
   );
+  // Initialise la console sélectionnée ("console") ou bascule sur la valeur par défaut
   const [selectedConsole, setSelectedConsole] = useState<string>(
     searchParams.get("console") ?? "Toutes",
   );
+  // Initialise le genre sélectionné ("genre") ou bascule sur la valeur par défaut
   const [selectedGenre, setSelectedGenre] = useState<string>(
     searchParams.get("genre") ?? "Tous",
   );
+  // Initialise le statut de complétion ("status") ou bascule sur la valeur par défaut
   const [selectedStatus, setSelectedStatus] = useState<string>(
     searchParams.get("status") ?? "all",
   );
+  // Extrait la durée maximale de l'URL ou applique le plafond par défaut (200 h)
   const [maxDuration, setMaxDuration] = useState<number>(
     searchParams.get("duration") && !isNaN(Number(searchParams.get("duration")))
       ? Number(searchParams.get("duration"))
       : 200,
   );
+  // Initialise le critère de tri ("sort") ou applique le tri alphabétique par défaut
   const [sortBy, setSortBy] = useState<string>(
     searchParams.get("sort") ?? "alphabetical",
   );
 
-  // =============================================================
-  // 3. EFFETS (useEffect)
-  // =============================================================
+  // =========================================================================
+  // 3. EFFETS DE SYNCHRONISATION (useEffect)
+  // =========================================================================
 
   // Effet A : Validation de la cohérence de l'URL une fois les jeux chargés dans le Context
   useEffect(() => {
     if (games.length === 0) return;
 
+    // Ajuste la durée maximale pour qu'elle reste comprise dans les bornes réelles de la BDD
     const { min: minTime, max: maxTime } = gameUtils.getPlaytimeBounds(games);
     const urlDuration = searchParams.get("duration");
 
@@ -76,6 +71,7 @@ export function useGames() {
       setMaxDuration(maxTime);
     }
 
+    // Réinitialise le filtre de statut si la valeur dans l'URL est inconnue
     const validStatuses = gameUtils.OPTIONS_STATUS.map(
       (option) => option.value,
     );
@@ -84,12 +80,14 @@ export function useGames() {
       setSelectedStatus("all");
     }
 
+    // Réinitialise le filtre de genre si la valeur dans l'URL n'existe pas dans le catalogue
     const validGenres = games.map((game) => game.genre);
     const urlGenre = searchParams.get("genre");
     if (urlGenre && urlGenre !== "Tous" && !validGenres.includes(urlGenre)) {
       setSelectedGenre("Tous");
     }
 
+    // Réinitialise la console si la valeur dans l'URL est introuvable
     const validConsoles = games.map((game) => game.console);
     const urlConsole = searchParams.get("console");
     if (
@@ -100,6 +98,7 @@ export function useGames() {
       setSelectedConsole("Toutes");
     }
 
+    // Réinitialise le tri si le critère précisé dans l'URL n'existe pas
     const validSorts = gameUtils.OPTIONS_SORT.map((option) => option.value);
     const urlSort = searchParams.get("sort");
     if (urlSort && !validSorts.includes(urlSort)) {
@@ -125,8 +124,7 @@ export function useGames() {
 
     const search = params.toString();
     const query = search ? `?${search}` : "";
-    //Utilisation de l'API native du navigateur
-    // Cela met à jour l'URL instantanément SANS déclencher de requête serveur Next.js (RSC)
+    // Met à jour l'URL du navigateur sans déclencher d'actualisation
     window.history.replaceState(null, "", `${pathname}${query}`);
   }, [
     searchQuery,
@@ -146,22 +144,24 @@ export function useGames() {
   // PORQUOI UTILISER useMemo ICI ?
   // Sans useMemo, React réexécuterait ces calculs lourds (ex: boucler sur des centaines de jeux,
   // filtrer et trier) à CHAQUE ré-affichage du composant parent.
-  // useMemo met le résultat en "mise en cache" et ne le re-calcule QUE si l'une des dépendances change.
 
+  // =========================================================================
+  // 4. CALCULS MÉMOÏSÉS (useMemo) useMemo met le résultat en "mise en cache" et ne le re-calcule QUE si l'une des dépendances change.
+  // =========================================================================
+  // Calcule les bornes minimales et maximales de durée uniquement si la liste brute de jeux change
   // 1. Bornes du slider (Min/Max) : Re-calculé UNIQUEMENT si le tableau initial "games" change.
   const bounds = useMemo(() => gameUtils.getPlaytimeBounds(games), [games]);
 
-  // 2. Options dynamiques de Select : Extraient la liste unique des consoles/Genres
-  // Re-calculées UNIQUEMENT si la liste des jeux bruts change.
+  // 2. Génère la liste des options du Select Console uniquement si le tableau des consoles change
   const consoleOptions = useMemo(
     () => gameUtils.getConsoleOptions(consoles),
     [consoles],
   );
 
+  // 3. Génère la liste des genres uniques extraits des jeux
   const genreOptions = useMemo(() => gameUtils.getGenreOptions(games), [games]);
 
-  // 3. Liste finale filtrée et triée :
-  // Re-calculée uniquement si "games" OU l'un des critères de filtrage/tri change.
+  // 4. Effectue le filtrage et le tri principal uniquement si les jeux ou l'un des critères de filtre évoluent
   const filteredGames = useMemo(
     () =>
       gameUtils.filterGames(games, {
@@ -183,15 +183,10 @@ export function useGames() {
     ],
   );
 
-  // =============================================================
-  // 5. RETOUR DU HOOK ("Le Paquet Cadeau")
-  // =============================================================
-  // Un hook ne peut faire qu'UN SEUL return d'un objet.
-  // On regroupe tout ce dont les composants React (ex: MaListe.tsx) auront besoin :
-  // - Les données nettoyées/filtrées (games, bounds, consoleOptions, etc.)
-  // - L'état de chargement (loading)
-  // - Les valeurs actuelles des filtres regroupées sous "filters"
-  // - Les fonctions de mise à jour regroupées sous "setters"
+  // =========================================================================
+  // 5. PACK DE RETOUR (Return)
+  // =========================================================================
+  // Exporte les données calculées et les fonctions d'action vers le composant de vue
   return {
     games: filteredGames,
     loading,

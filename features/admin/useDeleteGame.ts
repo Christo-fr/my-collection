@@ -57,7 +57,6 @@ export function useDeleteGame() {
       await refetchConsoles();
       await refetchGames(); // Synchronise le contexte global et revalide le cache
       setIsDeleting(false);
-      console.log("ID transmis à Supabase :", game.id);
       return true; // Succès : l'UI peut fermer la modale
     }
   };

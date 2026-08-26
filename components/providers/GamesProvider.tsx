@@ -13,7 +13,6 @@ import { Console } from "@/types/console";
 
 // =========================================================================
 // 1. LE TYPAGE (Le contrat d'échange)
-// On décrit la forme exacte des données du catalogue qui vont circuler :
 // - games : la liste de tous les jeux en mémoire
 // - loading : l'indicateur de chargement de l'API
 // - refetchGames : la fonction pour recharger la liste depuis le serveur
@@ -29,25 +28,22 @@ export interface GamesContextType {
 }
 
 // =========================================================================
-// 2. CRÉATION DU CANAL (createContext)
-// On crée le canal de communication. Au départ, il est "undefined"
-// car aucun composant ne diffuse encore dessus.
+// 2. CRÉATION DU CANAL (Context React)
 // =========================================================================
+// Initialisation du canal de communication React (non défini par défaut)
 const GamesContext = createContext<GamesContextType | undefined>(undefined);
 
 // =========================================================================
-// 3. LE PROVIDER (L'Émetteur)
-// C'est le composant enveloppe qui entoure l'application dans layout.tsx.
-// Son rôle : charger la liste via l'API, la garder en mémoire (useState)
-// et la distribuer à tous ses composants enfants.
+// 3. COMPOSANT PROVIDER (Émetteur de données)
 // =========================================================================
+/** Composant conteneur chargé de récupérer, stocker et distribuer les jeux et consoles */
 export function GamesProvider({ children }: { children: ReactNode }) {
   const [games, setGames] = useState<Game[]>([]);
   const [consoles, setConsoles] = useState<Console[]>([]);
   const [loadingGames, setLoadingGames] = useState<boolean>(true);
   const [loadingConsoles, setLoadingConsoles] = useState<boolean>(true);
 
-  // Appel API pour récupérer les jeux.
+  // Exécute la requête HTTP pour récupérer tous les jeux et met à jour le state
   // useCallback évite de re-créer cette fonction à chaque rendu.
   const fetchGames = useCallback(async () => {
     try {
@@ -61,6 +57,8 @@ export function GamesProvider({ children }: { children: ReactNode }) {
       setLoadingGames(false);
     }
   }, []);
+
+  // Exécute la requête HTTP pour récupérer toutes les consoles et met à jour le state
   const fetchConsoles = useCallback(async () => {
     try {
       setLoadingConsoles(true);
@@ -74,13 +72,13 @@ export function GamesProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Déclenchement automatique du premier chargement au montage du Provider
+  // Déclenche le chargement initial des données au premier montage du composant
   useEffect(() => {
     fetchGames();
     fetchConsoles();
   }, [fetchGames, fetchConsoles]);
 
-  // Recherche directe dans le tableau `games` déjà stocké en mémoire RAM
+  // Recherche synchrone d'un jeu par son identifiant directement dans le tableau en mémoire
   const getGameById = useCallback(
     (id: number) => {
       return games.find((game) => game.id === id);
@@ -88,8 +86,7 @@ export function GamesProvider({ children }: { children: ReactNode }) {
     [games],
   );
 
-  // On injecte les données et les fonctions dans le canal.
-  // Tous les composants enfants contenus dans '{children}' y auront accès !
+  // Injection des données et fonctions d'action dans le canal React
   return (
     <GamesContext.Provider
       value={{
@@ -107,22 +104,20 @@ export function GamesProvider({ children }: { children: ReactNode }) {
 }
 
 // =========================================================================
-// 4. LE CUSTOM HOOK (Le Récepteur / La Prise de branchement)
-// C'est la fonction pratique à appeler dans tes composants
-// (ex: dans la grille de jeux ou la page détail) pour te brancher au canal.
+// 4. CUSTOM HOOK (Récepteur)
 // =========================================================================
+/** Hook consommateur permettant aux composants enfants d'accéder au GamesContext */
 export function useGamesContext() {
   // 'useContext' va chercher le Provider le plus proche situé au-dessus dans l'arbre React
   const context = useContext(GamesContext);
 
-  // Sécurité dev : si useGamesContext() est appelé dans un composant
-  // qui n'est PAS emballé par le <GamesProvider>, on lève une erreur claire.
+  // Sécurité dev : si useGamesContext() est appelé dans un composant qui n'est PAS emballé par le <GamesProvider>, on indique l'erreur.
   if (!context) {
     throw new Error(
       "useGamesContext doit être utilisé à l'intérieur d'un GamesProvider",
     );
   }
 
-  // Renvoie { games, loading, refetchGames, getGameById } au composant
+  // Renvoie { games, loading, refetchGames, getGameById }
   return context;
 }
