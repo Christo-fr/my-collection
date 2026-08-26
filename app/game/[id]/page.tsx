@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import Image from "next/image";
 import { Undo2, Disc, CircleDotDashed } from "lucide-react";
 
@@ -19,37 +18,29 @@ import { useGameDetail } from "@/features/game/useGameDetail";
 import GameTabs from "@/components/game/GameTabs";
 import GameTrailerDialog from "@/components/game/GameTrailerDialog";
 
-/**
- * Composant Page : GameDetail (/game/[id])
- *
- * RÔLE ET ARCHITECTURE :
- * Sert de "composant chef d'orchestre" pour la vue détaillée d'un jeu.
- * 1. Délègue la récupération de données et la navigation au Custom Hook `useGameDetail`.
- * 2. Délègue la construction visuelle des détails/avis au sous-composant `GameTabs`.
- * 3. Maintient uniquement l'état d'ouverture UI de la modale trailer (`GameTrailerDialog`).
- */
+// =========================================================================
+// 1. COMPOSANT PAGE & ORCHESTRATION
+// =========================================================================
+/** Page dynamique affichant le profil détaillé, les avis et la saga d'un jeu sélectionné */
 export default function GameDetail() {
-  // =========================================================================
-  // 1. HOOKS & ÉTATS LOCAUX
-  // =========================================================================
-  // Executive Hook : Récupère les données du jeu, les jeux connexes de la franchise et la fonction retour
+  // Récupère les données du jeu courant, sa saga filtrée et la fonction de retour intelligent
   const { game, relatedFranchiseGames, handleBack } = useGameDetail();
 
-  // État local UI : Contrôle la visibilité du dialogue du trailer YouTube
+  // Contrôle l'affichage de la modale vidéo YouTube
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
 
   // =========================================================================
-  // 2. SÉCURITÉ & GARDE DE CHARGEMENT
+  // 2. GARDE-FOU (Sécurité si donnée absente)
   // =========================================================================
-  // Si le jeu n'est pas encore chargé (ou inexistant), on bloque le rendu JSX
+  // Bloque le rendu du composant tant que les données du jeu ne sont pas résolues
   if (!game) return null;
 
   // =========================================================================
-  // 3. RENDU DU COMPOSANT
+  // 3. RENDU DU COMPOSANT (JSX)
   // =========================================================================
   return (
     <>
-      {/* AnimatePresence : Anime l'apparition/disparition lors des transitions de route */}
+      {/* Anime la transition de sortie/entrée lors des changements de jeu ou de route */}
       <AnimatePresence mode="wait">
         <motion.div
           key={game.id}
@@ -59,9 +50,9 @@ export default function GameDetail() {
           transition={{ duration: 0.35, ease: "easeOut" }}
           className="w-full h-full flex flex-col min-h-0"
         >
-          {/* Disposition Split : Image Parallax à gauche, contenu à droite */}
+          {/* Layout à deux colonnes avec image parallax à gauche et contenu à droite */}
           <LayoutSplit image={game.images.parallax}>
-            {/* Logo officiel du jeu */}
+            {/* Rendu conditionnel du logo du jeu avec conservation des proportions */}
             {game.images.logo && (
               <div className="relative items-start mb-2 h-32 w-full md:w-1/2 lg:flex-shrink-0">
                 <Image
@@ -74,9 +65,9 @@ export default function GameDetail() {
               </div>
             )}
 
-            {/* Panneau principal d'informations */}
+            {/* Panneau principal contenant les onglets de détails */}
             <section className="w-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
-              {/* Header : Titre + Badge de la Console + Format du jeu */}
+              {/* En-tête : Titre, icône console et badge de format */}
               <div className="flex flex-wrap w-full justify-between items-start md:flex-nowrap">
                 <Heading as="h1" size="lg">
                   {game.title}
@@ -88,10 +79,10 @@ export default function GameDetail() {
                     className="h-4 w-auto object-contain"
                   />
 
-                  {/* Badge du format (Physique vs Dématérialisé) */}
+                  {/* Distingue visuellement le support Physique (Disque) du Numérique (Cercle) */}
                   {game.format &&
                     (game.format === "Physical" ? (
-                      <Disc className="w-5 h-5 " name="Physique">
+                      <Disc className="w-5 h-5" name="Physique">
                         <title>Support Physique</title>
                       </Disc>
                     ) : (
@@ -102,7 +93,7 @@ export default function GameDetail() {
                 </div>
               </div>
 
-              {/* Composant d'onglets ("Informations" et "Avis") + Bouton Trailer */}
+              {/* Composant sous-traitant l'affichage des sections "Informations" et "Avis" */}
               <GameTabs
                 game={game}
                 onOpenTrailer={() => setIsTrailerOpen(true)}
@@ -110,7 +101,7 @@ export default function GameDetail() {
               />
             </section>
 
-            {/* Bouton Retour Intelligent (Historique sessionStorage ou /list) */}
+            {/* Bouton de retour contextuel */}
             <div className="lg:flex-shrink-0">
               <Button
                 variant="secondary"
@@ -122,10 +113,7 @@ export default function GameDetail() {
             </div>
           </LayoutSplit>
 
-          {/* ========================================================================= */}
-          {/* DIALOG                                                       */}
-          {/* ========================================================================= */}
-          {/* Dialog du Trailer YouTube (rendu uniquement si une ID YouTube existe) */}
+          {/* Modale vidéo affichée uniquement si un identifiant YouTube est rattaché au jeu */}
           {game.youtubeId && (
             <GameTrailerDialog
               isOpen={isTrailerOpen}

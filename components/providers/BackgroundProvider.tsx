@@ -4,62 +4,50 @@ import { createContext, useState, useContext, useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 
 // =========================================================================
-// 1. LE TYPAGE (Le contrat d'échange)
-// On décrit la forme exacte des données qui vont circuler sur le canal :
-// - bgImage : l'URL textuelle de l'image (ou null si aucun fond spécifique)
-// - setBgImage : la fonction pour changer cette URL
+// 1. TYPAGE & INTERFACES
 // =========================================================================
+/** Contrat d'interface définissant l'état d'image de fond globale et sa fonction de mise à jour */
 interface BackgroundContextType {
   bgImage: string | null;
   setBgImage: (url: string | null) => void;
 }
 
 // =========================================================================
-// 2. CRÉATION DU CANAL ( createContex )
-// On crée le canal de communication. Au départ, il est "undefined"
-// car aucun composant ne diffuse encore dessus.
+// 2. CRÉATION DU CANAL
 // =========================================================================
+// Canal de communication global pour le fond de page (non initialisé par défaut)
 const BackgroundContext = createContext<BackgroundContextType | undefined>(
   undefined,
 );
 
 // =========================================================================
-// 3. LE PROVIDER (L'Émetteur)
-// C'est un composant enveloppe qui entoure tout ton site (dans layout.tsx).
-// Son rôle : contenir la VRAIE donnée (useState) et la diffuser vers le bas.
+// 3. COMPOSANT PROVIDER
 // =========================================================================
+/** Provider enveloppant l'application pour gérer dynamiquement l'image d'arrière-plan */
 export function BackgroundProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // L'état local React qui contient l'URL de l'image actuellement affichée.
-  // Par défaut à 'null' (= fond light/dark standard).
+  // Stocke l'URL de l'image de fond courante (null par défaut pour afficher le thème standard)
   const [bgImage, setBgImage] = useState<string | null>(null);
 
-  // Hook Next.js pour connaître la route actuelle (ex: "/game/12", "/list", etc.)
+  // Extrait le chemin d'accès de l'URL actuelle
   const pathname = usePathname();
 
-  // Nettoyage automatique :
-  // À chaque changement de page, si l'URL NE commence PAS par "/game/",
-  // on remet automatiquement le fond à null pour enlever l'image du jeu.
+  // Remet automatiquement le fond par défaut si l'utilisateur quitte la section /game/
   useEffect(() => {
     if (!pathname?.startsWith("/game/")) {
       setBgImage(null);
     }
   }, [pathname]);
 
-  // Optimisation mémoire (useMemo) :
-  // On regroupe { bgImage, setBgImage } dans un seul objet.
-  // 'useMemo' évite de re-créer cet objet en mémoire à chaque rendu du site,
-  // sauf si l'image ou la fonction ont réellement changé.
+  // Mémoïse l'objet de contexte pour préserver sa référence mémoire lors des re-rendus
   const gameBackground = useMemo(
     () => ({ bgImage, setBgImage }),
     [bgImage, setBgImage],
   );
 
-  // On injecte notre objet 'gameBackground' dans le canal.
-  // Tous les composants enfants contenus dans '{children}' y auront accès !
   return (
     <BackgroundContext.Provider value={gameBackground}>
       {children}
@@ -68,22 +56,17 @@ export function BackgroundProvider({
 }
 
 // =========================================================================
-// 4. LE CUSTOM HOOK (Le Récepteur / La Prise de branchement)
-// C'est la fonction pratique que tu vas appeler dans tes composants
-// (ex: dans GameDetail ou AppBackground) pour te brancher sur le canal.
+// 4. CUSTOM HOOK
 // =========================================================================
+/** Hook consommateur permettant aux composants de lire ou modifier l'image de fond */
 export function useBackground() {
-  // 'useContext' va chercher le Provider le plus proche situé au-dessus dans l'arbre React
   const context = useContext(BackgroundContext);
 
-  // Sécurité pour le dev : si tu appelles useBackground() dans un composant
-  // qui n'est PAS emballé par le <BackgroundProvider>, on lève une erreur claire.
   if (!context) {
     throw new Error(
       "useBackground doit être utilisé à l'intérieur d'un BackgroundProvider",
     );
   }
 
-  // Renvoie { bgImage, setBgImage } au composant qui a appelé l'outil
   return context;
 }

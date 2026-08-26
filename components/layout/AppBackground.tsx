@@ -6,16 +6,25 @@ import { usePathname } from "next/navigation";
 import { useBackground } from "@/components/providers/BackgroundProvider";
 import { motion, AnimatePresence } from "framer-motion";
 
+// =========================================================================
+// 1. COMPOSANT D'ARRIÈRE-PLAN GLOBAL
+// =========================================================================
+/** Gère les fonds d'écran dynamiques, le changement de thème et le préchargement transparent */
 export default function AppBackground() {
+  // Lit l'URL de l'image de jeu diffusée par le BackgroundProvider
   const bgGame = useBackground();
+
+  // Conserve l'image actuellement affichée au premier plan pour orchestrer le fondu
   const [current, setCurrent] = useState<string | null>(null);
 
+  // Lit la route active pour ajuster l'opacité selon le contexte de navigation
   const pathname = usePathname();
-  // Atténue l'opacité sur /login, /administration et toutes ses sous-routes
+
+  // Atténue l'opacité d'arrière-plan sur les pages correspondant à l'admin et au login
   const isDimmedRoute =
     pathname === "/login" || pathname?.startsWith("/administration");
 
-  // Si on quitte une fiche jeu, on efface immédiatement le fond dédié
+  // Re-initialise le fond courant à null dès que le Provider retire l'image
   useEffect(() => {
     if (!bgGame.bgImage) setCurrent(null);
   }, [bgGame.bgImage]);
@@ -26,6 +35,7 @@ export default function AppBackground() {
         isDimmedRoute ? "opacity-15" : "opacity-30"
       }`}
     >
+      {/* background thème clair */}
       <Image
         src="/background/bg-modelight.webp"
         alt="Background"
@@ -35,6 +45,8 @@ export default function AppBackground() {
         sizes="100vw"
         fill
       />
+
+      {/* Background thème sombre */}
       <Image
         src="/background/bg-modedark.webp"
         alt="Background"
@@ -44,6 +56,8 @@ export default function AppBackground() {
         sizes="100vw"
         fill
       />
+
+      {/* Anime l'apparition et la disparition du fond personnalisé du jeu */}
       <AnimatePresence>
         {current && (
           <motion.div
@@ -67,7 +81,7 @@ export default function AppBackground() {
         )}
       </AnimatePresence>
 
-      {/* Précharge la prochaine image en coulisses ; ne devient "current" qu'une fois prête */}
+      {/* Zone de préchargement masquée pour télécharger l'image avant l'animation */}
       {bgGame.bgImage && bgGame.bgImage !== current && (
         <div
           className="absolute inset-0 opacity-0 pointer-events-none"

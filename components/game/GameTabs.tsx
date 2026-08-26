@@ -22,31 +22,26 @@ import ProgressBar from "@/components/ui/ProgressBar";
 import { Game } from "@/types/game";
 import { formatDate } from "@/features/game/gameUtils";
 
-/**
- * Interface des Props de GameTabs
- * @param game Données complètes du jeu courant
- * @param relatedFranchiseGames Liste des jeux connexes de la même franchise
- * @param onOpenTrailer Fonction déclenchée pour ouvrir la modale vidéo
- */
+// =========================================================================
+// 1. TYPAGE & INTERFACES
+// =========================================================================
+/** Props injectant le jeu actif, les opus connexes de la saga et la fonction de déclenchement du trailer */
 interface GameTabsProps {
   game: Game;
   relatedFranchiseGames: Game[];
   onOpenTrailer: () => void;
 }
 
-/**
- * Composant GameTabs
- * Construit et structure les données du jeu sous forme d'onglets ("Informations" & "Avis")
- * à injecter dans le composant générique UI <Tabs />.
- */
+// =========================================================================
+// 2. COMPOSANT & STRUCTURATION DES ONGLETS
+// =========================================================================
+/** Construit dynamiquement les structures JSX des onglets d'informations et d'avis pour le composant Tabs */
 export default function GameTabs({
   game,
   relatedFranchiseGames,
   onOpenTrailer,
 }: GameTabsProps) {
-  // =========================================================================
-  // 1. CONFIGURATION DES ONGLETS
-  // =========================================================================
+  // Définition du tableau des onglets injectés dans le composant d'affichage
   const tabs = [
     // -----------------------------------------------------------------------
     // Onglet 1 : Informations générales sur le jeu
@@ -55,7 +50,7 @@ export default function GameTabs({
       label: "Informations",
       content: (
         <>
-          {/* Grille des métadonnées du jeu (Développeur, Langue, Date, Genre, PEGI, Durée) */}
+          {/* Métadonnées du jeu */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {game?.developer && (
               <div className="flex gap-2 items-center" title="Développeur">
@@ -106,14 +101,14 @@ export default function GameTabs({
             )}
           </div>
 
-          {/* Description textuelle du jeu */}
+          {/* Synopsis */}
           {game?.description && (
             <p className="mt-4 whitespace-pre-line text-main/90 dark:text-main/80 text-sm leading-relaxed">
               {game.description}
             </p>
           )}
 
-          {/* Carousel / Grille "De la même série..." (Affiché uniquement si la franchise existe) */}
+          {/* Propose 3 opus max de la même franchise */}
           {relatedFranchiseGames.length > 0 && (
             <div className="mt-4">
               <Heading as="h2" size="sm" className="mb-2">
@@ -146,16 +141,17 @@ export default function GameTabs({
     },
 
     // -----------------------------------------------------------------------
-    // Onglet 2 : Avis & Critique (Conditonnnel : uniquement si le jeu a une note)
+    // Onglet 2 : Avis
     // -----------------------------------------------------------------------
+    //injecte l'onglet « Avis » uniquement s'il existe, sans insérer d'élément null ou undefined
     ...(game?.review?.score
       ? [
           {
             label: "Avis",
             content: (
               <>
-                {/* Statistiques d'accomplissement (Date de fin, Note, Temps passé) */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 ">
+                {/* Statistiques de complétion */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {game.review.completedDate && (
                     <div
                       className="flex gap-2 items-center"
@@ -192,7 +188,7 @@ export default function GameTabs({
                   )}
                 </div>
 
-                {/* Listes comparatives : Points forts (+) et Points faibles (-) */}
+                {/* Listes des points forts et des points faibles */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                   {game.review.pros && (
                     <ul className="space-y-1">
@@ -223,7 +219,7 @@ export default function GameTabs({
                   )}
                 </div>
 
-                {/* Bilan récapitulatif */}
+                {/* Bilan de la critique */}
                 {game.review.summary && (
                   <p className="mt-4 whitespace-pre-line text-main/90 dark:text-main/80 text-sm leading-relaxed">
                     {game.review.summary}
@@ -237,12 +233,12 @@ export default function GameTabs({
   ];
 
   // =========================================================================
-  // 2. RENDU DU COMPOSANT
+  // 3. RENDU DU COMPOSANT GÉNÉRIQUE TABS
   // =========================================================================
   return (
     <Tabs
       className="pt-4"
-      // Bouton "Trailer" optionnel injecté en haut à droite des onglets
+      // Btn trailer si l'ID Youtube est présent
       action={
         game.youtubeId && (
           <Button
