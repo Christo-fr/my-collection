@@ -20,9 +20,8 @@ export default function URLTracker() {
     // 2. On construit l'URL proprement : si y a des params, on met le "?", sinon juste le pathname
     const currentUrl = queryString ? `${pathname}?${queryString}` : pathname;
 
-    //Est-ce qu'au moins un élément de ce tableau valide une condition spécifique ? (.some)
-    const isAllowedRoute =
-      currentUrl && ALLOW_ROUTES.some((route) => currentUrl.startsWith(route));
+    // Comparaison exacte du pathname pour ne pas capter les sous-routes (ex: /administration/add)
+    const isAllowedRoute = ALLOW_ROUTES.includes(pathname);
 
     if (isAllowedRoute) {
       sessionStorage.setItem("lastCatalogUrl", currentUrl);

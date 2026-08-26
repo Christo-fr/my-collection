@@ -30,6 +30,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
     clearField,
     handleSubmit,
     handleGenerateAI,
+    handleBack,
   } = useGameForm({ mode, editGame });
 
   // =========================================================================
@@ -82,7 +83,7 @@ export default function GameForm({ mode, editGame }: GameFormProps) {
 
         <div className="w-full flex flex-row flex-wrap items-center justify-between gap-2 pt-4">
           <Button
-            href="/administration"
+            onClick={handleBack}
             variant="secondary"
             icon={<Undo2 className="w-5 h-5" />}
           >

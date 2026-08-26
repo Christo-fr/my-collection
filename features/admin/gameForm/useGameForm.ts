@@ -39,6 +39,12 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   const [formError, setFormError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
+  // Retour vers /administration en conservant les derniers filtres utilisés
+  const handleBack = () => {
+    const lastCatalogUrl = sessionStorage.getItem("lastCatalogUrl");
+    router.push(lastCatalogUrl ?? "/administration");
+  };
+
   // =========================================================================
   // 3. GESTION DES ERREURS & NETTOYAGE
   // =========================================================================
@@ -342,7 +348,7 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
       // Redirection immédiate : le refetch se fait en arrière-plan pour éviter
       // que le passage de `loading` à true (état global du contexte) ne réaffiche
       // le spinner de la page courante avant la navigation.
-      router.push("/administration");
+      handleBack();
       refetchGames();
       refetchConsoles();
       setIsSaving(false);
@@ -369,5 +375,6 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     fieldErrors,
     clearField,
     handleSubmit,
+    handleBack,
   };
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { createClient } from "@/lib/supabase/client";
 import { DragEndEvent } from "@dnd-kit/core";
@@ -10,6 +11,7 @@ export function useConsoles() {
   // =========================================================================
   // 1. HOOKS & CONTEXTES
   // =========================================================================
+  const router = useRouter();
   const supabase = createClient();
   const { consoles: dbConsoles, loading, refetchConsoles } = useGamesContext();
 
@@ -27,6 +29,12 @@ export function useConsoles() {
   // =========================================================================
   // 2. HANDLERS & TRAITEMENT METIER
   // =========================================================================
+
+  // Retour vers /administration en conservant les derniers filtres utilisés
+  const handleBack = () => {
+    const lastCatalogUrl = sessionStorage.getItem("lastCatalogUrl");
+    router.push(lastCatalogUrl ?? "/administration");
+  };
 
   // A. Drag & Drop : Réordonnancement de la liste locale
   const handleDragEnd = (event: DragEndEvent) => {
@@ -80,7 +88,6 @@ export function useConsoles() {
 
     // 2. Traitement des fichiers images (Storage)
     for (const consoleItem of localConsoles) {
-      console.log("État localConsoles au clic :", localConsoles);
       const item = consoleItem as Console & { file?: File; logo_file?: File };
       let finalLogoUrl = item.logo_url;
 
@@ -113,8 +120,6 @@ export function useConsoles() {
                   `[Storage Error] Échec suppression sur ${targetBucket}/${filePath} :`,
                   removeError.message,
                 );
-              } else {
-                console.log(`[Storage] Ancien fichier supprimé : ${filePath}`);
               }
             }
           } catch (err) {
@@ -167,6 +172,7 @@ export function useConsoles() {
       setShowErrors(false);
       toast.success("Liste des consoles mise à jour avec succès !");
       await refetchConsoles();
+      handleBack();
     }
 
     setIsSaving(false);
@@ -184,5 +190,6 @@ export function useConsoles() {
     handleDragEnd,
     updateConsoleField,
     handleSave,
+    handleBack,
   };
 }
