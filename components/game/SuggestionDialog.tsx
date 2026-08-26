@@ -6,12 +6,16 @@ import { RotateCw } from "lucide-react";
 // Types
 import { SuggestionResult } from "@/features/game/gameUtils";
 
-// Composants UI
+// Composants UI Globaux & Métier
 import Dialog from "@/components/ui/Dialog";
 import GameCard from "@/components/game/GameCard";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 
+// =========================================================================
+// 1. TYPAGE & INTERFACES
+// =========================================================================
+/** Props contrôlant la visibilité, la fermeture, le résultat du tirage et la fonction de relance */
 interface SuggestionDialogProps {
   isOpen: boolean;
   onClose: () => void;
@@ -19,6 +23,10 @@ interface SuggestionDialogProps {
   onRePoll: () => void;
 }
 
+// =========================================================================
+// 2. COMPOSANT MODALE SUGGESTION
+// =========================================================================
+/** Dialog modale affichant la carte de jeu tirée avec animations et lancers de confettis */
 export default function SuggestionDialog({
   isOpen,
   onClose,
@@ -28,7 +36,7 @@ export default function SuggestionDialog({
   // Compteur d'animation : incrémenté à chaque tirage pour forcer Framer Motion à rejouer l'animation
   const [count, setCount] = useState(0);
 
-  // Déclenchement des effets visuels (confetti + incrément d'animation)
+  // Déclenche la projection de confettis et l'incrément du key au chargement du résultat
   useEffect(() => {
     if (isOpen && result?.game) {
       setCount((prev) => prev + 1);
@@ -53,13 +61,13 @@ export default function SuggestionDialog({
     }
   }, [isOpen, result]);
 
-  // Sécurité si aucun résultat n'est présent
+  // Bloque le rendu si aucun résultat de jeu valide n'est présent
   if (!result || !result.game) return null;
 
   return (
     <Dialog isOpen={isOpen} onClose={onClose} maxWidth="max-w-xl" centered>
       <div className="w-full h-full flex flex-col gap-4 items-center justify-between p-4">
-        {/* En-tête : Titre et message alternatif */}
+        {/* En-tête : Titre et message conditionnel d'assouplissement des critères */}
         <div className="flex flex-col mb-4 shrink-0 gap-4">
           <Heading
             as="h2"
@@ -75,7 +83,7 @@ export default function SuggestionDialog({
           )}
         </div>
 
-        {/* Zone centrale : Carte de jeu avec animation Framer Motion */}
+        {/* Zone centrale : Carte de jeu animée avec halo lumineux */}
         <motion.div
           key={count} // Réinitialise l'animation à chaque évolution du compteur
           initial={{ scale: 0.2, opacity: 0, rotate: -8 }}
@@ -87,7 +95,7 @@ export default function SuggestionDialog({
           }}
           className="relative flex-1 min-h-0 w-full flex items-center justify-center py-2 max-w-sm"
         >
-          {/* Halo lumineux de rareté sous la carte */}
+          {/* Halo lumineux dégradé d'arrière-plan */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: [0, 0.9, 0.3], scale: [0.5, 1.2, 1.05] }}
@@ -95,19 +103,19 @@ export default function SuggestionDialog({
             className="absolute -inset-3 -z-10 rounded-3xl bg-gradient-to-r from-grad-gacha-start via-grad-gacha-via to-grad-gacha-end blur-2xl animate-pulse"
           />
 
-          {/* Rendu de la  GameCard */}
+          {/* Rendu de la carte de jeu en variante grand format (xl) */}
           <div className="relative w-full max-w-[340px] aspect-[2/3] max-h-full flex items-center justify-center">
             <GameCard game={result.game} variant="xl" />
           </div>
         </motion.div>
 
-        {/* Btn de relance */}
-        <div className="shrink-0 w-full max-w-sm ">
+        {/* Action : Bouton de relance du tirage sans fermeture la dialog */}
+        <div className="shrink-0 w-full max-w-sm">
           <Button
             onClick={onRePoll}
             icon={<RotateCw className="w-5 h-5 !border-dialog-text" />}
             variant="secondary"
-            className="w-full mt-6 !border-dialog-text !text-dialog-text  hover:!bg-primary hover:!text-background hover:!border-primary"
+            className="w-full mt-6 !border-dialog-text !text-dialog-text hover:!bg-primary hover:!text-background hover:!border-primary"
           >
             Une autre idée ?
           </Button>
