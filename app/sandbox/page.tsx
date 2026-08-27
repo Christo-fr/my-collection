@@ -298,9 +298,7 @@ export default function SandboxPage() {
             onClose={() => setIsDialogOpen(false)}
             title="Titre de la modale"
           >
-            <div className="w-full">
-              <GameCard game={veryGame} variant="xl" />
-            </div>
+            <div className="w-full">Bienvenue !</div>
             <Button onClick={() => setIsDialogOpen(false)}>
               Fermer la modale
             </Button>
@@ -419,7 +417,7 @@ export default function SandboxPage() {
             ------------------------------------------------------------------- */}
         <section className="bg-background/5 p-4 rounded-xl border border-main/10 w-full flex flex-col">
           <h2 className="text-xs font-semibold text-main/50 uppercase tracking-wider">
-            13. Drag & Drop
+            13. Combobox
           </h2>
           {/* Grille de jeux */}
           <div className="py-4 px-2 lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">

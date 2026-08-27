@@ -1,6 +1,10 @@
 import ProgressBar from "@/components/ui/ProgressBar";
 import Heading from "@/components/ui/Heading";
 
+// =========================================================================
+// 1. TYPAGE & INTERFACES
+// =========================================================================
+/** Contrat de propriétés regroupant l'ensemble des métriques de la sidebar */
 interface StatsKpiSidebarProps {
   totalGames: number;
   totalDataGames: number;
@@ -14,6 +18,10 @@ interface StatsKpiSidebarProps {
   topFranchises: [string, number][];
 }
 
+// =========================================================================
+// 2. COMPOSANT SIDEBAR INDICATEURS
+// =========================================================================
+/** Panneau latéral affichant les indicateurs clés et jauges de progression */
 export default function StatsKpiSidebar({
   totalGames,
   totalDataGames,
@@ -26,8 +34,12 @@ export default function StatsKpiSidebar({
   topGenres,
   topFranchises,
 }: StatsKpiSidebarProps) {
+  // =========================================================================
+  // 3. RENDU DU COMPOSANT
+  // =========================================================================
   return (
     <section className="w-full lg:w-1/4 flex flex-col h-auto lg:h-full min-h-0 flex-shrink-0">
+      {/* En-tête de la sidebar */}
       <div className="flex items-center justify-between border-b border-main/10 px-2 lg:h-12 flex-shrink-0">
         <Heading
           as="h2"
@@ -37,15 +49,18 @@ export default function StatsKpiSidebar({
           Indicateurs
         </Heading>
       </div>
+
       <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
-        {/* CHIFFRES CLÉS */}
+        {/* Blocs 1 : Chiffres clés (Volume, Supports, Moyenne) */}
         <div className="mb-6 space-y-1">
+          {/* Progression du nombre de jeux par rapport au total BDD */}
           <ProgressBar
             value={totalGames}
             max={totalDataGames}
             label={`Nombre de jeux : ${totalGames} / ${totalDataGames}`}
           />
 
+          {/* Jauge de répartition Physique vs Digital */}
           <ProgressBar
             value={totalPhysical}
             label="Répartition des supports :"
@@ -55,6 +70,7 @@ export default function StatsKpiSidebar({
             showPercentage={true}
           />
 
+          {/* Jauge de la moyenne générale des notes */}
           {totalCompletedGames > 0 && (
             <ProgressBar
               value={totalAverageScore}
@@ -66,8 +82,9 @@ export default function StatsKpiSidebar({
           )}
         </div>
 
-        {/* JAUGES PRINCIPALES */}
+        {/* Bloc 2 : Jauges principales (Statut & Temps de jeu) */}
         <div className="mb-6 space-y-1">
+          {/* Ratio de complétion des jeux */}
           <ProgressBar
             value={totalCompletedGames}
             label={`Statut de la collection : ${
@@ -79,6 +96,8 @@ export default function StatsKpiSidebar({
             labelLeft="Terminés"
             labelRight="En cours"
           />
+
+          {/* Cumul des heures jouées vs somme totale des heures jouées */}
           {totalCompletedGames > 0 && (
             <ProgressBar
               value={totalPlaytime}
@@ -86,11 +105,13 @@ export default function StatsKpiSidebar({
               label={`Temps de jeu passé : ${totalPlaytime} / ${totalDataPlaytimeGames} heures`}
             />
           )}
+
+          {/* Écart en pourcentage entre temps réel et temps estimé */}
           {totalCompletedGames > 0 && (
             <ProgressBar
               value={totalPlaytime}
               max={totalPlaytime + totalEstimatedPlaytime}
-              label={`Temps de jeu passé  VS Temps estimé : ${
+              label={`Temps de jeu passé VS Temps estimé : ${
                 totalEstimatedPlaytime > 0
                   ? `${totalPlaytime >= totalEstimatedPlaytime ? "+" : ""}${Math.round(
                       ((totalPlaytime - totalEstimatedPlaytime) /
@@ -103,7 +124,7 @@ export default function StatsKpiSidebar({
           )}
         </div>
 
-        {/* TOP GENRES */}
+        {/* Bloc 3 : Top 3 des genres */}
         {topGenres.length > 0 && (
           <div className="mb-4">
             <p className="text-sm font-semibold mb-2">Top 3 des genres</p>
@@ -120,7 +141,7 @@ export default function StatsKpiSidebar({
           </div>
         )}
 
-        {/* TOP FRANCHISES */}
+        {/* Bloc 4 : Top 3 des franchises */}
         {topFranchises.length > 0 && (
           <div>
             <p className="text-sm font-semibold mb-2">Top 3 des franchises</p>

@@ -8,119 +8,128 @@ import {
 } from "@/features/game/gameUtils";
 import type { Game } from "@/types/game";
 
-/**
- * Hook personnalisé calculant les statistiques globales et filtrées de la ludothèque.
- * Expose les métriques clés, le classement par genre équitable et les jeux d'exception.
- */
+// =========================================================================
+// 1. HOOK MAIN & INITIALISATION
+// =========================================================================
+/** Hook personnalisé calculant les statistiques globales et filtrées de la ludothèque */
 export function useStats() {
-  // =============================================================
-  // 1. RÉCUPÉRATION DES DONNÉES GLOBALES
-  // =============================================================
+  // Extraction du catalogue brut, des consoles et du state de chargement depuis le provider global
   const { games, consoles, loading } = useGamesContext();
 
-  // =============================================================
-  // 2. ÉTATS LOCAUX (FILTRES ET SÉLECTIONS)
-  // =============================================================
+  // =========================================================================
+  // 2. ÉTATS LOCAUX (Filtres et métriques)
+  // =========================================================================
+  // Stocke la console sélectionnée dans les onglets ("Toutes" par défaut)
   const [selectedConsole, setSelectedConsole] = useState<string>("Toutes");
+  // Stocke la métrique sélectionnée pour le select comparatif ("score" par défaut)
   const [recordMetric, setRecordMetric] = useState<string>("score");
 
-  // =============================================================
-  // 3. EXTRACTION DYNAMIQUE DES ONGLETS DE CONSOLE
-  // =============================================================
+  // =========================================================================
+  // 3. CALCULS MÉMOÏSÉS (useMemo)
+  // =========================================================================
+  // Génère la liste des onglets de consoles uniquement si le tableau des consoles est mis à jour
   const consoleTabs = useMemo(() => getConsoleTabs(consoles), [consoles]);
 
-  // =============================================================
-  // 4. SOUS-ENSEMBLE DE JEUX FILTRÉS SELON LA CONSOLE
-  // =============================================================
+  // Filtre la liste des jeux par console uniquement si games ou selectedConsole changent
   const filteredGames = useMemo(() => {
     if (selectedConsole === "Toutes") return games;
     return games.filter((game) => game.console === selectedConsole);
   }, [games, selectedConsole]);
 
-  // =============================================================
-  // 5. CALCUL CENTRALISÉ DES MÉTRIQUES
-  // =============================================================
+  // Calcule l'ensemble des métriques et des records uniquement si le sous-ensemble ou la métrique évolue
   const stats = useMemo(() => {
-    // -------------------------------------------------------------
-    // A. CHIFFRES CLÉS & VOLUMES GLOBATION
-    // -------------------------------------------------------------
-
+    // -----------------------------------------------------------------------
+    // A. Chiffres clés & Volumes
+    // -----------------------------------------------------------------------
+    // Nombre total de jeux filtrés pour la console active
     const totalGames = filteredGames.length;
 
-    // Jeux considérés comme évalués/terminés (note présente)
+    // Filtre les jeux possédant une note (et considérés comme "jeux terminés")
     const completedGames = filteredGames.filter(
       (game) => game.review?.score != null,
     );
+    // Nombre total de jeux terminés
     const totalCompletedGames = completedGames.length;
 
-    // Cumul des heures de jeu enregistrées
+    // Nombre d'heures de jeu joués
     const totalPlaytime = filteredGames.reduce(
       (counter, game) => counter + (game.review?.playtime ?? 0),
       0,
     );
 
-    // Cumul des heures de jeu estimés
+    // Nombre d'heures de jeu estimés
     const totalEstimatedPlaytime = filteredGames.reduce(
       (counter, game) => counter + (game.estimatedPlaytime ?? 0),
       0,
     );
 
-    // Jeux au format physique
+    // Nombre de jeux au support physique
     const totalPhysical = filteredGames.filter(
       (game) => game.format === "Physical",
     ).length;
 
-    // -------------------------------------------------------------
-    // B. QUALITÉ & MOYENNES
-    // -------------------------------------------------------------
+    // -----------------------------------------------------------------------
+    // B. Notes & Moyennes
+    // -----------------------------------------------------------------------
+    // Cumule l'ensemble des notes attribuées
     const totalScoreSum = filteredGames.reduce(
       (counter, game) => counter + (game.review?.score ?? 0),
       0,
     );
 
+    // Calcule la note moyenne arrondie à une décimale (d'où le *10 lors du Math.round, pour ensuite le diviser par 10)
     const totalAverageScore =
       totalCompletedGames > 0
         ? Math.round((totalScoreSum / totalCompletedGames) * 10) / 10
         : 0;
 
-    // -------------------------------------------------------------
-    // C. PODIUMS (TOPS 3)
-    // -------------------------------------------------------------
+    // -----------------------------------------------------------------------
+    // C. Tops 3 des genres et franchises
+    // -----------------------------------------------------------------------
+    // Génère le top 3 des genres les plus représentés
     const topGenres = getTopPodium(filteredGames, (game) => game.genre);
+    // Génère le top 3 des franchises les plus représentées
     const topFranchises = getTopPodium(filteredGames, (game) => game.franchise);
 
-    // -------------------------------------------------------------
-    // D. RECORDS & SÉLECTIONS DYNAMIQUES (MAX / MIN)
-    // -------------------------------------------------------------
+    // -----------------------------------------------------------------------
+    // D. Records (Max / Min)
+    // -----------------------------------------------------------------------
     let recordMax: Game[] = [];
     let recordMin: Game[] = [];
 
     switch (recordMetric) {
       case "score":
+        // Recherche des jeux ayant la note maximale
         recordMax = getRecordGames(
           filteredGames,
           (game) => game.review?.score,
           "max",
         );
+        // Recherche des jeux ayant la note minimale
         recordMin = getRecordGames(
           filteredGames,
           (game) => game.review?.score,
           "min",
         );
         break;
+
       case "playtime":
+        // Recherche des jeux avec le temps de jeu le plus élevé
         recordMax = getRecordGames(
           filteredGames,
           (game) => game.review?.playtime,
           "max",
         );
+        // Recherche des jeux avec le temps de jeu le plus faible
         recordMin = getRecordGames(
           filteredGames,
           (game) => game.review?.playtime,
           "min",
         );
         break;
+
       case "playtime_gap":
+        // Recherche du plus grand dépassement du temps estimé
         recordMax = getRecordGames(
           filteredGames,
           (game) =>
@@ -129,6 +138,7 @@ export function useStats() {
               : undefined,
           "max",
         );
+        // Recherche de la plus grande avance sur le temps estimé
         recordMin = getRecordGames(
           filteredGames,
           (game) =>
@@ -138,7 +148,9 @@ export function useStats() {
           "min",
         );
         break;
+
       case "completion_date":
+        // Recherche des derniers jeux terminés
         recordMax = getRecordGames(
           filteredGames,
           (game) =>
@@ -147,6 +159,7 @@ export function useStats() {
               : undefined,
           "max",
         );
+        // Recherche des premiers jeux terminés
         recordMin = getRecordGames(
           filteredGames,
           (game) =>
@@ -156,39 +169,15 @@ export function useStats() {
           "min",
         );
         break;
-      case "yearly_summary": {
-        // 1. On isole tous les jeux qui ont une date de fin validée
-        const completedGames = filteredGames.filter(
-          (game) => game.review?.completedDate != null,
-        );
+    }
 
-        // Sécurité : si aucun jeu n'est terminé
-        if (completedGames.length === 0) {
-          recordMax = [];
-          recordMin = [];
-          break;
-        }
-
-        // 2. Année actuelle et liste de toutes les années disponibles
-        const currentYear = new Date().getFullYear();
-        const availableYears = completedGames.map((game) =>
-          new Date(game.review!.completedDate!).getFullYear(),
-        );
-
-        // 3. Année cible : l'année en cours si elle existe, sinon la plus récente disponible
-        const targetYear = availableYears.includes(currentYear)
-          ? currentYear
-          : Math.max(...availableYears);
-
-        // 4. On remplit la colonne principale avec les jeux de cette année-là
-        recordMax = completedGames.filter(
-          (game) =>
-            new Date(game.review!.completedDate!).getFullYear() === targetYear,
-        );
-        recordMin = []; // Pas de deuxième colonne pour le bilan annuel
-
-        break;
-      }
+    // Si la valeur min est égale à la valeur max (tableaux identiques), on vide recordMin pour masquer automatiquement la colonne Min dans l'UI
+    if (
+      recordMax.length > 0 &&
+      recordMin.length > 0 &&
+      recordMax[0].id === recordMin[0].id
+    ) {
+      recordMin = [];
     }
 
     return {
@@ -205,9 +194,10 @@ export function useStats() {
     };
   }, [filteredGames, recordMetric]);
 
-  // =============================================================
-  // 6. RETOUR DU HOOK
-  // =============================================================
+  // =========================================================================
+  // 4. RETOUR
+  // =========================================================================
+  // Exporte les données calculées et les fonctions d'action vers la vue
   return {
     loading,
     totalDataGames: games.length,

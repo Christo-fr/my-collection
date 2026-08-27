@@ -184,7 +184,7 @@ export function useGames() {
   );
 
   // =========================================================================
-  // 5. PACK DE RETOUR (Return)
+  // 5. RETOUR
   // =========================================================================
   // Exporte les données calculées et les fonctions d'action vers le composant de vue
   return {
