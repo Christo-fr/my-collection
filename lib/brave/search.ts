@@ -3,6 +3,10 @@ import {
   getSteamGridDbLogoCandidates,
 } from "@/lib/steamgriddb/search";
 
+// =========================================================================
+// 1. TYPES
+// =========================================================================
+
 export interface ImageCandidate {
   url: string;
   thumbnailUrl?: string;
@@ -10,9 +14,11 @@ export interface ImageCandidate {
   height?: number;
 }
 
-/**
- * Exécute une recherche d'images via l'API Brave Search Image.
- */
+// =========================================================================
+// 2. RECHERCHE BRAVE
+// =========================================================================
+
+// Exécute une recherche d'images via l'API Brave Search Image
 async function executeBraveImageSearch(
   apiKey: string,
   query: string,
@@ -59,9 +65,11 @@ async function executeBraveImageSearch(
   }
 }
 
-/**
- * Recherche des candidats d'images via Brave Search API pour l'analyse visuelle.
- */
+// =========================================================================
+// 3. RÉCUPÉRATION DE CANDIDATS
+// =========================================================================
+
+// Recherche des candidats d'images en priorisant SteamGridDB, avec repli sur Brave Search
 export async function getBraveImageCandidates(
   title: string,
   type: "logo" | "cover" | "parallax",
@@ -74,26 +82,17 @@ export async function getBraveImageCandidates(
     return [];
   }
 
-  // Le logo passe d'abord par l'API officielle SteamGridDB (voir lib/steamgriddb/search.ts),
-  // bien plus fiable pour cibler le bon jeu qu'une recherche d'image générique. Brave ne sert
-  // ici que de secours si SteamGridDB n'a pas de match (pas de clé, jeu absent ou trop incertain).
+  // Le logo est d'abord recherché sur SteamGridDB (source fiable), Brave ne sert que de repli
   if (type === "logo") {
-    const steamGridDbCandidates = await getSteamGridDbLogoCandidates(
-      title,
-      consoleName,
-    );
+    const steamGridDbCandidates = await getSteamGridDbLogoCandidates(title);
     if (steamGridDbCandidates.length > 0) {
       return steamGridDbCandidates.slice(0, 12);
     }
   }
 
-  // Idem pour la cover : le hero SteamGridDB au format 3840x1240 ("x2") est la source la
-  // plus fiable et la plus haute résolution, Brave ne sert que de secours en son absence.
+  // Idem pour la cover, via le hero SteamGridDB au format x2 (haute résolution)
   if (type === "cover") {
-    const steamGridDbCandidates = await getSteamGridDbHeroCandidates(
-      title,
-      consoleName,
-    );
+    const steamGridDbCandidates = await getSteamGridDbHeroCandidates(title);
     if (steamGridDbCandidates.length > 0) {
       return steamGridDbCandidates.slice(0, 12);
     }
@@ -113,7 +112,7 @@ export async function getBraveImageCandidates(
 
   let candidates = await executeBraveImageSearch(apiKey, query, 12);
 
-  // 1. Filtre Cover : priorité aux bannières horizontales larges (>= 1920px)
+  // Cover : priorité aux bannières horizontales larges (>= 1920px)
   if (type === "cover" && candidates.length > 0) {
     const horizontalHighRes = candidates.filter(
       (c) =>
@@ -125,7 +124,7 @@ export async function getBraveImageCandidates(
     }
   }
 
-  // 2. Filtre Logo & Parallax : élimination stricte des fichiers JPEG / JPG
+  // Logo & Parallax : élimination stricte des JPEG (pas de transparence)
   if ((type === "logo" || type === "parallax") && candidates.length > 0) {
     const transparentFormatsOnly = candidates.filter((c) => {
       const lowerUrl = c.url.toLowerCase();
@@ -136,7 +135,7 @@ export async function getBraveImageCandidates(
     }
   }
 
-  // 3. Filtre Parallax : priorité aux visuels d'une hauteur minimale de 650px
+  // Parallax : priorité aux visuels d'une hauteur minimale de 650px
   if (type === "parallax" && candidates.length > 0) {
     const minHeightCandidates = candidates.filter(
       (c) => !c.height || c.height >= 650,

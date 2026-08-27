@@ -1,6 +1,14 @@
 import { ImageCandidate } from "@/lib/brave/search";
 
+// =========================================================================
+// 1. TYPES & CONSTANTES
+// =========================================================================
+
 const BASE_URL = "https://www.steamgriddb.com/api/v2";
+const STEAM_CDN_BASE =
+  "https://shared.steamstatic.com/store_item_assets/steam/apps";
+// Seuil de similarité en dessous duquel un résultat approximatif est rejeté (voir findGameId)
+const MIN_TITLE_SIMILARITY = 0.75;
 
 interface SteamGridDbGame {
   id: number;
@@ -21,6 +29,25 @@ interface SteamGridDbHero {
   height: number;
 }
 
+interface SteamPlatformEntry {
+  id: string;
+  metadata: {
+    store_asset_mtime?: number;
+    library_logo_full?: { image2x?: Record<string, string> };
+    library_hero_full?: { image2x?: Record<string, string> };
+  };
+}
+
+interface SteamGridDbGameDetail {
+  id: number;
+  external_platform_data?: { steam?: SteamPlatformEntry[] };
+}
+
+// =========================================================================
+// 2. CLIENT API
+// =========================================================================
+
+// Requête générique vers un endpoint SteamGridDB renvoyant une liste de résultats
 async function steamGridDbFetch<T>(
   path: string,
   apiKey: string,
@@ -39,6 +66,29 @@ async function steamGridDbFetch<T>(
   }
 }
 
+// Requête générique vers un endpoint SteamGridDB renvoyant un objet unique
+async function steamGridDbFetchObject<T>(
+  path: string,
+  apiKey: string,
+): Promise<T | null> {
+  try {
+    const response = await fetch(`${BASE_URL}${path}`, {
+      headers: { Authorization: `Bearer ${apiKey}` },
+    });
+    if (!response.ok) return null;
+
+    const data = await response.json();
+    return data.success ? data.data : null;
+  } catch (error) {
+    console.error("[SteamGridDB] Exception durant l'appel API :", error);
+    return null;
+  }
+}
+
+// =========================================================================
+// 3. CORRESPONDANCE DE TITRE
+// =========================================================================
+
 // Sans accents, minuscule, espaces normalisés : pour comparer deux titres de façon fiable
 function normalize(str: string): string {
   return str
@@ -48,6 +98,7 @@ function normalize(str: string): string {
     .toLowerCase();
 }
 
+// Distance d'édition (nombre d'insertions/suppressions/substitutions) entre deux chaînes
 function levenshtein(a: string, b: string): number {
   const dp: number[][] = Array.from({ length: a.length + 1 }, () =>
     new Array(b.length + 1).fill(0),
@@ -65,14 +116,11 @@ function levenshtein(a: string, b: string): number {
   return dp[a.length][b.length];
 }
 
-// Ratio de similarité (1 = identique, 0 = totalement différent), tolérant les fautes de frappe
-// mineures mais rejetant un titre plausible mais différent (ex: "Violette" vs "Violet").
+// Ratio de similarité (1 = identique, 0 = totalement différent) dérivé de la distance de Levenshtein
 function similarity(a: string, b: string): number {
   const maxLen = Math.max(a.length, b.length);
   return maxLen === 0 ? 1 : 1 - levenshtein(a, b) / maxLen;
 }
-
-const MIN_TITLE_SIMILARITY = 0.75;
 
 /**
  * Recherche le jeu correspondant sur SteamGridDB et retourne son ID exact. Priorise une
@@ -101,13 +149,51 @@ async function findGameId(
     : null;
 }
 
+// =========================================================================
+// 4. FALLBACK ASSETS STEAM D'ORIGINE
+// =========================================================================
+
+/**
+ * Reconstruit l'URL de l'asset Steam d'origine (logo/hero, résolution x2) quand aucun
+ * asset communautaire n'existe encore sur SteamGridDB pour ce jeu : SteamGridDB relie
+ * chaque jeu Steam à son appid et à ses noms de fichiers d'assets via cet endpoint,
+ * permettant de retomber sur les visuels officiels de la fiche Steam elle-même.
+ */
+async function getSteamStoreAssetFallback(
+  gameId: number,
+  apiKey: string,
+  asset: "logo" | "hero",
+): Promise<ImageCandidate | null> {
+  const detail = await steamGridDbFetchObject<SteamGridDbGameDetail>(
+    `/games/id/${gameId}?platformdata=steam`,
+    apiKey,
+  );
+  const steamEntry = detail?.external_platform_data?.steam?.[0];
+  if (!steamEntry) return null;
+
+  const { id: appId, metadata } = steamEntry;
+  const image2x =
+    asset === "logo"
+      ? metadata.library_logo_full?.image2x
+      : metadata.library_hero_full?.image2x;
+  // Prend la première langue disponible du dictionnaire (souvent "english") sans clé fixe
+  const filename = image2x && Object.values(image2x)[0];
+  if (!filename || !metadata.store_asset_mtime) return null;
+
+  const url = `${STEAM_CDN_BASE}/${appId}/${filename}?t=${metadata.store_asset_mtime}`;
+  return { url, thumbnailUrl: url };
+}
+
+// =========================================================================
+// 5. RÉCUPÉRATION DES VISUELS
+// =========================================================================
+
 /**
  * Récupère les logos officiels d'un jeu SteamGridDB par son ID confirmé, garantissant
  * qu'ils appartiennent tous au bon jeu (contrairement à une recherche d'image générique).
  */
 export async function getSteamGridDbLogoCandidates(
   title: string,
-  consoleName?: string,
 ): Promise<ImageCandidate[]> {
   const apiKey = process.env.STEAMGRIDDB_API_KEY;
   if (!apiKey) return [];
@@ -119,14 +205,17 @@ export async function getSteamGridDbLogoCandidates(
     `/logos/game/${gameId}`,
     apiKey,
   );
-  if (!logos) return [];
+  if (logos && logos.length > 0) {
+    return logos.map((logo) => ({
+      url: logo.url,
+      thumbnailUrl: logo.thumb,
+      width: logo.width,
+      height: logo.height,
+    }));
+  }
 
-  return logos.map((logo) => ({
-    url: logo.url,
-    thumbnailUrl: logo.thumb,
-    width: logo.width,
-    height: logo.height,
-  }));
+  const fallback = await getSteamStoreAssetFallback(gameId, apiKey, "logo");
+  return fallback ? [fallback] : [];
 }
 
 /**
@@ -135,7 +224,6 @@ export async function getSteamGridDbLogoCandidates(
  */
 export async function getSteamGridDbHeroCandidates(
   title: string,
-  consoleName?: string,
 ): Promise<ImageCandidate[]> {
   const apiKey = process.env.STEAMGRIDDB_API_KEY;
   if (!apiKey) return [];
@@ -147,12 +235,15 @@ export async function getSteamGridDbHeroCandidates(
     `/heroes/game/${gameId}?dimensions=3840x1240`,
     apiKey,
   );
-  if (!heroes) return [];
+  if (heroes && heroes.length > 0) {
+    return heroes.map((hero) => ({
+      url: hero.url,
+      thumbnailUrl: hero.thumb,
+      width: hero.width,
+      height: hero.height,
+    }));
+  }
 
-  return heroes.map((hero) => ({
-    url: hero.url,
-    thumbnailUrl: hero.thumb,
-    width: hero.width,
-    height: hero.height,
-  }));
+  const fallback = await getSteamStoreAssetFallback(gameId, apiKey, "hero");
+  return fallback ? [fallback] : [];
 }

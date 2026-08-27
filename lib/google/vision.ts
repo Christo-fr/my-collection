@@ -1,8 +1,13 @@
 import { GoogleGenAI } from "@google/genai";
 import { ImageCandidate } from "@/lib/brave/search";
 
+// =========================================================================
+// 1. CLIENT & UTILITAIRES
+// =========================================================================
+
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+// Télécharge une image distante et l'encode en base64 pour l'envoyer à Gemini Vision
 async function fetchImageAsBase64(
   url: string,
 ): Promise<{ mimeType: string; data: string } | null> {
@@ -28,6 +33,10 @@ async function fetchImageAsBase64(
   }
 }
 
+// =========================================================================
+// 2. SÉLECTION VISUELLE PAR IA
+// =========================================================================
+
 /**
  * Soumet les miniatures d'images candidates à Gemini Vision
  * et retourne l'index du meilleur visuel retenu.
@@ -52,6 +61,7 @@ export async function selectBestImageWithVision(
       inlineData: { mimeType: string; data: string };
     }[] = [];
 
+    // Écarte les miniatures dont le téléchargement a échoué, tout en gardant leur index d'origine
     imagesBase64.forEach((img, idx) => {
       if (img) {
         validImages.push({ index: idx, inlineData: img });
@@ -93,6 +103,7 @@ Où N est l'index relatif de la meilleure image (de 0 à ${validImages.length - 
     });
 
     const text = response.text || "";
+    // Le modèle enrobe parfois sa réponse dans une balise Markdown ```json, à retirer avant parsing
     const sanitized = text
       .replace(/```json/g, "")
       .replace(/```/g, "")
