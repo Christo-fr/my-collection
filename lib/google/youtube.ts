@@ -1,19 +1,39 @@
+// =========================================================================
+// SERVICE YOUTUBE — RECHERCHE DE TRAILERS
+// =========================================================================
+
 /**
- * Recherche le trailer officiel d'un jeu sur YouTube
- * Priorité : Bande-annonce officielle en français -> Trailer officiel international.
+ * Recherche l'identifiant YouTube de la bande-annonce officielle d'un jeu.
+ *
+ * Stratégie de recherche en 2 étapes :
+ * 1. Recherche ciblée sur la bande-annonce officielle en français (`relevanceLanguage = "fr"`).
+ * 2. Secours international sur le trailer officiel global si la requête FR ne renvoie rien.
+ *
+ * @param title - Titre du jeu vidéo.
+ * @param consoleName - Nom de la console (optionnel, affine la pertinence de la recherche).
+ * @returns L'ID de la vidéo YouTube intégrable ou `null` si introuvable / erreur API.
  */
 export async function getYouTubeTrailerId(
   title: string,
   consoleName?: string,
 ): Promise<string | null> {
+  // Contrôle de présence de la clé API dans l'environnement
   const apiKey = process.env.GOOGLE_API_KEY;
 
   if (!apiKey) {
-    console.warn("[YouTube API Warning] Aucune clé GOOGLE_API_KEY configurée.");
+    console.warn(
+      "[YouTube API Warning] : aucune clé GOOGLE_API_KEY configurée.",
+    );
     return null;
   }
 
-  // Helper interne pour effectuer l'appel à l'API YouTube
+  // =========================================================================
+  // HELPER INTERNE : REQUÊTE À L'API YOUTUBE DATA v3
+  // =========================================================================
+  /**
+   * Effectue un appel à l'endpoint /search de l'API YouTube Data v3.
+   * Filtre strictement pour n'extraire que des vidéos autorisées à l'intégration (embeddable).
+   */
   const fetchVideoId = async (query: string, lang?: string) => {
     try {
       const url = new URL("https://www.googleapis.com/youtube/v3/search");
@@ -21,10 +41,10 @@ export async function getYouTubeTrailerId(
       url.searchParams.append("type", "video");
       url.searchParams.append("maxResults", "1");
       url.searchParams.append("q", query);
-      url.searchParams.append("videoEmbeddable", "true"); // Vidéo intégrable uniquement
+      url.searchParams.append("videoEmbeddable", "true"); // Exclut les vidéos privées ou bloquées en lecteur externe
 
       if (lang) {
-        url.searchParams.append("relevanceLanguage", lang); // Priorise la langue demandée
+        url.searchParams.append("relevanceLanguage", lang); // Priorise la pertinence linguistique
       }
 
       url.searchParams.append("key", apiKey);
@@ -35,16 +55,21 @@ export async function getYouTubeTrailerId(
       const data = await response.json();
       return data.items?.[0]?.id?.videoId || null;
     } catch {
+      // Gestion silencieuse des erreurs réseau ou des quotas API
       return null;
     }
   };
 
-  // 1. TENTATIVE IDÉALE : Recherche de la bande-annonce officielle en français
+  // =========================================================================
+  // ÉTAPE 1 : STRATÉGIE PRINCIPALE (BANDE-ANNONCE FR)
+  // =========================================================================
   const frenchQuery =
     `${title} ${consoleName || ""} bande annonce officielle`.trim();
   let videoId = await fetchVideoId(frenchQuery, "fr");
 
-  // 2. TENTATIVE DE SECOURS : Recherche du trailer officiel international si rien n'est trouvé
+  // =========================================================================
+  // ÉTAPE 2 : STRATÉGIE DE SECOURS (TRAILER INTERNATIONAL)
+  // =========================================================================
   if (!videoId) {
     const globalQuery = `${title} ${consoleName || ""} official trailer`.trim();
     videoId = await fetchVideoId(globalQuery);

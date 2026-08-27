@@ -4,18 +4,30 @@ import { getYouTubeTrailerId } from "@/lib/google/youtube";
 import { getBraveImageCandidates } from "@/lib/brave/search";
 import { selectBestImageWithVision } from "@/lib/google/vision";
 
-// Autorise la fonction Serverless à tourner jusqu'à 60 secondes sur Vercel/Next.js
+// =========================================================================
+// CONFIGURATION SERVEUR
+// =========================================================================
+
+// Autorise la fonction Serverless à tourner jusqu'à 60 secondes sur Vercel/Next.js.
+// Nécessaire car l'appel concurrent à plusieurs IA (Texte + Vision) peut dépasser le timeout par défaut.
 export const maxDuration = 60;
 
 // Initialisation du client Google Gen AI
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+// =========================================================================
+// ROUTE API PRINCIPALE (GÉNÉRATION IA GLOBALE)
+// =========================================================================
+
 export async function POST(req: Request) {
   try {
-    // 1. Extraction et validation des données de la requête
+    // ---------------------------------------------------------------------
+    // 1. EXTRACTION ET VALIDATION
+    // ---------------------------------------------------------------------
     const body = await req.json();
     const { title, console: consoleName, existingOptions = {} } = body;
 
+    // Le titre est la seule donnée strictement obligatoire pour lancer une recherche
     if (!title) {
       return NextResponse.json(
         { error: "Le titre est obligatoire." },
@@ -23,11 +35,14 @@ export async function POST(req: Request) {
       );
     }
 
-    // 2. Construction du prompt texte pour Gemini Flash
+    // ---------------------------------------------------------------------
+    // 2. PRÉPARATION DU PROMPT (Métadonnées Texte)
+    // ---------------------------------------------------------------------
     const fallbackConsoleLabel =
       "Nom de la console (priorité à la liste des consoles existantes si non spécifiée)";
     const targetConsole = consoleName ? consoleName : fallbackConsoleLabel;
 
+    // Prompt injectant les règles métiers strictes et les données existantes de la BDD
     const prompt = `
 Tu es un expert en jeux vidéo. Récupère les métadonnées du jeu « ${title} »${
       consoleName ? ` spécifiquement pour la plateforme « ${consoleName} »` : ""
@@ -93,7 +108,10 @@ Règles de formatage strictes :
 - Réponds UNIQUEMENT avec l'objet JSON brut sans balises Markdown (\`\`\`json).
 `;
 
-    // 3. Exécution simultanée (Métadonnées Texte, Trailer YouTube, Candidats Images)
+    // ---------------------------------------------------------------------
+    // 3. RECUPERATION DES IMAGES CANDIDATES ET DE L'ID YOUTUBE
+    // ---------------------------------------------------------------------
+    // Lance simultanément la génération de texte, la recherche YouTube et les recherches d'images (SteamGridDB + Brave)
     const [
       textResponse,
       youtubeId,
@@ -111,7 +129,10 @@ Règles de formatage strictes :
       getBraveImageCandidates(title, "parallax", consoleName),
     ]);
 
-    // 4. Arbitrage visuel par Gemini Vision en parallèle sur les candidats retenus
+    // ---------------------------------------------------------------------
+    // 4. CHOIX DES IMAGES CANDIDATES (Gemini Vision)
+    // ---------------------------------------------------------------------
+    // Soumet les listes d'images candidates à l'IA Vision pour sélectionner l'index le plus pertinent
     const [bestLogoIdx, bestCoverIdx, bestParallaxIdx] = await Promise.all([
       selectBestImageWithVision(logoCandidates, "logo", title, consoleName),
       selectBestImageWithVision(coverCandidates, "cover", title, consoleName),
@@ -123,13 +144,16 @@ Règles de formatage strictes :
       ),
     ]);
 
-    // Extraction des URL d'images retenues
+    // Extraction des URL finales en fonction de l'index validé par l'IA Vision
     const logoUrl = logoCandidates[bestLogoIdx]?.url || "";
     const coverUrl = coverCandidates[bestCoverIdx]?.url || "";
     const parallaxUrl = parallaxCandidates[bestParallaxIdx]?.url || "";
 
-    // 5. Nettoyage et parsing du JSON texte produit par Gemini
+    // ---------------------------------------------------------------------
+    // 5. NETTOYAGE ET PARSING DU JSON TEXTE
+    // ---------------------------------------------------------------------
     const text = textResponse.text || "";
+    // Sécurité : retire l'enrobage markdown si le LLM l'a généré malgré l'interdiction dans le prompt
     const sanitizedText = text
       .replace(/```json/g, "")
       .replace(/```/g, "")
@@ -137,7 +161,10 @@ Règles de formatage strictes :
 
     const parsedData = JSON.parse(sanitizedText);
 
-    // 6. Assemblage final structuré selon les interfaces TypeScript
+    // ---------------------------------------------------------------------
+    // 6. ASSEMBLAGE DU PAYLOAD FINAL
+    // ---------------------------------------------------------------------
+    // Fusionne les métadonnées texte, l'ID YouTube et les URLs d'images validées
     const finalPayload = {
       ...parsedData,
       youtubeId: youtubeId || "",
@@ -146,15 +173,19 @@ Règles de formatage strictes :
         cover: coverUrl,
         parallax: {
           url: parallaxUrl,
-          truncated: false,
+          truncated: false, // Valeur par défaut attendue par l'interface TypeScript de la BDD
         },
       },
     };
 
     return NextResponse.json(finalPayload);
   } catch (error: any) {
-    console.error("Erreur serveur API AI :", error);
+    // ---------------------------------------------------------------------
+    // 7. GESTION DES ERREURS GLOBALES
+    // ---------------------------------------------------------------------
+    console.error("[API AI Error] :", error);
 
+    // Erreur 429 : Quota de l'API dépassé
     if (
       error.status === 429 ||
       error.message?.includes("429") ||
@@ -166,6 +197,7 @@ Règles de formatage strictes :
       );
     }
 
+    // Erreur 503 : Serveurs Google temporairement indisponibles
     if (
       error.status === 503 ||
       error.message?.includes("503") ||
@@ -180,6 +212,7 @@ Règles de formatage strictes :
       );
     }
 
+    // Erreur générique ou échec du JSON.parse
     return NextResponse.json(
       {
         error:
