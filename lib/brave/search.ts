@@ -1,4 +1,7 @@
-import { getSteamGridDbLogoCandidates } from "@/lib/steamgriddb/search";
+import {
+  getSteamGridDbHeroCandidates,
+  getSteamGridDbLogoCandidates,
+} from "@/lib/steamgriddb/search";
 
 export interface ImageCandidate {
   url: string;
@@ -76,6 +79,18 @@ export async function getBraveImageCandidates(
   // ici que de secours si SteamGridDB n'a pas de match (pas de clé, jeu absent ou trop incertain).
   if (type === "logo") {
     const steamGridDbCandidates = await getSteamGridDbLogoCandidates(
+      title,
+      consoleName,
+    );
+    if (steamGridDbCandidates.length > 0) {
+      return steamGridDbCandidates.slice(0, 12);
+    }
+  }
+
+  // Idem pour la cover : le hero SteamGridDB au format 3840x1240 ("x2") est la source la
+  // plus fiable et la plus haute résolution, Brave ne sert que de secours en son absence.
+  if (type === "cover") {
+    const steamGridDbCandidates = await getSteamGridDbHeroCandidates(
       title,
       consoleName,
     );

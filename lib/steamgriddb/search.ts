@@ -14,6 +14,13 @@ interface SteamGridDbLogo {
   height: number;
 }
 
+interface SteamGridDbHero {
+  url: string;
+  thumb: string;
+  width: number;
+  height: number;
+}
+
 async function steamGridDbFetch<T>(
   path: string,
   apiKey: string,
@@ -119,5 +126,33 @@ export async function getSteamGridDbLogoCandidates(
     thumbnailUrl: logo.thumb,
     width: logo.width,
     height: logo.height,
+  }));
+}
+
+/**
+ * Récupère les heroes officiels d'un jeu SteamGridDB, filtrés sur le format 3840x1240
+ * (équivalent du "library_hero_2x" de Steam), utilisés comme cover haute résolution.
+ */
+export async function getSteamGridDbHeroCandidates(
+  title: string,
+  consoleName?: string,
+): Promise<ImageCandidate[]> {
+  const apiKey = process.env.STEAMGRIDDB_API_KEY;
+  if (!apiKey) return [];
+
+  const gameId = await findGameId(title, apiKey);
+  if (!gameId) return [];
+
+  const heroes = await steamGridDbFetch<SteamGridDbHero>(
+    `/heroes/game/${gameId}?dimensions=3840x1240`,
+    apiKey,
+  );
+  if (!heroes) return [];
+
+  return heroes.map((hero) => ({
+    url: hero.url,
+    thumbnailUrl: hero.thumb,
+    width: hero.width,
+    height: hero.height,
   }));
 }
