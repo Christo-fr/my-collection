@@ -7,7 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 // =========================================================================
 // RECUPERATION DES JEUX
 // =========================================================================
-/** Récupère la liste globale des jeux dans Supabase, filtrable par franchise via query params */
+/** Récupère la liste globale des jeux dans Supabase */
 export async function GET() {
   // Initialise le client Supabase serveur avec accès sécurisé aux cookies HTTP
   const supabase = await createClient();

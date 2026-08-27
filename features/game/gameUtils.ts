@@ -174,35 +174,43 @@ export function getRelatedFranchiseGames(
   currentGame: Game,
   franchiseGames: Game[],
 ): Game[] {
-  // Ordonne les jeux de la franchise par date de sortie croissante
+  // 1. On trie la liste par date (du plus ancien au plus récent)
   const sortedGames = [...franchiseGames].sort(
     (a, b) =>
       new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime(),
   );
 
-  // Recherche la position de l'opus sélectionné
-  const currentIndex = sortedGames.findIndex((g) => g.id === currentGame.id);
+  // 2. On cherche l'index (la position) du jeu consulté dans ce tableau trié
+  const currentIndex = sortedGames.findIndex(
+    (game) => game.id === currentGame.id,
+  );
   if (currentIndex === -1) return [];
 
-  // Isole les opus sortis avant et après l'opus courant
+  // 3. On extrait les jeux sortis avant et après le jeu consulté
   const gamesBefore = sortedGames.slice(0, currentIndex);
   const gamesAfter = sortedGames.slice(currentIndex + 1);
 
+  // Quotas de départ souhaités (1 avant, 2 après = 3 jeux au total)
   let countBefore = 1;
   let countAfter = 2;
 
-  // Réajuste les quotas si un côté manque de jeux
+  // 4. S'il n'y a pas eu au moins 1 jeu sorti avant :
   if (gamesBefore.length < 1) {
+    // On ajoute la différence sur le nombre de jeux sortis après
     countAfter += 1 - gamesBefore.length;
   }
+
+  // 5. S'il n'y a pas au moins 2 jeux sortis après :
   if (gamesAfter.length < 2) {
+    // On ajoute la différence sur le nombre de jeux sortis avant
     countBefore += 2 - gamesAfter.length;
   }
 
-  // Extrait les jeux correspondants aux quotas ajustés
+  // 6. Extrait les jeux correspondants aux quotas ajustés
   const selectedBefore = gamesBefore.slice(-countBefore);
   const selectedAfter = gamesAfter.slice(0, countAfter);
 
+  // 7. Fusionne les deux listes pour renvoyer le tableau final
   return [...selectedBefore, ...selectedAfter];
 }
 
