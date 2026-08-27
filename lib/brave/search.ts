@@ -112,6 +112,23 @@ export async function getBraveImageCandidates(
 
   let candidates = await executeBraveImageSearch(apiKey, query, 12);
 
+  // Logo & Parallax : requête additionnelle sur DeviantArt (deux appels distincts car Brave
+  // ne supporte pas OR/parenthèses avec "site:"), qui héberge de vrais PNG détourés en haute résolution
+  if (type === "logo" || type === "parallax") {
+    const deviantArtCandidates = await executeBraveImageSearch(
+      apiKey,
+      `${query} site:deviantart.com`,
+      12,
+    );
+    const seenUrls = new Set(candidates.map((c) => c.url));
+    for (const candidate of deviantArtCandidates) {
+      if (!seenUrls.has(candidate.url)) {
+        candidates.push(candidate);
+        seenUrls.add(candidate.url);
+      }
+    }
+  }
+
   // Cover : priorité aux bannières horizontales larges (>= 1920px)
   if (type === "cover" && candidates.length > 0) {
     const horizontalHighRes = candidates.filter(
