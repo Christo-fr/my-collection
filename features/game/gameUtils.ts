@@ -337,7 +337,7 @@ export function getTopPodium(
   games: Game[],
   getValue: (game: Game) => string | undefined,
 ): [string, number][] {
-  // Compte l'occurrence de chaque catégorie
+  // Parcourt tous les jeux pour compter le nombre d'occurrences de chaque catégorie.
   const keyCounts = games.reduce(
     (counter, game) => {
       const key = getValue(game);
@@ -349,7 +349,7 @@ export function getTopPodium(
     {} as Record<string, number>,
   );
 
-  // Regroupe les valeurs identiques sous une même occurrence
+  // Crée un dictionnaire dont la clé est le nombre de jeux (ex : 5: ["RPG", "Action"])
   const groupedByCount: Record<number, string[]> = {};
   for (const [key, count] of Object.entries(keyCounts)) {
     if (!groupedByCount[count]) {
@@ -358,15 +358,25 @@ export function getTopPodium(
     groupedByCount[count].push(key);
   }
 
-  // Conserve uniquement les 3 scores distincts les plus élevés
+  // Conserve uniquement les 3 scores distincts les plus élevés en les transformant en nombres et en les triant par ordre décroissant
   let topCounts = Object.keys(groupedByCount)
     .map(Number)
     .sort((a, b) => b - a)
     .slice(0, 3);
 
-  // Masque le 3e niveau si la valeur associée est égale à 1
-  if (topCounts.length === 3 && topCounts[2] === 1) {
-    topCounts = topCounts.slice(0, 2);
+  // Definition du podium
+  if (topCounts.length >= 2) {
+    const top1Count = groupedByCount[topCounts[0]].length;
+    const top2Count = groupedByCount[topCounts[1]].length;
+
+    // 1. Si le Top 1 contient déjà 3 noms ou plus -> On n'affiche que le Top 1
+    if (top1Count >= 3) {
+      topCounts = topCounts.slice(0, 1);
+    }
+    // 2. Si le cumul (Top 1 + Top 2) vaut 3 noms ou plus -> On bloque le Top 3
+    else if (top1Count + top2Count >= 3) {
+      topCounts = topCounts.slice(0, 2);
+    }
   }
 
   // Construit les paires finales (noms regroupés par slash / nombre)
