@@ -121,6 +121,7 @@ Règles de formatage strictes :
     ] = await Promise.all([
       ai.models.generateContent({
         model: "gemini-3.6-flash",
+        //model: "gemini-3.7-flash",
         contents: prompt,
       }),
       getYouTubeTrailerId(title, consoleName),
