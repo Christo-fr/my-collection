@@ -371,10 +371,12 @@ export function getTopPodium(
 
     // 1. Si le Top 1 contient déjà 3 noms ou plus -> On n'affiche que le Top 1
     if (top1Count >= 3) {
+      // Garde 1 seul élément (de l'index 0 jusqu'à l'index 1 non inclus)
       topCounts = topCounts.slice(0, 1);
     }
-    // 2. Si le cumul (Top 1 + Top 2) vaut 3 noms ou plus -> On bloque le Top 3
+    // 2. Si le cumul (Top 1 + Top 2) vaut 3 noms ou plus -> On affiche que le Top 1 et 2
     else if (top1Count + top2Count >= 3) {
+      // Garde 2 éléments (de l'index 0 jusqu'à l'index 2 non inclus)
       topCounts = topCounts.slice(0, 2);
     }
   }
