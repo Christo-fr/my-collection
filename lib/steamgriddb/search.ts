@@ -13,7 +13,6 @@ const STEAM_CDN = "https://shared.steamstatic.com/store_item_assets/steam/apps";
 
 /**
  * Client HTTP générique pour les appels à l'API SteamGridDB.
- * Gère l'authentification Bearer et capture les erreurs réseau.
  */
 async function sgdbFetch<T>(path: string, apiKey: string): Promise<T | null> {
   try {
@@ -30,8 +29,7 @@ async function sgdbFetch<T>(path: string, apiKey: string): Promise<T | null> {
 }
 
 /**
- * Normalise une chaîne de caractères (suppression des accents, minuscules, trim)
- * pour permettre des comparaisons strictes et fiables entre deux titres.
+ * Normalise une chaîne de caractères (suppression des accents, minuscules, trim).
  */
 function normalize(str: string): string {
   return str
@@ -47,7 +45,6 @@ function normalize(str: string): string {
 
 /**
  * Interroge l'autocomplétion SteamGridDB pour trouver l'ID unique d'un jeu.
- * Priorise une correspondance exacte avec le nom normalisé, sinon retombe sur le 1er résultat d'IGDB/SteamGridDB.
  */
 async function findGameId(
   title: string,
@@ -65,12 +62,12 @@ async function findGameId(
 }
 
 // =========================================================================
-// 4. FALLBACK ASSETS STEAM (VISUELS OFFICIELS)
+// 4. FALLBACK ASSETS STEAM (VISUELS OFFICIELS EN @2X)
 // =========================================================================
 
 /**
- * Reconstruit l'URL d'un asset officiel sur le CDN Steam (logo 2x ou hero 2x)
- * lorsque aucun visuel communautaire n'a été créé sur SteamGridDB pour ce jeu.
+ * Reconstruit l'URL officielle de l'asset Steam en haute résolution (@2x)
+ * depuis le CDN Steam (library_hero_2x.jpg ou logo_2x.png).
  */
 async function getSteamFallback(
   gameId: number,
@@ -85,15 +82,23 @@ async function getSteamFallback(
   if (!steamData) return null;
 
   const { id: appId, metadata } = steamData;
+  if (!appId) return null;
+
+  // Récupération de l'image dynamique OU fallback vers la convention officielle @2x de Steam
   const imageDict =
     assetType === "logo"
       ? metadata?.library_logo_full?.image2x
       : metadata?.library_hero_full?.image2x;
 
-  const filename = imageDict && Object.values(imageDict)[0];
-  if (!filename || !metadata?.store_asset_mtime) return null;
+  const filename =
+    (imageDict && Object.values(imageDict)[0]) ||
+    (assetType === "logo" ? "logo_2x.png" : "library_hero_2x.jpg");
 
-  const url = `${STEAM_CDN}/${appId}/${filename}?t=${metadata.store_asset_mtime}`;
+  const timeParam = metadata?.store_asset_mtime
+    ? `?t=${metadata.store_asset_mtime}`
+    : "";
+  const url = `${STEAM_CDN}/${appId}/${filename}${timeParam}`;
+
   return { url, thumbnailUrl: url };
 }
 
@@ -102,8 +107,8 @@ async function getSteamFallback(
 // =========================================================================
 
 /**
- * Récupère une liste de candidats visuels depuis SteamGridDB pour un endpoint spécifique (logos ou heroes).
- * En cas d'absence de visuels communautaires, bascule sur les assets officiels Steam via getSteamFallback.
+ * Récupère les bannières ou logos depuis SteamGridDB, triés par résolution décroissante.
+ * En cas d'absence d'images communautaires, bascule sur les visuels officiels Steam @2x.
  */
 async function getCandidates(
   title: string,
@@ -120,17 +125,35 @@ async function getCandidates(
     `/${endpoint}/game/${gameId}${params}`,
     apiKey,
   );
+  const fallbackAsset = endpoint === "logos" ? "logo" : "hero";
+
   if (items?.length) {
-    return items.map((item) => ({
+    // Tri par largeur décroissante (place les images 3840px / 2K / 4K au début)
+    const sortedItems = [...items].sort(
+      (a, b) => (b.width || 0) - (a.width || 0),
+    );
+
+    const candidates: ImageCandidate[] = sortedItems.map((item) => ({
       url: item.url,
       thumbnailUrl: item.thumb,
       width: item.width,
       height: item.height,
     }));
+
+    // On ajoute également l'asset officiel Steam @2x dans les candidats si disponible
+    const officialFallback = await getSteamFallback(
+      gameId,
+      apiKey,
+      fallbackAsset,
+    );
+    if (officialFallback) {
+      candidates.push(officialFallback);
+    }
+
+    return candidates;
   }
 
-  // Fallback vers les visuels Steam si aucun résultat sur SteamGridDB
-  const fallbackAsset = endpoint === "logos" ? "logo" : "hero";
+  // Fallback direct vers le CDN officiel Steam @2x si aucun résultat communautaire
   const fallback = await getSteamFallback(gameId, apiKey, fallbackAsset);
   return fallback ? [fallback] : [];
 }
@@ -139,14 +162,8 @@ async function getCandidates(
 // 6. EXPORTS PUBLICS DU SERVICE
 // =========================================================================
 
-/**
- * Récupère tous les logos candidats pour un jeu donné.
- */
 export const getSteamGridDbLogoCandidates = (title: string) =>
   getCandidates(title, "logos");
 
-/**
- * Récupère toutes les bannières candidates (format hero 3840x1240) pour un jeu donné.
- */
 export const getSteamGridDbHeroCandidates = (title: string) =>
-  getCandidates(title, "heroes", "?dimensions=3840x1240");
+  getCandidates(title, "heroes");

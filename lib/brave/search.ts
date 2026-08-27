@@ -4,7 +4,7 @@ import {
 } from "@/lib/steamgriddb/search";
 
 // =========================================================================
-// 1. TYPES
+// 1. TYPES ET CONFIGURATION
 // =========================================================================
 
 export interface ImageCandidate {
@@ -14,62 +14,67 @@ export interface ImageCandidate {
   height?: number;
 }
 
+/** Table de correspondance pour le repli vers les assets SteamGridDB */
+const STEAMGRIDDB_HANDLERS = {
+  logo: getSteamGridDbLogoCandidates,
+  cover: getSteamGridDbHeroCandidates,
+} as const;
+
+/** Générateurs de mots-clés de recherche Brave selon le type d'asset */
+const QUERY_TEMPLATES = {
+  logo: (title: string, platform: string) =>
+    `"${title}"${platform} logo transparent png webp cutout`,
+  cover: (title: string, platform: string) =>
+    `"${title}"${platform} official banner wallpaper artwork horizontal 1920x1080`,
+  parallax: (title: string, platform: string) =>
+    `"${title}"${platform} character key art render cutout transparent png webp`,
+} as const;
+
 // =========================================================================
-// 2. RECHERCHE BRAVE
+// 2. CLIENT HTTP RECHERCHE BRAVE
 // =========================================================================
 
-// Exécute une recherche d'images via l'API Brave Search Image
+/**
+ * Exécute une requête d'images vers l'API Brave Search et formate les résultats.
+ */
 async function executeBraveImageSearch(
   apiKey: string,
   query: string,
-  count: number = 10,
+  count: number = 12,
 ): Promise<ImageCandidate[]> {
   try {
-    const url = new URL("https://api.search.brave.com/res/v1/images/search");
-    url.searchParams.append("q", query);
-    url.searchParams.append("count", count.toString());
-    url.searchParams.append("safesearch", "off");
+    const endpoint = `https://api.search.brave.com/res/v1/images/search?q=${encodeURIComponent(query)}&count=${count}&safesearch=off`;
 
-    const response = await fetch(url.toString(), {
+    const response = await fetch(endpoint, {
       headers: {
         Accept: "application/json",
-        "Accept-Encoding": "gzip",
         "X-Subscription-Token": apiKey,
       },
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(
-        `[Brave Search] Erreur HTTP ${response.status} :`,
-        errorText,
-      );
-      return [];
-    }
+    if (!response.ok) return [];
 
     const data = await response.json();
-    const results = data.results || [];
-
-    return results.map((item: any) => ({
+    return (data.results || []).map((item: any) => ({
       url: item.properties?.url || item.url,
       thumbnailUrl: item.thumbnail?.src || item.properties?.url || item.url,
       width: item.properties?.width,
       height: item.properties?.height,
     }));
   } catch (error) {
-    console.error(
-      "[Brave Search] Exception durant la recherche d'images :",
-      error,
-    );
+    console.error("[Brave Search] Erreur lors de la recherche :", error);
     return [];
   }
 }
 
 // =========================================================================
-// 3. RÉCUPÉRATION DE CANDIDATS
+// 3. SERVICE PRINCIPAL DE RÉCUPÉRATION ET FILTRAGE
 // =========================================================================
 
-// Recherche des candidats d'images en priorisant SteamGridDB, avec repli sur Brave Search
+/**
+ * Récupère les candidats visuels (logo, cover, parallax) en priorisant SteamGridDB,
+ * puis en basculant sur Brave Search avec filtrage de pertinence (transparence, résolution).
+ */
 export async function getBraveImageCandidates(
   title: string,
   type: "logo" | "cover" | "parallax",
@@ -82,38 +87,20 @@ export async function getBraveImageCandidates(
     return [];
   }
 
-  // Le logo est d'abord recherché sur SteamGridDB (source fiable), Brave ne sert que de repli
-  if (type === "logo") {
-    const steamGridDbCandidates = await getSteamGridDbLogoCandidates(title);
-    if (steamGridDbCandidates.length > 0) {
-      return steamGridDbCandidates.slice(0, 12);
+  // 1. Priorité aux visuels SteamGridDB pour les logos et les covers (heroes)
+  if (type === "logo" || type === "cover") {
+    const steamCandidates = await STEAMGRIDDB_HANDLERS[type](title);
+    if (steamCandidates.length > 0) {
+      return steamCandidates.slice(0, 12);
     }
   }
 
-  // Idem pour la cover, via le hero SteamGridDB au format x2 (haute résolution)
-  if (type === "cover") {
-    const steamGridDbCandidates = await getSteamGridDbHeroCandidates(title);
-    if (steamGridDbCandidates.length > 0) {
-      return steamGridDbCandidates.slice(0, 12);
-    }
-  }
-
-  // Formatage propre du nom de la console s'il est renseigné
+  // 2. Recherche principale sur Brave Search
   const platform = consoleName ? ` ${consoleName}` : "";
-  let query = "";
-
-  if (type === "logo") {
-    query = `"${title}"${platform} logo transparent png webp cutout`;
-  } else if (type === "cover") {
-    query = `"${title}"${platform} official banner wallpaper artwork horizontal 1920x1080`;
-  } else if (type === "parallax") {
-    query = `"${title}"${platform} character key art render cutout transparent png webp`;
-  }
-
+  const query = QUERY_TEMPLATES[type](title, platform);
   let candidates = await executeBraveImageSearch(apiKey, query, 12);
 
-  // Logo & Parallax : requête additionnelle sur DeviantArt (deux appels distincts car Brave
-  // ne supporte pas OR/parenthèses avec "site:"), qui héberge de vrais PNG détourés en haute résolution
+  // 3. Recherche complémentaire sur DeviantArt pour les assets transparents (Logos & Parallax)
   if (type === "logo" || type === "parallax") {
     const deviantArtCandidates = await executeBraveImageSearch(
       apiKey,
@@ -121,45 +108,37 @@ export async function getBraveImageCandidates(
       12,
     );
     const seenUrls = new Set(candidates.map((c) => c.url));
-    for (const candidate of deviantArtCandidates) {
-      if (!seenUrls.has(candidate.url)) {
-        candidates.push(candidate);
-        seenUrls.add(candidate.url);
+    for (const item of deviantArtCandidates) {
+      if (!seenUrls.has(item.url)) {
+        candidates.push(item);
+        seenUrls.add(item.url);
       }
     }
   }
 
-  // Cover : priorité aux bannières horizontales larges (>= 1920px)
-  if (type === "cover" && candidates.length > 0) {
-    const horizontalHighRes = candidates.filter(
+  if (candidates.length === 0) return [];
+
+  // 4. Élimination des formats sans transparence (JPEG) pour les logos et rendus parallax
+  if (type === "logo" || type === "parallax") {
+    const transparentOnly = candidates.filter(
+      (c) => !/\.(jpe?g)$/i.test(c.url),
+    );
+    if (transparentOnly.length > 0) candidates = transparentOnly;
+  }
+
+  // 5. Filtrage selon les contraintes de résolution spécifiques
+  if (type === "cover") {
+    // Priorité aux bannières horizontales haute résolution (>= 1920px)
+    const horizontalHd = candidates.filter(
       (c) =>
         (!c.width || c.width >= 1920) &&
         (!c.height || (c.width && c.width > c.height)),
     );
-    if (horizontalHighRes.length > 0) {
-      candidates = horizontalHighRes;
-    }
-  }
-
-  // Logo & Parallax : élimination stricte des JPEG (pas de transparence)
-  if ((type === "logo" || type === "parallax") && candidates.length > 0) {
-    const transparentFormatsOnly = candidates.filter((c) => {
-      const lowerUrl = c.url.toLowerCase();
-      return !lowerUrl.endsWith(".jpg") && !lowerUrl.endsWith(".jpeg");
-    });
-    if (transparentFormatsOnly.length > 0) {
-      candidates = transparentFormatsOnly;
-    }
-  }
-
-  // Parallax : priorité aux visuels d'une hauteur minimale de 650px
-  if (type === "parallax" && candidates.length > 0) {
-    const minHeightCandidates = candidates.filter(
-      (c) => !c.height || c.height >= 650,
-    );
-    if (minHeightCandidates.length > 0) {
-      candidates = minHeightCandidates;
-    }
+    if (horizontalHd.length > 0) candidates = horizontalHd;
+  } else if (type === "parallax") {
+    // Priorité aux renders d'une hauteur suffisante (>= 650px)
+    const tallRenders = candidates.filter((c) => !c.height || c.height >= 650);
+    if (tallRenders.length > 0) candidates = tallRenders;
   }
 
   return candidates;

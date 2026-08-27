@@ -8,11 +8,10 @@ import { selectBestImageWithVision } from "@/lib/google/vision";
 // CONFIGURATION SERVEUR
 // =========================================================================
 
-// Autorise la fonction Serverless à tourner jusqu'à 60 secondes sur Vercel/Next.js.
-// Nécessaire car l'appel concurrent à plusieurs IA (Texte + Vision) peut dépasser le timeout par défaut.
+// Timeout Serverless étendu à 60s pour gérer les requêtes concurrentes (IA + Images)
 export const maxDuration = 60;
 
-// Initialisation du client Google Gen AI
+// Client officiel Google Gen AI
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 // =========================================================================
@@ -27,7 +26,6 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { title, console: consoleName, existingOptions = {} } = body;
 
-    // Le titre est la seule donnée strictement obligatoire pour lancer une recherche
     if (!title) {
       return NextResponse.json(
         { error: "Le titre est obligatoire." },
@@ -36,13 +34,10 @@ export async function POST(req: Request) {
     }
 
     // ---------------------------------------------------------------------
-    // 2. PRÉPARATION DU PROMPT (Métadonnées Texte)
+    // 2. PRÉPARATION DU PROMPT
     // ---------------------------------------------------------------------
-    const fallbackConsoleLabel =
-      "Nom de la console (priorité à la liste des consoles existantes si non spécifiée)";
-    const targetConsole = consoleName ? consoleName : fallbackConsoleLabel;
+    const targetConsole = consoleName || "Console";
 
-    // Prompt injectant les règles métiers strictes et les données existantes de la BDD
     const prompt = `
 Tu es un expert en jeux vidéo. Récupère les métadonnées du jeu « ${title} »${
       consoleName ? ` spécifiquement pour la plateforme « ${consoleName} »` : ""
@@ -83,7 +78,7 @@ Règles de rédaction de la "description" :
 - Le texte doit être un résumé/synopsis accrocheur en français (4 à 5 phrases).
 - Hiérarchie des sources à privilégier pour le contenu :
   1. Si la console est une PlayStation (ex: PS1, PS2, PS3, PS4, PS5, PSP, Vita) : Reprends/adapte le synopsis du PlayStation Store (store.playstation.com).
-  2. Si la console est une Nintendo (ex: NES, SNES, N64, GC, Wii, Switch, GB, DS, 3DS) : Reprends/adapte le synopsis du site Nintendo (nintendo.com/fr-fr).
+  2. Si la console est une Nintendo (ex: NES, SNES, N64, GC, Wii, Switch, GB, DS, 3DS) : Reprends/adapte le synopsis du site Nintendo ([nintendo.com/fr-fr](https://nintendo.com/fr-fr)).
   3. Si le jeu n'est pas présent sur ces stores : Reprends le synopsis de sa page Steam.
   4. En dernier recours : Rédige un résumé accrocheur fondé sur tes connaissances.
 
@@ -105,13 +100,12 @@ Règles de formatage strictes :
 - "pegi" : Utilise en priorité la classification PEGI officielle (FR/EU). Si le jeu n'a pas de PEGI officiel, convertis la classification de son pays d'origine (ex: ESRB pour les USA, CERO pour le Japon) vers la valeur PEGI équivalente la plus proche. Le résultat DOIT obligatoirement être un nombre entier parmi [3, 7, 12, 16, 18].
 - "releaseDate" doit être au format "AAAA-MM" (ex: "1995-03") basé sur la date de sortie FR (ou EU / Origine si non disponible).
 - "estimatedPlaytime" doit être un nombre entier sans décimale représentant les heures de jeu pour la trame principale uniquement ("Main Story" sur HowLongToBeat).
-- Réponds UNIQUEMENT avec l'objet JSON brut sans balises Markdown (\`\`\`json).
+- Réponds UNIQUEMENT avec l'objet JSON brut.
 `;
 
     // ---------------------------------------------------------------------
-    // 3. RECUPERATION DES IMAGES CANDIDATES ET DE L'ID YOUTUBE
+    // 3. RÉCUPÉRATION SIMULTANÉE (TEXTE + RECHERCHES IMAGES & TRAILER)
     // ---------------------------------------------------------------------
-    // Lance simultanément la génération de texte, la recherche YouTube et les recherches d'images (SteamGridDB + Brave)
     const [
       textResponse,
       youtubeId,
@@ -121,8 +115,10 @@ Règles de formatage strictes :
     ] = await Promise.all([
       ai.models.generateContent({
         model: "gemini-3.6-flash",
-        //model: "gemini-3.7-flash",
         contents: prompt,
+        config: {
+          responseMimeType: "application/json",
+        },
       }),
       getYouTubeTrailerId(title, consoleName),
       getBraveImageCandidates(title, "logo", consoleName),
@@ -131,9 +127,8 @@ Règles de formatage strictes :
     ]);
 
     // ---------------------------------------------------------------------
-    // 4. CHOIX DES IMAGES CANDIDATES (Gemini Vision)
+    // 4. SELECTION VISUELLE PAR GEMINI VISION
     // ---------------------------------------------------------------------
-    // Soumet les listes d'images candidates à l'IA Vision pour sélectionner l'index le plus pertinent
     const [bestLogoIdx, bestCoverIdx, bestParallaxIdx] = await Promise.all([
       selectBestImageWithVision(logoCandidates, "logo", title, consoleName),
       selectBestImageWithVision(coverCandidates, "cover", title, consoleName),
@@ -145,48 +140,34 @@ Règles de formatage strictes :
       ),
     ]);
 
-    // Extraction des URL finales en fonction de l'index validé par l'IA Vision
-    const logoUrl = logoCandidates[bestLogoIdx]?.url || "";
-    const coverUrl = coverCandidates[bestCoverIdx]?.url || "";
-    const parallaxUrl = parallaxCandidates[bestParallaxIdx]?.url || "";
-
     // ---------------------------------------------------------------------
-    // 5. NETTOYAGE ET PARSING DU JSON TEXTE
+    // 5. PARSING ET NETTOYAGE
     // ---------------------------------------------------------------------
-    const text = textResponse.text || "";
-    // Sécurité : retire l'enrobage markdown si le LLM l'a généré malgré l'interdiction dans le prompt
-    const sanitizedText = text
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim();
-
+    const rawText = textResponse.text || "{}";
+    const sanitizedText = rawText.replace(/```(json)?/g, "").trim();
     const parsedData = JSON.parse(sanitizedText);
 
     // ---------------------------------------------------------------------
-    // 6. ASSEMBLAGE DU PAYLOAD FINAL
+    // 6. ASSEMBLE ET RETOUR DU PAYLOAD FINAL
     // ---------------------------------------------------------------------
-    // Fusionne les métadonnées texte, l'ID YouTube et les URLs d'images validées
-    const finalPayload = {
+    return NextResponse.json({
       ...parsedData,
       youtubeId: youtubeId || "",
       images: {
-        logo: logoUrl,
-        cover: coverUrl,
+        logo: logoCandidates[bestLogoIdx]?.url || "",
+        cover: coverCandidates[bestCoverIdx]?.url || "",
         parallax: {
-          url: parallaxUrl,
-          truncated: false, // Valeur par défaut attendue par l'interface TypeScript de la BDD
+          url: parallaxCandidates[bestParallaxIdx]?.url || "",
+          truncated: false,
         },
       },
-    };
-
-    return NextResponse.json(finalPayload);
+    });
   } catch (error: any) {
     // ---------------------------------------------------------------------
-    // 7. GESTION DES ERREURS GLOBALES
+    // 7. GESTION DES ERREURS SERVEUR ET QUOTAS
     // ---------------------------------------------------------------------
     console.error("[API AI Error] :", error);
 
-    // Erreur 429 : Quota de l'API dépassé
     if (
       error.status === 429 ||
       error.message?.includes("429") ||
@@ -198,7 +179,6 @@ Règles de formatage strictes :
       );
     }
 
-    // Erreur 503 : Serveurs Google temporairement indisponibles
     if (
       error.status === 503 ||
       error.message?.includes("503") ||
@@ -213,7 +193,6 @@ Règles de formatage strictes :
       );
     }
 
-    // Erreur générique ou échec du JSON.parse
     return NextResponse.json(
       {
         error:
