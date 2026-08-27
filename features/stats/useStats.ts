@@ -195,7 +195,7 @@ export function useStats() {
   }, [filteredGames, recordMetric]);
 
   // =========================================================================
-  // 4. RETOUR
+  // 4. RETOUR DU HOOK
   // =========================================================================
   // Exporte les données calculées et les fonctions d'action vers la vue
   return {

@@ -184,7 +184,7 @@ export function useGames() {
   );
 
   // =========================================================================
-  // 5. RETOUR
+  // 5. RETOUR DU HOOK
   // =========================================================================
   // Exporte les données calculées et les fonctions d'action vers le composant de vue
   return {
