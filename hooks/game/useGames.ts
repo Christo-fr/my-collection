@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useGamesContext } from "@/components/providers/GamesProvider";
-import * as gameUtils from "./gameUtils";
+import * as gameUtils from "../../utils/game/gameUtils";
 
 // =========================================================================
 // 1. HOOK MAIN & INITIALISATION

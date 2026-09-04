@@ -20,7 +20,7 @@ import ProgressBar from "@/components/ui/ProgressBar";
 
 // Types & Utilitaires Métier
 import { Game } from "@/types/game";
-import { formatDate } from "@/features/game/gameUtils";
+import { formatDate } from "@/utils/game/gameUtils";
 
 // =========================================================================
 // 1. TYPAGE & INTERFACES

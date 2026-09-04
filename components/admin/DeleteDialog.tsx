@@ -5,7 +5,7 @@ import Heading from "@/components/ui/Heading";
 import Image from "next/image";
 import { LoaderCircle, Undo2, X } from "lucide-react";
 import { Game } from "@/types/game";
-import { useDeleteGame } from "@/features/admin/useDeleteGame";
+import { useDeleteGame } from "@/hooks/admin/useAdminDeleteGame";
 import FormError from "@/components/ui/FormError";
 
 interface DeleteDialogProps {

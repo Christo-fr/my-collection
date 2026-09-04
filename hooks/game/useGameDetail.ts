@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useBackground } from "@/components/providers/BackgroundProvider";
 import { useGamesContext } from "@/components/providers/GamesProvider";
-import { getRelatedFranchiseGames } from "./gameUtils";
+import { getRelatedFranchiseGames } from "../../utils/game/gameUtils";
 
 export function useGameDetail() {
   // =============================================================

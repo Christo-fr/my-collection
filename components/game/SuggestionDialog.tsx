@@ -4,7 +4,7 @@ import confetti from "canvas-confetti";
 import { RotateCw } from "lucide-react";
 
 // Types
-import { SuggestionResult } from "@/features/game/gameUtils";
+import { SuggestionResult } from "@/utils/game/gameUtils";
 
 // Composants UI Globaux & Métier
 import Dialog from "@/components/ui/Dialog";

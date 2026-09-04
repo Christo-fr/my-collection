@@ -1,11 +1,11 @@
 import { useState, useMemo } from "react";
 import { useGamesContext } from "@/components/providers/GamesProvider";
-import { getConsoleTabs } from "@/features/game/gameUtils";
+import { getConsoleTabs } from "@/utils/game/gameUtils";
 import {
   getTopPodium,
   getRecordGames,
   getRecordColumnTitle,
-} from "@/features/game/gameUtils";
+} from "@/utils/game/gameUtils";
 import type { Game } from "@/types/game";
 
 // =========================================================================

@@ -10,9 +10,9 @@ import Textarea from "@/components/ui/Textarea";
 import ImageInput from "@/components/admin/ImageInput";
 import { WandSparkles, LoaderCircle } from "lucide-react";
 
-import { useGameInformations } from "@/features/admin/gameForm/useGameInformations";
-import { useGameImages } from "@/features/admin/gameForm/useGameImages";
-import { useGameAI } from "@/features/admin/gameForm/useGameAI";
+import { useGameInformations } from "@/hooks/admin/gameForm/useGameFormInformations";
+import { useGameImages } from "@/hooks/admin/gameForm/useGameFormImages";
+import { useGameAI } from "@/hooks/admin/gameForm/useGameFormAI";
 
 interface TabInformationsProps {
   /** Gestion des métadonnées (titre, console, éditeur, etc.) */

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Sparkles } from "lucide-react";
 
 // Contextes & Hooks
-import { useGames } from "@/features/game/useGames";
+import { useGames } from "@/hooks/game/useGames";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 
 // Layout & UI Globales
@@ -23,7 +23,7 @@ import {
   getGachaSuggestion,
   OPTIONS_STATUS,
   SuggestionResult,
-} from "@/features/game/gameUtils";
+} from "@/utils/game/gameUtils";
 
 export default function Suggestion() {
   // =========================================================================

@@ -13,7 +13,7 @@ import FormError from "@/components/ui/FormError";
 import SortableConsoleItem from "@/components/admin/SortableConsoleItem";
 
 // 3. Custom Hook
-import { useConsoles } from "@/features/admin/useConsoles";
+import { useConsoles } from "@/hooks/admin/useAdminConsoles";
 
 // =========================================================================
 // COMPOSANT PRINCIPAL

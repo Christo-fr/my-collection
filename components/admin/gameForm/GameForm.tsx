@@ -6,7 +6,7 @@ import FormError from "@/components/ui/FormError";
 import Tabs from "@/components/ui/Tabs";
 import TabInformations from "@/components/admin/gameForm/TabGameInformations";
 import TabReview from "@/components/admin/gameForm/TabGameReview";
-import { useGameForm } from "@/features/admin/gameForm/useGameForm";
+import { useGameForm } from "@/hooks/admin/gameForm/useGameForm";
 import { Undo2, FilePlus, Save, LoaderCircle } from "lucide-react";
 
 interface GameFormProps {

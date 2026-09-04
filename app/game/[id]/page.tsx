@@ -14,7 +14,7 @@ import Button from "@/components/ui/Button";
 
 // Feature Game Components & Hooks
 import ConsoleIcon from "@/components/game/ConsoleIcon";
-import { useGameDetail } from "@/features/game/useGameDetail";
+import { useGameDetail } from "@/hooks/game/useGameDetail";
 import GameTabs from "@/components/game/GameTabs";
 import GameTrailerDialog from "@/components/game/GameTrailerDialog";
 

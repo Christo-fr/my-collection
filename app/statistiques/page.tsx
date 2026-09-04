@@ -2,7 +2,7 @@
 
 import LayoutFull from "@/components/layout/LayoutFull";
 import Tabs from "@/components/ui/Tabs";
-import { useStats } from "@/features/stats/useStats";
+import { useStats } from "@/hooks/stats/useStats";
 import StatsKpiSidebar from "@/components/stats/StatsKpiSidebar";
 import StatsRecordsPanel from "@/components/stats/StatsRecordsPanel";
 

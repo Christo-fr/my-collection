@@ -8,10 +8,10 @@ import { useGamesContext } from "@/components/providers/GamesProvider";
 import { toast } from "sonner";
 
 // Importation de nos 4 sous-hooks spécialisés
-import { useGameInformations } from "./useGameInformations";
-import { useGameImages } from "./useGameImages";
-import { useGameReview } from "./useGameReview";
-import { useGameAI } from "./useGameAI";
+import { useGameInformations } from "./useGameFormInformations";
+import { useGameImages } from "./useGameFormImages";
+import { useGameReview } from "./useGameFormReview";
+import { useGameAI } from "./useGameFormAI";
 
 interface GameFormProps {
   mode: "insert" | "update";

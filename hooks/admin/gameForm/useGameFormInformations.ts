@@ -5,7 +5,7 @@ import {
   getConsoleFormOptions,
   OPTIONS_PEGI,
   OPTIONS_SUPPORT,
-} from "@/features/admin/gameForm/gameFormOptionsUtils";
+} from "@/utils/admin/gameForm/gameFormOptionsUtils";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 
 export function useGameInformations(editGame?: Game) {

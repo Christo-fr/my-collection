@@ -1,8 +1,8 @@
 "use client";
 
-import { useGames } from "@/features/game/useGames";
+import { useGames } from "@/hooks/game/useGames";
 import ListHeader from "@/components/game/ListHeader";
-import { OPTIONS_SORT, OPTIONS_STATUS } from "@/features/game/gameUtils";
+import { OPTIONS_SORT, OPTIONS_STATUS } from "@/utils/game/gameUtils";
 
 import LayoutFull from "@/components/layout/LayoutFull";
 import FilterPanel from "@/components/game/FilterPanel";

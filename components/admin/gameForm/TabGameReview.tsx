@@ -9,7 +9,7 @@ import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import { Plus, X } from "lucide-react";
 
-import { useGameReview } from "@/features/admin/gameForm/useGameReview";
+import { useGameReview } from "@/hooks/admin/gameForm/useGameFormReview";
 
 interface TabReviewProps {
   /** Méthodes et états gérant les métriques, avis, points forts/faibles et bilan */

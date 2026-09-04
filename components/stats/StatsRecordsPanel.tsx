@@ -1,6 +1,6 @@
 import ListHeader from "@/components/game/ListHeader";
 import GameCard from "@/components/game/GameCard";
-import { OPTIONS_RECORD_METRICS } from "@/features/game/gameUtils";
+import { OPTIONS_RECORD_METRICS } from "@/utils/game/gameUtils";
 import { Game } from "@/types";
 
 // =========================================================================
