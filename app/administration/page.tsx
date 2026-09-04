@@ -1,11 +1,11 @@
 "use client";
 
 import { useGames } from "@/hooks/game/useGames";
-import ListHeader from "@/components/game/ListHeader";
+import ListHeader from "@/components/game/GameListHeader";
 import { OPTIONS_SORT, OPTIONS_STATUS } from "@/utils/game/gameUtils";
 
 import LayoutFull from "@/components/layout/LayoutFull";
-import FilterPanel from "@/components/game/FilterPanel";
+import FilterPanel from "@/components/game/GameFilterPanel";
 import Input from "@/components/ui/Input";
 import RangeInput from "@/components/ui/RangeInput";
 import Select from "@/components/ui/Select";

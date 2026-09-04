@@ -1,4 +1,4 @@
-import ListHeader from "@/components/game/ListHeader";
+import ListHeader from "@/components/game/GameListHeader";
 import GameCard from "@/components/game/GameCard";
 import { OPTIONS_RECORD_METRICS } from "@/utils/game/gameUtils";
 import { Game } from "@/types";

@@ -13,7 +13,7 @@ import Input from "@/components/ui/Input";
 import FormError from "@/components/ui/FormError";
 
 // Composants Métier
-import FilterPanel from "@/components/game/FilterPanel";
+import FilterPanel from "@/components/game/GameFilterPanel";
 
 // Supabase
 import { createClient } from "@/lib/supabase/client";

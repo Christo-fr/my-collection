@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Game } from "@/types/game";
 import Image from "next/image";
-import ConsoleIcon from "./ConsoleIcon";
+import ConsoleIcon from "./GameConsoleIcon";
 import { Check } from "lucide-react";
 
 // =========================================================================

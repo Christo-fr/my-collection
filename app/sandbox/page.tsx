@@ -20,7 +20,7 @@ import { toast } from "sonner";
 
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
-import SortableConsoleItem from "@/components/admin/SortableConsoleItem";
+import SortableConsoleItem from "@/components/admin/AdminConsoleItem";
 
 import Combobox from "@/components/ui/Combobox";
 

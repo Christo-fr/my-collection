@@ -10,7 +10,7 @@ import LayoutFull from "@/components/layout/LayoutFull";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import FormError from "@/components/ui/FormError";
-import SortableConsoleItem from "@/components/admin/SortableConsoleItem";
+import SortableConsoleItem from "@/components/admin/AdminConsoleItem";
 
 // 3. Custom Hook
 import { useConsoles } from "@/hooks/admin/useAdminConsoles";

@@ -12,7 +12,7 @@ import { KeyRound } from "lucide-react";
 import { useState, type SubmitEvent } from "react";
 
 // Composants Métier
-import FilterPanel from "@/components/game/FilterPanel";
+import FilterPanel from "@/components/game/GameFilterPanel";
 
 //Supabase
 import { createClient } from "@/lib/supabase/client";

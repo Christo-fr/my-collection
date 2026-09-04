@@ -15,8 +15,8 @@ import Select from "@/components/ui/Select";
 import RangeInput from "@/components/ui/RangeInput";
 
 // Composants Métier
-import FilterPanel from "@/components/game/FilterPanel";
-import SuggestionDialog from "@/components/game/SuggestionDialog";
+import FilterPanel from "@/components/game/GameFilterPanel";
+import SuggestionDialog from "@/components/game/GameSuggestionDialog";
 
 // Utils & Types
 import {

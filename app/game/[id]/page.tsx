@@ -13,7 +13,7 @@ import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 
 // Feature Game Components & Hooks
-import ConsoleIcon from "@/components/game/ConsoleIcon";
+import ConsoleIcon from "@/components/game/GameConsoleIcon";
 import { useGameDetail } from "@/hooks/game/useGameDetail";
 import GameTabs from "@/components/game/GameTabs";
 import GameTrailerDialog from "@/components/game/GameTrailerDialog";

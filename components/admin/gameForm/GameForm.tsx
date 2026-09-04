@@ -4,8 +4,8 @@ import { Game } from "@/types/game";
 import Button from "@/components/ui/Button";
 import FormError from "@/components/ui/FormError";
 import Tabs from "@/components/ui/Tabs";
-import TabInformations from "@/components/admin/gameForm/TabGameInformations";
-import TabReview from "@/components/admin/gameForm/TabGameReview";
+import TabInformations from "@/components/admin/gameForm/GameFormTabInformations";
+import TabReview from "@/components/admin/gameForm/GameFormTabReview";
 import { useGameForm } from "@/hooks/admin/gameForm/useGameForm";
 import { Undo2, FilePlus, Save, LoaderCircle } from "lucide-react";
 
