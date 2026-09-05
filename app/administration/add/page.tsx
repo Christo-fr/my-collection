@@ -1,10 +1,5 @@
-import LayoutFull from "@/components/layout/LayoutFull";
-import GameForm from "@/components/admin/gameForm/GameForm";
+import GameFormView from "@/components/admin/gameForm/GameFormView";
 
 export default function AddGamePage() {
-  return (
-    <LayoutFull title="Ajout">
-      <GameForm mode="insert" />
-    </LayoutFull>
-  );
+  return <GameFormView mode="insert" />;
 }
