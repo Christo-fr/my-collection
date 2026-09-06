@@ -4,12 +4,12 @@ import { useBackground } from "@/components/providers/BackgroundProvider";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { getRelatedFranchiseGames } from "../../utils/game/gameUtils";
 
-export function useGameDetail() {
+/** Hook orchestrateur gérant la recherche synchrone d'un jeu, le fond d'écran et la navigation */
+export function useGameDetail(idGame?: number | null) {
   // =============================================================
   // 1. HOOKS & CONTEXTES
   // =============================================================
-
-  const { id } = useParams();
+  const params = useParams();
   const router = useRouter();
   const { setBgImage } = useBackground();
 
@@ -17,14 +17,15 @@ export function useGameDetail() {
   const { games, loading, getGameById } = useGamesContext();
 
   // =============================================================
-  // 2. RECHERCHE DU JEU EN MEMO
+  // 2. RECHERCHE DU JEU EN MÉMOIRE
   // =============================================================
-  const game = id ? getGameById(Number(id)) : undefined;
+  // Priorité à l'ID transmis au hook, sinon fallback sur le paramètre d'URL
+  const targetId = idGame ?? (params?.id ? Number(params.id) : null);
+  const game = targetId ? getGameById(targetId) : undefined;
 
   // =============================================================
   // 3. GESTION DU BOUTON RETOUR
   // =============================================================
-
   const handleBack = () => {
     const lastCatalogUrl = sessionStorage.getItem("lastCatalogUrl");
     if (lastCatalogUrl) {
@@ -37,11 +38,10 @@ export function useGameDetail() {
   // =============================================================
   // 4. CALCUL DES JEUX DE LA MÊME FRANCHISE FILTRÉS DEPUIS LA MÉMOIRE
   // =============================================================
-
   const relatedFranchiseGames = useMemo(() => {
     if (!game || !game.franchise) return [];
 
-    // 1. Renvoie la liste de jeu de la meme franchise
+    // 1. Renvoie la liste de jeux de la même franchise
     const franchiseData = games.filter((g) => g.franchise === game.franchise);
 
     // 2. On passe ce sous-ensemble à la fonction utilitaire
@@ -51,7 +51,6 @@ export function useGameDetail() {
   // =============================================================
   // 5. CHANGEMENT DU BACKGROUND EN FONCTION DU JEU SÉLECTIONNÉ
   // =============================================================
-
   useEffect(() => {
     if (game) {
       setBgImage(game.images.cover);
