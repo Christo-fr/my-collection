@@ -1,4 +1,4 @@
-import GameDetailView from "@/components/game/GameDetailView";
+import GameDetailView from "@/features/game-detail/components/GameDetailView";
 
 interface GameDetailPageProps {
   params: Promise<{ id: string }>;

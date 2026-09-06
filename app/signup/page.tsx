@@ -13,7 +13,7 @@ import Input from "@/components/ui/Input";
 import FormError from "@/components/ui/FormError";
 
 // Composants Métier
-import FilterPanel from "@/components/game/GameFilterPanel";
+import GameCatalogFilterPanel from "@/components/shared/GameCatalogFilterPanel";
 
 // Supabase
 import { createClient } from "@/lib/supabase/client";
@@ -107,7 +107,7 @@ export default function Signup() {
 
       {/* Panneau principal de formulaire */}
       <section className="w-full xl:w-1/2 lg:h-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
-        <FilterPanel title="Inscription">
+        <GameCatalogFilterPanel title="Inscription">
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <p className="text-main/80 text-sm">
               Bienvenue sur <b>MyCollection</b> ! <br />
@@ -167,7 +167,7 @@ export default function Signup() {
               S'inscrire
             </Button>
           </form>
-        </FilterPanel>
+        </GameCatalogFilterPanel>
       </section>
     </LayoutSplit>
   );

@@ -1,10 +1,10 @@
 import LayoutFull from "@/components/layout/LayoutFull";
-import ConsolesView from "@/components/admin/AdminConsoleView";
+import AdminConsolesView from "@/features/admin-consoles/components/AdminConsolesView";
 
 export default function ConsolesPage() {
   return (
     <LayoutFull title="Gestion des consoles">
-      <ConsolesView />
+      <AdminConsolesView />
     </LayoutFull>
   );
 }

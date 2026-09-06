@@ -1,5 +1,5 @@
 import LayoutFull from "@/components/layout/LayoutFull";
-import StatsView from "@/components/stats/StatsView";
+import StatsView from "@/features/stats/components/StatsView";
 
 export default function StatsPage() {
   // =========================================================================

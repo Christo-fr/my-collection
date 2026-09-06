@@ -1,5 +1,5 @@
-import GameFormView from "@/components/admin/gameForm/GameFormView";
+import AdminGameFormView from "@/features/admin-game-form/components/AdminGameFormView";
 
 export default function AddGamePage() {
-  return <GameFormView mode="insert" />;
+  return <AdminGameFormView mode="insert" />;
 }

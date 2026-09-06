@@ -12,7 +12,7 @@ import { KeyRound } from "lucide-react";
 import { useState, type SubmitEvent } from "react";
 
 // Composants Métier
-import FilterPanel from "@/components/game/GameFilterPanel";
+import GameCatalogFilterPanel from "@/components/shared/GameCatalogFilterPanel";
 
 //Supabase
 import { createClient } from "@/lib/supabase/client";
@@ -61,7 +61,7 @@ export default function Login() {
 
         {/* Panneau principal de filtres */}
         <section className="w-full xl:w-1/2 lg:h-full flex flex-col gap-2 mb-4 min-h-0 p-3 rounded-xl border border-main/10 bg-gradient-to-br from-[var(--color-secondary)]/40 via-background/30 to-background/70 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
-          <FilterPanel title="Formulaire">
+          <GameCatalogFilterPanel title="Formulaire">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <Input
                 label="Courriel"
@@ -98,7 +98,7 @@ export default function Login() {
                 Connexion
               </Button>
             </form>
-          </FilterPanel>
+          </GameCatalogFilterPanel>
         </section>
       </LayoutSplit>
     </>

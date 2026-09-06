@@ -1,6 +1,6 @@
 import LayoutSplit from "@/components/layout/LayoutSplit";
 import Heading from "@/components/ui/Heading";
-import SuggestionView from "@/components/game/GameSuggestionView";
+import SuggestionView from "@/features/suggestion/components/SuggestionView";
 
 export default function SuggestionPage() {
   return (

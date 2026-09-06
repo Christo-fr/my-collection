@@ -20,13 +20,13 @@ import { toast } from "sonner";
 
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
-import SortableConsoleItem from "@/components/admin/AdminConsoleItem";
+import AdminConsolesItem from "@/features/admin-consoles/components/AdminConsolesItem";
 
 import Combobox from "@/components/ui/Combobox";
 
 // 🎮 Imports Métier & Layout
-import GameCard from "@/components/game/GameCard";
-import AdminGameCard from "@/components/admin/AdminGameCard";
+import GameCard from "@/components/shared/GameCard";
+import AdminGameCard from "@/features/admin/AdminGameCard";
 import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 
@@ -77,10 +77,10 @@ export default function SandboxPage() {
 
   // State local pour la liste réordonnable
   const [consoles, setConsoles] = useState([
-    { id: 1, name: "PlayStation 5" },
-    { id: 2, name: "Nintendo Switch" },
-    { id: 3, name: "PC" },
-    { id: 4, name: "Xbox Series X" },
+    { id: 1, shortName: "PlayStation 5" },
+    { id: 2, shortName: "Nintendo Switch" },
+    { id: 3, shortName: "PC" },
+    { id: 4, shortName: "Xbox Series X" },
   ]);
 
   // Gestionnaire de fin de survol / déplacement
@@ -405,7 +405,13 @@ export default function SandboxPage() {
             <DndContext onDragEnd={handleDragEnd}>
               <SortableContext items={consoles.map((c) => c.id)}>
                 {consoles.map((c) => (
-                  <SortableConsoleItem key={c.id} id={c.id} name={c.name} />
+                  <AdminConsolesItem
+                    key={c.id}
+                    id={c.id}
+                    shortName={c.shortName}
+                    isBw={false}
+                    onUpdate={() => {}}
+                  />
                 ))}
               </SortableContext>
             </DndContext>

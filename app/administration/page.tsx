@@ -1,5 +1,5 @@
 import LayoutFull from "@/components/layout/LayoutFull";
-import GameCatalogView from "@/components/game/GameCatalogView";
+import GameCatalogView from "@/components/shared/GameCatalogView";
 import Button from "@/components/ui/Button";
 import { Gamepad, FilePlus } from "lucide-react";
 
