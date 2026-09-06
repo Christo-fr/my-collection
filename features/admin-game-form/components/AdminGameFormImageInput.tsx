@@ -10,7 +10,7 @@ import { ImageIcon } from "lucide-react";
 import Input from "@/components/ui/Input";
 import Checkbox from "@/components/ui/Checkbox";
 
-interface AdminImageInputProps {
+interface AdminGameFormImageInputProps {
   label: string;
   uploadFile: File | null;
   onUploadChange: (file: File | null) => void;
@@ -26,7 +26,7 @@ interface AdminImageInputProps {
   isAi?: boolean;
 }
 
-export default function AdminImageInput({
+export default function AdminGameFormImageInput({
   label,
   uploadFile,
   onUploadChange,
@@ -40,7 +40,7 @@ export default function AdminImageInput({
   sourceType = "file",
   isAi,
   onSourceTypeChange,
-}: AdminImageInputProps) {
+}: AdminGameFormImageInputProps) {
   // Stocke l'URL initiale BDD
   const baseDbUrl = initialUrl || urlValue;
   const initialUrlRef = useRef(baseDbUrl);

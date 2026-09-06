@@ -3,7 +3,7 @@
 import { useGames } from "@/hooks/useGames";
 import GameCatalogListHeader from "@/components/shared/GameCatalogListHeader";
 import GameCard from "@/components/shared/GameCard";
-import AdminGameCard from "@/features/admin/AdminGameCard";
+import AdminGameCard from "@/features/admin/components/AdminGameCard";
 import { OPTIONS_SORT, OPTIONS_STATUS } from "@/utils/gameUtils";
 
 import GameCatalogFilterPanel from "@/components/shared/GameCatalogFilterPanel";

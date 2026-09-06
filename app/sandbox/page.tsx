@@ -26,7 +26,7 @@ import Combobox from "@/components/ui/Combobox";
 
 // 🎮 Imports Métier & Layout
 import GameCard from "@/components/shared/GameCard";
-import AdminGameCard from "@/features/admin/AdminGameCard";
+import AdminGameCard from "@/features/admin/components/AdminGameCard";
 import ParallaxCharacter from "@/components/layout/ParallaxCharacter";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 

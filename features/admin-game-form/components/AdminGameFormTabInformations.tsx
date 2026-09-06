@@ -7,7 +7,7 @@ import Input from "@/components/ui/Input";
 import Combobox from "@/components/ui/Combobox";
 import Select from "@/components/ui/Select";
 import Textarea from "@/components/ui/Textarea";
-import AdminImageInput from "@/features/admin/AdminImageInput";
+import AdminGameFormImageInput from "@/features/admin-game-form/components/AdminGameFormImageInput";
 import { WandSparkles, LoaderCircle } from "lucide-react";
 
 import { useGameFormInformations } from "@/features/admin-game-form/hooks/useGameFormInformations";
@@ -270,7 +270,7 @@ export default function AdminGameFormTabInformations({
         <div className="pr-2 pt-4 gap-4 text-main lg:flex-1 lg:overflow-y-auto [scrollbar-width:thin] [scrollbar-color:transparent_transparent] hover:hover:[scrollbar-color:var(--color-scrollbar)_transparent]">
           <div className="grid gap-2 mb-4">
             <div>
-              <AdminImageInput
+              <AdminGameFormImageInput
                 label="Logo*"
                 uploadFile={img.uploadLogo}
                 onUploadChange={(file) => {
@@ -290,7 +290,7 @@ export default function AdminGameFormTabInformations({
               />
             </div>
             <div>
-              <AdminImageInput
+              <AdminGameFormImageInput
                 label="Cover*"
                 uploadFile={img.uploadCover}
                 onUploadChange={(file) => {
@@ -310,7 +310,7 @@ export default function AdminGameFormTabInformations({
               />
             </div>
             <div>
-              <AdminImageInput
+              <AdminGameFormImageInput
                 label="Parallax*"
                 uploadFile={img.uploadParallax}
                 onUploadChange={(file) => {
