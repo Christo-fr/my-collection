@@ -3,7 +3,6 @@ import GameCatalogView from "@/components/shared/GameCatalogView";
 import Button from "@/components/ui/Button";
 import { Gamepad, FilePlus } from "lucide-react";
 
-/** Page d'administration de la liste de jeux de la collection */
 export default function Administration() {
   return (
     <LayoutFull title="Administration">

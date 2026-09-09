@@ -27,7 +27,7 @@ interface GameDetailViewProps {
 }
 
 // =========================================================================
-// 2. COMPOSANT SAS & ORCHESTRATION CLIENTE
+// 2. COMPOSANT
 // =========================================================================
 /** Vue cliente affichant le profil détaillé, les avis et la saga d'un jeu sélectionné */
 export default function GameDetailView({ idGame }: GameDetailViewProps) {
@@ -39,7 +39,7 @@ export default function GameDetailView({ idGame }: GameDetailViewProps) {
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
 
   // =========================================================================
-  // 3. GARDE-FOU (Sécurité si donnée absente ou en cours de chargement)
+  // 3. GARDE-FOU
   // =========================================================================
   // Bloque le rendu tant que l'ID n'est pas fourni, le chargement en cours ou le jeu introuvable
   if (!idGame || loading || !game) return null;
