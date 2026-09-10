@@ -77,7 +77,7 @@ export default function Header() {
             href="/"
             className="text-primary text-3xl font-[family-name:var(--font-jewels)] pr-2"
           >
-            My Little Collection
+            My Collection
           </Link>
 
           {/* --- MENU : DESKTOP --- */}

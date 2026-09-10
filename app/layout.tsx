@@ -21,7 +21,7 @@ const notoFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "My Little Collection",
+  title: "My Collection",
   description: "Ma vidéoludothèque personnelle",
 };
 
