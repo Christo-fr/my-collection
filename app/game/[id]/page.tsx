@@ -9,7 +9,7 @@ export default async function GameDetailPage({ params }: GameDetailPageProps) {
   const { id } = await params;
   const idGame = id ? Number(id) : null;
 
-  if (!idGame) return null;
+  if (idGame === null || isNaN(idGame)) return null;
 
   return <GameDetailView idGame={idGame} />;
 }

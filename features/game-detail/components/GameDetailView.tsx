@@ -42,7 +42,7 @@ export default function GameDetailView({ idGame }: GameDetailViewProps) {
   // 3. GARDE-FOU
   // =========================================================================
   // Bloque le rendu tant que l'ID n'est pas fourni, le chargement en cours ou le jeu introuvable
-  if (!idGame || loading || !game) return null;
+  if (idGame === null || idGame === undefined || loading || !game) return null;
 
   // =========================================================================
   // 4. RENDU DU COMPOSANT (JSX)

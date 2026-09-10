@@ -21,7 +21,10 @@ export function useGameDetail(idGame?: number | null) {
   // =============================================================
   // Priorité à l'ID transmis au hook, sinon fallback sur le paramètre d'URL
   const targetId = idGame ?? (params?.id ? Number(params.id) : null);
-  const game = targetId ? getGameById(targetId) : undefined;
+  const game =
+    targetId !== null && targetId !== undefined
+      ? getGameById(targetId)
+      : undefined;
 
   // =============================================================
   // 3. GESTION DU BOUTON RETOUR
