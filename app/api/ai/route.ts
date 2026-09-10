@@ -2,13 +2,13 @@ import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 import { getYouTubeTrailerId } from "@/lib/google/youtube";
 import { getBraveImageCandidates } from "@/lib/brave/search";
-import { selectBestImageWithVision } from "@/lib/google/vision";
+// import { selectBestImageWithVision } from "@/lib/google/vision";
 
 // =========================================================================
 // CONFIGURATION SERVEUR
 // =========================================================================
 
-// Timeout Serverless étendu à 60s pour gérer les requêtes concurrentes (IA + Images)
+// Timeout Serverless étendu à 60s (ignoré par l'offre gratuite Netlify)
 export const maxDuration = 60;
 
 // Client officiel Google Gen AI
@@ -127,8 +127,11 @@ Règles de formatage strictes :
     ]);
 
     // ---------------------------------------------------------------------
-    // 4. SELECTION VISUELLE PAR GEMINI VISION
+    // 4. SELECTION VISUELLE PAR GEMINI VISION (DÉSACTIVÉ SUR NETLIFY)
     // ---------------------------------------------------------------------
+    // DÉSACTIVÉ : L'analyse visuelle prend 10-12 secondes et fait dépasser
+    // la limite d'exécution des fonctions Netlify (10s max).
+    /*
     const [bestLogoIdx, bestCoverIdx, bestParallaxIdx] = await Promise.all([
       selectBestImageWithVision(logoCandidates, "logo", title, consoleName),
       selectBestImageWithVision(coverCandidates, "cover", title, consoleName),
@@ -139,6 +142,7 @@ Règles de formatage strictes :
         consoleName,
       ),
     ]);
+    */
 
     // ---------------------------------------------------------------------
     // 5. PARSING ET NETTOYAGE
@@ -154,10 +158,11 @@ Règles de formatage strictes :
       ...parsedData,
       youtubeId: youtubeId || "",
       images: {
-        logo: logoCandidates[bestLogoIdx]?.url || "",
-        cover: coverCandidates[bestCoverIdx]?.url || "",
+        // Sélection directe du 1er résultat Brave ([0]) à la place des index Vision
+        logo: logoCandidates[0]?.url || "", // logoCandidates[bestLogoIdx]?.url || "",
+        cover: coverCandidates[0]?.url || "", // coverCandidates[bestCoverIdx]?.url || "",
         parallax: {
-          url: parallaxCandidates[bestParallaxIdx]?.url || "",
+          url: parallaxCandidates[0]?.url || "", // parallaxCandidates[bestParallaxIdx]?.url || "",
           truncated: false,
         },
       },
