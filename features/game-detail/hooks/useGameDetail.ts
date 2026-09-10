@@ -27,9 +27,8 @@ export function useGameDetail(idGame?: number | null) {
   // 3. GESTION DU BOUTON RETOUR
   // =============================================================
   const handleBack = () => {
-    const lastCatalogUrl = sessionStorage.getItem("lastCatalogUrl");
-    if (lastCatalogUrl) {
-      router.push(lastCatalogUrl);
+    if (window.history.length > 1) {
+      router.back();
     } else {
       router.push("/list");
     }

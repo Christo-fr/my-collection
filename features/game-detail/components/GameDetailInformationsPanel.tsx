@@ -89,6 +89,7 @@ export default function GameDetailInformationsPanel({
                 key={relatedGame.id}
                 href={`/game/${relatedGame.id}`}
                 className="transition-transform duration-300 hover:scale-105"
+                replace
               >
                 <div className="relative h-24">
                   <Image
