@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { createClient } from "@/lib/supabase/client";
 import { DragEndEvent } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 import { toast } from "sonner";
 import { Console } from "@/types/console";
+import { useBack } from "@/hooks/useBack";
 
 export function useAdminConsoles() {
   // =========================================================================
   // 1. HOOKS & CONTEXTES
   // =========================================================================
-  const router = useRouter();
   const supabase = createClient();
   const { consoles: dbConsoles, loading, refetchConsoles } = useGamesContext();
 
@@ -29,12 +28,7 @@ export function useAdminConsoles() {
   // =========================================================================
   // 2. HANDLERS & TRAITEMENT METIER
   // =========================================================================
-
-  // Retour vers /administration en conservant les derniers filtres utilisés
-  const handleBack = () => {
-    const lastCatalogUrl = sessionStorage.getItem("lastCatalogUrl");
-    router.push(lastCatalogUrl ?? "/administration");
-  };
+  const handleBack = useBack("administration");
 
   // A. Drag & Drop : Réordonnancement de la liste locale
   const handleDragEnd = (event: DragEndEvent) => {
@@ -170,9 +164,9 @@ export function useAdminConsoles() {
       setFormError(error.message);
     } else {
       await refetchConsoles();
+      handleBack();
       setShowErrors(false);
       toast.success("Liste des consoles mise à jour avec succès !");
-      handleBack();
     }
 
     setIsSaving(false);
@@ -190,6 +184,5 @@ export function useAdminConsoles() {
     handleDragEnd,
     updateConsoleField,
     handleSave,
-    handleBack,
   };
 }

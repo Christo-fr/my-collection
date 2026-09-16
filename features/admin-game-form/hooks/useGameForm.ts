@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Game } from "@/types/game";
 import { createClient } from "@/lib/supabase/client";
 import { useGamesContext } from "@/components/providers/GamesProvider";
@@ -12,6 +11,7 @@ import { useGameFormInformations } from "./useGameFormInformations";
 import { useGameFormImages } from "./useGameFormImages";
 import { useGameFormReview } from "./useGameFormReview";
 import { useGameFormAI } from "./useGameFormAI";
+import { useBack } from "@/hooks/useBack";
 
 interface GameFormProps {
   mode: "insert" | "update";
@@ -19,9 +19,10 @@ interface GameFormProps {
 }
 
 export function useGameForm({ mode, editGame }: GameFormProps) {
-  const router = useRouter();
   const { refetchGames, refetchConsoles } = useGamesContext();
   const supabase = createClient();
+
+  const handleBack = useBack("administration");
 
   // =========================================================================
   // 1. INSTANCIATION DES SOUS-HOOKS (L'ORCHESTRATION)
@@ -38,12 +39,6 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-
-  // Retour vers /administration en conservant les derniers filtres utilisés
-  const handleBack = () => {
-    const lastCatalogUrl = sessionStorage.getItem("lastCatalogUrl");
-    router.push(lastCatalogUrl ?? "/administration");
-  };
 
   // =========================================================================
   // 3. GESTION DES ERREURS & NETTOYAGE

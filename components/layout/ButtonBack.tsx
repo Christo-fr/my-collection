@@ -1,21 +1,13 @@
 import Button from "@/components/ui/Button";
-import { useRouter } from "next/navigation";
 import { Undo2 } from "lucide-react";
+import { useBack } from "@/hooks/useBack";
 
 type ButtonBackProps = {
   link?: "list" | "administration";
 };
 
 export function ButtonBack({ link }: ButtonBackProps) {
-  const router = useRouter();
-
-  const handleClick = () => {
-    if (typeof window !== "undefined" && window.history.length > 1) {
-      router.back();
-    } else {
-      router.push(`/${link}`);
-    }
-  };
+  const handleClick = useBack(link);
 
   return (
     <Button

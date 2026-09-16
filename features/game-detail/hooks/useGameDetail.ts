@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useBackground } from "@/components/providers/BackgroundProvider";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { getRelatedFranchiseGames } from "../../../utils/gameUtils";
@@ -10,6 +10,7 @@ export function useGameDetail(idGame?: number | null) {
   // 1. HOOKS & CONTEXTES
   // =============================================================
   const params = useParams();
+  const router = useRouter();
   const { setBgImage } = useBackground();
 
   // Récupère le catalogue global
