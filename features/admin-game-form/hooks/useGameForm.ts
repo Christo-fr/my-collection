@@ -375,6 +375,5 @@ export function useGameForm({ mode, editGame }: GameFormProps) {
     fieldErrors,
     clearField,
     handleSubmit,
-    handleBack,
   };
 }

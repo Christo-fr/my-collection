@@ -2,12 +2,13 @@
 
 import { Game } from "@/types/game";
 import Button from "@/components/ui/Button";
+import { ButtonBack } from "@/components/layout/ButtonBack";
 import FormError from "@/components/ui/FormError";
 import Tabs from "@/components/ui/Tabs";
 import AdminGameFormTabInformations from "@/features/admin-game-form/components/AdminGameFormTabInformations";
 import AdminGameFormTabReview from "@/features/admin-game-form/components/AdminGameFormTabReview";
 import { useGameForm } from "@/features/admin-game-form/hooks/useGameForm";
-import { Undo2, FilePlus, Save, LoaderCircle } from "lucide-react";
+import { FilePlus, Save, LoaderCircle } from "lucide-react";
 
 interface AdminGameFormProps {
   mode: "insert" | "update";
@@ -30,7 +31,6 @@ export default function AdminGameForm({ mode, editGame }: AdminGameFormProps) {
     clearField,
     handleSubmit,
     handleGenerateAI,
-    handleBack,
   } = useGameForm({ mode, editGame });
 
   // =========================================================================
@@ -82,13 +82,7 @@ export default function AdminGameForm({ mode, editGame }: AdminGameFormProps) {
         )}
 
         <div className="w-full flex flex-row flex-wrap items-center justify-between gap-2 pt-4">
-          <Button
-            onClick={handleBack}
-            variant="secondary"
-            icon={<Undo2 className="w-5 h-5" />}
-          >
-            Retour
-          </Button>
+          <ButtonBack link="administration" />
 
           <Button
             type="submit"

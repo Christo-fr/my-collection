@@ -1,12 +1,13 @@
 "use client";
 
 // 1. Icônes & Drag and Drop (DndKit)
-import { Undo2, Gamepad, LoaderCircle } from "lucide-react";
+import { Gamepad, LoaderCircle } from "lucide-react";
 import { DndContext } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 
 // 2. Composants UI & Layout
 import Button from "@/components/ui/Button";
+import { ButtonBack } from "@/components/layout/ButtonBack";
 import Heading from "@/components/ui/Heading";
 import FormError from "@/components/ui/FormError";
 import AdminConsolesItem from "@/features/admin-consoles/components/AdminConsolesItem";
@@ -27,7 +28,6 @@ export default function AdminConsolesView() {
     handleDragEnd,
     updateConsoleField,
     handleSave,
-    handleBack,
   } = useAdminConsoles();
 
   // =========================================================================
@@ -83,13 +83,7 @@ export default function AdminConsolesView() {
             )}
 
             <div className="w-full flex flex-row flex-wrap items-center justify-between gap-2 pt-4">
-              <Button
-                onClick={handleBack}
-                variant="secondary"
-                icon={<Undo2 className="w-5 h-5" />}
-              >
-                Retour
-              </Button>
+              <ButtonBack link="administration" />
               <Button
                 variant="secondary"
                 onClick={handleSave}

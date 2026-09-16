@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useBackground } from "@/components/providers/BackgroundProvider";
 import { useGamesContext } from "@/components/providers/GamesProvider";
 import { getRelatedFranchiseGames } from "../../../utils/gameUtils";
@@ -10,7 +10,6 @@ export function useGameDetail(idGame?: number | null) {
   // 1. HOOKS & CONTEXTES
   // =============================================================
   const params = useParams();
-  const router = useRouter();
   const { setBgImage } = useBackground();
 
   // Récupère le catalogue global
@@ -27,18 +26,7 @@ export function useGameDetail(idGame?: number | null) {
       : undefined;
 
   // =============================================================
-  // 3. GESTION DU BOUTON RETOUR
-  // =============================================================
-  const handleBack = () => {
-    if (window.history.length > 1) {
-      router.back();
-    } else {
-      router.push("/list");
-    }
-  };
-
-  // =============================================================
-  // 4. CALCUL DES JEUX DE LA MÊME FRANCHISE FILTRÉS DEPUIS LA MÉMOIRE
+  // 3. CALCUL DES JEUX DE LA MÊME FRANCHISE FILTRÉS DEPUIS LA MÉMOIRE
   // =============================================================
   const relatedFranchiseGames = useMemo(() => {
     if (!game || !game.franchise) return [];
@@ -51,7 +39,7 @@ export function useGameDetail(idGame?: number | null) {
   }, [game, games]);
 
   // =============================================================
-  // 5. CHANGEMENT DU BACKGROUND EN FONCTION DU JEU SÉLECTIONNÉ
+  // 4. CHANGEMENT DU BACKGROUND EN FONCTION DU JEU SÉLECTIONNÉ
   // =============================================================
   useEffect(() => {
     if (game) {
@@ -62,7 +50,7 @@ export function useGameDetail(idGame?: number | null) {
   }, [game, setBgImage]);
 
   // =============================================================
-  // 6. REDIRECTION AUTOMATIQUE VERS LA LISTE SI LE JEU N'EXISTE PAS
+  // 5. REDIRECTION AUTOMATIQUE VERS LA LISTE SI LE JEU N'EXISTE PAS
   // =============================================================
   useEffect(() => {
     if (!loading && !game) {
@@ -74,6 +62,5 @@ export function useGameDetail(idGame?: number | null) {
     game,
     loading,
     relatedFranchiseGames,
-    handleBack,
   };
 }

@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Undo2, Disc, CircleDotDashed } from "lucide-react";
+import { Disc, CircleDotDashed } from "lucide-react";
 
 // Providers & Layouts
 import LayoutSplit from "@/components/layout/LayoutSplit";
 
 // UI Components Global
 import Heading from "@/components/ui/Heading";
-import Button from "@/components/ui/Button";
+import { ButtonBack } from "@/components/layout/ButtonBack";
 
 // Feature Game Components & Hooks
 import ConsoleIcon from "@/components/shared/ConsoleIcon";
@@ -32,8 +32,7 @@ interface GameDetailViewProps {
 /** Vue cliente affichant le profil détaillé, les avis et la saga d'un jeu sélectionné */
 export default function GameDetailView({ idGame }: GameDetailViewProps) {
   // Récupère les données du jeu courant, son état de chargement, sa saga et le retour intelligent
-  const { game, loading, relatedFranchiseGames, handleBack } =
-    useGameDetail(idGame);
+  const { game, loading, relatedFranchiseGames } = useGameDetail(idGame);
 
   // Contrôle l'affichage de la modale vidéo YouTube
   const [isTrailerOpen, setIsTrailerOpen] = useState(false);
@@ -110,13 +109,7 @@ export default function GameDetailView({ idGame }: GameDetailViewProps) {
 
           {/* Bouton de retour contextuel */}
           <div className="lg:flex-shrink-0">
-            <Button
-              variant="secondary"
-              onClick={handleBack}
-              icon={<Undo2 className="w-5 h-5" />}
-            >
-              Retour
-            </Button>
+            <ButtonBack link="list" />
           </div>
         </LayoutSplit>
 
